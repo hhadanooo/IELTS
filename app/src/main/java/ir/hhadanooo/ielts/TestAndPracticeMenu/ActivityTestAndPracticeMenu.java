@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -20,10 +21,30 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_and_practice_menu);
 
-
+        
 
 
     }
+
+    public void SetPropertiesActionBar()
+    {
+        getSupportActionBar().setElevation(0);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.layout_custom_action_bar);
+        getSupportActionBar().setElevation(0);
+        View view = getSupportActionBar().getCustomView();
+
+        ImageView img_icon_menu = findViewById(R.id.actionbar_img_icon_menu);
+
+        img_icon_menu.setBackground(getResources().getDrawable(R.drawable.icon_menu));
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        img_icon_menu.getLayoutParams().width = (int)(dm.widthPixels*0.1);
+        img_icon_menu.getLayoutParams().height = (int)(dm.widthPixels*0.1);
+
+    }
+
+
     public void SetPropertiesCustomView()
     {
         CustomViewItem custom = new CustomViewItem(this);
