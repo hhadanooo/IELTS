@@ -11,7 +11,7 @@ import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnListen , btnSpeak , btnRead , btnWrite ;
+    Button btnListen , btnSpeak , btnRead , btnWrite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,25 +27,33 @@ public class MainActivity extends AppCompatActivity {
         btnListen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class));
+                Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
+                intent.putExtra("Listen","listen");
+                startActivity(intent);
             }
         });
         btnSpeak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class));
+                Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
+                intent.putExtra("Speak","speak");
+                startActivity(intent);
             }
         });
         btnRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class));
+                Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
+                intent.putExtra("Read","read");
+                startActivity(intent);
             }
         });
         btnWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class));
+                Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
+                intent.putExtra("Write","write");
+                startActivity(intent);
             }
         });
 
