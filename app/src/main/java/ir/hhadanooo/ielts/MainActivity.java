@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
+
 public class MainActivity extends AppCompatActivity {
 
     Button btnListen , btnSpeak , btnRead , btnWrite ;
@@ -25,25 +27,25 @@ public class MainActivity extends AppCompatActivity {
         btnListen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this ,  ));
+                startActivity(new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class));
             }
         });
         btnSpeak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this ,  ));
+                startActivity(new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class));
             }
         });
         btnRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this ,  ));
+                startActivity(new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class));
             }
         });
         btnWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this ,  ));
+                startActivity(new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class));
             }
         });
 
