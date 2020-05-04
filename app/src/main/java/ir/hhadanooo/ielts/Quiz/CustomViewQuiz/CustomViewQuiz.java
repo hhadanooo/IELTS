@@ -121,7 +121,7 @@ public class CustomViewQuiz extends LinearLayout {
         submit_Answer.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 

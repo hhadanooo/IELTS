@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this , QuizActivity.class);
+                Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
                 intent.putExtra("Write","write");
                 startActivity(intent);
             }
