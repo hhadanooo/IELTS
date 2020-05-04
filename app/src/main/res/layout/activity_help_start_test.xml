@@ -13,17 +13,26 @@
         android:layout_height="match_parent"
         android:layout_margin="20dp" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/exFb"
-        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/colorPrimary"
-        android:text="send"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:contentDescription="@string/appbar_scrolling_view_behavior"
-        tools:ignore="UnknownId" />
+        android:layout_alignParentBottom="true">
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/start_test"
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/colorPrimary"
+            android:text="Start"
+            android:contentDescription="@string/appbar_scrolling_view_behavior"
+            tools:ignore="UnknownId" />
+    </LinearLayout>
+
+
+
+
+
 
 
 
