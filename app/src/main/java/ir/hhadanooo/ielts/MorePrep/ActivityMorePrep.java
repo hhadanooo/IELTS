@@ -1,9 +1,7 @@
-package ir.hhadanooo.ielts.TestAndPracticeMenu;
+package ir.hhadanooo.ielts.MorePrep;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,16 +12,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
-import ir.hhadanooo.ielts.MainActivity;
-import ir.hhadanooo.ielts.MorePrep.ActivityMorePrep;
 import ir.hhadanooo.ielts.R;
 
-public class ActivityTestAndPracticeMenu extends AppCompatActivity {
-
+public class ActivityMorePrep extends AppCompatActivity {
 
     RelativeLayout rel_body,rel_list_item;
     TextView tv_body;
@@ -33,33 +26,20 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_and_practice_menu);
+        setContentView(R.layout.activity_more_prep);
         init();
-        CheckIntent();
+        //CheckIntent();
+        SetPropertiesActionBar(true,"Prepare");
+        SetPropertiesRelBody("Learn more about what to do and not to do in the Ielts test");
         SetPropertiesCustomView();
-
-        btn_more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ActivityTestAndPracticeMenu.this , ActivityMorePrep.class);
-                //intent.putExtra("Write","write");
-                startActivity(intent);
-            }
-        });
-
-
-
-        
-
-
     }
     public void init()
     {
-        btn_more = findViewById(R.id.activity_test_menu_btn_more);
-        rel_body = findViewById(R.id.activity_test_menu_rel_body);
-        rel_list_item = findViewById(R.id.activity_test_menu_rel_list_item);
-        tv_body = findViewById(R.id.activity_test_menu_tv_body);
-        lin = findViewById(R.id.activity_test_menu_lin_list_item);
+        btn_more = findViewById(R.id.activity_more_prep_btn_more);
+        rel_body = findViewById(R.id.activity_more_prep_rel_body);
+        rel_list_item = findViewById(R.id.activity_more_prep_rel_list_item);
+        tv_body = findViewById(R.id.activity_more_prep_tv_body);
+        lin = findViewById(R.id.activity_more_prep_lin_list_item);
     }
     public void CheckIntent()
     {
@@ -88,6 +68,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
 
     public void SetPropertiesRelBody(String Text)
     {
+        tv_body = findViewById(R.id.activity_more_prep_tv_body);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         tv_body.setMaxWidth((int) (dm.widthPixels * 0.92));
@@ -152,33 +133,56 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
     public void SetPropertiesCustomView()
     {
 
-        String[] titles = {"Practice Test(s)","About the Listening Test"};
+        CustomViewItem custom1 = new CustomViewItem(this);
+        CustomViewItem custom2 = new CustomViewItem(this);
+        CustomViewItem custom3 = new CustomViewItem(this);
+        CustomViewItem custom4 = new CustomViewItem(this);
+        CustomViewItem custom5 = new CustomViewItem(this);
 
-            CustomViewItem custom1 = new CustomViewItem(this);
-            CustomViewItem custom2 = new CustomViewItem(this);
-
-            SetSettingCustomItem("","Practice Test(s)",custom1);
-            SetSettingCustomItem("","About the Listening Test",custom2);
-
-
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this,ActivityAboutTheTest.class);
-                    intent.putExtra(Type, Type);
-                    startActivity(intent);
-                }
-            });
+        SetSettingCustomItem("Enhances your ability to construct simple and correct sentences","Grammer",custom1);
+        SetSettingCustomItem("increase the number of words you know in English to become more fluent","Vocabulary",custom2);
+        SetSettingCustomItem("know what to do and not to do in the IELTS test","IELTS Test Tips",custom3);
+        SetSettingCustomItem("Prepare for your life abroad with our IELTS Blog!","IELTS blog: ",custom4);
+        SetSettingCustomItem("Book your IELTS test","Book IELTS: ",custom5);
 
 
-            lin.addView(custom1);
-            lin.addView(custom2);
+        custom1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        custom2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        custom3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        custom4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        custom5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+        lin.addView(custom1);
+        lin.addView(custom2);
+        lin.addView(custom3);
+        lin.addView(custom4);
+        lin.addView(custom5);
 
 
 
@@ -193,27 +197,22 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
 
         RelativeLayout relativeLayout = custom.getrel();
 
-
         //Give value to view
         custom.SetTextTvTitle(title);
+        custom.SetTextTvBody(Body);
         custom.SetIcon(getResources().getDrawable(R.drawable.testimageicon_customview));
-
 
         // set width and height icon custom view
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-        img_icon.getLayoutParams().width = (int)(dm.widthPixels*0.12);
-        img_icon.getLayoutParams().height = (int)(dm.widthPixels*0.12);
-
+        img_icon.getLayoutParams().width = (int)(dm.widthPixels*0.15);
+        img_icon.getLayoutParams().height = (int)(dm.widthPixels*0.15);
 
         //set width and height layout custom view
         relativeLayout.getLayoutParams().width = (int)(dm.widthPixels*0.95);
 
-
         //set maxwidth tv body
         tv_body.setMaxWidth((int) (dm.widthPixels * 0.65));
-
-
 
         //set margin
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
@@ -223,14 +222,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
         params.setMargins(0, (int) (dm.widthPixels * 0.04), 0, 0);
         custom.setLayoutParams(params);
 
-
         //set text size tv body,tv title
-        tv_body.setTextSize((int) (dm.widthPixels * 0.010));
-        tv_title.setTextSize((int) (dm.widthPixels * 0.015));
+        tv_body.setTextSize((int) (dm.widthPixels * 0.013));
+        tv_title.setTextSize((int) (dm.widthPixels * 0.018));
 
-        //set center veritcal tv title
-        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) tv_title.getLayoutParams();
-        lp.addRule(RelativeLayout.CENTER_VERTICAL);
-        tv_title.setLayoutParams(lp);
     }
 }

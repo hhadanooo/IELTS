@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AboutTheTest.ActivityAboutTheTest"></activity>
+        <activity android:name=".MorePrep.ActivityMorePrep" />
         <activity android:name=".Quiz.QuizActivity"></activity>
         <activity android:name=".TestAndPracticeMenu.ActivityTestAndPracticeMenu" />
         <activity android:name=".TestAndPracticeArrowBack.ActivityTestAndPracticeArrowBack" />
