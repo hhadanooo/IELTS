@@ -33,14 +33,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Button btnListen , btnSpeak , btnRead , btnWrite;
     DrawerLayout drawerLayout;
     ArcNavigationView menuNav;
-    ViewPager viewPager_home;
     DisplayMetrics dm;
-    TextView[] dots;
-    LinearLayout dotsLayout;
-    MyViewPagerAdapter myViewPagerAdapter;
-    Handler handler = new Handler();
-    int[] layouts = {R.drawable.slide1  , R.drawable.slide2
-            , R.drawable.slide3 , R.drawable.slide4, R.drawable.slide5};
+    ImageView iv_cover_home;
 
     boolean showMenu = true;
 
@@ -68,23 +62,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnSpeak = findViewById(R.id.btnSpeak);
         btnRead = findViewById(R.id.btnRead);
         btnWrite = findViewById(R.id.btnWrite);
-        viewPager_home = findViewById(R.id.viewPager_home);
-        dotsLayout = findViewById(R.id.layoutDots);
+        iv_cover_home = findViewById(R.id.iv_cover_home);
 
 
-
-
-        //slider
-        myViewPagerAdapter = new MyViewPagerAdapter();
-        viewPager_home.setAdapter(myViewPagerAdapter);
-        viewPager_home.addOnPageChangeListener(viewPagerPageChangeListener);
-
-
-
-
-        //dots
-        addBottomDots(0);
-        handler.postDelayed(new timer_dots() , 5000);
+        iv_cover_home.getLayoutParams().width = (int) (dm.widthPixels*.25);
+        iv_cover_home.getLayoutParams().height = (int) (dm.heightPixels*.15);
 
 
 
@@ -137,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         //custom ActionBar
+        Objects.requireNonNull(getSupportActionBar()).setElevation(0);
         Objects.requireNonNull(this.getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.custom_action_bar);
@@ -144,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View view = getSupportActionBar().getCustomView();
         ImageView iv_menu = view.findViewById(R.id.iv_menu);
         TextView title_action = view.findViewById(R.id.title_action);
+        title_action.setText("");
         title_action.setTextSize((int) (dm.widthPixels*.02));
         iv_menu.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_menu.getLayoutParams().height = (int) (dm.widthPixels*.1);
@@ -204,95 +188,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-            addBottomDots(position);
-
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-
-        }
-    };
-
-
-
-    private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
-        dotsLayout.removeAllViews();
-        for (int i = 0; i < dots.length; i++) {
-            dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
-            dots[i].setTextColor(Color.GRAY);
-            dotsLayout.addView(dots[i]);
-        }
-
-        if (dots.length > 0)
-            dots[currentPage].setTextColor(Color.BLACK);
-    }
-
-
-    public class MyViewPagerAdapter extends PagerAdapter {
-
-        @NonNull
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-
-            ImageView slide = new ImageView(MainActivity.this);
-            slide.setImageResource(layouts[position]);
-            slide.setScaleType(ImageView.ScaleType.FIT_XY);
-            container.addView(slide);
-
-            return slide;
-
-        }
-
-        @Override
-        public int getCount() {
-            return layouts.length;
-        }
-
-        @Override
-        public boolean isViewFromObject(@NonNull View view, @NonNull Object obj) {
-            return view == obj;
-        }
-
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
-            View view = (View) object;
-            container.removeView(view);
-        }
-    }
-
-
-
-    public class timer_dots implements Runnable{
-        @Override
-        public void run() {
-
-            if (viewPager_home.getCurrentItem() <= 3){
-                viewPager_home.setCurrentItem(viewPager_home.getCurrentItem()+1);
-            }else {
-                viewPager_home.setCurrentItem(0);
-            }
-
-
-            handler.postDelayed(this , 5000);
-
-        }
-    }
 
 
 

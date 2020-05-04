@@ -17,6 +17,6 @@
         android:id="@+id/title_action"
         android:layout_margin="10dp"
         android:layout_gravity="center_vertical"
-        android:text="Home"/>
+        />
 
 </LinearLayout>
