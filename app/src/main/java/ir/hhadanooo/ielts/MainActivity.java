@@ -25,6 +25,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.HelpPageStartTest.HelpStartTestActivity;
 import ir.hhadanooo.ielts.Quiz.QuizActivity;
 import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
@@ -65,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iv_cover_home = findViewById(R.id.iv_cover_home);
 
 
-        iv_cover_home.getLayoutParams().width = (int) (dm.widthPixels*.25);
-        iv_cover_home.getLayoutParams().height = (int) (dm.heightPixels*.15);
+        iv_cover_home.getLayoutParams().width = (int) (dm.widthPixels*.375);
+        iv_cover_home.getLayoutParams().height = (int) (dm.widthPixels*.5);
 
 
 

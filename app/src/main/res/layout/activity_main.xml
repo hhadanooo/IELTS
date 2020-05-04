@@ -16,15 +16,17 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:background="@color/colorPrimary">
 
            <ImageView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:id="@+id/iv_cover_home"
-               android:background="@drawable/info"
-               android:layout_centerInParent="true"/>
+               android:layout_margin="5dp"
+               android:background="@drawable/home_icon"
+               android:layout_centerHorizontal="true"
+               android:layout_alignParentTop="true"/>
 
         </RelativeLayout>
 
