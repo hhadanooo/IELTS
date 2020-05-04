@@ -40,10 +40,9 @@ dependencies {
     //
 
     //hhadanooo
-    //
-    //
-    //
-    //
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.rom4ek:arcnavigationview:1.0.3'
+    implementation 'com.github.stefanodp91.android:circularseekbar:0.2'
     //
 
 }
