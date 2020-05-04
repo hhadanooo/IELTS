@@ -24,6 +24,8 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 import java.util.Objects;
+
+import ir.hhadanooo.ielts.Quiz.QuizActivity;
 import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -116,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         btnWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
+                Intent intent = new Intent(MainActivity.this , QuizActivity.class);
                 intent.putExtra("Write","write");
                 startActivity(intent);
             }
