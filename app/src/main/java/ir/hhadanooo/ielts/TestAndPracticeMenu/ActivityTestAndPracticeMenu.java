@@ -3,6 +3,7 @@ package ir.hhadanooo.ielts.TestAndPracticeMenu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.MorePrep.ActivityMorePrep;
@@ -168,7 +170,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
             custom2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this,ActivityAboutTheTest.class);
+                    intent.putExtra(Type, Type);
+                    startActivity(intent);
                 }
             });
 

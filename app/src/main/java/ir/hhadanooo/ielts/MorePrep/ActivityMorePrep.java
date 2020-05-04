@@ -133,8 +133,6 @@ public class ActivityMorePrep extends AppCompatActivity {
     public void SetPropertiesCustomView()
     {
 
-
-
         CustomViewItem custom1 = new CustomViewItem(this);
         CustomViewItem custom2 = new CustomViewItem(this);
         CustomViewItem custom3 = new CustomViewItem(this);
@@ -199,12 +197,10 @@ public class ActivityMorePrep extends AppCompatActivity {
 
         RelativeLayout relativeLayout = custom.getrel();
 
-
         //Give value to view
         custom.SetTextTvTitle(title);
         custom.SetTextTvBody(Body);
         custom.SetIcon(getResources().getDrawable(R.drawable.testimageicon_customview));
-
 
         // set width and height icon custom view
         DisplayMetrics dm = new DisplayMetrics();
@@ -212,15 +208,11 @@ public class ActivityMorePrep extends AppCompatActivity {
         img_icon.getLayoutParams().width = (int)(dm.widthPixels*0.15);
         img_icon.getLayoutParams().height = (int)(dm.widthPixels*0.15);
 
-
         //set width and height layout custom view
         relativeLayout.getLayoutParams().width = (int)(dm.widthPixels*0.95);
 
-
         //set maxwidth tv body
         tv_body.setMaxWidth((int) (dm.widthPixels * 0.65));
-
-
 
         //set margin
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
@@ -229,7 +221,6 @@ public class ActivityMorePrep extends AppCompatActivity {
         );
         params.setMargins(0, (int) (dm.widthPixels * 0.04), 0, 0);
         custom.setLayoutParams(params);
-
 
         //set text size tv body,tv title
         tv_body.setTextSize((int) (dm.widthPixels * 0.013));
