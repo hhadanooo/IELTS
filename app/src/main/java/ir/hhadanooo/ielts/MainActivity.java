@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
-                intent.putExtra("Listen","lisen");
+                intent.putExtra("Speak","speak");
                 startActivity(intent);
             }
         });
@@ -129,16 +129,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
-                intent.putExtra("Read","read");
+                intent.putExtra("Listen","listen");
                 startActivity(intent);
             }
         });
         custom5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
-                intent.putExtra("Read","read");
-                startActivity(intent);
+
             }
         });
 

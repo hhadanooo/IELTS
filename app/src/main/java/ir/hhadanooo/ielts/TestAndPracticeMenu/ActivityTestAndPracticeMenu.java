@@ -3,14 +3,12 @@ package ir.hhadanooo.ielts.TestAndPracticeMenu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -19,8 +17,6 @@ import android.widget.Toast;
 
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
-import ir.hhadanooo.ielts.MainActivity;
-import ir.hhadanooo.ielts.MorePrep.ActivityMorePrep;
 import ir.hhadanooo.ielts.R;
 
 public class ActivityTestAndPracticeMenu extends AppCompatActivity {
@@ -30,14 +26,16 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
     ImageView img_body;
     LinearLayout lin;
     String Type = "";
+    int num_type = 0;
     ImageView img_home_bottom;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_and_practice_menu);
         init();
         CheckIntent();
-        SetPropertiesCustomView();
+
         SetPropertiesRelBtnHomeBotton();
 
 
@@ -90,30 +88,56 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
         if(getIntent().getExtras().getString("Listen") != null)
         {
             Type = "Listen";
+            num_type = 1;
             SetPropertiesActionBar(true);
-            SetPropertiesRelBody("Learn more about the Listening test and practice your skills!");
+            SetPropertiesRelBody();
+            SetPropertiesCustomView();
         }else if(getIntent().getExtras().getString("Speak") != null)
         {
             Type = "Speak";
+            num_type = 2;
             SetPropertiesActionBar(true);
-            SetPropertiesRelBody("Learn more about the Speaking test and practice your skills!");
+            SetPropertiesRelBody();
+            SetPropertiesCustomView();
         }else if(getIntent().getExtras().getString("Read") != null)
         {
             Type = "Read";
+            num_type = 3;
             SetPropertiesActionBar(true);
-            SetPropertiesRelBody("Learn more about the Reading test and practice your skills!");
+            SetPropertiesRelBody();
+            SetPropertiesCustomView();
         }else if (getIntent().getExtras().getString("Write") != null)
         {
             Type = "Write";
-            SetPropertiesRelBody("Learn more about the Writeing test and practice your skills!");
+            num_type = 4;
+            SetPropertiesRelBody();
+            SetPropertiesCustomView();
             SetPropertiesActionBar(true);
         }
     }
 
-    public void SetPropertiesRelBody(String Text)
+    public void SetPropertiesRelBody()
     {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        if(num_type == 1)
+        {
+
+            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+        }else if(num_type == 2)
+        {
+
+            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+        }else if(num_type == 3)
+        {
+
+            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+        }else if(num_type == 4)
+        {
+
+            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+        }
 
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.375);
         img_body.getLayoutParams().height = (int) (dm.widthPixels*.5);
@@ -167,11 +191,10 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
     public void SetPropertiesCustomView()
     {
 
-        String[] titles = {"Practice Test(s)","About the Listening Test"};
-
             CustomViewItem custom1 = new CustomViewItem(this);
             CustomViewItem custom2 = new CustomViewItem(this);
             CustomViewItem custom3 = new CustomViewItem(this);
+
 
             SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.reading_icon));
             SetSettingCustomItem("","Practice",custom2,getResources().getDrawable(R.drawable.practice_icon));

@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/activity_test_menu_img_body"
             android:layout_margin="5dp"
-            android:background="@drawable/page_reading_icon"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"/>
     </RelativeLayout>

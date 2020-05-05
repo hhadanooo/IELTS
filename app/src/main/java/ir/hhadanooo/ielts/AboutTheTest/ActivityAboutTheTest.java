@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
@@ -43,24 +44,28 @@ public class ActivityAboutTheTest extends AppCompatActivity {
     {
         if(getIntent().getExtras().getString("Listen") != null)
         {
+            Toast.makeText(this,"listen",Toast.LENGTH_LONG).show();
             Type = "Listen";
             SetPropertiesActionBar(false,"Listening");
             SetPropertiesRelBody("Learn all about the Listening test");
             SetPropertiesCustomView(1);
         }else if(getIntent().getExtras().getString("Speak") != null)
         {
+            Toast.makeText(this,"speak",Toast.LENGTH_LONG).show();
             Type = "Speak";
             SetPropertiesActionBar(false,"Speaking");
             SetPropertiesRelBody("Learn all about the Speaking test");
             SetPropertiesCustomView(2);
         }else if(getIntent().getExtras().getString("Read") != null)
         {
+            Toast.makeText(this,"read",Toast.LENGTH_LONG).show();
             Type = "Read";
             SetPropertiesActionBar(false,"Reading");
             SetPropertiesRelBody("Learn all about the Reading test");
             SetPropertiesCustomView(3);
         }else if (getIntent().getExtras().getString("Write") != null)
         {
+            Toast.makeText(this,"write",Toast.LENGTH_LONG).show();
             Type = "Write";
             SetPropertiesRelBody("Learn all about the Writeing test");
             SetPropertiesActionBar(false,"Writeing");

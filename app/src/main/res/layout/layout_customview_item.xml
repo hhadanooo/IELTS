@@ -4,6 +4,7 @@
     android:id="@+id/customviewitem_rel"
     android:background="@drawable/dorw_background_customviewitem"
     android:padding="7dp"
+    android:layoutDirection="ltr"
 
     >
 
