@@ -12,14 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/activity_test_menu_rel_body"
-        android:background="#7182E3">
-        <TextView
-            android:textColor="#FFFFFF"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+        android:background="@color/colorPrimary">
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_test_menu_tv_body"/>
+            android:id="@+id/activity_test_menu_img_body"
+            android:layout_margin="5dp"
+            android:background="@drawable/page_reading_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -31,11 +32,14 @@
         android:id="@+id/activity_test_menu_rel_list_item">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/background"
             >
 
+
             <LinearLayout
+
                 android:gravity="center_horizontal"
 
                 android:orientation="vertical"
@@ -48,15 +52,14 @@
     </RelativeLayout>
 
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/activity_test_menu_rel_list_item"
-        android:id="@+id/activity_test_menu_btn_more"
-        android:text="More Prep"
-        android:textAllCaps="false"
-        android:textSize="12dp"
-        android:textColor="#fff"
-        android:background="@drawable/drow_background_button_activity_test_menu"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/activity_test_menu_btn_home"
+            android:background="@drawable/home_ic"
+             />
+
+
+
+
 </RelativeLayout>

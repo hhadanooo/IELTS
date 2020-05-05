@@ -3,18 +3,24 @@
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:id="@+id/customviewitem_rel"
     android:background="@drawable/dorw_background_customviewitem"
-    android:padding="10dp"
+    android:padding="7dp"
 
     >
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/customviewitem_img_icon1" />
 
 
     <TextView
 
+        android:layout_toRightOf="@id/customviewitem_img_icon1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/customviewitem_tv_title"
-        android:text="listening"
-        android:textSize="18dp"
+
         android:maxLength="20"
         android:textStyle="bold"
         android:layout_marginLeft="10dp"
@@ -22,10 +28,10 @@
         />
 
     <TextView
+        android:layout_toRightOf="@id/customviewitem_img_icon1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/customviewitem_tv_body"
-        android:textSize="14dp"
         android:layout_below="@id/customviewitem_tv_title"
         android:layout_marginLeft="10dp"
 

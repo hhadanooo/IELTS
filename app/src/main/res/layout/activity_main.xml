@@ -35,32 +35,16 @@
 
 
 
+
         <LinearLayout
+            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/main_activity_lin_list_item"
+            android:background="@drawable/background">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="listen"
-                android:id="@+id/btnListen"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Speak"
-                android:id="@+id/btnSpeak"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Read"
-                android:id="@+id/btnRead"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Write"
-                android:id="@+id/btnWrite"/>
 
 
         </LinearLayout>

@@ -15,7 +15,7 @@ import ir.hhadanooo.ielts.R;
 public class CustomViewItem extends RelativeLayout {
 
     TextView tv_title,tv_body;
-    ImageView img_icon;
+    ImageView img_icon,img_icon1;
     RelativeLayout lin;
 
     View rootview;
@@ -45,9 +45,14 @@ public class CustomViewItem extends RelativeLayout {
         tv_title = rootview.findViewById(R.id.customviewitem_tv_title);
         tv_body = rootview.findViewById(R.id.customviewitem_tv_body);
         img_icon = rootview.findViewById(R.id.customviewitem_img_icon);
+        img_icon1 = rootview.findViewById(R.id.customviewitem_img_icon1);
         lin = rootview.findViewById(R.id.customviewitem_rel);
 
 
+    }
+
+    public ImageView getImg_icon1() {
+        return img_icon1;
     }
 
     public RelativeLayout getrel() {
