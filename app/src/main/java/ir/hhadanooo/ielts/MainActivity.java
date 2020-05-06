@@ -39,7 +39,6 @@ import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-
     DrawerLayout drawerLayout;
     ArcNavigationView menuNav;
     DisplayMetrics dm;
@@ -48,13 +47,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     boolean showMenu = true;
 
-    TextView tv1,tv2;
+    TextView tv1_about_icon,tv2_about_icon;
+
+    RelativeLayout rel_body;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getSupportActionBar().hide();
 
         //responsive
         dm = new DisplayMetrics();
@@ -74,23 +75,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iv_cover_home = findViewById(R.id.iv_cover_home);
 
 
-        iv_cover_home.getLayoutParams().width = (int) (dm.widthPixels*0.3);
-        iv_cover_home.getLayoutParams().height = (int) (dm.widthPixels*0.3);
+        iv_cover_home.getLayoutParams().width = (int) (dm.widthPixels*0.25);
+        iv_cover_home.getLayoutParams().height = (int) (dm.widthPixels*0.25);
 
 
-        tv1 = findViewById(R.id.activity_main_tv_1);
-        tv2 = findViewById(R.id.activity_main_tv_2);
+        tv1_about_icon = findViewById(R.id.activity_main_tv1_about_icon);
+        tv2_about_icon = findViewById(R.id.activity_main_tv2_about_icon);
 
-        tv1.setText("ENJOY IELTS");
-        tv2.setText("Improve Your Skills");
+        rel_body = findViewById(R.id.actiivty_main_rel_body);
 
-        tv1.setTextSize((int) (dm.widthPixels * 0.020));
-        tv2.setTextSize((int) (dm.widthPixels * 0.014));
+        tv1_about_icon.setText("ENJOY IELTS");
+        tv2_about_icon.setText("Improve Your Skills");
 
-        tv1.setTextColor(Color.BLACK);
+        tv1_about_icon.setTextSize((int) (dm.widthPixels * 0.020));
+        tv2_about_icon.setTextSize((int) (dm.widthPixels * 0.0125));
+
+        tv1_about_icon.setTextColor(Color.BLACK);
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "Lucida.ttf");
-        tv2.setTypeface(tf);
+        tv2_about_icon.setTypeface(tf);
+
+
+        lin_list_item.getLayoutParams().height = (int) (dm.heightPixels*0.73);
+        rel_body.getLayoutParams().height = (int) (dm.heightPixels*0.27);
 
 
 
@@ -238,6 +245,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void menuShower(){
 
 
+        /*
         //custom ActionBar
         Objects.requireNonNull(getSupportActionBar()).setElevation(0);
         Objects.requireNonNull(this.getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -258,13 +266,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+         */
+
         //init
+        ImageView img_icon = findViewById(R.id.actionbar_img_icon_menu);
+
+        img_icon.setBackground(getResources().getDrawable(R.drawable.menu_icon));
+
         menuNav = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.drawer_layout);
+
 
         //set OnClick and size for navigation view
         menuNav.setNavigationItemSelectedListener(this);
         menuNav.getLayoutParams().width = (int) (dm.widthPixels*.3);
+
+
+        img_icon.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        img_icon.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        img_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
     }
 
 
