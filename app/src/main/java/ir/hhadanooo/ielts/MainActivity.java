@@ -74,8 +74,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iv_cover_home = findViewById(R.id.iv_cover_home);
 
 
-        iv_cover_home.getLayoutParams().width = (int) (dm.widthPixels*.375);
-        iv_cover_home.getLayoutParams().height = (int) (dm.heightPixels*.15);
+        iv_cover_home.getLayoutParams().width = (int) (dm.widthPixels*0.3);
+        iv_cover_home.getLayoutParams().height = (int) (dm.widthPixels*0.3);
+
 
         tv1 = findViewById(R.id.activity_main_tv_1);
         tv2 = findViewById(R.id.activity_main_tv_2);
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tv2.setTypeface(tf);
 
 
-        
+
 
         //btn on MainActivity
         SetPropertiesCustomView();
