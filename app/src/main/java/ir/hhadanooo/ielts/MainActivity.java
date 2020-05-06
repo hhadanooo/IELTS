@@ -8,7 +8,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +27,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
+
+import java.util.Locale;
 import java.util.Objects;
 
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
@@ -43,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     LinearLayout lin_list_item;
 
     boolean showMenu = true;
+
+    TextView tv1,tv2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,10 +75,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         iv_cover_home.getLayoutParams().width = (int) (dm.widthPixels*.375);
-        iv_cover_home.getLayoutParams().height = (int) (dm.widthPixels*.5);
+        iv_cover_home.getLayoutParams().height = (int) (dm.heightPixels*.15);
+
+        tv1 = findViewById(R.id.activity_main_tv_1);
+        tv2 = findViewById(R.id.activity_main_tv_2);
+
+        tv1.setText("ENJOY IELTS");
+        tv2.setText("Improve Your Skills");
+
+        tv1.setTextSize((int) (dm.widthPixels * 0.020));
+        tv2.setTextSize((int) (dm.widthPixels * 0.014));
+
+        tv1.setTextColor(Color.BLACK);
+
+        Typeface tf = Typeface.createFromAsset(getAssets(), "Lucida.ttf");
+        tv2.setTypeface(tf);
 
 
-
+        
 
         //btn on MainActivity
         SetPropertiesCustomView();
@@ -174,10 +194,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         img_icon.getLayoutParams().width = (int)(dm.widthPixels*0.12);
-        img_icon.getLayoutParams().height = (int)(dm.widthPixels*0.12);
+        img_icon.getLayoutParams().height = (int)(dm.heightPixels*0.07);
 
         img_icon1.getLayoutParams().width = (int)(dm.widthPixels*0.12);
-        img_icon1.getLayoutParams().height = (int)(dm.widthPixels*0.12);
+        img_icon1.getLayoutParams().height = (int)(dm.heightPixels*0.07);
 
 
         //set width and height layout custom view
@@ -194,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT
         );
-        params.setMargins(0, (int) (dm.widthPixels * 0.04), 0, 0);
+        params.setMargins(0, (int) (dm.heightPixels * 0.02), 0, 0);
         custom.setLayoutParams(params);
 
 
