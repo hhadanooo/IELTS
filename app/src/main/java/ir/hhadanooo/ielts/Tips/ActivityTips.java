@@ -1,4 +1,4 @@
-package ir.hhadanooo.ielts.TestAndPracticeMenu;
+package ir.hhadanooo.ielts.Tips;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,11 +18,9 @@ import android.widget.Toast;
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
-import ir.hhadanooo.ielts.Tips.ActivityTips;
+import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
-public class ActivityTestAndPracticeMenu extends AppCompatActivity {
-
-
+public class ActivityTips extends AppCompatActivity {
     RelativeLayout rel_body,rel_list_item;
     ImageView img_body;
     LinearLayout lin;
@@ -33,7 +31,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_and_practice_menu);
+        setContentView(R.layout.activity_tips);
         init();
         CheckIntent();
 
@@ -43,7 +41,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
 
 
 
-        
+
 
 
     }
@@ -51,11 +49,11 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
     {
 
 
-        rel_body = findViewById(R.id.activity_test_menu_rel_body);
-        rel_list_item = findViewById(R.id.activity_test_menu_rel_list_item);
-        img_body = findViewById(R.id.activity_test_menu_img_body);
-        lin = findViewById(R.id.activity_test_menu_lin_list_item);
-        img_home_bottom = findViewById(R.id.activity_test_menu_btn_home);
+        rel_body = findViewById(R.id.activity_tips_rel_body);
+        rel_list_item = findViewById(R.id.activity_tips_rel_list_item);
+        img_body = findViewById(R.id.activity_tips_img_body);
+        lin = findViewById(R.id.activity_tips_lin_list_item);
+        img_home_bottom = findViewById(R.id.activity_tips_btn_home);
 
 
     }
@@ -115,6 +113,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
             SetPropertiesCustomView();
             SetPropertiesActionBar(true);
         }
+
     }
 
     public void SetPropertiesRelBody()
@@ -122,26 +121,27 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
+
         if(num_type == 1)
         {
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
         }else if(num_type == 2)
         {
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
         }else if(num_type == 3)
         {
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
         }else if(num_type == 4)
         {
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
         }
 
-        img_body.getLayoutParams().width = (int) (dm.widthPixels*.375);
-        img_body.getLayoutParams().height = (int) (dm.widthPixels*.5);
+        img_body.getLayoutParams().width = (int) (dm.widthPixels*0.375);
+        img_body.getLayoutParams().height = (int) (dm.widthPixels*0.5);
         rel_body.getLayoutParams().height = (int)(dm.widthPixels*0.495);
 
 
@@ -192,43 +192,48 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
     public void SetPropertiesCustomView()
     {
 
-            CustomViewItem custom1 = new CustomViewItem(this);
-            CustomViewItem custom2 = new CustomViewItem(this);
-            CustomViewItem custom3 = new CustomViewItem(this);
+        CustomViewItem custom1 = new CustomViewItem(this);
+        CustomViewItem custom2 = new CustomViewItem(this);
+        CustomViewItem custom3 = new CustomViewItem(this);
+        CustomViewItem custom4 = new CustomViewItem(this);
 
 
-            SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.reading_icon));
-            SetSettingCustomItem("","Practice",custom2,getResources().getDrawable(R.drawable.practice_icon));
-            SetSettingCustomItem("","Tips",custom3,getResources().getDrawable(R.drawable.tips_icon));
+        SetSettingCustomItem("","How to Manage My Time ...",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+        SetSettingCustomItem("","How i can use a calculator ...",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+        SetSettingCustomItem("","How i can Go to office ...",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+        SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
 
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        custom1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this,ActivityAboutTheTest.class);
-                    intent.putExtra(Type, Type);
-                    startActivity(intent);
-                }
-            });
+            }
+        });
+        custom2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         custom3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, ActivityTips.class);
-                intent.putExtra(Type, Type);
-                startActivity(intent);
+
+            }
+        });
+        custom4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
 
-            lin.addView(custom1);
-            lin.addView(custom2);
-            lin.addView(custom3);
+        lin.addView(custom1);
+        lin.addView(custom2);
+        lin.addView(custom3);
+        lin.addView(custom4);
 
 
 
@@ -249,6 +254,74 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
         custom.SetTextTvTitle(title);
         custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
         img_icon1.setBackground(icon1);
+
+
+        // set width and height icon custom view
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        img_icon.getLayoutParams().width = (int)(dm.widthPixels*0.10);
+        img_icon.getLayoutParams().height = (int)(dm.widthPixels*0.10);
+
+        img_icon1.getLayoutParams().width = (int)(dm.widthPixels*0.10);
+        img_icon1.getLayoutParams().height = (int)(dm.widthPixels*0.10);
+
+
+        //set width and height layout custom view
+        relativeLayout.getLayoutParams().width = (int)(dm.widthPixels*0.95);
+
+
+        //set maxwidth tv body
+        tv_body.setMaxWidth((int) (dm.widthPixels * 0.65));
+
+        tv_body.setTextColor(Color.BLACK);
+        tv_title.setTextColor(Color.BLACK);
+
+
+
+        //set margin
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, (int) (dm.widthPixels * 0.04), 0, 0);
+        custom.setLayoutParams(params);
+
+
+        //set text size tv body,tv title
+        tv_body.setTextSize((int) (dm.widthPixels * 0.010));
+        tv_title.setTextSize((int) (dm.widthPixels * 0.013));
+
+        //set center veritcal tv title
+
+        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT
+        );
+        params1.setMargins(0, (int) (dm.widthPixels * 0.04), 0, 0);
+        tv_title.setLayoutParams(params1);
+
+        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) tv_title.getLayoutParams();
+        lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        lp.addRule(RelativeLayout.CENTER_VERTICAL);
+        tv_title.setLayoutParams(lp);
+    }
+
+    public void SetSettingCustomItem(String Body, String title, CustomViewItem custom, Drawable icon,Drawable icon1)
+    {
+        //init all view custom view
+        TextView tv_title = custom.getTv_title();
+        TextView tv_body = custom.getTv_body();
+        ImageView img_icon = custom.getImg_icon();
+        ImageView img_icon1 = custom.getImg_icon1();
+
+        RelativeLayout relativeLayout = custom.getrel();
+
+
+        //Give value to view
+        custom.SetTextTvTitle(title);
+        custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
+        img_icon1.setBackground(icon1);
+        img_icon.setBackground(icon);
 
 
         // set width and height icon custom view

@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/customviewitem_tv_title"
 
-        android:maxLength="20"
         android:textStyle="bold"
         android:layout_marginLeft="10dp"
 

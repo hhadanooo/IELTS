@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestAndPracticeMenu.ActivityTestAndPracticeMenu"
+    xmlns:awesome="http://schemas.android.com/apk/res-auto"
+    android:background="#E3E1E0">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_tips_rel_body"
+        android:background="@color/colorPrimary">
+        <ImageView
+            android:scaleType="fitXY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_tips_img_body"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_below="@id/activity_tips_rel_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/activity_tips_rel_list_item">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/background"
+            >
+
+
+            <LinearLayout
+
+                android:gravity="center_horizontal"
+
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/activity_tips_lin_list_item">
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/activity_tips_btn_home"
+        android:background="@drawable/home_ic"
+        />
+
+
+
+
+</RelativeLayout>
