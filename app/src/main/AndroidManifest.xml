@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SimpleText.SimpleTextActivity"></activity>
-        <activity android:name=".Tips.ActivityTips" />
         <activity android:name=".WelcomePage.Activity_Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
