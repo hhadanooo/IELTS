@@ -1,74 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/activity_test_menu_drawer_layout"
-    android:layoutDirection="ltr">
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-
-
+    tools:context=".Practice.Activity_Practice"
+    xmlns:awesome="http://schemas.android.com/apk/res-auto"
+    android:background="#E3E1E0">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_test_menu_rel_body"
+        android:id="@+id/activity_practice_rel_body"
         android:background="@color/colorPrimary">
 
         <ImageView
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:id="@+id/activity_test_menu_actionbar_img_icon_menu"
+            android:id="@+id/activity_practice_actionbar_img_icon_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:background="@drawable/menu_icon"/>
+            android:background="@drawable/icon_arrow_back"/>
+
         <ImageView
             android:layout_marginTop="10dp"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_test_menu_img_body"
-
+            android:id="@+id/activity_practice_img_body"
+            android:layout_margin="5dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"/>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_test_menu_tv1_about_icon"
-            android:layout_below="@id/activity_test_menu_img_body"
+            android:id="@+id/activity_practice_tv1_about_icon"
+            android:layout_below="@id/activity_practice_img_body"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
             android:fontFamily="sans-serif"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_test_menu_tv2_about_icon"
-            android:layout_below="@id/activity_test_menu_tv1_about_icon"
+            android:id="@+id/activity_practice_tv2_about_icon"
+            android:layout_below="@id/activity_practice_tv1_about_icon"
             android:layout_centerHorizontal="true"
             android:textColor="#8A7D7D"/>
     </RelativeLayout>
 
     <RelativeLayout
 
-        android:layout_below="@id/activity_test_menu_rel_body"
-        android:layout_width="match_parent"
+        android:layout_below="@id/activity_practice_rel_body"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:id="@+id/activity_test_menu_rel_list_item">
+        android:id="@+id/activity_practice_rel_list_item"
+        >
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+
             android:background="@drawable/background"
             >
 
@@ -80,7 +76,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/activity_test_menu_lin_list_item">
+                android:id="@+id/activity_practice_lin_list_item">
 
             </LinearLayout>
         </ScrollView>
@@ -88,17 +84,7 @@
 
 
 
-    </RelativeLayout>
 
-    <com.rom4ek.arcnavigationview.ArcNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/colorPrimary"
-        android:fitsSystemWindows="true"
-        app:itemBackground="@color/colorPrimary"
-        app:menu="@menu/my_navigation_items"
-        app:arc_cropDirection="cropOutside"
-        app:arc_width="96dp"/>
-</androidx.drawerlayout.widget.DrawerLayout>
+
+
+</RelativeLayout>

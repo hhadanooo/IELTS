@@ -1,10 +1,8 @@
-package ir.hhadanooo.ielts.Tips;
+package ir.hhadanooo.ielts.Vocab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -15,12 +13,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
-import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
-public class ActivityTips extends AppCompatActivity {
+public class Activity_Vocab extends AppCompatActivity {
     RelativeLayout rel_body,rel_list_item;
     ImageView img_body;
     LinearLayout lin;
@@ -34,7 +30,7 @@ public class ActivityTips extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tips);
+        setContentView(R.layout.activity__vocab);
         getSupportActionBar().hide();
         init();
         CheckIntent();
@@ -47,15 +43,15 @@ public class ActivityTips extends AppCompatActivity {
     {
 
 
-        rel_body = findViewById(R.id.activity_tips_rel_body);
-        rel_list_item = findViewById(R.id.activity_tips_rel_list_item);
-        img_body = findViewById(R.id.activity_tips_img_body);
-        lin = findViewById(R.id.activity_tips_lin_list_item);
+        rel_body = findViewById(R.id.activity_vocab_rel_body);
+        rel_list_item = findViewById(R.id.activity_vocab_rel_list_item);
+        img_body = findViewById(R.id.activity_vocab_img_body);
+        lin = findViewById(R.id.activity_vocab_lin_list_item);
 
-        tv1_about_icon = findViewById(R.id.activity_tips_tv1_about_icon);
-        tv2_about_icon = findViewById(R.id.activity_tips_tv2_about_icon);
+        tv1_about_icon = findViewById(R.id.activity_vocab_tv1_about_icon);
+        tv2_about_icon = findViewById(R.id.activity_vocab_tv2_about_icon);
 
-        img_back = findViewById(R.id.activity_tips_actionbar_img_icon_back);
+        img_back = findViewById(R.id.activity_vocab_actionbar_img_icon_back);
 
 
 
@@ -66,34 +62,21 @@ public class ActivityTips extends AppCompatActivity {
 
     public void CheckIntent()
     {
-        if(getIntent().getExtras().getString("Listen") != null)
+        if(getIntent().getExtras().getString("Write") != null)
         {
-            Type = "Listen";
+            Type = "Write";
             num_type = 1;
 
             SetPropertiesRelBody();
             SetPropertiesCustomView();
         }else if(getIntent().getExtras().getString("Speak") != null)
         {
-            Type = "Speak";
-            num_type = 2;
 
-            SetPropertiesRelBody();
-            SetPropertiesCustomView();
-        }else if(getIntent().getExtras().getString("Read") != null)
-        {
-            Type = "Read";
+            Type = "Speak";
             num_type = 3;
 
             SetPropertiesRelBody();
             SetPropertiesCustomView();
-        }else if (getIntent().getExtras().getString("Write") != null)
-        {
-            Type = "Write";
-            num_type = 4;
-            SetPropertiesRelBody();
-            SetPropertiesCustomView();
-
         }
     }
 
@@ -103,28 +86,17 @@ public class ActivityTips extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
 
+
         if(num_type == 1)
         {
-            tv1_about_icon.setText("Tips");
-            tv2_about_icon.setText("Listening");
+            tv1_about_icon.setText("Vocab");
+            tv2_about_icon.setText("Writeing");
 
             img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
-        }else if(num_type == 2)
+        }if(num_type == 3)
         {
-            tv1_about_icon.setText("Tips");
+            tv1_about_icon.setText("Vocab");
             tv2_about_icon.setText("Speaking");
-
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
-        }else if(num_type == 3)
-        {
-            tv1_about_icon.setText("Tips");
-            tv2_about_icon.setText("Reading");
-
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
-        }else if(num_type == 4)
-        {
-            tv1_about_icon.setText("Tips");
-            tv2_about_icon.setText("Writing");
 
             img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
         }
@@ -175,16 +147,16 @@ public class ActivityTips extends AppCompatActivity {
 
         if(num_type == 1)
         {
-            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
             //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
 
@@ -249,101 +221,22 @@ public class ActivityTips extends AppCompatActivity {
                 }
             });
 
-
-        }
-        if(num_type == 2)
-        {
-
-
-            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
-
-
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
 
         }
         if(num_type == 3)
         {
 
 
-            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
             //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
 
@@ -408,88 +301,8 @@ public class ActivityTips extends AppCompatActivity {
                 }
             });
 
-
         }
-        if(num_type == 4)
-        {
 
-
-            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
-
-
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-
-
-        }
 
         lin.addView(custom1);
         lin.addView(custom2);

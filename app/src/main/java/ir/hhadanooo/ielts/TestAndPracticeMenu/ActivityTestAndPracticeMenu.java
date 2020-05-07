@@ -1,13 +1,18 @@
 package ir.hhadanooo.ielts.TestAndPracticeMenu;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,12 +20,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+import com.rom4ek.arcnavigationview.ArcNavigationView;
+
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
+import ir.hhadanooo.ielts.MainActivity;
+import ir.hhadanooo.ielts.Practice.Activity_Practice;
 import ir.hhadanooo.ielts.R;
+import ir.hhadanooo.ielts.Test.Activity_test;
 import ir.hhadanooo.ielts.Tips.ActivityTips;
+import ir.hhadanooo.ielts.Vocab.Activity_Vocab;
 
-public class ActivityTestAndPracticeMenu extends AppCompatActivity {
+public class ActivityTestAndPracticeMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     RelativeLayout rel_body,rel_list_item;
@@ -28,83 +40,62 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
     LinearLayout lin;
     String Type = "";
     int num_type = 0;
-    ImageView img_home_bottom;
+
+    DrawerLayout drawerLayout;
+    ArcNavigationView menuNav;
+    DisplayMetrics dm;
+
+
+    TextView tv1_about_icon,tv2_about_icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_and_practice_menu);
+
+        dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        getSupportActionBar().hide();
         init();
         CheckIntent();
 
-        SetPropertiesRelBtnHomeBotton();
-
-
-
-
-
-        
+        menuShower();
 
 
     }
     public void init()
     {
-
-
         rel_body = findViewById(R.id.activity_test_menu_rel_body);
         rel_list_item = findViewById(R.id.activity_test_menu_rel_list_item);
         img_body = findViewById(R.id.activity_test_menu_img_body);
         lin = findViewById(R.id.activity_test_menu_lin_list_item);
-        img_home_bottom = findViewById(R.id.activity_test_menu_btn_home);
 
-
-    }
-    public void SetPropertiesRelBtnHomeBotton()
-    {
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-
-        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-        params1.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        params1.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        params1.setMargins(0, 0, 0, (int) (dm.heightPixels * 0.03));
-        img_home_bottom.setLayoutParams(params1);
-
-        img_home_bottom.getLayoutParams().width = (int)(dm.widthPixels*0.25);
-        img_home_bottom.getLayoutParams().height = (int)(dm.widthPixels*0.25);
-
-        img_home_bottom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        tv1_about_icon = findViewById(R.id.activity_test_menu_tv1_about_icon);
+        tv2_about_icon = findViewById(R.id.activity_test_menu_tv2_about_icon);
 
     }
+
     public void CheckIntent()
     {
         if(getIntent().getExtras().getString("Listen") != null)
         {
             Type = "Listen";
             num_type = 1;
-            SetPropertiesActionBar(true);
+
             SetPropertiesRelBody();
             SetPropertiesCustomView();
         }else if(getIntent().getExtras().getString("Speak") != null)
         {
             Type = "Speak";
             num_type = 2;
-            SetPropertiesActionBar(true);
+
             SetPropertiesRelBody();
             SetPropertiesCustomView();
         }else if(getIntent().getExtras().getString("Read") != null)
         {
             Type = "Read";
             num_type = 3;
-            SetPropertiesActionBar(true);
+
             SetPropertiesRelBody();
             SetPropertiesCustomView();
         }else if (getIntent().getExtras().getString("Write") != null)
@@ -113,7 +104,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
             num_type = 4;
             SetPropertiesRelBody();
             SetPropertiesCustomView();
-            SetPropertiesActionBar(true);
+
         }
     }
 
@@ -124,111 +115,140 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
 
         if(num_type == 1)
         {
-
+            tv1_about_icon.setText("LISTENING");
+            tv2_about_icon.setText("ENJOY IELTS");
             img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
         }else if(num_type == 2)
         {
-
+            tv1_about_icon.setText("SPEAKING");
+            tv2_about_icon.setText("ENJOY IELTS");
             img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
         }else if(num_type == 3)
         {
-
+            tv1_about_icon.setText("READING");
+            tv2_about_icon.setText("ENJOY IELTS");
             img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
         }else if(num_type == 4)
         {
-
+            tv1_about_icon.setText("WRITING");
+            tv2_about_icon.setText("ENJOY IELTS");
             img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
         }
 
-        img_body.getLayoutParams().width = (int) (dm.widthPixels*.375);
-        img_body.getLayoutParams().height = (int) (dm.widthPixels*.5);
-        rel_body.getLayoutParams().height = (int)(dm.widthPixels*0.495);
+        img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
+        img_body.getLayoutParams().height = (int) (dm.widthPixels*.25);
 
+        rel_body.getLayoutParams().height = (int)(dm.heightPixels*0.27);
+        rel_list_item.getLayoutParams().height = (int) (dm.heightPixels*0.73);
 
+        tv1_about_icon.setTextSize((int) (dm.widthPixels * 0.020));
+        tv2_about_icon.setTextSize((int) (dm.widthPixels * 0.0125));
 
+        tv1_about_icon.setTextColor(Color.BLACK);
 
-    }
-
-    public void SetPropertiesActionBar(boolean menu)
-    {
-
-
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#bcd9f9")));
-        getSupportActionBar().setElevation(0);
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.layout_custom_action_bar);
-        getSupportActionBar().setElevation(0);
-        View view = getSupportActionBar().getCustomView();
-
-
-        ImageView img_icon_menu = view.findViewById(R.id.actionbar_img_icon_menu);
-        if(menu)
-        {
-            img_icon_menu.setBackground(getResources().getDrawable(R.drawable.menu_main));
-        }else {
-            img_icon_menu.setBackground(getResources().getDrawable(R.drawable.icon_arrow_back));
-        }
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        img_icon_menu.getLayoutParams().width = (int)(dm.widthPixels*0.1);
-        img_icon_menu.getLayoutParams().height = (int)(dm.widthPixels*0.1);
-        TextView tv_title = view.findViewById(R.id.actionbar_tv_title);
-
-
-
-        tv_title.setTextSize((int) (dm.widthPixels * 0.02));
-
-
-
-
-
-
-
+        Typeface tf = Typeface.createFromAsset(getAssets(), "Lucida.ttf");
+        tv2_about_icon.setTypeface(tf);
 
     }
+
 
 
     public void SetPropertiesCustomView()
     {
 
+        if(num_type == 4 || num_type == 2)
+        {
             CustomViewItem custom1 = new CustomViewItem(this);
             CustomViewItem custom2 = new CustomViewItem(this);
             CustomViewItem custom3 = new CustomViewItem(this);
 
-
             SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.reading_icon));
-            SetSettingCustomItem("","Practice",custom2,getResources().getDrawable(R.drawable.practice_icon));
-            SetSettingCustomItem("","Tips",custom3,getResources().getDrawable(R.drawable.tips_icon));
-
+            SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.practice_icon));
+            SetSettingCustomItem("","Vocap",custom3,getResources().getDrawable(R.drawable.tips_icon));
 
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, Activity_test.class);
+                    intent.putExtra(Type, Type);
+                    startActivity(intent);
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this,ActivityAboutTheTest.class);
+                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this,ActivityTips.class);
                     intent.putExtra(Type, Type);
                     startActivity(intent);
                 }
             });
-        custom3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, ActivityTips.class);
-                intent.putExtra(Type, Type);
-                startActivity(intent);
-            }
-        });
+            custom3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, Activity_Vocab.class);
+                    intent.putExtra(Type, Type);
+                    startActivity(intent);
+                }
+            });
 
 
             lin.addView(custom1);
             lin.addView(custom2);
             lin.addView(custom3);
+        }
+        if(num_type == 3 || num_type == 1)
+        {
+            CustomViewItem custom1 = new CustomViewItem(this);
+            CustomViewItem custom2 = new CustomViewItem(this);
+            CustomViewItem custom3 = new CustomViewItem(this);
+
+            SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.reading_icon));
+            SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.practice_icon));
+            SetSettingCustomItem("","Practice",custom3,getResources().getDrawable(R.drawable.tips_icon));
+
+
+            custom1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, Activity_test.class);
+                    intent.putExtra(Type, Type);
+                    startActivity(intent);
+                }
+            });
+            custom2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this,ActivityTips.class);
+                    intent.putExtra(Type, Type);
+                    startActivity(intent);
+                }
+            });
+            custom3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if(num_type == 1)
+                    {
+                        Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, Activity_Practice.class);
+                        intent.putExtra(Type, Type);
+                        startActivity(intent);
+                    }else {
+
+
+
+                    }
+
+                }
+            });
+
+
+
+            lin.addView(custom1);
+            lin.addView(custom2);
+            lin.addView(custom3);
+        }
+
+
 
 
 
@@ -300,4 +320,97 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity {
         lp.addRule(RelativeLayout.CENTER_VERTICAL);
         tv_title.setLayoutParams(lp);
     }
+
+
+    public void menuShower(){
+
+
+        /*
+        //custom ActionBar
+        Objects.requireNonNull(getSupportActionBar()).setElevation(0);
+        Objects.requireNonNull(this.getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.custom_action_bar);
+        //getSupportActionBar().setElevation(0);
+        View view = getSupportActionBar().getCustomView();
+        ImageView iv_menu = view.findViewById(R.id.iv_menu);
+        TextView title_action = view.findViewById(R.id.title_action);
+        title_action.setText("");
+        title_action.setTextSize((int) (dm.widthPixels*.02));
+        iv_menu.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        iv_menu.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        iv_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
+         */
+
+        //init
+        ImageView img_icon = findViewById(R.id.activity_test_menu_actionbar_img_icon_menu);
+
+        img_icon.setBackground(getResources().getDrawable(R.drawable.menu_icon));
+
+        menuNav = findViewById(R.id.nav_view);
+        drawerLayout = findViewById(R.id.activity_test_menu_drawer_layout);
+
+
+        //set OnClick and size for navigation view
+        menuNav.setNavigationItemSelectedListener(this);
+        menuNav.getLayoutParams().width = (int) (dm.widthPixels*.3);
+
+
+        img_icon.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        img_icon.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        img_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+    }
+
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.btnHomeNav){
+            drawerLayout.closeDrawer(GravityCompat.START);
+            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
+        }else if (item.getItemId() == R.id.btnListenNav){
+            Intent intent = new Intent(ActivityTestAndPracticeMenu.this , ActivityTestAndPracticeMenu.class);
+            intent.putExtra("Listen","listen");
+            startActivity(intent);
+        }else if (item.getItemId() == R.id.btnSpeakNav){
+            Intent intent = new Intent(ActivityTestAndPracticeMenu.this , ActivityTestAndPracticeMenu.class);
+            intent.putExtra("Speak","speak");
+            startActivity(intent);
+        }else if (item.getItemId() == R.id.btnReadNav){
+            Intent intent = new Intent(ActivityTestAndPracticeMenu.this , ActivityTestAndPracticeMenu.class);
+            intent.putExtra("Read","read");
+            startActivity(intent);
+        }else if (item.getItemId() == R.id.btnWriteNav){
+            Intent intent = new Intent(ActivityTestAndPracticeMenu.this , ActivityTestAndPracticeMenu.class);
+            intent.putExtra("Write","write");
+            startActivity(intent);
+        }else if (item.getItemId() == R.id.btnWebSIteNav){
+
+        }
+        else if (item.getItemId() == R.id.btnRatingNav){
+
+        }
+        else if (item.getItemId() == R.id.btnAboutNav){
+
+        }
+
+        item.setChecked(true);
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+
+    }
+
+
 }
