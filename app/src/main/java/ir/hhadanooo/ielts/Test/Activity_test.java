@@ -329,81 +329,99 @@ public class Activity_test extends AppCompatActivity {
         }
         if(num_type == 3)
         {
+            if(getIntent().getExtras().getString("Academic") != null)
+            {
+                SetSettingCustomItem("","test academic 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+
+                custom1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                custom2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                custom3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                custom4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                custom5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                lin.addView(custom1);
+                lin.addView(custom2);
+                lin.addView(custom3);
+                lin.addView(custom4);
+                lin.addView(custom5);
+
+            }else if(getIntent().getExtras().getString("General") != null)
+            {
+                SetSettingCustomItem("","test general 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+
+                custom1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                custom2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                custom3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                custom4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                custom5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
+                lin.addView(custom1);
+                lin.addView(custom2);
+                lin.addView(custom3);
+                lin.addView(custom4);
+                lin.addView(custom5);
+
+            }
 
 
-            SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
             //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
-
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
 
 
         }
@@ -411,93 +429,113 @@ public class Activity_test extends AppCompatActivity {
         {
 
 
-            SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+            if(getIntent().getExtras().getString("Academic") != null)
+            {
+                SetSettingCustomItem("","test academic 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
 
+                custom1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                    }
+                });
+                custom2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                    }
+                });
+                custom3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                    }
+                });
+                custom4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                    }
+                });
+                custom5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                    }
+                });
+                lin.addView(custom1);
+                lin.addView(custom2);
+                lin.addView(custom3);
+                lin.addView(custom4);
+                lin.addView(custom5);
 
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            }else if(getIntent().getExtras().getString("General") != null)
+            {
+                SetSettingCustomItem("","test general 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
 
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                custom1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                    }
+                });
+                custom2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                    }
+                });
+                custom3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                    }
+                });
+                custom4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                }
-            });
+                    }
+                });
+                custom5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
+                    }
+                });
+                lin.addView(custom1);
+                lin.addView(custom2);
+                lin.addView(custom3);
+                lin.addView(custom4);
+                lin.addView(custom5);
+
+            }
 
         }
 
-        lin.addView(custom1);
-        lin.addView(custom2);
-        lin.addView(custom3);
-        lin.addView(custom4);
-        lin.addView(custom5);
-        lin.addView(custom6);
-        lin.addView(custom7);
-        lin.addView(custom8);
-        lin.addView(custom9);
-        lin.addView(custom10);
+        if(num_type != 3 && num_type != 4)
+        {
+            lin.addView(custom1);
+            lin.addView(custom2);
+            lin.addView(custom3);
+            lin.addView(custom4);
+            lin.addView(custom5);
+            lin.addView(custom6);
+            lin.addView(custom7);
+            lin.addView(custom8);
+            lin.addView(custom9);
+            lin.addView(custom10);
+        }
+
+
 
 
 

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import java.util.Objects;
 
 import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.R;
+import ir.hhadanooo.ielts.Test.Activity_test;
 
 public class DialogAGShow {
 
@@ -48,12 +50,19 @@ public class DialogAGShow {
         iv_a_dialogAG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (intent.equals("read")){
-                    Toast.makeText(context, "readActivity A", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
-                }else if (intent.equals("write")){
-                    Toast.makeText(context, "writeActivity A", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
+                if (intent.equals("Read")){
+
+                    Intent i = new Intent(context, Activity_test.class);
+                    i.putExtra("Academic","academic");
+                    i.putExtra("Read","read");
+                    dialog.dismiss();
+                    context.startActivity(i);
+                }else if (intent.equals("Write")){
+                    Intent i = new Intent(context, Activity_test.class);
+                    i.putExtra("Academic","academic");
+                    i.putExtra("Write","write");
+                    dialog.dismiss();
+                    context.startActivity(i);
                 }
             }
         });
@@ -61,12 +70,18 @@ public class DialogAGShow {
         iv_g_dialogAG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (intent.equals("read")){
-                    Toast.makeText(context, "readActivity G", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
-                }else if (intent.equals("write")){
-                    Toast.makeText(context, "writeActivity G", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
+                if (intent.equals("Read")){
+                    Intent i = new Intent(context, Activity_test.class);
+                    i.putExtra("General","general");
+                    i.putExtra("Read","read");
+                    dialog.dismiss();
+                    context.startActivity(i);
+                }else if (intent.equals("Write")){
+                    Intent i = new Intent(context, Activity_test.class);
+                    i.putExtra("General","general");
+                    i.putExtra("Write","write");
+                    dialog.dismiss();
+                    context.startActivity(i);
                 }
             }
         });

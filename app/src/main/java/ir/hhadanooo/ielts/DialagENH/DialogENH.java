@@ -2,6 +2,7 @@ package ir.hhadanooo.ielts.DialagENH;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.DisplayMetrics;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.Practice.Activity_Practice;
 import ir.hhadanooo.ielts.R;
 
 public class DialogENH {
@@ -50,12 +52,20 @@ public class DialogENH {
         iv_e_dialogENH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (intent.equals("type1")){
-                    Toast.makeText(context, "type1Activity easy", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
-                }else if (intent.equals("type2")){
-                    Toast.makeText(context, "type2Activity easy", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
+                if (intent.equals("Type1")){
+                    Intent i = new Intent(context, Activity_Practice.class);
+                    i.putExtra("Easy","easy");
+                    i.putExtra("Type1","type1");
+                    i.putExtra("Listen","listen");
+                    dialog.dismiss();
+                    context.startActivity(i);
+                }else if (intent.equals("Type2")){
+                    Intent i = new Intent(context, Activity_Practice.class);
+                    i.putExtra("Easy","easy");
+                    i.putExtra("Type2","type2");
+                    i.putExtra("Listen","listen");
+                    dialog.dismiss();
+                    context.startActivity(i);
                 }
             }
         });
@@ -63,12 +73,20 @@ public class DialogENH {
         iv_n_dialogENH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (intent.equals("type1")){
-                    Toast.makeText(context, "type1Activity normal", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
-                }else if (intent.equals("type2")){
-                    Toast.makeText(context, "type2Activity normal", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
+                if (intent.equals("Type1")){
+                    Intent i = new Intent(context, Activity_Practice.class);
+                    i.putExtra("Normal","normal");
+                    i.putExtra("Type1","type1");
+                    i.putExtra("Listen","listen");
+                    dialog.dismiss();
+                    context.startActivity(i);
+                }else if (intent.equals("Type2")){
+                    Intent i = new Intent(context, Activity_Practice.class);
+                    i.putExtra("Normal","normal");
+                    i.putExtra("Type2","type2");
+                    i.putExtra("Listen","listen");
+                    dialog.dismiss();
+                    context.startActivity(i);
                 }
             }
         });
@@ -76,12 +94,20 @@ public class DialogENH {
         iv_h_dialogENH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (intent.equals("type1")){
-                    Toast.makeText(context, "type1Activity hard", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
-                }else if (intent.equals("type2")){
-                    Toast.makeText(context, "type2Activity hard", Toast.LENGTH_SHORT).show();
-                    //context.startActivity(new Intent(DialogAGShow.this , ));
+                if (intent.equals("Type1")){
+                    Intent i = new Intent(context, Activity_Practice.class);
+                    i.putExtra("Hard","hard");
+                    i.putExtra("Type1","type1");
+                    i.putExtra("Listen","listen");
+                    dialog.dismiss();
+                    context.startActivity(i);
+                }else if (intent.equals("Type2")){
+                    Intent i = new Intent(context, Activity_Practice.class);
+                    i.putExtra("Hard","hard");
+                    i.putExtra("Type2","type2");
+                    i.putExtra("Listen","listen");
+                    dialog.dismiss();
+                    context.startActivity(i);
                 }
             }
         });
