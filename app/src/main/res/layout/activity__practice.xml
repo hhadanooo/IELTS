@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tips.ActivityTips"
+    tools:context=".Practice.Activity_Practice"
     xmlns:awesome="http://schemas.android.com/apk/res-auto"
     android:background="#E3E1E0">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_tips_rel_body"
+        android:id="@+id/activity_practice_rel_body"
         android:background="@color/colorPrimary">
 
         <ImageView
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:id="@+id/activity_tips_actionbar_img_icon_back"
+            android:id="@+id/activity_practice_actionbar_img_icon_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -29,7 +29,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_tips_img_body"
+            android:id="@+id/activity_practice_img_body"
             android:layout_margin="5dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"/>
@@ -38,27 +38,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_tips_tv1_about_icon"
-            android:layout_below="@id/activity_tips_img_body"
+            android:id="@+id/activity_practice_tv1_about_icon"
+            android:layout_below="@id/activity_practice_img_body"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
             android:fontFamily="sans-serif"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_tips_tv2_about_icon"
-            android:layout_below="@id/activity_tips_tv1_about_icon"
+            android:id="@+id/activity_practice_tv2_about_icon"
+            android:layout_below="@id/activity_practice_tv1_about_icon"
             android:layout_centerHorizontal="true"
             android:textColor="#8A7D7D"/>
     </RelativeLayout>
 
     <RelativeLayout
 
-        android:layout_below="@id/activity_tips_rel_body"
+        android:layout_below="@id/activity_practice_rel_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:id="@+id/activity_tips_rel_list_item"
+        android:id="@+id/activity_practice_rel_list_item"
         >
         <ScrollView
             android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/activity_tips_lin_list_item">
+                android:id="@+id/activity_practice_lin_list_item">
 
             </LinearLayout>
         </ScrollView>

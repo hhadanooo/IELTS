@@ -26,8 +26,11 @@ import com.rom4ek.arcnavigationview.ArcNavigationView;
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.MainActivity;
+import ir.hhadanooo.ielts.Practice.Activity_Practice;
 import ir.hhadanooo.ielts.R;
+import ir.hhadanooo.ielts.Test.Activity_test;
 import ir.hhadanooo.ielts.Tips.ActivityTips;
+import ir.hhadanooo.ielts.Vocab.Activity_Vocab;
 
 public class ActivityTestAndPracticeMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -153,7 +156,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
     public void SetPropertiesCustomView()
     {
 
-        if(num_type == 3 || num_type == 1)
+        if(num_type == 4 || num_type == 2)
         {
             CustomViewItem custom1 = new CustomViewItem(this);
             CustomViewItem custom2 = new CustomViewItem(this);
@@ -166,7 +169,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, Activity_test.class);
+                    intent.putExtra(Type, Type);
+                    startActivity(intent);
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
@@ -180,7 +185,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
             custom3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this,ActivityAboutTheTest.class);
+                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, Activity_Vocab.class);
                     intent.putExtra(Type, Type);
                     startActivity(intent);
                 }
@@ -191,7 +196,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
             lin.addView(custom2);
             lin.addView(custom3);
         }
-        if(num_type == 4 || num_type == 2)
+        if(num_type == 3 || num_type == 1)
         {
             CustomViewItem custom1 = new CustomViewItem(this);
             CustomViewItem custom2 = new CustomViewItem(this);
@@ -205,7 +210,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, Activity_test.class);
+                    intent.putExtra(Type, Type);
+                    startActivity(intent);
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
@@ -219,9 +226,18 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
             custom3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent  = new Intent(ActivityTestAndPracticeMenu.this,ActivityAboutTheTest.class);
-                    intent.putExtra(Type, Type);
-                    startActivity(intent);
+
+                    if(num_type == 1)
+                    {
+                        Intent intent  = new Intent(ActivityTestAndPracticeMenu.this, Activity_Practice.class);
+                        intent.putExtra(Type, Type);
+                        startActivity(intent);
+                    }else {
+
+
+
+                    }
+
                 }
             });
 
