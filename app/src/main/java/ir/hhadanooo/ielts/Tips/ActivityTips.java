@@ -18,6 +18,7 @@ import android.widget.Toast;
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
+import ir.hhadanooo.ielts.SimpleText.SimpleTextActivity;
 import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
 public class ActivityTips extends AppCompatActivity {
@@ -191,61 +192,101 @@ public class ActivityTips extends AppCompatActivity {
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",1);
+                    startActivity(intent);
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",2);
+                    startActivity(intent);
                 }
             });
             custom3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",3);
+                    startActivity(intent);
                 }
             });
             custom4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",4);
+                    startActivity(intent);
                 }
             });
             custom5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",5);
+                    startActivity(intent);
                 }
             });
             custom6.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",6);
+                    startActivity(intent);
                 }
             });
             custom7.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",7);
+                    startActivity(intent);
                 }
             });
             custom8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",8);
+                    startActivity(intent);
                 }
             });
             custom9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",9);
+                    startActivity(intent);
                 }
             });
             custom10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Listen","Listen");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",10);
+                    startActivity(intent);
                 }
             });
 
@@ -271,61 +312,101 @@ public class ActivityTips extends AppCompatActivity {
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",1);
+                    startActivity(intent);
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",2);
+                    startActivity(intent);
                 }
             });
             custom3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",3);
+                    startActivity(intent);
                 }
             });
             custom4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",4);
+                    startActivity(intent);
                 }
             });
             custom5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",5);
+                    startActivity(intent);
                 }
             });
             custom6.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",6);
+                    startActivity(intent);
                 }
             });
             custom7.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",7);
+                    startActivity(intent);
                 }
             });
             custom8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",8);
+                    startActivity(intent);
                 }
             });
             custom9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",9);
+                    startActivity(intent);
                 }
             });
             custom10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",10);
+                    startActivity(intent);
                 }
             });
 
@@ -350,61 +431,102 @@ public class ActivityTips extends AppCompatActivity {
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",1);
+                    startActivity(intent);
 
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",2);
+                    startActivity(intent);
                 }
             });
             custom3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",3);
+                    startActivity(intent);
                 }
             });
             custom4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",4);
+                    startActivity(intent);
                 }
             });
             custom5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",5);
+                    startActivity(intent);
                 }
             });
             custom6.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",6);
+                    startActivity(intent);
                 }
             });
             custom7.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",7);
+                    startActivity(intent);
                 }
             });
             custom8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",8);
+                    startActivity(intent);
                 }
             });
             custom9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",9);
+                    startActivity(intent);
                 }
             });
             custom10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Read","Read");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",10);
+                    startActivity(intent);
                 }
             });
 
@@ -430,61 +552,101 @@ public class ActivityTips extends AppCompatActivity {
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",1);
+                    startActivity(intent);
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",2);
+                    startActivity(intent);
                 }
             });
             custom3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",3);
+                    startActivity(intent);
                 }
             });
             custom4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",4);
+                    startActivity(intent);
                 }
             });
             custom5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",5);
+                    startActivity(intent);
                 }
             });
             custom6.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",6);
+                    startActivity(intent);
                 }
             });
             custom7.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",7);
+                    startActivity(intent);
                 }
             });
             custom8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",8);
+                    startActivity(intent);
                 }
             });
             custom9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",9);
+                    startActivity(intent);
                 }
             });
             custom10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Tip","Tip");
+                    intent.putExtra("number",10);
+                    startActivity(intent);
                 }
             });
 

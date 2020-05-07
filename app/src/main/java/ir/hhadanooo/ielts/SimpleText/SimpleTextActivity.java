@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -29,31 +30,121 @@ public class SimpleTextActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_text);
-        CheckIntent();
+
+        init();
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
 
-        String title_Page = getIntent().getExtras().getString("TitlePage");
 
-        dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        if(getIntent().getExtras().getString("Read") != null)
+        {
 
-        // init webView
-        Simple_text_WebView = findViewById(R.id.Simple_text_WebView);
-        lay_cartView_Simple_text = findViewById(R.id.lay_cartView_Simple_text);
-        tv_title_Simple_text = findViewById(R.id.tv_title_Simple_text);
+            if(getIntent().getExtras().getString("Tip") != null)
+            {
+                if(getIntent().getExtras().getInt("number") != 0)
+                {
+                    String file_name = "ReadTip"+getIntent().getExtras().getInt("number");
+                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+                }
+            }
 
+
+        }else if(getIntent().getExtras().getString("Listen") != null)
+        {
+
+            if(getIntent().getExtras().getString("Tip") != null)
+            {
+                if(getIntent().getExtras().getInt("number") != 0)
+                {
+                    String file_name = "ListenTip"+getIntent().getExtras().getInt("number");
+                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+                }
+            }
+
+        }else if(getIntent().getExtras().getString("Write") != null)
+        {
+
+            if(getIntent().getExtras().getString("Tip") != null)
+            {
+
+                if(getIntent().getExtras().getInt("number") != 0)
+                {
+                    String file_name = "WriteTip"+getIntent().getExtras().getInt("number");
+                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+                }
+            }else if(getIntent().getExtras().getString("Vocab") != null)
+            {
+                if(getIntent().getExtras().getInt("number") != 0)
+                {
+                    String file_name = "WriteVocab"+getIntent().getExtras().getInt("number");
+                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+                }
+            }
+
+        }else if(getIntent().getExtras().getString("Speak") != null)
+        {
+
+            if(getIntent().getExtras().getString("Tip") != null)
+            {
+
+                if(getIntent().getExtras().getInt("number") != 0)
+                {
+                    String file_name = "SpeakTip"+getIntent().getExtras().getInt("number");
+                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+                }
+            }else if(getIntent().getExtras().getString("Vocab") != null)
+            {
+                if(getIntent().getExtras().getInt("number") != 0)
+                {
+                    String file_name = "SpeakVocab"+getIntent().getExtras().getInt("number");
+                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+                }
+            }
+            else if(getIntent().getExtras().getString("Test") != null)
+            {
+                if(getIntent().getExtras().getInt("number") != 0)
+                {
+                    String file_name = "SpeakTest"+getIntent().getExtras().getInt("number");
+                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+                }
+            }
+
+        }
+
+
+
+
+        //set value
         Simple_text_WebView.getSettings().setJavaScriptEnabled(true);
         Simple_text_WebView.loadUrl("file:///android_asset/" + fileName);
+        tv_title_Simple_text.setText("Title");
 
 
+
+
+
+
+
+        // set size
         lay_cartView_Simple_text.getLayoutParams().width = (int) (dm.widthPixels*.9);
         lay_cartView_Simple_text.getLayoutParams().height = (int) (dm.heightPixels*.75);
 
         tv_title_Simple_text.setTextSize((int) (dm.widthPixels*.015));
 
-        //set String title_page
-        tv_title_Simple_text.setText("Title");
+
+
+
+    }
+    public void init()
+    {
+        // init webView
+        Simple_text_WebView = findViewById(R.id.Simple_text_WebView);
+        lay_cartView_Simple_text = findViewById(R.id.lay_cartView_Simple_text);
+        tv_title_Simple_text = findViewById(R.id.tv_title_Simple_text);
+
+        dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
 
     }
 
@@ -63,22 +154,6 @@ public class SimpleTextActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void CheckIntent()
-    {
-        if(Objects.requireNonNull(getIntent().getExtras()).getString("Listen") != null)
-        {
-            Objects.requireNonNull(getSupportActionBar()).setTitle("Listening");
 
-        }else if(getIntent().getExtras().getString("Speak") != null)
-        {
-            Objects.requireNonNull(getSupportActionBar()).setTitle("Speaking");
-        }else if(getIntent().getExtras().getString("Read") != null)
-        {
-            Objects.requireNonNull(getSupportActionBar()).setTitle("Reading");
-        }else if (getIntent().getExtras().getString("Write") != null)
-        {
-            Objects.requireNonNull(getSupportActionBar()).setTitle("Writing");
-        }
-    }
 
 }

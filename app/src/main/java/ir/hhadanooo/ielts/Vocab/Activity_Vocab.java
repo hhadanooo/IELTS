@@ -2,6 +2,7 @@ package ir.hhadanooo.ielts.Vocab;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
+import ir.hhadanooo.ielts.SimpleText.SimpleTextActivity;
+import ir.hhadanooo.ielts.Tips.ActivityTips;
 
 public class Activity_Vocab extends AppCompatActivity {
     RelativeLayout rel_body,rel_list_item;
@@ -163,61 +166,101 @@ public class Activity_Vocab extends AppCompatActivity {
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",1);
+                    startActivity(intent);
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",2);
+                    startActivity(intent);
                 }
             });
             custom3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",3);
+                    startActivity(intent);
                 }
             });
             custom4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",4);
+                    startActivity(intent);
                 }
             });
             custom5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",5);
+                    startActivity(intent);
                 }
             });
             custom6.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",6);
+                    startActivity(intent);
                 }
             });
             custom7.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",7);
+                    startActivity(intent);
                 }
             });
             custom8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",8);
+                    startActivity(intent);
                 }
             });
             custom9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",9);
+                    startActivity(intent);
                 }
             });
             custom10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Write","Write");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",10);
+                    startActivity(intent);
                 }
             });
 
@@ -243,61 +286,101 @@ public class Activity_Vocab extends AppCompatActivity {
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",1);
+                    startActivity(intent);
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",2);
+                    startActivity(intent);
                 }
             });
             custom3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",3);
+                    startActivity(intent);
                 }
             });
             custom4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",4);
+                    startActivity(intent);
                 }
             });
             custom5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",5);
+                    startActivity(intent);
                 }
             });
             custom6.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",6);
+                    startActivity(intent);
                 }
             });
             custom7.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",7);
+                    startActivity(intent);
                 }
             });
             custom8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",8);
+                    startActivity(intent);
                 }
             });
             custom9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",9);
+                    startActivity(intent);
                 }
             });
             custom10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
+                    intent.putExtra("Speak","Speak");
+                    intent.putExtra("Vocab","Vocab");
+                    intent.putExtra("number",10);
+                    startActivity(intent);
                 }
             });
 
