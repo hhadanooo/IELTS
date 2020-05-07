@@ -33,6 +33,7 @@ import java.util.Objects;
 
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
+import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.HelpPageStartTest.HelpStartTestActivity;
 import ir.hhadanooo.ielts.Quiz.QuizActivity;
 import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
