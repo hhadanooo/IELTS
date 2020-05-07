@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".Practice.Activity_Practice"></activity>
         <activity android:name=".Vocab.Activity_Vocab" />
         <activity android:name=".Test.Activity_test" />
         <activity android:name=".Tips.ActivityTips" />
+        <activity android:name=".SimpleText.SimpleTextActivity"></activity>
         <activity android:name=".WelcomePage.Activity_Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +31,7 @@
         <activity android:name=".TestAndPracticeMenu.ActivityTestAndPracticeMenu" />
         <activity android:name=".TestAndPracticeArrowBack.ActivityTestAndPracticeArrowBack" />
         <activity android:name=".MainActivity" />
+
     </application>
 
 </manifest>
