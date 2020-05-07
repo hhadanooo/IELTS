@@ -95,7 +95,6 @@ public class ActivityTips extends AppCompatActivity {
             SetPropertiesCustomView();
 
         }
-
     }
 
     public void SetPropertiesRelBody()
@@ -163,49 +162,352 @@ public class ActivityTips extends AppCompatActivity {
 
     public void SetPropertiesCustomView()
     {
-
         CustomViewItem custom1 = new CustomViewItem(this);
         CustomViewItem custom2 = new CustomViewItem(this);
         CustomViewItem custom3 = new CustomViewItem(this);
         CustomViewItem custom4 = new CustomViewItem(this);
+        CustomViewItem custom5 = new CustomViewItem(this);
+        CustomViewItem custom6 = new CustomViewItem(this);
+        CustomViewItem custom7 = new CustomViewItem(this);
+        CustomViewItem custom8 = new CustomViewItem(this);
+        CustomViewItem custom9 = new CustomViewItem(this);
+        CustomViewItem custom10 = new CustomViewItem(this);
+
+        if(num_type == 1)
+        {
+            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
 
-        SetSettingCustomItem("","How to Manage My Time ...",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-        SetSettingCustomItem("","How i can use a calculator ...",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-        SetSettingCustomItem("","How i can Go to office ...",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-        SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+            custom1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom8.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom9.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom10.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
 
 
-        custom1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        }
+        if(num_type == 2)
+        {
 
-            }
-        });
-        custom2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-        custom3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
-            }
-        });
-        custom4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
+            custom1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
+                }
+            });
+            custom2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom8.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom9.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom10.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
+        }
+        if(num_type == 3)
+        {
+
+
+            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+
+
+            custom1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom8.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom9.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom10.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
+
+        }
+        if(num_type == 4)
+        {
+
+
+            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+
+
+            custom1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom7.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom8.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom9.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+            custom10.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
+
+        }
 
         lin.addView(custom1);
         lin.addView(custom2);
         lin.addView(custom3);
         lin.addView(custom4);
+        lin.addView(custom5);
+        lin.addView(custom6);
+        lin.addView(custom7);
+        lin.addView(custom8);
+        lin.addView(custom9);
+        lin.addView(custom10);
+
+
+
+
+
+
+
 
 
 
