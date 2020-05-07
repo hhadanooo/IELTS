@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Tips.ActivityTips"></activity>
+        <activity android:name=".SimpleText.SimpleTextActivity"></activity>
+        <activity android:name=".Tips.ActivityTips" />
         <activity android:name=".WelcomePage.Activity_Welcome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +26,7 @@
         <activity android:name=".Quiz.QuizActivity" />
         <activity android:name=".TestAndPracticeMenu.ActivityTestAndPracticeMenu" />
         <activity android:name=".TestAndPracticeArrowBack.ActivityTestAndPracticeArrowBack" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
