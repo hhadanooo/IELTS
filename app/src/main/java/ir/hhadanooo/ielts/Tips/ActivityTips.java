@@ -26,20 +26,18 @@ public class ActivityTips extends AppCompatActivity {
     LinearLayout lin;
     String Type = "";
     int num_type = 0;
-    ImageView img_home_bottom;
+
+    TextView tv1_about_icon,tv2_about_icon;
+
+    ImageView img_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tips);
+        getSupportActionBar().hide();
         init();
         CheckIntent();
-
-        SetPropertiesRelBtnHomeBotton();
-
-
-
-
 
 
 
@@ -53,56 +51,40 @@ public class ActivityTips extends AppCompatActivity {
         rel_list_item = findViewById(R.id.activity_tips_rel_list_item);
         img_body = findViewById(R.id.activity_tips_img_body);
         lin = findViewById(R.id.activity_tips_lin_list_item);
-        img_home_bottom = findViewById(R.id.activity_tips_btn_home);
+
+        tv1_about_icon = findViewById(R.id.activity_tips_tv1_about_icon);
+        tv2_about_icon = findViewById(R.id.activity_tips_tv2_about_icon);
+
+        img_back = findViewById(R.id.activity_tips_actionbar_img_icon_back);
 
 
-    }
-    public void SetPropertiesRelBtnHomeBotton()
-    {
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-        params1.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        params1.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        params1.setMargins(0, 0, 0, (int) (dm.heightPixels * 0.03));
-        img_home_bottom.setLayoutParams(params1);
 
-        img_home_bottom.getLayoutParams().width = (int)(dm.widthPixels*0.25);
-        img_home_bottom.getLayoutParams().height = (int)(dm.widthPixels*0.25);
-
-        img_home_bottom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
     }
+
+
     public void CheckIntent()
     {
         if(getIntent().getExtras().getString("Listen") != null)
         {
             Type = "Listen";
             num_type = 1;
-            SetPropertiesActionBar(true);
+
             SetPropertiesRelBody();
             SetPropertiesCustomView();
         }else if(getIntent().getExtras().getString("Speak") != null)
         {
             Type = "Speak";
             num_type = 2;
-            SetPropertiesActionBar(true);
+
             SetPropertiesRelBody();
             SetPropertiesCustomView();
         }else if(getIntent().getExtras().getString("Read") != null)
         {
             Type = "Read";
             num_type = 3;
-            SetPropertiesActionBar(true);
+
             SetPropertiesRelBody();
             SetPropertiesCustomView();
         }else if (getIntent().getExtras().getString("Write") != null)
@@ -111,7 +93,7 @@ public class ActivityTips extends AppCompatActivity {
             num_type = 4;
             SetPropertiesRelBody();
             SetPropertiesCustomView();
-            SetPropertiesActionBar(true);
+
         }
 
     }
@@ -124,64 +106,54 @@ public class ActivityTips extends AppCompatActivity {
 
         if(num_type == 1)
         {
+            tv1_about_icon.setText("Tips");
+            tv2_about_icon.setText("Listening");
 
             img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
         }else if(num_type == 2)
         {
+            tv1_about_icon.setText("Tips");
+            tv2_about_icon.setText("Speaking");
 
             img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
         }else if(num_type == 3)
         {
+            tv1_about_icon.setText("Tips");
+            tv2_about_icon.setText("Reading");
 
             img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
         }else if(num_type == 4)
         {
+            tv1_about_icon.setText("Tips");
+            tv2_about_icon.setText("Writing");
 
             img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
         }
 
-        img_body.getLayoutParams().width = (int) (dm.widthPixels*0.375);
-        img_body.getLayoutParams().height = (int) (dm.widthPixels*0.5);
-        rel_body.getLayoutParams().height = (int)(dm.widthPixels*0.495);
+        img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
+        img_body.getLayoutParams().height = (int) (dm.widthPixels*.25);
+
+        rel_body.getLayoutParams().height = (int)(dm.heightPixels*0.27);
+        rel_list_item.getLayoutParams().height = (int) (dm.heightPixels*0.73);
+
+        tv1_about_icon.setTextSize((int) (dm.widthPixels * 0.020));
+        tv2_about_icon.setTextSize((int) (dm.widthPixels * 0.0125));
+
+        tv1_about_icon.setTextColor(Color.BLACK);
+
+        img_body.getLayoutParams().width = (int) (dm.widthPixels*0.25);
+        img_body.getLayoutParams().height = (int) (dm.widthPixels*0.25);
 
 
+        img_back.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        img_back.getLayoutParams().height = (int) (dm.widthPixels*.1);
 
-
-    }
-
-    public void SetPropertiesActionBar(boolean menu)
-    {
-
-
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#bcd9f9")));
-        getSupportActionBar().setElevation(0);
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.layout_custom_action_bar);
-        getSupportActionBar().setElevation(0);
-        View view = getSupportActionBar().getCustomView();
-
-
-        ImageView img_icon_menu = view.findViewById(R.id.actionbar_img_icon_menu);
-        if(menu)
-        {
-            img_icon_menu.setBackground(getResources().getDrawable(R.drawable.menu_main));
-        }else {
-            img_icon_menu.setBackground(getResources().getDrawable(R.drawable.icon_arrow_back));
-        }
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        img_icon_menu.getLayoutParams().width = (int)(dm.widthPixels*0.1);
-        img_icon_menu.getLayoutParams().height = (int)(dm.widthPixels*0.1);
-        TextView tv_title = view.findViewById(R.id.actionbar_tv_title);
-
-
-
-        tv_title.setTextSize((int) (dm.widthPixels * 0.02));
-
-
-
-
+        img_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 
 

@@ -78,11 +78,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         iv_cover_home.getLayoutParams().width = (int) (dm.widthPixels*0.25);
         iv_cover_home.getLayoutParams().height = (int) (dm.widthPixels*0.25);
 
+        rel_body = findViewById(R.id.actiivty_main_rel_body);
 
         tv1_about_icon = findViewById(R.id.activity_main_tv1_about_icon);
         tv2_about_icon = findViewById(R.id.activity_main_tv2_about_icon);
 
-        rel_body = findViewById(R.id.actiivty_main_rel_body);
+
 
         tv1_about_icon.setText("ENJOY IELTS");
         tv2_about_icon.setText("Improve Your Skills");
