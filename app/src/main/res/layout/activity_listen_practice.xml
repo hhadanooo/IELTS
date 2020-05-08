@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".Practice.Listen.ListenPracticeActivity"
+    android:background="@drawable/background"
+    android:layoutDirection="ltr"
+    android:padding="5dp">
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/dialog_bg"
+        android:id="@+id/lay_PracticeL">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lay_playerPL"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            >
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lay_box_playerPL"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/back_player"
+                android:orientation="horizontal"
+                android:paddingEnd="30dp"
+                >
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.9"
+                    android:id="@+id/view_space_playerPL"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/repeat_icon"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/iv_repeat_playerPL"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/play_icon"
+                    android:id="@+id/iv_play_playerPL"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/next_icon"
+                    android:id="@+id/iv_next_playerPL"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:id="@+id/iv_ic_org_playerPL"
+                android:layout_marginStart="25dp"
+                android:background="@drawable/icon"
+                />
+
+        </RelativeLayout>
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#dee4de"
+            android:inputType="textMultiLine"
+            android:maxLength="5000"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            android:gravity="top"
+            android:layout_marginBottom="25dp"
+            android:id="@+id/et_PracticeL"/>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="25dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/iv_shareAnswer_playerPL"
+                android:background="@drawable/shareanswer_icon1"
+                />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/view_space_button_see_share"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/iv_seeAnswer_playerPL"
+                android:background="@drawable/seeanswer_icon"
+                />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#dee4de"
+            android:scrollbars="vertical"
+            android:maxLength="5000"
+            android:padding="10dp"
+            android:lines="14"
+            android:maxLines="20"
+            android:hint="Click Button SeeAnswer"
+            android:gravity="top"
+            android:layout_marginBottom="25dp"
+            android:id="@+id/et_PracticeLResult"
+            />
+
+
+    </LinearLayout>
+
+
+</ScrollView>
