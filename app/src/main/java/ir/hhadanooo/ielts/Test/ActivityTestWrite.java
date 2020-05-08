@@ -89,7 +89,6 @@ public class ActivityTestWrite extends AppCompatActivity {
                 if(getIntent().getExtras().getInt("Number") != 0)
                 {
 
-
                     tv2_about_icon.setText("Writing/General");
                     tv_title_main_page.setText("TOPIC General " + getIntent().getExtras().getInt("Number"));
 
