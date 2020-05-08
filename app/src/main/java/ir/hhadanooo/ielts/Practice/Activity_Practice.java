@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -124,17 +125,19 @@ public class Activity_Practice extends AppCompatActivity {
     {
         if(num_type == 1)
         {
+            Log.i("Raminhacker1234", "1: ");
             if(getIntent().getExtras().getString("Easy") != null)
             {
+                Log.i("Raminhacker1234", "2: ");
                 if(getIntent().getExtras().getString("Type1") != null)
                 {
+                    Log.i("Raminhacker1234", "3: ");
 
                     CustomViewItem custom1 = new CustomViewItem(this);
                     CustomViewItem custom2 = new CustomViewItem(this);
                     CustomViewItem custom3 = new CustomViewItem(this);
                     CustomViewItem custom4 = new CustomViewItem(this);
                     CustomViewItem custom5 = new CustomViewItem(this);
-
 
 
                     SetSettingCustomItem("","type a easy",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
@@ -187,6 +190,60 @@ public class Activity_Practice extends AppCompatActivity {
 
                 }else if(getIntent().getExtras().getString("Type2") != null)
                 {
+
+                    CustomViewItem custom1 = new CustomViewItem(this);
+                    CustomViewItem custom2 = new CustomViewItem(this);
+                    CustomViewItem custom3 = new CustomViewItem(this);
+                    CustomViewItem custom4 = new CustomViewItem(this);
+                    CustomViewItem custom5 = new CustomViewItem(this);
+
+
+                    SetSettingCustomItem("","type b easy",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b easy",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b easy",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b easy",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b easy",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+
+                    //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+
+
+                    custom1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+
+
+                    lin.addView(custom1);
+                    lin.addView(custom2);
+                    lin.addView(custom3);
+                    lin.addView(custom4);
+                    lin.addView(custom5);
 
                 }
             }else  if(getIntent().getExtras().getString("Normal") != null)
@@ -250,7 +307,60 @@ public class Activity_Practice extends AppCompatActivity {
                     lin.addView(custom5);
                 }else if(getIntent().getExtras().getString("Type2") != null)
                 {
+                    CustomViewItem custom1 = new CustomViewItem(this);
+                    CustomViewItem custom2 = new CustomViewItem(this);
+                    CustomViewItem custom3 = new CustomViewItem(this);
+                    CustomViewItem custom4 = new CustomViewItem(this);
+                    CustomViewItem custom5 = new CustomViewItem(this);
 
+
+
+                    SetSettingCustomItem("","type b normal",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b normal",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b normal",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b normal",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b normal",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+
+                    //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+
+
+                    custom1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+
+
+                    lin.addView(custom1);
+                    lin.addView(custom2);
+                    lin.addView(custom3);
+                    lin.addView(custom4);
+                    lin.addView(custom5);
                 }
             }else if(getIntent().getExtras().getString("Hard") != null)
             {
@@ -313,7 +423,60 @@ public class Activity_Practice extends AppCompatActivity {
                     lin.addView(custom5);
                 }else if(getIntent().getExtras().getString("Type2") != null)
                 {
+                    CustomViewItem custom1 = new CustomViewItem(this);
+                    CustomViewItem custom2 = new CustomViewItem(this);
+                    CustomViewItem custom3 = new CustomViewItem(this);
+                    CustomViewItem custom4 = new CustomViewItem(this);
+                    CustomViewItem custom5 = new CustomViewItem(this);
 
+
+
+                    SetSettingCustomItem("","type b hard",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b hard",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b hard",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b hard",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b hard",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+
+                    //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+
+
+                    custom1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom4.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    custom5.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+
+
+                    lin.addView(custom1);
+                    lin.addView(custom2);
+                    lin.addView(custom3);
+                    lin.addView(custom4);
+                    lin.addView(custom5);
                 }
             }else {
                 CustomViewItem custom1 = new CustomViewItem(this);
