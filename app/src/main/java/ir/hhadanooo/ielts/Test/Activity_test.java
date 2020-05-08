@@ -484,7 +484,10 @@ public class Activity_test extends AppCompatActivity {
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
+                        intent.putExtra("Write","Write");
+                        intent.putExtra("Academic","Academic");
+                        startActivity(intent);
                     }
                 });
                 custom2.setOnClickListener(new View.OnClickListener() {
