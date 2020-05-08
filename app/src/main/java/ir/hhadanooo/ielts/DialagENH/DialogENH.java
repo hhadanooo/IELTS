@@ -66,6 +66,9 @@ public class DialogENH {
                     i.putExtra("Listen","listen");
                     dialog.dismiss();
                     context.startActivity(i);
+                }else if (intent.equals("ReadPractice"))
+                {
+
                 }
             }
         });
@@ -87,6 +90,9 @@ public class DialogENH {
                     i.putExtra("Listen","listen");
                     dialog.dismiss();
                     context.startActivity(i);
+                }else if (intent.equals("ReadPractice"))
+                {
+
                 }
             }
         });
@@ -108,6 +114,9 @@ public class DialogENH {
                     i.putExtra("Listen","listen");
                     dialog.dismiss();
                     context.startActivity(i);
+                }else if (intent.equals("ReadPractice"))
+                {
+
                 }
             }
         });

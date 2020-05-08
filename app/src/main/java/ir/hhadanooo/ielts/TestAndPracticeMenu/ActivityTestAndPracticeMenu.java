@@ -25,6 +25,7 @@ import com.rom4ek.arcnavigationview.ArcNavigationView;
 
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
+import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.DialogAG.DialogAGShow;
 import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.Practice.Activity_Practice;
@@ -248,7 +249,8 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
                         intent.putExtra(Type, Type);
                         startActivity(intent);
                     }else {
-
+                        DialogENH enh = new DialogENH(ActivityTestAndPracticeMenu.this,dm,"ReadPractice");
+                        enh.show();
 
 
                     }
