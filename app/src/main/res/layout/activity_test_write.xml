@@ -82,11 +82,77 @@
             android:background="@color/colorPrimary"
             android:id="@+id/activity_test_write_rel_title_main_page">
             <TextView
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:id="@+id/activity_test_write_tv_title_main_page"/>
         </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/activity_test_write_img_see_example"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_alignRight="@id/activity_test_write_rel_title_main_page"
+            android:layout_below="@id/activity_test_write_rel_title_main_page"
+            android:background="@drawable/seesample_icon"/>
+
+
+
+        <ir.hhadanooo.ielts.CustomView.CustomEditText
+            android:id="@+id/activity_test_write_edit_text_main_page"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/activity_test_write_img_see_example"
+            android:background="@drawable/draw_background_custom_edittext"
+            android:layout_width="wrap_content"
+            android:textColor="#3C3737"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:lines="40"
+            android:maxLines="40"
+            android:textAlignment="viewStart"
+            android:gravity="start"
+            android:maxLength="400"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/activity_test_write_lin_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/activity_test_write_edit_text_main_page"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shareanswer_icon"
+                android:id="@+id/activity_test_write_img_shareanswer"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/submit_icon"
+                android:id="@+id/activity_test_write_img_submit"
+                android:layout_marginLeft="15dp"/>
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/activity_test_write_img_timer"
+            android:layout_below="@id/activity_test_write_lin_button"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/icon_timer"/>
+
+
 
 
     </RelativeLayout>
