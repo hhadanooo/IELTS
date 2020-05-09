@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         custom4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this , SimpleTextActivity.class);
+                Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
                 intent.putExtra("Listen","listen");
                 startActivity(intent);
             }
