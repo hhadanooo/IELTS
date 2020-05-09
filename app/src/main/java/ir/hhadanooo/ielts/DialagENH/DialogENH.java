@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.Objects;
 
 import ir.hhadanooo.ielts.Practice.Activity_Practice;
+import ir.hhadanooo.ielts.Practice.Activity_practice_read;
 import ir.hhadanooo.ielts.R;
 
 public class DialogENH {
@@ -66,6 +67,13 @@ public class DialogENH {
                     i.putExtra("Listen","listen");
                     dialog.dismiss();
                     context.startActivity(i);
+                }else if (intent.equals("ReadPractice"))
+                {
+                    Intent intent = new Intent(context, Activity_practice_read.class);
+                    intent.putExtra("Easy","Easy");
+                    dismiss();
+                    context.startActivity(intent);
+
                 }
             }
         });
@@ -87,6 +95,12 @@ public class DialogENH {
                     i.putExtra("Listen","listen");
                     dialog.dismiss();
                     context.startActivity(i);
+                }else if (intent.equals("ReadPractice"))
+                {
+                    Intent intent = new Intent(context, Activity_practice_read.class);
+                    intent.putExtra("Normal","Normal");
+                    dismiss();
+                    context.startActivity(intent);
                 }
             }
         });
@@ -108,6 +122,12 @@ public class DialogENH {
                     i.putExtra("Listen","listen");
                     dialog.dismiss();
                     context.startActivity(i);
+                }else if (intent.equals("ReadPractice"))
+                {
+                    Intent intent = new Intent(context, Activity_practice_read.class);
+                    intent.putExtra("Hard","Hard");
+                    dismiss();
+                    context.startActivity(intent);
                 }
             }
         });
