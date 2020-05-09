@@ -38,7 +38,7 @@ public class DialogChlngShow {
         tv_title_dialogChlng.setText("Complete The Steps and Test Yourself ");
 
         tv_msg_dialogChlng.setTextSize((int) (dm.widthPixels*0.012));
-        tv_msg_dialogChlng.setText("Are You Ready");
+        tv_msg_dialogChlng.setText("Are You Ready ?");
 
         iv_start_dialogChlng.getLayoutParams().width = (int) (dm.widthPixels*0.27);
         iv_start_dialogChlng.getLayoutParams().height = (int) (dm.widthPixels*0.1);
