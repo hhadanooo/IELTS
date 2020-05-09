@@ -43,8 +43,7 @@ public class ActivityTestRead extends AppCompatActivity {
     {
         rel_body = findViewById(R.id.activity_test_read_rel_body);
         img_body = findViewById(R.id.activity_test_read_img_body);
-
-
+        
 
         tv1_about_icon = findViewById(R.id.activity_test_read_tv1_about_icon);
         tv2_about_icon = findViewById(R.id.activity_test_read_tv2_about_icon);

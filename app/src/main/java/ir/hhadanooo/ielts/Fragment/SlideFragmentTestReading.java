@@ -54,6 +54,8 @@ public class SlideFragmentTestReading extends Fragment {
         rootview = inflater.inflate(R.layout.layout_fragment_tabs_test_reading, container, false);
 
         init();
+        SetPropertiesRelBody();
+
 
         return rootview;
     }
@@ -92,6 +94,32 @@ public class SlideFragmentTestReading extends Fragment {
         img_see_answer.getLayoutParams().height = (int) (Height*0.045);
 
 
+
+    }
+    public void SetPropertiesRelBody() {
+        rel_text_and_question.getLayoutParams().width = (int) (Width*.90);
+        rel_text_and_question.getLayoutParams().height = (int)(Height*0.61);
+
+        tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
+                " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
+        tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
+                " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
+        tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
+                " rhoncus eltricies lacus");
+        tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting");
+
+
+        tv_text.setMaxWidth((int) (Width * 0.80));
+
+        tv_text.setTextSize((int) (Width * 0.014));
+        tv_question.setTextSize((int) (Width * 0.014));
+        tv_text.setTextSize((int) (Width * 0.014));
+
+        img_timer.getLayoutParams().width = (int) (Width*0.1);
+        img_timer.getLayoutParams().height = (int) (Width*0.1);
+
+        img_see_answer.getLayoutParams().width = (int) (Width*0.295);
+        img_see_answer.getLayoutParams().height = (int) (Height*0.045);
 
     }
 
