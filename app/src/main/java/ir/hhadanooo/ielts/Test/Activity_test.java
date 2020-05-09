@@ -384,7 +384,8 @@ public class Activity_test extends AppCompatActivity {
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        startActivity(intent);
                     }
                 });
                 custom2.setOnClickListener(new View.OnClickListener() {
