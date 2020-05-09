@@ -35,7 +35,10 @@ import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.HelpPageStartTest.HelpStartTestActivity;
+import ir.hhadanooo.ielts.Practice.Listen.ListenPracticeActivity;
 import ir.hhadanooo.ielts.Quiz.QuizActivity;
+import ir.hhadanooo.ielts.SimpleText.SimpleTextActivity;
+import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
 import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -281,7 +284,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //set OnClick and size for navigation view
         menuNav.setNavigationItemSelectedListener(this);
-        menuNav.getLayoutParams().width = (int) (dm.widthPixels*.3);
+        menuNav.getLayoutParams().width = (int) (dm.widthPixels*.35);
 
 
         img_icon.getLayoutParams().width = (int) (dm.widthPixels*.1);
@@ -320,13 +323,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }else if (item.getItemId() == R.id.btnWebSIteNav){
 
-        }
-        else if (item.getItemId() == R.id.btnRatingNav){
+        }else if (item.getItemId() == R.id.btnRatingNav){
+
+        }else if (item.getItemId() == R.id.btnAboutNav){
+
+        }else if (item.getItemId() == R.id.btnChallengeNav){
+
+        }else if (item.getItemId() == R.id.btnContactNav){
 
         }
-        else if (item.getItemId() == R.id.btnAboutNav){
 
-        }
 
         item.setChecked(true);
         drawerLayout.closeDrawer(GravityCompat.START);

@@ -7,7 +7,9 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,9 +22,10 @@ public class SimpleTextActivity extends AppCompatActivity {
 
 
     LinearLayout lay_cartView_Simple_text;
-    TextView tv_title_Simple_text;
+    TextView tv_title_Simple_text ,tv_TitleLogo_SimpleText , tv_PathLogo_SimpleText;
     WebView Simple_text_WebView;
     DisplayMetrics dm;
+    ImageView iv_arrowBack_SimpleText , iv_ic_logoPage_SimpleText;
     public String fileName = "test.html";
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -31,7 +34,10 @@ public class SimpleTextActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_text);
 
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         init();
+        initActionBar();
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
 
@@ -137,14 +143,46 @@ public class SimpleTextActivity extends AppCompatActivity {
     }
     public void init()
     {
+
+        dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
         // init webView
         Simple_text_WebView = findViewById(R.id.Simple_text_WebView);
         lay_cartView_Simple_text = findViewById(R.id.lay_cartView_Simple_text);
         tv_title_Simple_text = findViewById(R.id.tv_title_Simple_text);
 
-        dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
 
+
+
+    }
+
+
+    private void initActionBar() {
+
+        iv_arrowBack_SimpleText = findViewById(R.id.iv_arrowBack_SimpleText);
+        iv_ic_logoPage_SimpleText = findViewById(R.id.iv_ic_logoPage_SimpleText);
+        tv_TitleLogo_SimpleText = findViewById(R.id.tv_TitleLogo_SimpleText);
+        tv_PathLogo_SimpleText = findViewById(R.id.tv_PathLogo_SimpleText);
+
+        iv_arrowBack_SimpleText.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        iv_arrowBack_SimpleText.getLayoutParams().height = (int) (dm.widthPixels*.1);
+
+        iv_ic_logoPage_SimpleText.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        iv_ic_logoPage_SimpleText.getLayoutParams().height = (int) (dm.widthPixels*.1);
+
+        tv_TitleLogo_SimpleText.setTextSize((int) (dm.widthPixels*.025));
+
+        tv_PathLogo_SimpleText.setTextSize((int) (dm.widthPixels*.012));
+
+        tv_TitleLogo_SimpleText.setText("Text1");
+        tv_PathLogo_SimpleText.setText("Listening");
+
+        iv_arrowBack_SimpleText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
     }
 
