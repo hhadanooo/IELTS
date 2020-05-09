@@ -37,6 +37,8 @@ import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.HelpPageStartTest.HelpStartTestActivity;
 import ir.hhadanooo.ielts.Practice.Listen.ListenPracticeActivity;
 import ir.hhadanooo.ielts.Quiz.QuizActivity;
+import ir.hhadanooo.ielts.SimpleText.SimpleTextActivity;
+import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
 import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -159,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         custom4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this , ListenPracticeActivity.class);
+                Intent intent = new Intent(MainActivity.this , SimpleTextActivity.class);
                 intent.putExtra("Listen","listen");
                 startActivity(intent);
             }

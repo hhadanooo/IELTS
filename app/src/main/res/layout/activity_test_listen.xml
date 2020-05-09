@@ -2,13 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".Practice.Listen.ListenPracticeActivity"
     android:background="@drawable/background"
-    android:orientation="vertical"
     android:layoutDirection="ltr">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,7 +17,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/iv_arrowBack_practiceL"
+            android:id="@+id/iv_arrowBack_TestL"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_margin="7dp"
@@ -34,7 +33,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/iv_ic_logoPage_practiceL"
+                android:id="@+id/iv_ic_logoPage_TestL"
                 android:background="@drawable/practice_icon"
                 android:layout_gravity="center_horizontal"
                 />
@@ -45,13 +44,13 @@
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#000"
-                android:id="@+id/tv_TitleLogo_practiceL"/>
+                android:id="@+id/tv_TitleLogo_TestL"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/tv_PathLogo_practiceL"
+                android:id="@+id/tv_PathLogo_TestL"
                 android:layout_marginBottom="10dp"/>
 
         </LinearLayout>
@@ -65,19 +64,20 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp">
 
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/dialog_bg"
-            android:id="@+id/lay_PracticeL">
+            android:id="@+id/lay_TestL">
+
+
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/lay_playerPL"
+                android:id="@+id/lay_playerTL"
                 android:layout_marginBottom="10dp"
                 android:layout_gravity="center_horizontal"
                 >
@@ -86,42 +86,33 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lay_box_playerPL"
+                    android:id="@+id/lay_box_playerTL"
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/back_player"
                     android:orientation="horizontal"
-                    android:paddingEnd="30dp"
+                    android:paddingEnd="5dp"
                     >
 
                     <View
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.9"
-                        android:id="@+id/view_space_playerPL"/>
+                        android:layout_weight="1.25"
+                        android:id="@+id/view_space_playerTL"/>
 
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/repeat_icon"
-                        android:layout_gravity="center_vertical"
-                        android:id="@+id/iv_repeat_playerPL"/>
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight=".7"
                         android:layout_gravity="center_vertical"
                         android:background="@drawable/play_icon"
-                        android:id="@+id/iv_play_playerPL"/>
+                        android:id="@+id/iv_play_playerTL"/>
 
-                    <ImageView
+                    <SeekBar
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:layout_gravity="center_vertical"
-                        android:background="@drawable/next_icon"
-                        android:id="@+id/iv_next_playerPL"/>
+                        android:id="@+id/seekBar_playerTL"/>
 
                 </LinearLayout>
 
@@ -129,8 +120,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:id="@+id/iv_ic_org_playerPL"
-                    android:layout_marginStart="25dp"
+                    android:id="@+id/iv_ic_org_playerTL"
+                    android:layout_marginStart="18dp"
                     android:background="@drawable/icon"
                     />
 
@@ -148,10 +139,25 @@
                 android:scrollbars="vertical"
                 android:gravity="top"
                 android:layout_marginBottom="25dp"
-                android:id="@+id/et_PracticeL"/>
+                android:id="@+id/et_TestL"/>
 
 
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_seeAnswer_playerTL"
+                    android:background="@drawable/seeanswer_icon"
+                    />
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -162,20 +168,16 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/iv_shareAnswer_playerPL"
-                    android:background="@drawable/shareanswer_icon1"
+                    android:id="@+id/iv_time_TestL"
+                    android:background="@drawable/timer_icon"
                     />
-                <View
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/view_space_button_see_share"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/iv_seeAnswer_playerPL"
-                    android:background="@drawable/seeanswer_icon"
-                    />
+                    android:text="30:14"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/tv_time_TestL"/>
 
             </LinearLayout>
 
@@ -185,21 +187,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="#dee4de"
-                android:scrollbars="vertical"
+                android:inputType="textMultiLine"
                 android:maxLength="5000"
                 android:padding="10dp"
-                android:lines="14"
-                android:maxLines="20"
-                android:hint="Click Button SeeAnswer"
+                android:scrollbars="vertical"
                 android:gravity="top"
                 android:layout_marginBottom="25dp"
-                android:id="@+id/et_PracticeLResult"
-                />
+                android:id="@+id/et_TestL_Result"/>
 
 
         </LinearLayout>
-
     </ScrollView>
-
 
 </LinearLayout>
