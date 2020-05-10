@@ -88,7 +88,7 @@ public class ActivityTestRead extends AppCompatActivity {
         tv1_about_icon.setText("Test 1");
         tv2_about_icon.setText("Reading");
 
-        img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+        img_body.setBackground(getResources().getDrawable(R.drawable.test_menue));
 
 
         rel_body.getLayoutParams().height = (int) (dm.heightPixels * 0.16);

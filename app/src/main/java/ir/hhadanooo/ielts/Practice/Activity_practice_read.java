@@ -93,7 +93,7 @@ public class Activity_practice_read extends AppCompatActivity {
         tv1_about_icon.setText("Practice");
         tv2_about_icon.setText("Reading");
 
-        img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+        img_body.setBackground(getResources().getDrawable(R.drawable.practice_icon));
 
 
         rel_body.getLayoutParams().height = (int)(dm.heightPixels*0.16);
@@ -111,6 +111,8 @@ public class Activity_practice_read extends AppCompatActivity {
         img_back.getLayoutParams().height = (int) (dm.widthPixels*.1);
 
 
+
+        img_see_answer.setBackground(getDrawable(R.drawable.seeanswer_icon1));
 
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override

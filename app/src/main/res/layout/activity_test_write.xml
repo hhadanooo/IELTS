@@ -34,29 +34,27 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/activity_test_write_img_body"
 
-                android:layout_alignParentTop="true"/>
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"/>
 
 
             <TextView
-                android:layout_marginTop="10dp"
-                android:layout_alignTop="@id/activity_test_write_img_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/activity_test_write_tv1_about_icon"
-                android:layout_toRightOf="@id/activity_test_write_img_body"
-
+                android:layout_below="@id/activity_test_write_img_body"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"/>
+                android:fontFamily="sans-serif"
+                android:layout_centerHorizontal="true"/>
             <TextView
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@id/activity_test_write_img_body"
-                android:layout_alignBottom="@id/activity_test_write_img_body"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/activity_test_write_tv2_about_icon"
                 android:layout_below="@id/activity_test_write_tv1_about_icon"
 
-                android:textColor="#8A7D7D"/>
+                android:textColor="#8A7D7D"
+                android:layout_centerHorizontal="true"/>
         </RelativeLayout>
 
     </RelativeLayout>
