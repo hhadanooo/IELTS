@@ -46,7 +46,7 @@ import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawerLayout;
-    ArcNavigationView menuNav;
+    NavigationView menuNav;
     DisplayMetrics dm;
     ImageView iv_cover_home;
     LinearLayout lin_list_item;
@@ -281,13 +281,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         img_icon.setBackground(getResources().getDrawable(R.drawable.menu_icon));
 
         menuNav = findViewById(R.id.nav_view);
+
         drawerLayout = findViewById(R.id.drawer_layout);
 
 
         //set OnClick and size for navigation view
         menuNav.setNavigationItemSelectedListener(this);
-        menuNav.getLayoutParams().width = (int) (dm.widthPixels*.35);
-
+        menuNav.getLayoutParams().width = (int) (dm.widthPixels*.5);
+        menuNav.setItemIconTintList(null);
 
         img_icon.getLayoutParams().width = (int) (dm.widthPixels*.1);
         img_icon.getLayoutParams().height = (int) (dm.widthPixels*.1);
@@ -335,8 +336,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if (item.getItemId() == R.id.btnAboutNav){
 
         }else if (item.getItemId() == R.id.btnChallengeNav){
-
-        }else if (item.getItemId() == R.id.btnContactNav){
 
         }
 

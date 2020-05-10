@@ -41,7 +41,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
     int num_type = 0;
 
     DrawerLayout drawerLayout;
-    ArcNavigationView menuNav;
+    NavigationView menuNav;
     DisplayMetrics dm;
 
 
@@ -373,7 +373,8 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
 
         //set OnClick and size for navigation view
         menuNav.setNavigationItemSelectedListener(this);
-        menuNav.getLayoutParams().width = (int) (dm.widthPixels*.3);
+        menuNav.getLayoutParams().width = (int) (dm.widthPixels*.5);
+        menuNav.setItemIconTintList(null);
 
 
         img_icon.getLayoutParams().width = (int) (dm.widthPixels*.1);

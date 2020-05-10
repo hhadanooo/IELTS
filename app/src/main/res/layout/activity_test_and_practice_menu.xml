@@ -90,15 +90,13 @@
 
     </RelativeLayout>
 
-    <com.rom4ek.arcnavigationview.ArcNavigationView
+    <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/menu_bg"
         android:fitsSystemWindows="true"
-        app:itemBackground="@color/colorPrimary"
-        app:menu="@menu/my_navigation_items"
-        app:arc_cropDirection="cropOutside"
-        app:arc_width="96dp"/>
+        app:itemTextColor="#fff"
+        app:menu="@menu/my_navigation_items" />
 </androidx.drawerlayout.widget.DrawerLayout>

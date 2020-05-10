@@ -1,26 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/btnHomeNav"
-        android:title="home"/>
-    <item android:id="@+id/btnWriteNav"
-        android:title="Writing"/>
-    <item android:id="@+id/btnReadNav"
-        android:title="Reading"/>
-    <item android:id="@+id/btnSpeakNav"
-        android:title="Speaking"/>
-    <item android:id="@+id/btnListenNav"
-        android:title="Listening"/>
-    <item android:id="@+id/btnChallengeNav"
-        android:title="Challenge"/>
-    <item android:id="@+id/btnWebSIteNav"
-        android:title="Our WebSite"/>
-    <item android:id="@+id/btnContactNav"
-        android:title="Contact Us"/>
-    <item android:id="@+id/btnRatingNav"
-        android:title="Rate Us"/>
-    <item android:id="@+id/btnAboutNav"
-        android:title="About"/>
+
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
+        <item android:id="@+id/btnHomeNav"
+            android:title="home"
+            android:icon="@drawable/home_menu_icon"/>
+        <item android:id="@+id/btnWriteNav"
+            android:icon="@drawable/writing_icon"
+            android:title="Writing"/>
+        <item android:id="@+id/btnReadNav"
+            android:icon="@drawable/reading_icon"
+            android:title="Reading"/>
+        <item android:id="@+id/btnSpeakNav"
+            android:icon="@drawable/speaking_icon"
+            android:title="Speaking"/>
+        <item android:id="@+id/btnListenNav"
+            android:icon="@drawable/listening_icon"
+            android:title="Listening"/>
+        <item android:id="@+id/btnChallengeNav"
+            android:icon="@drawable/challenge_menu_icon"
+            android:title="Challenge"/>
+    </group>
+
+    <group android:id="@+id/menu_bottom"
+    android:checkableBehavior="none">
+        <item android:id="@+id/btnWebSIteNav"
+            android:icon="@drawable/web_menu_icon"
+            android:title="Our WebSite"/>
+        <item android:id="@+id/btnRatingNav"
+            android:icon="@drawable/rate_menu_icon"
+            android:title="Rate Us"/>
+
+        <item android:id="@+id/btnAboutNav"
+            android:title="About"
+            android:icon="@drawable/about_menu_icon"/>
+    </group>
+
+
 
 
 </menu>
