@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -35,6 +36,8 @@ public class ListenPracticeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listen_practice);
+
+        CheckIntent();
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -129,6 +132,55 @@ public class ListenPracticeActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void CheckIntent()
+    {
+        if(getIntent().getExtras().getString("Type1") != null)
+        {
+            if(getIntent().getExtras().getString("Easy") != null)
+            {
+                if(getIntent().getExtras().getInt("Number") != 0)
+                {
+                    Toast.makeText(this,"Type1Easy"+getIntent().getExtras().getInt("Number"),Toast.LENGTH_LONG).show();
+                }
+            }else if(getIntent().getExtras().getString("Normal") != null)
+            {
+                if(getIntent().getExtras().getInt("Number") != 0)
+                {
+                    Toast.makeText(this,"Type1Normal"+getIntent().getExtras().getInt("Number"),Toast.LENGTH_LONG).show();
+                }
+            }else if(getIntent().getExtras().getString("Hard") != null)
+            {
+                if(getIntent().getExtras().getInt("Number") != 0)
+                {
+                    Toast.makeText(this,"Type1Hard"+getIntent().getExtras().getInt("Number"),Toast.LENGTH_LONG).show();
+                }
+            }
+
+
+        }else if(getIntent().getExtras().getString("Type2") != null)
+        {
+            if(getIntent().getExtras().getString("Easy") != null)
+            {
+                if(getIntent().getExtras().getInt("Number") != 0)
+                {
+                    Toast.makeText(this,"Type2Easy"+getIntent().getExtras().getInt("Number"),Toast.LENGTH_LONG).show();
+                }
+            }else if(getIntent().getExtras().getString("Normal") != null)
+            {
+                if(getIntent().getExtras().getInt("Number") != 0)
+                {
+                    Toast.makeText(this,"Type2Normal"+getIntent().getExtras().getInt("Number"),Toast.LENGTH_LONG).show();
+                }
+            }else if(getIntent().getExtras().getString("Hard") != null)
+            {
+                if(getIntent().getExtras().getInt("Number") != 0)
+                {
+                    Toast.makeText(this,"Type2Hard"+getIntent().getExtras().getInt("Number"),Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 
 
