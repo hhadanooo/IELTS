@@ -34,16 +34,41 @@ public class ActivityTestRead extends AppCompatActivity {
         setContentView(R.layout.activity_test_read);
         getSupportActionBar().hide();
         init();
+
+        CheckIntent();
         SetPropertiesRelBody();
         SetPropertiesMainPage();
         SetPropertiesTabLayout();
+
+
+    }
+
+    public void CheckIntent()
+    {
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        if(getIntent().getExtras().getString("Academic") != null)
+        {
+           if(getIntent().getExtras().getInt("Number") != 0)
+           {
+               viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"Academic", getIntent().getExtras().getInt("Number")));
+               tabLayout.setupWithViewPager(viewPager);
+           }
+        }else if(getIntent().getExtras().get("General") != null)
+        {
+            if(getIntent().getExtras().getInt("Number") != 0)
+            {
+                viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"General", getIntent().getExtras().getInt("Number")));
+                tabLayout.setupWithViewPager(viewPager);
+            }
+        }
     }
 
     public void init()
     {
         rel_body = findViewById(R.id.activity_test_read_rel_body);
         img_body = findViewById(R.id.activity_test_read_img_body);
-        
+
 
         tv1_about_icon = findViewById(R.id.activity_test_read_tv1_about_icon);
         tv2_about_icon = findViewById(R.id.activity_test_read_tv2_about_icon);
@@ -95,8 +120,7 @@ public class ActivityTestRead extends AppCompatActivity {
     public void SetPropertiesTabLayout() {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-        viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"raminhacker"));
-        tabLayout.setupWithViewPager(viewPager);
+
 
         tabLayout.setTabTextColors(Color.parseColor("#8A7D7D"),Color.parseColor("#000000"));
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#275D98"));
@@ -107,19 +131,21 @@ public class ActivityTestRead extends AppCompatActivity {
 
         int Width,Height;
         String intent;
-        public SectionPagerAdapter(FragmentManager fm,int Width,int Height,String intent) {
+        int num;
+        public SectionPagerAdapter(FragmentManager fm,int Width,int Height,String intent,int num) {
 
             super(fm);
             this.Width = Width;
             this.Height = Height;
             this.intent = intent;
+            this.num = num;
 
         }
 
         @Override
         public Fragment getItem(int position) {
 
-            return new SlideFragmentTestReading().newSlide(Width,Height,intent);
+            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num);
         }
 
         @Override

@@ -25,14 +25,16 @@ public class SlideFragmentTestReading extends Fragment {
     TextView tv_text,tv_question_count,tv_question;
 
     ImageView img_timer,img_see_answer;
+    int num;
 
 
-    public static SlideFragmentTestReading newSlide(int Width,int Height,String intent){
+    public static SlideFragmentTestReading newSlide(int Width,int Height,String intent,int num){
         SlideFragmentTestReading fragment = new SlideFragmentTestReading();
         Bundle args = new Bundle();
         args.putInt("Width",Width);
         args.putInt("Height",Height);
         args.putString("Intent",intent);
+        args.putInt("num",num);
         fragment.setArguments(args);
         return fragment;
     }
@@ -45,6 +47,7 @@ public class SlideFragmentTestReading extends Fragment {
         Width = args.getInt("Width");
         Height = args.getInt("Height");
         intent = args.getString("Intent");
+        num  = args.getInt("num");
 
     }
 
@@ -56,9 +59,45 @@ public class SlideFragmentTestReading extends Fragment {
         init();
         SetPropertiesRelBody();
 
+        CheckIntnet();
+
 
         return rootview;
     }
+
+    public void CheckIntnet()
+    {
+
+        if(intent.contains("Academic"))
+        {
+            if(num != 0)
+            {
+                tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
+                        " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
+                tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
+                        " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
+                tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
+                        " rhoncus eltricies lacus");
+                tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting academic " + num);
+            }
+        }else if(intent.contains("General"))
+        {
+            if(num != 0)
+            {
+                tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
+                        " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
+                tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
+                        " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
+                tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
+                        " rhoncus eltricies lacus");
+                tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting general "+ num);
+            }
+        }
+    }
+
+
+
+
 
     public void init()
     {
@@ -72,13 +111,7 @@ public class SlideFragmentTestReading extends Fragment {
         rel_text_and_question.getLayoutParams().width = (int) (Width*.90);
         rel_text_and_question.getLayoutParams().height = (int)(Height*0.61);
 
-       tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-               " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-        tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-        tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                " rhoncus eltricies lacus");
-        tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting");
+
 
 
         tv_text.setMaxWidth((int) (Width * 0.80));
@@ -100,13 +133,6 @@ public class SlideFragmentTestReading extends Fragment {
         rel_text_and_question.getLayoutParams().width = (int) (Width*.90);
         rel_text_and_question.getLayoutParams().height = (int)(Height*0.61);
 
-        tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-        tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                " rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-        tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                " rhoncus eltricies lacus");
-        tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting");
 
 
         tv_text.setMaxWidth((int) (Width * 0.80));

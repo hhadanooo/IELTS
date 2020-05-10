@@ -385,31 +385,45 @@ public class Activity_test extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",1);
                         startActivity(intent);
                     }
                 });
                 custom2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",2);
+                        startActivity(intent);
                     }
                 });
                 custom3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",3);
+                        startActivity(intent);
                     }
                 });
                 custom4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",4);
+                        startActivity(intent);
                     }
                 });
                 custom5.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",5);
+                        startActivity(intent);
                     }
                 });
                 lin.addView(custom1);
@@ -429,31 +443,46 @@ public class Activity_test extends AppCompatActivity {
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",1);
+                        startActivity(intent);
                     }
                 });
                 custom2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",2);
+                        startActivity(intent);
                     }
                 });
                 custom3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",3);
+                        startActivity(intent);
                     }
                 });
                 custom4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",4);
+                        startActivity(intent);
                     }
                 });
                 custom5.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",5);
+                        startActivity(intent);
                     }
                 });
                 lin.addView(custom1);
