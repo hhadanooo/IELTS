@@ -171,7 +171,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         custom5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                DialogChlngShow dialogChlngShow = new DialogChlngShow(MainActivity.this,dm,"");
+                dialogChlngShow.show();
             }
         });
 

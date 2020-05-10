@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.Challenge.ChallengeActivity;
 import ir.hhadanooo.ielts.DialogAG.DialogAGShow;
 import ir.hhadanooo.ielts.R;
 
@@ -51,6 +52,7 @@ public class DialogChlngShow {
             public void onClick(View v) {
                 //context.startActivity(new Intent(DialogChlngShow.this , ));
                 Toast.makeText(context, "hi", Toast.LENGTH_SHORT).show();
+                context.startActivity(new Intent(context, ChallengeActivity.class));
             }
         });
 
