@@ -8,54 +8,51 @@
     android:background="@drawable/background">
 
     <RelativeLayout
+        android:id="@+id/activity_test_Write_rel_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_test_Write_rel_body"
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/activity_test_write_actionbar_img_icon_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:id="@+id/activity_test_write_iv_arrowBack_SimpleText"
             android:layout_alignParentStart="true"
-            android:background="@drawable/icon_arrow_back"/>
+            android:layout_alignParentTop="true"
+            android:layout_margin="7dp"
+            android:src="@drawable/icon_arrow_back"/>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true">
+            android:layout_centerInParent="true"
+            android:padding="3dp"
+            android:orientation="vertical">
+
             <ImageView
-                android:layout_marginTop="10dp"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/activity_test_write_img_body"
-
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"/>
-
+                android:id="@+id/Activity_test_write_iv_ic_logoPage_SimpleText"
+                android:background="@drawable/practice_icon"
+                android:layout_gravity="center_horizontal"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/activity_test_write_tv1_about_icon"
-                android:layout_below="@id/activity_test_write_img_body"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:layout_centerHorizontal="true"/>
-            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textColor="#000"
+                android:id="@+id/Activity_test_write_tv_TitleLogo_SimpleText"/>
 
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/activity_test_write_tv2_about_icon"
-                android:layout_below="@id/activity_test_write_tv1_about_icon"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/Activity_test_Write_tv_PathLogo_SimpleText"
+                android:layout_marginBottom="10dp"/>
 
-                android:textColor="#8A7D7D"
-                android:layout_centerHorizontal="true"/>
-        </RelativeLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -92,7 +89,7 @@
             android:id="@+id/activity_test_write_img_see_example"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_alignRight="@id/activity_test_write_rel_title_main_page"
             android:layout_below="@id/activity_test_write_rel_title_main_page"
             android:background="@drawable/seesample_icon"/>
@@ -100,8 +97,9 @@
 
 
         <ir.hhadanooo.ielts.CustomView.CustomEditText
+
             android:id="@+id/activity_test_write_edit_text_main_page"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/activity_test_write_img_see_example"
             android:background="@drawable/draw_background_custom_edittext"
             android:layout_width="wrap_content"
@@ -148,7 +146,8 @@
             android:id="@+id/activity_test_write_img_timer"
             android:layout_below="@id/activity_test_write_lin_button"
             android:layout_marginTop="15dp"
-            android:background="@drawable/icon_timer"/>
+            android:background="@drawable/icon_timer"
+            android:layout_marginBottom="20dp"/>
 
 
 

@@ -154,7 +154,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/iv_seeAnswer_playerTL"
-                    android:background="@drawable/seeanswer_icon"
+                    android:background="@drawable/seeanswer_icon1"
+                    android:layout_marginBottom="10dp"
                     />
 
             </LinearLayout>

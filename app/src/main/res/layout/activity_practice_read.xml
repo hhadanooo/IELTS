@@ -8,50 +8,56 @@
     android:background="@drawable/background">
 
     <RelativeLayout
+        android:id="@+id/activity_practice_read_rel_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/activity_practice_read_rel_body"
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/activity_practice_read_actionbar_img_icon_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:id="@+id/Activity_practice_read_iv_arrowBack_SimpleText"
             android:layout_alignParentStart="true"
-            android:background="@drawable/icon_arrow_back"/>
+            android:layout_alignParentTop="true"
+            android:layout_margin="7dp"
+            android:src="@drawable/icon_arrow_back"/>
 
-        <ImageView
-            android:layout_marginTop="10dp"
-
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_practice_read_img_body"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"/>
+            android:layout_centerInParent="true"
+            android:padding="3dp"
+            android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Activity_practice_read_iv_ic_logoPage_SimpleText"
+                android:background="@drawable/practice_icon"
+                android:layout_gravity="center_horizontal"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/activity_practice_read_tv1_about_icon"
-            android:layout_below="@id/activity_practice_read_img_body"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/activity_practice_read_tv2_about_icon"
-            android:layout_below="@id/activity_practice_read_tv1_about_icon"
-            android:layout_centerHorizontal="true"
-            android:textColor="#8A7D7D"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#000"
+                android:id="@+id/Activity_practice_read_tv_TitleLogo_SimpleText"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/Activity_practice_read_tv_PathLogo_SimpleText"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
     </RelativeLayout>
 
-
     <RelativeLayout
+
         android:id="@+id/activity_practice_read_rel_main_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,6 +75,7 @@
             android:layout_centerHorizontal="true">
 
             <TextView
+                android:layout_centerHorizontal="true"
                 android:textStyle="bold"
                 android:padding="8dp"
                 android:layout_width="wrap_content"
@@ -102,6 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+
                     android:padding="12dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,7 +128,9 @@
             android:layout_below="@id/activty_practice_read_rel_text"
             android:layout_marginTop="20dp"
             android:background="@drawable/seesample_icon"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"/>
+
 
 
 

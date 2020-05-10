@@ -35,8 +35,41 @@ public class Activity_practice_read extends AppCompatActivity {
         CheckIntent();
         SetPropertiesRelBody();
         SetPropertiesMainPage();
+        initActionBar();
 
     }
+
+    private void initActionBar() {
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        ImageView iv_arrowBack_SimpleText = findViewById(R.id.Activity_practice_read_iv_arrowBack_SimpleText);
+        ImageView iv_ic_logoPage_SimpleText = findViewById(R.id.Activity_practice_read_iv_ic_logoPage_SimpleText);
+        TextView tv_TitleLogo_SimpleText = findViewById(R.id.Activity_practice_read_tv_TitleLogo_SimpleText);
+        TextView tv_PathLogo_SimpleText = findViewById(R.id.Activity_practice_read_tv_PathLogo_SimpleText);
+
+        iv_arrowBack_SimpleText.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        iv_arrowBack_SimpleText.getLayoutParams().height = (int) (dm.widthPixels*.1);
+
+        iv_ic_logoPage_SimpleText.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        iv_ic_logoPage_SimpleText.getLayoutParams().height = (int) (dm.widthPixels*.1);
+
+        tv_TitleLogo_SimpleText.setTextSize((int) (dm.widthPixels*.025));
+
+        tv_PathLogo_SimpleText.setTextSize((int) (dm.widthPixels*.012));
+
+        tv_TitleLogo_SimpleText.setText("practice1");
+        tv_PathLogo_SimpleText.setText("Listening");
+
+        iv_arrowBack_SimpleText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+    }
+
 
     public void CheckIntent()
     {
@@ -66,15 +99,12 @@ public class Activity_practice_read extends AppCompatActivity {
     public void init()
     {
         rel_body = findViewById(R.id.activity_practice_read_rel_body);
-        img_body = findViewById(R.id.activity_practice_read_img_body);
+
 
         rel_main_page = findViewById(R.id.activity_practice_read_rel_main_page);
         rel_title_main_page = findViewById(R.id.activty_practice_read_rel_title);
 
-        tv1_about_icon = findViewById(R.id.activity_practice_read_tv1_about_icon);
-        tv2_about_icon = findViewById(R.id.activity_practice_read_tv2_about_icon);
 
-        img_back = findViewById(R.id.activity_practice_read_actionbar_img_icon_back);
 
         tv_title_main_page = findViewById(R.id.activity_practice_read_tv_title_main_page);
         tv_count = findViewById(R.id.activity_practice_read_tv_count);
@@ -90,54 +120,20 @@ public class Activity_practice_read extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        tv1_about_icon.setText("Practice");
-        tv2_about_icon.setText("Reading");
-
-        img_body.setBackground(getResources().getDrawable(R.drawable.practice_icon));
-
-
-        rel_body.getLayoutParams().height = (int)(dm.heightPixels*0.16);
-
-        tv1_about_icon.setTextSize((int) (dm.widthPixels * 0.017));
-        tv2_about_icon.setTextSize((int) (dm.widthPixels * 0.01));
-
-        tv1_about_icon.setTextColor(Color.BLACK);
-
-        img_body.getLayoutParams().width = (int) (dm.widthPixels*0.15);
-        img_body.getLayoutParams().height = (int) (dm.widthPixels*0.15);
-
-
-        img_back.getLayoutParams().width = (int) (dm.widthPixels*.1);
-        img_back.getLayoutParams().height = (int) (dm.widthPixels*.1);
-
-
-
-        img_see_answer.setBackground(getDrawable(R.drawable.seeanswer_icon1));
-
-        img_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-
-
-
-
 
     }
     public void SetPropertiesMainPage() {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         rel_main_page.getLayoutParams().width = (int) (dm.widthPixels * .90);
-        rel_main_page.getLayoutParams().height = (int) (dm.heightPixels * 0.78);
+        //rel_main_page.getLayoutParams().height = (int) (dm.heightPixels * 0.75);
 
         rel_title_main_page.getLayoutParams().width = (int) (dm.widthPixels * .80);
-        rel_title_main_page.getLayoutParams().height = (int) (dm.heightPixels * 0.16);
+        rel_title_main_page.getLayoutParams().height = (int) (dm.widthPixels * 0.2);
 
 
         rel_text.getLayoutParams().width = (int) (dm.widthPixels * .80);
-        rel_text.getLayoutParams().height = (int) (dm.heightPixels * 0.42);
+        rel_text.getLayoutParams().height = (int) (dm.widthPixels * 0.65);
 
         tv_title_main_page.setMaxWidth((int) (dm.widthPixels * 0.75));
 
@@ -152,10 +148,10 @@ public class Activity_practice_read extends AppCompatActivity {
         tv_text.setTextColor(Color.BLACK);
 
 
+        img_see_answer.getLayoutParams().width = (int) (dm.widthPixels * 0.29);
+        img_see_answer.getLayoutParams().height = (int) (dm.widthPixels * 0.085);
 
-
-        img_see_answer.getLayoutParams().width = (int) (dm.widthPixels * 0.30);
-        img_see_answer.getLayoutParams().height = (int) (dm.heightPixels * 0.05);
+        img_see_answer.setBackground(getDrawable(R.drawable.seeanswer_icon1));
 
         tv_count.setTextSize((int) (dm.widthPixels * 0.022));
     }

@@ -17,8 +17,8 @@ import ir.hhadanooo.ielts.R;
 
 public class ActivityTestWrite extends AppCompatActivity {
     RelativeLayout rel_body, rel_main_page,rel_title_main_page;
-    ImageView img_body;
-    TextView tv1_about_icon,tv2_about_icon,tv_title_main_page;
+
+    TextView tv_TitleLogo_SimpleText,tv_PathLogo_SimpleText,tv_title_main_page;
     ImageView img_back;
     ImageView img_see_example,img_shareanswer,img_submit;
     CustomEditText et_main_page;
@@ -29,10 +29,43 @@ public class ActivityTestWrite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_write);
         getSupportActionBar().hide();
+        initActionBar();
         init();
+
         SetPropertiesRelBody();
 
 
+
+    }
+    private void initActionBar() {
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        ImageView iv_arrowBack_SimpleText = findViewById(R.id.activity_test_write_iv_arrowBack_SimpleText);
+        ImageView iv_ic_logoPage_SimpleText = findViewById(R.id.Activity_test_write_iv_ic_logoPage_SimpleText);
+        tv_TitleLogo_SimpleText = findViewById(R.id.Activity_test_write_tv_TitleLogo_SimpleText);
+        tv_PathLogo_SimpleText = findViewById(R.id.Activity_test_Write_tv_PathLogo_SimpleText);
+
+        iv_arrowBack_SimpleText.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        iv_arrowBack_SimpleText.getLayoutParams().height = (int) (dm.widthPixels*.1);
+
+        iv_ic_logoPage_SimpleText.getLayoutParams().width = (int) (dm.widthPixels*.1);
+        iv_ic_logoPage_SimpleText.getLayoutParams().height = (int) (dm.widthPixels*.1);
+
+        tv_TitleLogo_SimpleText.setTextSize((int) (dm.widthPixels*.025));
+
+        tv_PathLogo_SimpleText.setTextSize((int) (dm.widthPixels*.012));
+
+        tv_TitleLogo_SimpleText.setText("Text1");
+        tv_PathLogo_SimpleText.setText("Listening");
+
+        iv_arrowBack_SimpleText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
     }
     public void init()
@@ -41,16 +74,8 @@ public class ActivityTestWrite extends AppCompatActivity {
         rel_main_page = findViewById(R.id.activity_test_write_rel_main_page);
         rel_title_main_page= findViewById(R.id.activity_test_write_rel_title_main_page);
 
-        img_body = findViewById(R.id.activity_test_write_img_body);
-
-
-        tv1_about_icon = findViewById(R.id.activity_test_write_tv1_about_icon);
-        tv2_about_icon = findViewById(R.id.activity_test_write_tv2_about_icon);
 
         tv_title_main_page = findViewById(R.id.activity_test_write_tv_title_main_page);
-
-
-        img_back = findViewById(R.id.activity_test_write_actionbar_img_icon_back);
 
         img_see_example = findViewById(R.id.activity_test_write_img_see_example);
         img_shareanswer = findViewById(R.id.activity_test_write_img_shareanswer);
@@ -81,7 +106,7 @@ public class ActivityTestWrite extends AppCompatActivity {
             {
                 if(getIntent().getExtras().getInt("Number") != 0)
                 {
-                    tv2_about_icon.setText("Writing/Academic");
+                    tv_PathLogo_SimpleText.setText("Writing/Academic");
                     tv_title_main_page.setText("TOPIC Academic " + getIntent().getExtras().getInt("Number"));
                 }
             }else if(getIntent().getExtras().getString("General") != null)
@@ -89,7 +114,7 @@ public class ActivityTestWrite extends AppCompatActivity {
                 if(getIntent().getExtras().getInt("Number") != 0)
                 {
 
-                    tv2_about_icon.setText("Writing/General");
+                    tv_PathLogo_SimpleText.setText("Writing/General");
                     tv_title_main_page.setText("TOPIC General " + getIntent().getExtras().getInt("Number"));
 
                 }
@@ -101,41 +126,6 @@ public class ActivityTestWrite extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        tv1_about_icon.setText("Test");
-
-
-        img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
-
-        img_body.getLayoutParams().width = (int) (dm.widthPixels*.17);
-        img_body.getLayoutParams().height = (int) (dm.widthPixels*.17);
-
-        rel_body.getLayoutParams().height = (int) (dm.heightPixels * 0.16);
-
-        tv1_about_icon.setTextSize((int) (dm.widthPixels * 0.017));
-        tv2_about_icon.setTextSize((int) (dm.widthPixels * 0.01));
-
-        tv1_about_icon.setTextColor(Color.BLACK);
-
-        img_body.getLayoutParams().width = (int) (dm.widthPixels * 0.15);
-        img_body.getLayoutParams().height = (int) (dm.widthPixels * 0.15);
-
-
-        img_body.setBackground(getDrawable(R.drawable.test_menue));
-
-
-        img_back.getLayoutParams().width = (int) (dm.widthPixels*.1);
-        img_back.getLayoutParams().height = (int) (dm.widthPixels*.1);
-
-
-
-
-        img_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-
 
     }
 
@@ -144,10 +134,10 @@ public class ActivityTestWrite extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         rel_main_page.getLayoutParams().width = (int) (dm.widthPixels*.90);
-        rel_main_page.getLayoutParams().height = (int)(dm.heightPixels*0.78);
+        //rel_main_page.getLayoutParams().height = (int)(dm.heightPixels*0.78);
 
         rel_title_main_page.getLayoutParams().width = (int) (dm.widthPixels*.75);
-        rel_title_main_page.getLayoutParams().height = (int)(dm.heightPixels*0.10);
+        rel_title_main_page.getLayoutParams().height = (int)(dm.widthPixels*0.18);
 
         tv_title_main_page.setMaxWidth((int) (dm.widthPixels * 0.65));
         tv_title_main_page.setMaxHeight((int) (dm.heightPixels * 0.13));
@@ -158,10 +148,10 @@ public class ActivityTestWrite extends AppCompatActivity {
 
 
         img_see_example.getLayoutParams().width = (int) (dm.widthPixels*0.25);
-        img_see_example.getLayoutParams().height = (int) (dm.heightPixels*0.04);
+        img_see_example.getLayoutParams().height = (int) (dm.widthPixels*0.074);
 
         et_main_page.getLayoutParams().width = (int) (dm.widthPixels*0.75);
-        et_main_page.getLayoutParams().height = (int) (dm.heightPixels*0.35);
+        et_main_page.getLayoutParams().height = (int) (dm.widthPixels*0.59);
 
         img_submit.setBackground(getDrawable(R.drawable.submit_icon1));
         img_see_example.setBackground(getDrawable(R.drawable.seesample_icon1));
@@ -206,16 +196,16 @@ public class ActivityTestWrite extends AppCompatActivity {
         });
 
 
-        img_shareanswer.getLayoutParams().width = (int) (dm.widthPixels*0.295);
-        img_shareanswer.getLayoutParams().height = (int) (dm.heightPixels*0.045);
+        img_shareanswer.getLayoutParams().width = (int) (dm.widthPixels*0.25);
+        img_shareanswer.getLayoutParams().height = (int) (dm.widthPixels*0.074);
 
-        img_submit.getLayoutParams().width = (int) (dm.widthPixels*0.295);
-        img_submit.getLayoutParams().height = (int) (dm.heightPixels*0.045);
+        img_submit.getLayoutParams().width = (int) (dm.widthPixels*0.25);
+        img_submit.getLayoutParams().height = (int) (dm.widthPixels*0.074);
 
 
 
-        img_timer.getLayoutParams().width = (int) (dm.widthPixels*0.15);
-        img_timer.getLayoutParams().height = (int) (dm.widthPixels*0.15);
+        img_timer.getLayoutParams().width = (int) (dm.widthPixels*0.07);
+        img_timer.getLayoutParams().height = (int) (dm.widthPixels*0.07);
 
 
 

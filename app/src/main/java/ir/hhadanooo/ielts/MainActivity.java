@@ -210,10 +210,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         img_icon.getLayoutParams().width = (int)(dm.widthPixels*0.12);
-        img_icon.getLayoutParams().height = (int)(dm.heightPixels*0.07);
+        img_icon.getLayoutParams().height = (int)(dm.widthPixels*0.12);
 
         img_icon1.getLayoutParams().width = (int)(dm.widthPixels*0.12);
-        img_icon1.getLayoutParams().height = (int)(dm.heightPixels*0.07);
+        img_icon1.getLayoutParams().height = (int)(dm.widthPixels*0.12);
 
 
         //set width and height layout custom view

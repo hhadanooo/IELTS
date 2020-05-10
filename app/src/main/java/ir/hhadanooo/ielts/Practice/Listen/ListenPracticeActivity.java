@@ -93,10 +93,10 @@ public class ListenPracticeActivity extends AppCompatActivity {
         et_PracticeLResult.getLayoutParams().height = (int) (dm.widthPixels*.4);
 
         iv_shareAnswer_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.25);
-        iv_shareAnswer_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.08);
+        iv_shareAnswer_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.074);
 
         iv_seeAnswer_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.25);
-        iv_seeAnswer_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.08);
+        iv_seeAnswer_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.074);
 
         view_space_button_see_share.getLayoutParams().width = (int) (dm.widthPixels*.2);
 

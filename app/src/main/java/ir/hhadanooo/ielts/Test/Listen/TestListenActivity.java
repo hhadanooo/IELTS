@@ -2,9 +2,11 @@ package ir.hhadanooo.ielts.Test.Listen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,6 +31,7 @@ public class TestListenActivity extends AppCompatActivity {
     TextView tv_time_TestL , tv_TitleLogo_TestL ,tv_PathLogo_TestL;
     SeekBar seekBar_playerTL;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +93,7 @@ public class TestListenActivity extends AppCompatActivity {
 
 
         iv_seeAnswer_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
-        iv_seeAnswer_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.08);
+        iv_seeAnswer_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.074);
 
        // seekBar_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         seekBar_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.03);
@@ -99,6 +102,39 @@ public class TestListenActivity extends AppCompatActivity {
 
         et_TestL_Result.getLayoutParams().width = (int) (dm.widthPixels*.75);
         et_TestL_Result.getLayoutParams().height = (int) (dm.widthPixels*.4);
+        et_TestL_Result.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (et_TestL_Result.hasFocus()) {
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    if ((event.getAction() & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_SCROLL) {
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        return true;
+                    }
+                }
+                return false;
+
+            }
+        });
+
+        et_TestL.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (et_TestL.hasFocus()) {
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    if ((event.getAction() & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_SCROLL) {
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        return true;
+                    }
+                }
+                return false;
+
+            }
+        });
 
         CheckIntent();
 
