@@ -90,7 +90,7 @@ public class Activity_Practice extends AppCompatActivity {
             tv1_about_icon.setText("Practice");
             tv2_about_icon.setText("Listening");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.practice_icon));
         }
 
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
@@ -143,11 +143,11 @@ public class Activity_Practice extends AppCompatActivity {
                     CustomViewItem custom5 = new CustomViewItem(this);
 
 
-                    SetSettingCustomItem("","type a easy 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a easy 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a easy 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a easy 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a easy 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type a easy 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a easy 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a easy 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a easy 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a easy 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -221,11 +221,11 @@ public class Activity_Practice extends AppCompatActivity {
                     CustomViewItem custom5 = new CustomViewItem(this);
 
 
-                    SetSettingCustomItem("","type b easy 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b easy 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b easy 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b easy 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b easy 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b easy 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b easy 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b easy 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b easy 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b easy 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -302,11 +302,11 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                    SetSettingCustomItem("","type a normal 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a normal 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a normal 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a normal 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a normal 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type a normal 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a normal 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a normal 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a normal 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a normal 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -378,11 +378,11 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                    SetSettingCustomItem("","type b normal 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b normal 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b normal 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b normal 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b normal 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b normal 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b normal 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b normal 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b normal 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b normal 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -458,11 +458,11 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                    SetSettingCustomItem("","type a hard 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a hard 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a hard 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a hard 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a hard 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type a hard 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a hard 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a hard 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a hard 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a hard 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -534,11 +534,11 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                    SetSettingCustomItem("","type b hard 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b hard 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b hard 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b hard 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b hard 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b hard 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b hard 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b hard 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b hard 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b hard 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -607,8 +607,8 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                SetSettingCustomItem("","type a",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","type b",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","type a",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                SetSettingCustomItem("","type b",custom2,getResources().getDrawable(R.drawable.practice_icon));
 
                 //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 

@@ -221,7 +221,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tv_body.setMaxWidth((int) (dm.widthPixels * 0.58));
 
 
-
         //set margin
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
