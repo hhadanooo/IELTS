@@ -52,10 +52,10 @@ public class DialogChlngShow {
             public void onClick(View v) {
                 //context.startActivity(new Intent(DialogChlngShow.this , ));
                 Toast.makeText(context, "hi", Toast.LENGTH_SHORT).show();
+                dismiss();
                 context.startActivity(new Intent(context, ChallengeActivity.class));
             }
         });
-
 
     }
 

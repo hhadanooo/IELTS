@@ -109,17 +109,18 @@ public class ActivityTestWrite extends AppCompatActivity {
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.17);
         img_body.getLayoutParams().height = (int) (dm.widthPixels*.17);
 
-        rel_body.getLayoutParams().height = (int)(dm.heightPixels*0.16);
+        rel_body.getLayoutParams().height = (int) (dm.heightPixels * 0.16);
 
-
-
-        tv1_about_icon.setTextSize((int) (dm.widthPixels * 0.020));
-        tv2_about_icon.setTextSize((int) (dm.widthPixels * 0.0125));
+        tv1_about_icon.setTextSize((int) (dm.widthPixels * 0.017));
+        tv2_about_icon.setTextSize((int) (dm.widthPixels * 0.01));
 
         tv1_about_icon.setTextColor(Color.BLACK);
 
-        img_body.getLayoutParams().width = (int) (dm.widthPixels*0.25);
-        img_body.getLayoutParams().height = (int) (dm.widthPixels*0.25);
+        img_body.getLayoutParams().width = (int) (dm.widthPixels * 0.15);
+        img_body.getLayoutParams().height = (int) (dm.widthPixels * 0.15);
+
+
+        img_body.setBackground(getDrawable(R.drawable.test_menue));
 
 
         img_back.getLayoutParams().width = (int) (dm.widthPixels*.1);
@@ -161,6 +162,10 @@ public class ActivityTestWrite extends AppCompatActivity {
 
         et_main_page.getLayoutParams().width = (int) (dm.widthPixels*0.75);
         et_main_page.getLayoutParams().height = (int) (dm.heightPixels*0.35);
+
+        img_submit.setBackground(getDrawable(R.drawable.submit_icon1));
+        img_see_example.setBackground(getDrawable(R.drawable.seesample_icon1));
+        img_shareanswer.setBackground(getDrawable(R.drawable.shareanswer_icon1));
 
         //set max line 40
         et_main_page.setOnKeyListener(new View.OnKeyListener() {

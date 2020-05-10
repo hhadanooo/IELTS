@@ -144,6 +144,8 @@ public class SlideFragmentTestReading extends Fragment {
         img_timer.getLayoutParams().width = (int) (Width*0.1);
         img_timer.getLayoutParams().height = (int) (Width*0.1);
 
+        img_see_answer.setBackground(getContext().getDrawable(R.drawable.seeanswer_icon1));
+
         img_see_answer.getLayoutParams().width = (int) (Width*0.295);
         img_see_answer.getLayoutParams().height = (int) (Height*0.045);
 
