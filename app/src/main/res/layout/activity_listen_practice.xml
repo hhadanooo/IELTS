@@ -163,7 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/iv_shareAnswer_playerPL"
-                    android:background="@drawable/shareanswer_icon1"
+                    android:background="@drawable/shareanswer_icon"
                     />
                 <View
                     android:layout_width="wrap_content"

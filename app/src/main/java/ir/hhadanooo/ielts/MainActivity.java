@@ -289,7 +289,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         menuNav.setNavigationItemSelectedListener(this);
         menuNav.getLayoutParams().width = (int) (dm.widthPixels*.5);
         menuNav.setItemIconTintList(null);
-
         img_icon.getLayoutParams().width = (int) (dm.widthPixels*.1);
         img_icon.getLayoutParams().height = (int) (dm.widthPixels*.1);
         img_icon.setOnClickListener(new View.OnClickListener() {
@@ -307,7 +306,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (item.getItemId() == R.id.btnHomeNav){
             drawerLayout.closeDrawer(GravityCompat.START);
-            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
         }else if (item.getItemId() == R.id.btnListenNav){
             Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
             intent.putExtra("Listen","listen");
@@ -316,14 +314,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
             intent.putExtra("Speak","speak");
             startActivity(intent);
+
         }else if (item.getItemId() == R.id.btnReadNav){
             Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
             intent.putExtra("Read","read");
             startActivity(intent);
+
         }else if (item.getItemId() == R.id.btnWriteNav){
             Intent intent = new Intent(MainActivity.this , ActivityTestAndPracticeMenu.class);
             intent.putExtra("Write","write");
             startActivity(intent);
+
         }else if (item.getItemId() == R.id.btnWebSIteNav){
 
             String url = "http://www.gooogle.com";
@@ -336,7 +337,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if (item.getItemId() == R.id.btnAboutNav){
 
         }else if (item.getItemId() == R.id.btnChallengeNav){
-
+            DialogChlngShow dialogChlngShow = new DialogChlngShow(MainActivity.this,dm,"");
+            dialogChlngShow.show();
         }
 
 

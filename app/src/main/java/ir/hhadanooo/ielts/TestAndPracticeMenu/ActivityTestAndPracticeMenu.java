@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
@@ -25,6 +26,8 @@ import com.rom4ek.arcnavigationview.ArcNavigationView;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.DialogAG.DialogAGShow;
+import ir.hhadanooo.ielts.DialogChlng.DialogChlngShow;
+import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.Practice.Activity_Practice;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.Test.Activity_test;
@@ -376,6 +379,17 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         menuNav.getLayoutParams().width = (int) (dm.widthPixels*.5);
         menuNav.setItemIconTintList(null);
 
+        if (num_type == 1){
+            menuNav.getMenu().getItem(4).setEnabled(false);
+        }else if (num_type == 2){
+            menuNav.getMenu().getItem(3).setEnabled(false);
+        }else if (num_type == 3){
+            menuNav.getMenu().getItem(2).setEnabled(false);
+        }else if (num_type == 4){
+            menuNav.getMenu().getItem(1).setEnabled(false);
+        }
+
+
 
         img_icon.getLayoutParams().width = (int) (dm.widthPixels*.1);
         img_icon.getLayoutParams().height = (int) (dm.widthPixels*.1);
@@ -394,31 +408,42 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
 
         if (item.getItemId() == R.id.btnHomeNav){
             drawerLayout.closeDrawer(GravityCompat.START);
-            Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
+            onBackPressed();
+            finish();
         }else if (item.getItemId() == R.id.btnListenNav){
             Intent intent = new Intent(ActivityTestAndPracticeMenu.this , ActivityTestAndPracticeMenu.class);
             intent.putExtra("Listen","listen");
             startActivity(intent);
+            finish();
         }else if (item.getItemId() == R.id.btnSpeakNav){
             Intent intent = new Intent(ActivityTestAndPracticeMenu.this , ActivityTestAndPracticeMenu.class);
             intent.putExtra("Speak","speak");
             startActivity(intent);
+            finish();
         }else if (item.getItemId() == R.id.btnReadNav){
             Intent intent = new Intent(ActivityTestAndPracticeMenu.this , ActivityTestAndPracticeMenu.class);
             intent.putExtra("Read","read");
             startActivity(intent);
+            finish();
         }else if (item.getItemId() == R.id.btnWriteNav){
             Intent intent = new Intent(ActivityTestAndPracticeMenu.this , ActivityTestAndPracticeMenu.class);
             intent.putExtra("Write","write");
             startActivity(intent);
+            finish();
         }else if (item.getItemId() == R.id.btnWebSIteNav){
 
-        }
-        else if (item.getItemId() == R.id.btnRatingNav){
+            String url = "http://www.gooogle.com";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
 
-        }
-        else if (item.getItemId() == R.id.btnAboutNav){
+        }else if (item.getItemId() == R.id.btnRatingNav){
 
+        }else if (item.getItemId() == R.id.btnAboutNav){
+
+        }else if (item.getItemId() == R.id.btnChallengeNav){
+            DialogChlngShow dialogChlngShow = new DialogChlngShow(ActivityTestAndPracticeMenu.this,dm,"");
+            dialogChlngShow.show();
         }
 
         item.setChecked(true);
