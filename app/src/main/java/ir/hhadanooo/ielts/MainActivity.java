@@ -12,6 +12,7 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -34,6 +35,7 @@ import java.util.Objects;
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
+import ir.hhadanooo.ielts.DialogChlng.DialogChlngShow;
 import ir.hhadanooo.ielts.HelpPageStartTest.HelpStartTestActivity;
 import ir.hhadanooo.ielts.Practice.Listen.ListenPracticeActivity;
 import ir.hhadanooo.ielts.Quiz.QuizActivity;
@@ -321,6 +323,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("Write","write");
             startActivity(intent);
         }else if (item.getItemId() == R.id.btnWebSIteNav){
+
+            String url = "http://www.gooogle.com";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
 
         }else if (item.getItemId() == R.id.btnRatingNav){
 
