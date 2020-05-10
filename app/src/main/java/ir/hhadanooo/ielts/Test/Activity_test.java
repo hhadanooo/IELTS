@@ -16,6 +16,7 @@ import android.widget.TextView;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.SimpleText.SimpleTextActivity;
+import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
 import ir.hhadanooo.ielts.Tips.ActivityTips;
 
 public class Activity_test extends AppCompatActivity {
@@ -108,25 +109,25 @@ public class Activity_test extends AppCompatActivity {
             tv1_about_icon.setText("Test");
             tv2_about_icon.setText("Listening");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.test_menue));
         }else if(num_type == 2)
         {
             tv1_about_icon.setText("Test");
             tv2_about_icon.setText("Speaking");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.test_menue));
         }else if(num_type == 3)
         {
             tv1_about_icon.setText("Test");
             tv2_about_icon.setText("Reading");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.test_menue));
         }else if(num_type == 4)
         {
             tv1_about_icon.setText("Test");
             tv2_about_icon.setText("Writing");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.test_menue));
         }
 
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
@@ -175,16 +176,16 @@ public class Activity_test extends AppCompatActivity {
 
         if(num_type == 1)
         {
-            SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 6",custom6,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 7",custom7,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 8",custom8,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 9",custom9,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 10",custom10,getResources().getDrawable(R.drawable.test_menue));
             //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
 
@@ -192,60 +193,81 @@ public class Activity_test extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",1);
+                    startActivity(intent);
                 }
             });
             custom2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",2);
+                    startActivity(intent);
                 }
             });
             custom3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",3);
+                    startActivity(intent);
                 }
             });
             custom4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",4);
+                    startActivity(intent);
                 }
             });
             custom5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",5);
+                    startActivity(intent);
                 }
             });
             custom6.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",6);
+                    startActivity(intent);
                 }
             });
             custom7.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",7);
+                    startActivity(intent);
                 }
             });
             custom8.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",8);
+                    startActivity(intent);
                 }
             });
             custom9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",9);
+                    startActivity(intent);
                 }
             });
             custom10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
+                    intent.putExtra("Number",10);
+                    startActivity(intent);
                 }
             });
 
@@ -255,16 +277,16 @@ public class Activity_test extends AppCompatActivity {
         {
 
 
-            SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","test 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 6",custom6,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 7",custom7,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 8",custom8,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 9",custom9,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","test 10",custom10,getResources().getDrawable(R.drawable.test_menue));
             //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
 
@@ -375,40 +397,55 @@ public class Activity_test extends AppCompatActivity {
         {
             if(getIntent().getExtras().getString("Academic") != null)
             {
-                SetSettingCustomItem("","test academic 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test academic 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test academic 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test academic 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test academic 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test academic 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test academic 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test academic 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test academic 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",1);
+                        startActivity(intent);
                     }
                 });
                 custom2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",2);
+                        startActivity(intent);
                     }
                 });
                 custom3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",3);
+                        startActivity(intent);
                     }
                 });
                 custom4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",4);
+                        startActivity(intent);
                     }
                 });
                 custom5.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("Academic","Academic");
+                        intent.putExtra("Number",5);
+                        startActivity(intent);
                     }
                 });
                 lin.addView(custom1);
@@ -419,40 +456,55 @@ public class Activity_test extends AppCompatActivity {
 
             }else if(getIntent().getExtras().getString("General") != null)
             {
-                SetSettingCustomItem("","test general 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test general 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test general 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test general 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test general 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test general 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test general 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test general 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test general 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",1);
+                        startActivity(intent);
                     }
                 });
                 custom2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",2);
+                        startActivity(intent);
                     }
                 });
                 custom3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",3);
+                        startActivity(intent);
                     }
                 });
                 custom4.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",4);
+                        startActivity(intent);
                     }
                 });
                 custom5.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
+                        intent.putExtra("General","General");
+                        intent.putExtra("Number",5);
+                        startActivity(intent);
                     }
                 });
                 lin.addView(custom1);
@@ -475,11 +527,11 @@ public class Activity_test extends AppCompatActivity {
 
             if(getIntent().getExtras().getString("Academic") != null)
             {
-                SetSettingCustomItem("","test academic 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test academic 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test academic 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test academic 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test academic 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test academic 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test academic 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test academic 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test academic 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test academic 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -539,11 +591,11 @@ public class Activity_test extends AppCompatActivity {
 
             }else if(getIntent().getExtras().getString("General") != null)
             {
-                SetSettingCustomItem("","test general 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test general 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test general 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test general 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","test general 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","test general 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test general 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test general 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test general 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test general 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override

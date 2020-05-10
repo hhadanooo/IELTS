@@ -57,9 +57,6 @@ public class Activity_Vocab extends AppCompatActivity {
         img_back = findViewById(R.id.activity_vocab_actionbar_img_icon_back);
 
 
-
-
-
     }
 
 
@@ -95,13 +92,13 @@ public class Activity_Vocab extends AppCompatActivity {
             tv1_about_icon.setText("Vocab");
             tv2_about_icon.setText("Writeing");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.vocab));
         }if(num_type == 3)
         {
             tv1_about_icon.setText("Vocab");
             tv2_about_icon.setText("Speaking");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.vocab));
         }
 
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
@@ -150,16 +147,16 @@ public class Activity_Vocab extends AppCompatActivity {
 
         if(num_type == 1)
         {
-            SetSettingCustomItem("","vocab 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 1",custom1,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 2",custom2,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 3",custom3,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 4",custom4,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 5",custom5,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 6",custom6,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 7",custom7,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 8",custom8,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 9",custom9,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 10",custom10,getResources().getDrawable(R.drawable.vocab));
             //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
 
@@ -270,16 +267,16 @@ public class Activity_Vocab extends AppCompatActivity {
         {
 
 
-            SetSettingCustomItem("","vocab 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","vocab 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
+            SetSettingCustomItem("","vocab 1",custom1,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 2",custom2,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 3",custom3,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 4",custom4,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 5",custom5,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab6",custom6,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 7",custom7,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 8",custom8,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 9",custom9,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","vocab 10",custom10,getResources().getDrawable(R.drawable.vocab));
             //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
 

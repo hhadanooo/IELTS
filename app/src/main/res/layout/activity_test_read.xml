@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Test.ActivityTestRead"
+    android:background="@drawable/background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_test_read_rel_body"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/activity_test_read_actionbar_img_icon_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/icon_arrow_back"/>
+
+        <ImageView
+            android:layout_marginTop="10dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_test_read_img_body"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"/>
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_test_read_tv1_about_icon"
+            android:layout_below="@id/activity_test_read_img_body"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"/>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_test_read_tv2_about_icon"
+            android:layout_below="@id/activity_test_read_tv1_about_icon"
+            android:layout_centerHorizontal="true"
+            android:textColor="#8A7D7D"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_test_read_lin_tab"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/activity_test_read_rel_body"
+        android:layout_width="300dp"
+        android:layout_height="600dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+
+        android:background="@drawable/dorw_background_customviewitem">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/activity_test_read_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/draw_background_lin_tab_layout"
+            />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/activity_test_read_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

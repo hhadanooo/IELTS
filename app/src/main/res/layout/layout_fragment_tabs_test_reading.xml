@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:id="@+id/layout_fragment_rel_text_question">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_fragment_tv_text"/>
+
+                <TextView
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/layout_fragment_tv_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_fragment_tv_question_count"
+                    android:text="Question 1-6"
+                    android:textStyle="bold"
+                    android:textColor="#3949AB"/>
+
+                <TextView
+                    android:paddingLeft="10dp"
+                    android:textColor="#3949AB"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/layout_fragment_tv_question_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/layout_fragment_tv_question"/>
+
+            </RelativeLayout>
+
+
+
+
+
+
+        </ScrollView>
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_marginLeft="20dp"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_fragment_img_timer"
+        android:background="@drawable/timer_icon"
+        android:layout_alignParentLeft="true"/>
+    <ImageView
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:background="@drawable/seeanswer_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_ftagment_img_see_answer"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
+
+
+
+</RelativeLayout>

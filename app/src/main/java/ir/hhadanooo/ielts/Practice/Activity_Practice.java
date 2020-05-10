@@ -2,6 +2,7 @@ package ir.hhadanooo.ielts.Practice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import android.widget.TextView;
 
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
+import ir.hhadanooo.ielts.Practice.Listen.ListenPracticeActivity;
 import ir.hhadanooo.ielts.R;
+import ir.hhadanooo.ielts.Test.Activity_test;
 
 public class Activity_Practice extends AppCompatActivity {
 
@@ -87,7 +90,7 @@ public class Activity_Practice extends AppCompatActivity {
             tv1_about_icon.setText("Practice");
             tv2_about_icon.setText("Listening");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.tip_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.practice_icon));
         }
 
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
@@ -140,11 +143,11 @@ public class Activity_Practice extends AppCompatActivity {
                     CustomViewItem custom5 = new CustomViewItem(this);
 
 
-                    SetSettingCustomItem("","type a easy",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a easy",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a easy",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a easy",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a easy",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type a easy 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a easy 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a easy 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a easy 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a easy 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -152,31 +155,51 @@ public class Activity_Practice extends AppCompatActivity {
                     custom1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",1);
+                            startActivity(intent);
                         }
                     });
                     custom2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",2);
+                            startActivity(intent);
                         }
                     });
                     custom3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",3);
+                            startActivity(intent);
                         }
                     });
                     custom4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",4);
+                            startActivity(intent);
                         }
                     });
                     custom5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",5);
+                            startActivity(intent);
                         }
                     });
 
@@ -198,11 +221,11 @@ public class Activity_Practice extends AppCompatActivity {
                     CustomViewItem custom5 = new CustomViewItem(this);
 
 
-                    SetSettingCustomItem("","type b easy",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b easy",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b easy",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b easy",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b easy",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b easy 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b easy 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b easy 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b easy 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b easy 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -210,31 +233,51 @@ public class Activity_Practice extends AppCompatActivity {
                     custom1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",1);
+                            startActivity(intent);
                         }
                     });
                     custom2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",2);
+                            startActivity(intent);
                         }
                     });
                     custom3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",3);
+                            startActivity(intent);
                         }
                     });
                     custom4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",4);
+                            startActivity(intent);
                         }
                     });
                     custom5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Easy","Easy");
+                            intent.putExtra("Number",5);
+                            startActivity(intent);
                         }
                     });
 
@@ -259,11 +302,11 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                    SetSettingCustomItem("","type a normal",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a normal",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a normal",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a normal",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a normal",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type a normal 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a normal 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a normal 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a normal 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a normal 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -271,31 +314,51 @@ public class Activity_Practice extends AppCompatActivity {
                     custom1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Normal","Noraml");
+                            intent.putExtra("Number",1);
+                            startActivity(intent);
                         }
                     });
                     custom2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Normal","Noraml");
+                            intent.putExtra("Number",2);
+                            startActivity(intent);
                         }
                     });
                     custom3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Normal","Noraml");
+                            intent.putExtra("Number",3);
+                            startActivity(intent);
                         }
                     });
                     custom4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Normal","Noraml");
+                            intent.putExtra("Number",4);
+                            startActivity(intent);
                         }
                     });
                     custom5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Normal","Noraml");
+                            intent.putExtra("Number",5);
+                            startActivity(intent);
                         }
                     });
 
@@ -315,11 +378,11 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                    SetSettingCustomItem("","type b normal",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b normal",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b normal",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b normal",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b normal",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b normal 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b normal 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b normal 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b normal 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b normal 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -327,31 +390,51 @@ public class Activity_Practice extends AppCompatActivity {
                     custom1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Normal","Noraml");
+                            intent.putExtra("Number",1);
+                            startActivity(intent);
                         }
                     });
                     custom2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Normal","Normal");
+                            intent.putExtra("Number",2);
+                            startActivity(intent);
                         }
                     });
                     custom3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Normal","Noraml");
+                            intent.putExtra("Number",3);
+                            startActivity(intent);
                         }
                     });
                     custom4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Normal","Noraml");
+                            intent.putExtra("Number",4);
+                            startActivity(intent);
                         }
                     });
                     custom5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Normal","Noraml");
+                            intent.putExtra("Number",5);
+                            startActivity(intent);
                         }
                     });
 
@@ -375,11 +458,11 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                    SetSettingCustomItem("","type a hard",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a hard",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a hard",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a hard",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type a hard",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type a hard 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a hard 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a hard 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a hard 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type a hard 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -387,31 +470,51 @@ public class Activity_Practice extends AppCompatActivity {
                     custom1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",1);
+                            startActivity(intent);
                         }
                     });
                     custom2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",2);
+                            startActivity(intent);
                         }
                     });
                     custom3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",3);
+                            startActivity(intent);
                         }
                     });
                     custom4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",4);
+                            startActivity(intent);
                         }
                     });
                     custom5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type1","Type1");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",5);
+                            startActivity(intent);
                         }
                     });
 
@@ -431,11 +534,11 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                    SetSettingCustomItem("","type b hard",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b hard",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b hard",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b hard",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-                    SetSettingCustomItem("","type b hard",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
+                    SetSettingCustomItem("","type b hard 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b hard 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b hard 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b hard 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
+                    SetSettingCustomItem("","type b hard 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
 
                     //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
@@ -443,31 +546,51 @@ public class Activity_Practice extends AppCompatActivity {
                     custom1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",1);
+                            startActivity(intent);
                         }
                     });
                     custom2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",2);
+                            startActivity(intent);
                         }
                     });
                     custom3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",3);
+                            startActivity(intent);
                         }
                     });
                     custom4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",4);
+                            startActivity(intent);
                         }
                     });
                     custom5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            intent.putExtra("Type2","Type2");
+                            intent.putExtra("Hard","Hard");
+                            intent.putExtra("Number",5);
+                            startActivity(intent);
                         }
                     });
 
@@ -484,8 +607,8 @@ public class Activity_Practice extends AppCompatActivity {
 
 
 
-                SetSettingCustomItem("","type a",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-                SetSettingCustomItem("","type b",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
+                SetSettingCustomItem("","type a",custom1,getResources().getDrawable(R.drawable.practice_icon));
+                SetSettingCustomItem("","type b",custom2,getResources().getDrawable(R.drawable.practice_icon));
 
                 //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 

@@ -8,7 +8,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -23,11 +22,9 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 
-import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.DialogAG.DialogAGShow;
-import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.Practice.Activity_Practice;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.Test.Activity_test;
@@ -119,22 +116,22 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         {
             tv1_about_icon.setText("LISTENING");
             tv2_about_icon.setText("ENJOY IELTS");
-            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.listening_icon));
         }else if(num_type == 2)
         {
             tv1_about_icon.setText("SPEAKING");
             tv2_about_icon.setText("ENJOY IELTS");
-            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.speaking_icon));
         }else if(num_type == 3)
         {
             tv1_about_icon.setText("READING");
             tv2_about_icon.setText("ENJOY IELTS");
-            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.reading_icon));
         }else if(num_type == 4)
         {
             tv1_about_icon.setText("WRITING");
             tv2_about_icon.setText("ENJOY IELTS");
-            img_body.setBackground(getResources().getDrawable(R.drawable.page_reading_icon));
+            img_body.setBackground(getResources().getDrawable(R.drawable.writing_icon));
         }
 
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
@@ -164,9 +161,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
             CustomViewItem custom2 = new CustomViewItem(this);
             CustomViewItem custom3 = new CustomViewItem(this);
 
-            SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.reading_icon));
-            SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.practice_icon));
-            SetSettingCustomItem("","Vocap",custom3,getResources().getDrawable(R.drawable.tips_icon));
+            SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.tip_icon));
+            SetSettingCustomItem("","Vocap",custom3,getResources().getDrawable(R.drawable.vocab));
 
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -210,9 +207,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
             CustomViewItem custom2 = new CustomViewItem(this);
             CustomViewItem custom3 = new CustomViewItem(this);
 
-            SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.reading_icon));
-            SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.practice_icon));
-            SetSettingCustomItem("","Practice",custom3,getResources().getDrawable(R.drawable.tips_icon));
+            SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.test_menue));
+            SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.tip_icon));
+            SetSettingCustomItem("","Practice",custom3,getResources().getDrawable(R.drawable.practice_icon));
 
 
             custom1.setOnClickListener(new View.OnClickListener() {

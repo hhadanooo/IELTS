@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -99,8 +100,17 @@ public class TestListenActivity extends AppCompatActivity {
         et_TestL_Result.getLayoutParams().width = (int) (dm.widthPixels*.75);
         et_TestL_Result.getLayoutParams().height = (int) (dm.widthPixels*.4);
 
+        CheckIntent();
 
 
+    }
+
+    public void CheckIntent()
+    {
+        if(getIntent().getExtras().getInt("Number") != 0)
+        {
+            Toast.makeText(this,""+getIntent().getExtras().getInt("Number"),Toast.LENGTH_LONG).show();
+        }
     }
 
     private void initActionBar() {
