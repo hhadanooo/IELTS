@@ -397,11 +397,11 @@ public class Activity_test extends AppCompatActivity {
         {
             if(getIntent().getExtras().getString("Academic") != null)
             {
-                SetSettingCustomItem("","test academic 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test academic 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test academic 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test academic 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test academic 5",custom5,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -456,11 +456,11 @@ public class Activity_test extends AppCompatActivity {
 
             }else if(getIntent().getExtras().getString("General") != null)
             {
-                SetSettingCustomItem("","test general 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test general 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test general 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test general 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test general 5",custom5,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -527,11 +527,11 @@ public class Activity_test extends AppCompatActivity {
 
             if(getIntent().getExtras().getString("Academic") != null)
             {
-                SetSettingCustomItem("","test academic 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test academic 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test academic 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test academic 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test academic 5",custom5,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -591,11 +591,11 @@ public class Activity_test extends AppCompatActivity {
 
             }else if(getIntent().getExtras().getString("General") != null)
             {
-                SetSettingCustomItem("","test general 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test general 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test general 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test general 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test general 5",custom5,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
+                SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
                 custom1.setOnClickListener(new View.OnClickListener() {
                     @Override

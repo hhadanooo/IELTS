@@ -166,7 +166,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
 
             SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.test_menue));
             SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.tip_icon));
-            SetSettingCustomItem("","Vocap",custom3,getResources().getDrawable(R.drawable.vocab));
+            SetSettingCustomItem("","Lexical Resources and Topics",custom3,getResources().getDrawable(R.drawable.vocab));
 
             custom1.setOnClickListener(new View.OnClickListener() {
                 @Override

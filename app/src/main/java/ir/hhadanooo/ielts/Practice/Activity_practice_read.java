@@ -59,7 +59,7 @@ public class Activity_practice_read extends AppCompatActivity {
         tv_PathLogo_SimpleText.setTextSize((int) (dm.widthPixels*.012));
 
         tv_TitleLogo_SimpleText.setText("practice1");
-        tv_PathLogo_SimpleText.setText("Listening");
+        tv_PathLogo_SimpleText.setText("Reading");
 
         iv_arrowBack_SimpleText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,20 +75,20 @@ public class Activity_practice_read extends AppCompatActivity {
     {
         if(getIntent().getExtras().getString("Easy") != null)
         {
-            tv_title_main_page.setText("Find any World/Words that show 'Age'      Easy ");
+            tv_title_main_page.setText("Find any World/Words that show 'Age'");
             tv_text.setText("Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elitLorem ipsum  dolor  sit  amet, consectetur adipsiscing elit"
                     +"Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolorLorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolor Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolor");
 
         }else if(getIntent().getExtras().getString("Normal") != null) {
 
-            tv_title_main_page.setText("Find any World/Words that show 'Age'     Normal ");
+            tv_title_main_page.setText("Find any World/Words that show 'Age'");
             tv_text.setText("Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elitLorem ipsum  dolor  sit  amet, consectetur adipsiscing elit"
                     +"Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolorLorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolor Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolor");
 
         }else if(getIntent().getExtras().getString("Hard") != null)
         {
 
-            tv_title_main_page.setText("Find any World/Words that show 'Age'     Hard ");
+            tv_title_main_page.setText("Find any World/Words that show 'Age'");
             tv_text.setText("Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elitLorem ipsum  dolor  sit  amet, consectetur adipsiscing elit"
                     +"Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolorLorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolor Lorem ipsum  dolor  sit  amet, consectetur adipsiscing elit,Lorem ipsum  dolor");
 
@@ -129,7 +129,7 @@ public class Activity_practice_read extends AppCompatActivity {
         //rel_main_page.getLayoutParams().height = (int) (dm.heightPixels * 0.75);
 
         rel_title_main_page.getLayoutParams().width = (int) (dm.widthPixels * .80);
-        rel_title_main_page.getLayoutParams().height = (int) (dm.widthPixels * 0.2);
+        rel_title_main_page.getLayoutParams().height = (int) (dm.widthPixels * 0.23);
 
 
         rel_text.getLayoutParams().width = (int) (dm.widthPixels * .80);
@@ -138,7 +138,9 @@ public class Activity_practice_read extends AppCompatActivity {
         tv_title_main_page.setMaxWidth((int) (dm.widthPixels * 0.75));
 
         tv_title_main_page.setTextColor(Color.BLACK);
-        tv_title_main_page.setTextSize((int) (dm.widthPixels * 0.02));
+        tv_title_main_page.setTextSize((int) (dm.widthPixels * 0.012));
+
+        tv_title_main_page.setTextColor(Color.WHITE);
 
 
 

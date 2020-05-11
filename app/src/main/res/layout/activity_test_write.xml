@@ -95,24 +95,44 @@
             android:background="@drawable/seesample_icon"/>
 
 
-
-        <ir.hhadanooo.ielts.CustomView.CustomEditText
-
-            android:id="@+id/activity_test_write_edit_text_main_page"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/activity_test_write_img_see_example"
-            android:background="@drawable/draw_background_custom_edittext"
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:textColor="#3C3737"
-            android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:lines="40"
-            android:maxLines="40"
-            android:textAlignment="viewStart"
-            android:gravity="start"
-            android:maxLength="400"
-            />
+            android:id="@+id/Activity_test_write_rel_edit_text_main_page"
+            android:layout_below="@id/activity_test_write_img_see_example"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:background="#DAE3E4"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Task 1"
+                android:id="@+id/activity_test_write_tv_title_edittext"/>
+            <ir.hhadanooo.ielts.CustomView.CustomEditText
+
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/activity_test_write_tv_title_edittext"
+                android:id="@+id/activity_test_write_edit_text_main_page"
+
+                android:background="#DAE3E4"
+
+                android:layout_width="wrap_content"
+                android:textColor="#3C3737"
+
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:lines="40"
+                android:maxLines="40"
+                android:textAlignment="viewStart"
+                android:gravity="start"
+                android:maxLength="400"
+                />
+
+        </RelativeLayout>
+
+
 
 
         <LinearLayout
@@ -121,7 +141,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/activity_test_write_edit_text_main_page"
+            android:layout_below="@id/Activity_test_write_rel_edit_text_main_page"
             android:layout_marginTop="10dp">
             <ImageView
                 android:layout_width="wrap_content"

@@ -52,6 +52,7 @@ public class ActivityTestWrite extends AppCompatActivity {
 
         iv_ic_logoPage_SimpleText.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_ic_logoPage_SimpleText.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        iv_ic_logoPage_SimpleText.setBackground(getDrawable(R.drawable.test_menue));
 
         tv_TitleLogo_SimpleText.setTextSize((int) (dm.widthPixels*.025));
 
@@ -59,6 +60,8 @@ public class ActivityTestWrite extends AppCompatActivity {
 
         tv_TitleLogo_SimpleText.setText("Text1");
         tv_PathLogo_SimpleText.setText("Listening");
+
+
 
         iv_arrowBack_SimpleText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,12 +140,12 @@ public class ActivityTestWrite extends AppCompatActivity {
         //rel_main_page.getLayoutParams().height = (int)(dm.heightPixels*0.78);
 
         rel_title_main_page.getLayoutParams().width = (int) (dm.widthPixels*.75);
-        rel_title_main_page.getLayoutParams().height = (int)(dm.widthPixels*0.18);
+        rel_title_main_page.getLayoutParams().height = (int)(dm.widthPixels*0.22);
 
         tv_title_main_page.setMaxWidth((int) (dm.widthPixels * 0.65));
         tv_title_main_page.setMaxHeight((int) (dm.heightPixels * 0.13));
 
-        tv_title_main_page.setTextSize((int) (dm.widthPixels * 0.013));
+        tv_title_main_page.setTextSize((int) (dm.widthPixels * 0.011));
 
         tv_title_main_page.setTextColor(Color.BLACK);
 

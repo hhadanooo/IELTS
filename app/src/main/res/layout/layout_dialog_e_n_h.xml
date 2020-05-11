@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal"
             android:id="@+id/tv_title_dialogENH"
             android:textColor="#000"
-            android:text="Select your level"
+            android:text="Sellect the level"
             android:textStyle="bold"
             android:layout_weight="1"/>
 
