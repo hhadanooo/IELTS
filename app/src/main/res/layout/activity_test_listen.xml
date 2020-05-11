@@ -90,7 +90,7 @@
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/back_player"
                     android:orientation="horizontal"
-                    android:paddingEnd="5dp"
+                    android:padding="10dp"
                     >
 
                     <View
@@ -107,12 +107,55 @@
                         android:background="@drawable/play_icon"
                         android:id="@+id/iv_play_playerTL"/>
 
-                    <SeekBar
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:layout_gravity="center_vertical"
-                        android:id="@+id/seekBar_playerTL"/>
+                        android:layout_gravity="bottom"
+                        android:orientation="vertical">
+
+
+                        <SeekBar
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/seekBar_playerTL"/>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:id="@+id/iv_ic_backward_playerTL"
+                                android:background="@drawable/backward"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="4"
+                                android:gravity="center"
+                                android:text="00:00"
+                                android:id="@+id/tv_time_playerTL"/>
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:id="@+id/iv_ic_forward_playerTL"
+                                android:background="@drawable/forward"/>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
 
                 </LinearLayout>
 

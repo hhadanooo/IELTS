@@ -25,10 +25,11 @@ public class TestListenActivity extends AppCompatActivity {
     DisplayMetrics dm;
     LinearLayout lay_TestL , lay_box_playerTL;
     RelativeLayout lay_playerTL;
-    ImageView iv_play_playerTL , iv_ic_org_playerTL , iv_seeAnswer_playerTL , iv_time_TestL , iv_ic_logoPage_TestL , iv_arrowBack_TestL;
+    ImageView iv_play_playerTL , iv_ic_org_playerTL , iv_seeAnswer_playerTL , iv_time_TestL , iv_ic_logoPage_TestL
+            , iv_arrowBack_TestL , iv_ic_backward_playerTL , iv_ic_forward_playerTL;
     View view_space_playerTL ;
     EditText et_TestL , et_TestL_Result;
-    TextView tv_time_TestL , tv_TitleLogo_TestL ,tv_PathLogo_TestL;
+    TextView tv_time_TestL , tv_TitleLogo_TestL ,tv_PathLogo_TestL , tv_time_playerTL;
     SeekBar seekBar_playerTL;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -58,8 +59,19 @@ public class TestListenActivity extends AppCompatActivity {
         lay_box_playerTL = findViewById(R.id.lay_box_playerTL);
         seekBar_playerTL = findViewById(R.id.seekBar_playerTL);
         et_TestL_Result = findViewById(R.id.et_TestL_Result);
+        iv_ic_backward_playerTL = findViewById(R.id.iv_ic_backward_playerTL);
+        iv_ic_forward_playerTL = findViewById(R.id.iv_ic_forward_playerTL);
+        tv_time_playerTL = findViewById(R.id.tv_time_playerTL);
 
 
+
+        //iv_ic_backward_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.8);
+        iv_ic_backward_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.05);
+
+        //iv_ic_forward_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.8);
+        iv_ic_forward_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.05);
+
+        tv_time_playerTL.setTextSize((int) (dm.widthPixels*.015));
 
 
         lay_TestL.getLayoutParams().width = (int) (dm.widthPixels*.93);
