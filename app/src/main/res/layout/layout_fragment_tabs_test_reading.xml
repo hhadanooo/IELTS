@@ -58,17 +58,34 @@
     </RelativeLayout>
 
 
-    <ImageView
-        android:layout_marginLeft="20dp"
-        android:padding="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/layout_fragment_img_timer"
-        android:background="@drawable/timer_icon"
-        android:layout_alignParentLeft="true"/>
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_fragment_img_timer"
+            android:background="@drawable/timer_icon"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_fragment_tv_timer"
+            android:layout_toRightOf="@id/layout_fragment_img_timer"
+            android:layout_marginLeft="5dp"
+            android:text="40:00"/>
+
+    </RelativeLayout>
+
+
+
     <ImageView
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
@@ -79,6 +96,7 @@
         android:id="@+id/layout_ftagment_img_see_answer"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"/>
+
 
 
 

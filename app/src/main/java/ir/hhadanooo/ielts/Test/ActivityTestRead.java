@@ -26,6 +26,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager viewPager;
+    int tab_num = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -154,7 +155,8 @@ public class ActivityTestRead extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
 
-            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num);
+            tab_num++;
+            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num);
         }
 
         @Override
