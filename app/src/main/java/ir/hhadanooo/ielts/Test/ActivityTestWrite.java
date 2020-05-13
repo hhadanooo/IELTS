@@ -2,8 +2,10 @@ package ir.hhadanooo.ielts.Test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ir.hhadanooo.ielts.CustomView.CustomEditText;
 import ir.hhadanooo.ielts.R;
@@ -23,16 +26,21 @@ public class ActivityTestWrite extends AppCompatActivity {
     ImageView img_see_example,img_shareanswer,img_submit;
     CustomEditText et_main_page;
     ImageView img_timer;
+    TextView tv_timer;
+    long time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_write);
+
         getSupportActionBar().hide();
         initActionBar();
         init();
 
         SetPropertiesRelBody();
+        time = 3600000;
+        Timer(tv_timer);
 
 
 
@@ -89,6 +97,8 @@ public class ActivityTestWrite extends AppCompatActivity {
 
         img_timer = findViewById(R.id.activity_test_write_img_timer);
 
+        tv_timer = findViewById(R.id.activity_test_write_tv_timer);
+
 
 
 
@@ -111,7 +121,7 @@ public class ActivityTestWrite extends AppCompatActivity {
                 {
                     tv_PathLogo_SimpleText.setText("Writing/Academic");
                     tv_title_main_page.setText("TOPIC Academic " + getIntent().getExtras().getInt("Number"));
-                }
+                    }
             }else if(getIntent().getExtras().getString("General") != null)
             {
                 if(getIntent().getExtras().getInt("Number") != 0)
@@ -140,7 +150,7 @@ public class ActivityTestWrite extends AppCompatActivity {
         //rel_main_page.getLayoutParams().height = (int)(dm.heightPixels*0.78);
 
         rel_title_main_page.getLayoutParams().width = (int) (dm.widthPixels*.75);
-        rel_title_main_page.getLayoutParams().height = (int)(dm.widthPixels*0.22);
+        rel_title_main_page.getLayoutParams().height = (int)(dm.widthPixels*0.25);
 
         tv_title_main_page.setMaxWidth((int) (dm.widthPixels * 0.65));
         tv_title_main_page.setMaxHeight((int) (dm.heightPixels * 0.13));
@@ -198,6 +208,9 @@ public class ActivityTestWrite extends AppCompatActivity {
             }
         });
 
+        img_shareanswer.setBackground(getDrawable(R.drawable.seeanswer_icon1));
+
+
 
         img_shareanswer.getLayoutParams().width = (int) (dm.widthPixels*0.25);
         img_shareanswer.getLayoutParams().height = (int) (dm.widthPixels*0.074);
@@ -224,6 +237,15 @@ public class ActivityTestWrite extends AppCompatActivity {
         img_shareanswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!et_main_page.getText().toString().isEmpty())
+                {
+                    String shareBody =et_main_page.getText().toString();
+                    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                    startActivity(Intent.createChooser(sharingIntent, ""));
+                }
 
             }
         });
@@ -243,5 +265,27 @@ public class ActivityTestWrite extends AppCompatActivity {
 
 
 
+    }
+
+    public void Timer(final TextView tv_timer)
+    {
+        new CountDownTimer(time,1000) {
+            @Override
+            public void onTick(long l) {
+                time = l;
+                int minute =(int) time / 60000;
+                int second = (int) time % 60000 / 1000;
+                String timestring = "" + minute;
+                timestring += ":";
+                if(second < 10) timestring += "0";
+                timestring += second;
+                tv_timer.setText(timestring);
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
     }
 }

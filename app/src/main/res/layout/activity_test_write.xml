@@ -76,12 +76,18 @@
             android:layout_marginTop="20dp"
             android:background="@color/colorPrimary"
             android:id="@+id/activity_test_write_rel_title_main_page">
-            <TextView
-                android:textStyle="bold"
+            <ScrollView
+                android:paddingTop="3dp"
+                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:id="@+id/activity_test_write_tv_title_main_page"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activity_test_write_tv_title_main_page"/>
+            </ScrollView>
+
         </RelativeLayout>
 
 
@@ -104,16 +110,10 @@
             android:layout_centerHorizontal="true"
             android:background="#DAE3E4"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Task 1"
-                android:id="@+id/activity_test_write_tv_title_edittext"/>
+
             <ir.hhadanooo.ielts.CustomView.CustomEditText
 
                 android:layout_marginTop="5dp"
-                android:layout_below="@id/activity_test_write_tv_title_edittext"
                 android:id="@+id/activity_test_write_edit_text_main_page"
 
                 android:background="#DAE3E4"
@@ -159,15 +159,37 @@
 
         </LinearLayout>
 
-        <ImageView
+
+
+
+        <RelativeLayout
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/activity_test_write_img_timer"
-            android:layout_below="@id/activity_test_write_lin_button"
             android:layout_marginTop="15dp"
-            android:background="@drawable/icon_timer"
-            android:layout_marginBottom="20dp"/>
+            android:layout_below="@id/activity_test_write_lin_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/activity_test_write_img_timer"
+                android:background="@drawable/timer_icon"
+                android:layout_alignParentLeft="true"/>
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/activity_test_write_tv_timer"
+                android:layout_toRightOf="@+id/activity_test_write_img_timer"
+                android:layout_marginLeft="5dp"
+                android:text="60:00"/>
+
+        </RelativeLayout>
+
+
+
 
 
 
