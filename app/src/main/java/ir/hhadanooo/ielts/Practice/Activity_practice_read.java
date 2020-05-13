@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Spannable;
+import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,16 +93,16 @@ public class Activity_practice_read extends AppCompatActivity {
         if(getIntent().getExtras().getString("Easy") != null)
         {
             tv_title_main_page.setText("Find any World/Words that show 'Age'");
-            tv_text.setText("hassan ramin hhadanooo matiooo hassan1 ramin1 hhadanooo1 matiooo1 hassan2 ramin2 hhadanooo2 matioo2o hassan3 ramin3 hhadanooo3 matiooo3 hassan4 ramin4 hhadanooo4 matiooo4");
-
+           tv_text.setText("ramin1 ramin2 ramin3 ramin4 ramin5 ramin6 ramin7 ramin8 ramin9 ramin10 ramin11 ramin12 ramin13 ramin14 ramin15 ramin16 ramin17 ramin18 ramin20");
         }else if(getIntent().getExtras().getString("Normal") != null) {
 
+            tv_count.setVisibility(View.INVISIBLE);
             tv_title_main_page.setText("Find any World/Words that show 'Age'");
             tv_text.setText("hassan ramin hhadanooo matiooo hassan1 ramin1 hhadanooo1 matiooo1 hassan2 ramin2 hhadanooo2 matioo2o hassan3 ramin3 hhadanooo3 matiooo3 hassan4 ramin4 hhadanooo4 matiooo4");
 
         }else if(getIntent().getExtras().getString("Hard") != null)
         {
-
+            tv_count.setVisibility(View.INVISIBLE);
             tv_title_main_page.setText("Find any World/Words that show 'Age'");
             tv_text.setText("hassan ramin hhadanooo matiooo hassan1 ramin1 hhadanooo1 matiooo1 hassan2 ramin2 hhadanooo2 matioo2o hassan3 ramin3 hhadanooo3 matiooo3 hassan4 ramin4 hhadanooo4 matiooo4");
 
@@ -179,13 +181,26 @@ public class Activity_practice_read extends AppCompatActivity {
         img_timer.getLayoutParams().height = (int) (dm.widthPixels * 0.08);
 
 
+        img_see_answer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String ss = "";
+                for (String s:list_word_in_text)
+                {
+                    ss += s + "\n";
+                }
+                Toast.makeText(Activity_practice_read.this,ss,Toast.LENGTH_LONG).show();
+            }
+        });
 
 
         tv_text.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     int mOffset = tv_text.getOffsetForPosition(motionEvent.getX(), motionEvent.getY());
+
 
                     boolean check = false;
                     for(int i = 0;i<list_word_in_text.size();i++)
@@ -193,17 +208,38 @@ public class Activity_practice_read extends AppCompatActivity {
                         String s = list_word_in_text.get(i);
                        if(findWordForRightHanded(tv_text.getText().toString(), mOffset).equals(s))
                        {
-                           setColor(tv_text,tv_text.getText().toString(),s,Color.BLACK);
+
+                           setColor(tv_text,tv_text.getText().toString(),findWordForRightHanded(tv_text.getText().toString(), mOffset),Color.BLACK);
                            check = true;
                            list_word_in_text.remove(i);
+                           if(getIntent().getExtras().getString("Easy") != null)
+                           {
+                               tv_count.setText(String.format("%d/4",list_word_in_text.size()));
+                           }
                            break;
                        }
                     }
                     if(!check)
                     {
-                        list_word_in_text.add(findWordForRightHanded(tv_text.getText().toString(), mOffset));
 
-                        setColor_list(tv_text,tv_text.getText().toString(),list_word_in_text,Color.GREEN);
+                        if(getIntent().getExtras().getString("Easy") != null)
+                        {
+                            if(list_word_in_text.size() <4) {
+
+                                list_word_in_text.add(findWordForRightHanded(tv_text.getText().toString(), mOffset));
+
+                                tv_count.setText(String.format("%d/4",list_word_in_text.size()));
+
+                                setColor_list(tv_text,tv_text.getText().toString(),list_word_in_text,Color.WHITE);
+                            }
+                        }else {
+                                list_word_in_text.add(findWordForRightHanded(tv_text.getText().toString(), mOffset));
+                                setColor_list(tv_text,tv_text.getText().toString(),list_word_in_text,Color.WHITE);
+
+                        }
+
+
+
                     }
 
 
@@ -262,14 +298,17 @@ public class Activity_practice_read extends AppCompatActivity {
         {
             int i = fulltext.indexOf(list.get(zz));
             str.setSpan(new ForegroundColorSpan(color), i, i + list.get(zz).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            str.setSpan(new BackgroundColorSpan(Color.BLUE), i, i + list.get(zz).length(), Spannable.SPAN_COMPOSING);
         }
 
     }
     private void setColor(TextView view, String fulltext,String substring, int color) {
-        view.setText(fulltext, TextView.BufferType.SPANNABLE);
+        //view.setText(fulltext, TextView.BufferType.SPANNABLE);
         Spannable str = (Spannable) view.getText();
         int i = fulltext.indexOf(substring);
-        str.setSpan(new ForegroundColorSpan(color), i, i + substring.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        str.setSpan(new ForegroundColorSpan(color), i, i + substring.length(), Spannable.SPAN_COMPOSING);
+        str.setSpan(new BackgroundColorSpan(Color.parseColor("#DAE3E4")), i, i + substring.length(), Spannable.SPAN_COMPOSING);
+
 
 
     }
