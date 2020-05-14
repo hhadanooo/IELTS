@@ -1,10 +1,18 @@
 package ir.hhadanooo.ielts.Test.Listen;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Environment;
+import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,8 +24,13 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.R;
 
 public class TestListenActivity extends AppCompatActivity {
@@ -31,22 +44,199 @@ public class TestListenActivity extends AppCompatActivity {
     EditText et_TestL , et_TestL_Result;
     TextView tv_time_TestL , tv_TitleLogo_TestL ,tv_PathLogo_TestL , tv_time_playerTL;
     SeekBar seekBar_playerTL;
+    MediaPlayer mPlayer;
+    Handler mHandler = new Handler();
+    int min = 0;
+    int sec = 0;
+    int duration = 0;
+    long time = 2400000;
+    List<String> answerList = new ArrayList<>();
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_listen);
-
         Objects.requireNonNull(getSupportActionBar()).hide();
-
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
 
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        initActionBar();
 
+        init();
+        initActionBar();
+        CheckIntent();
+
+        Timer(tv_time_TestL);
+
+        if (ActivityCompat.checkSelfPermission(this , Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this , new String[] {Manifest.permission.READ_EXTERNAL_STORAGE} , 123);
+        }
+
+
+        mPlayer = new MediaPlayer();
+        try {
+            mPlayer.setDataSource(Environment.getExternalStorageDirectory().getAbsolutePath()+"/hh.mp3");
+            mPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        duration = mPlayer.getDuration()/1000;
+
+
+        iv_play_playerTL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iv_play_playerTL.setEnabled(false);
+                mPlayer.start();
+                seekBar_playerTL.setMax(duration);
+                TestListenActivity.this.runOnUiThread(new Runnable() {
+
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void run() {
+                        if(mPlayer != null){
+                            int mCurrentPosition = mPlayer.getCurrentPosition() / 1000;
+                            seekBar_playerTL.setProgress(mCurrentPosition);
+                            if (duration > mCurrentPosition){
+                                if(mCurrentPosition < 60){
+                                    if (mCurrentPosition < 10){
+                                        tv_time_playerTL.setText("00:0"+mCurrentPosition);
+                                    }else {
+                                        tv_time_playerTL.setText("00:"+mCurrentPosition);
+                                    }
+                                }else {
+                                    sec = (mCurrentPosition%60);
+                                    min = (mCurrentPosition-sec)/60;
+                                    if (min < 10 ){
+                                        if (sec < 10){
+                                            tv_time_playerTL.setText("0"+min+":0"+sec);
+                                        }else {
+                                            tv_time_playerTL.setText("0"+min+":"+sec);
+                                        }
+                                    }else {
+                                        if (sec < 10){
+                                            tv_time_playerTL.setText(min+":0"+sec);
+                                        }else {
+                                            tv_time_playerTL.setText(min+":"+sec);
+                                        }
+                                    }
+                                }
+                                mHandler.removeCallbacksAndMessages(null);
+                            }else {
+
+                                iv_ic_forward_playerTL.setEnabled(false);
+                                iv_ic_backward_playerTL.setEnabled(false);
+                            }
+                            Log.i("timerT" , "on");
+                        }
+                        mHandler.postDelayed(this, 1000);
+                    }
+                });
+            }
+        });
+
+
+        iv_ic_forward_playerTL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mPlayer != null){
+                    forwardSong(10000);
+
+                }
+            }
+        });
+        iv_ic_backward_playerTL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mPlayer != null){
+                    rewindSong(10000);
+
+                }
+            }
+        });
+
+        iv_seeAnswer_playerTL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                et_TestL_Result.setText("hhadanooo hassan ramin matiooo ni al ali reza bis");
+                answerList.clear();
+                String test = et_TestL.getText().toString();
+                String[] tests = test.split(" ");
+                String result = et_TestL_Result.getText().toString();
+                String[] results = result.split(" ");
+                int darsad = (100/results.length);
+                int ttrue = 0;
+                int d = 0;
+                for (int i = 0; i < results.length ;i++ ){
+                    for (int j = 0; j < tests.length ;j++){
+                        if (!checkForRepeatTrueAnswer(tests[j])){
+                            if (tests[j].equals(results[i])){
+                                ttrue++;
+
+                                d = d+darsad;
+                                if (ttrue == results.length ){
+                                    d = 100;
+                                }
+                                Log.i("tesssst" , ""+tests[j]);
+                                answerList.add(tests[j]);
+                            }
+                        }
+                    }
+                }
+                Toast.makeText(TestListenActivity.this, " number of true answer : "+ttrue+"\n number of answer : "+results.length+"\n percentage of true answer : "+d+"%", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+    }
+
+    public boolean checkForRepeatTrueAnswer(String answer){
+        boolean repeat = false;
+        for (int i = 0 ; i < answerList.size() ; i++){
+            if (answerList.get(i).equals(answer)){
+                repeat = true;
+            }
+        }
+        return repeat;
+    }
+
+
+    public void rewindSong(int seekBackwardTime ) {
+        if (mPlayer != null) {
+            int currentPosition = mPlayer.getCurrentPosition();
+            if (currentPosition - seekBackwardTime >= 0) {
+                mPlayer.seekTo(currentPosition - seekBackwardTime);
+            } else {
+                mPlayer.seekTo(0);
+            }
+        }
+    }
+
+    public void forwardSong(int seekForwardTime) {
+        if (mPlayer != null) {
+            int currentPosition = mPlayer.getCurrentPosition();
+            if (currentPosition + seekForwardTime <= mPlayer.getDuration()) {
+                mPlayer.seekTo(currentPosition + seekForwardTime);
+            } else {
+                mPlayer.seekTo(mPlayer.getDuration());
+            }
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mPlayer.stop();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    public void init(){
         lay_TestL = findViewById(R.id.lay_TestL);
         lay_playerTL = findViewById(R.id.lay_playerTL);
         iv_play_playerTL = findViewById(R.id.iv_play_playerTL);
@@ -107,8 +297,31 @@ public class TestListenActivity extends AppCompatActivity {
         iv_seeAnswer_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         iv_seeAnswer_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.074);
 
-       // seekBar_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
+        // seekBar_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         seekBar_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.03);
+        //seekBar_playerTL.setEnabled(false);
+        seekBar_playerTL.setOnSeekBarChangeListener( new SeekBar.OnSeekBarChangeListener() {
+
+            int originalProgress;
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                //Nothing here..
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+                originalProgress = seekBar.getProgress();
+            }
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int arg1, boolean fromUser) {
+                if(fromUser){
+                    seekBar.setProgress( originalProgress);
+                }
+            }
+        });
 
         tv_time_TestL.setTextSize((int) (dm.widthPixels*.015));
 
@@ -147,11 +360,8 @@ public class TestListenActivity extends AppCompatActivity {
 
             }
         });
-
-        CheckIntent();
-
-
     }
+
 
     public void CheckIntent()
     {
@@ -195,6 +405,29 @@ public class TestListenActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         onBackPressed();
         return super.onOptionsItemSelected(item);
+    }
+
+    public void Timer(final TextView tv_timer)
+    {
+
+        new CountDownTimer(time,1000) {
+            @Override
+            public void onTick(long l) {
+                time = l;
+                int minute =(int) time / 60000;
+                int second = (int) time % 60000 / 1000;
+                String timestring = "" + minute;
+                timestring += ":";
+                if(second < 10) timestring += "0";
+                timestring += second;
+                tv_timer.setText(timestring);
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
     }
 
 }
