@@ -208,7 +208,6 @@ public class ActivityTestWrite extends AppCompatActivity {
             }
         });
 
-        img_shareanswer.setBackground(getDrawable(R.drawable.seeanswer_icon1));
 
 
 
@@ -245,6 +244,8 @@ public class ActivityTestWrite extends AppCompatActivity {
                     sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
                     sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                     startActivity(Intent.createChooser(sharingIntent, ""));
+                }else {
+                    Toast.makeText(getApplicationContext(),"et empty",Toast.LENGTH_LONG).show();
                 }
 
             }

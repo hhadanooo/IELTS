@@ -36,7 +36,7 @@ public class Activity_practice_read extends AppCompatActivity {
     TextView tv_timer;
     long time;
 
-    List<String> list_word_in_text;
+    List<String> list_word_in_text,list_num_word_in_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class Activity_practice_read extends AppCompatActivity {
         initActionBar();
 
         list_word_in_text = new ArrayList<>();
+        list_num_word_in_text = new ArrayList<>();
 
         time = 3600000;
         Timer(tv_timer);
@@ -93,7 +94,7 @@ public class Activity_practice_read extends AppCompatActivity {
         if(getIntent().getExtras().getString("Easy") != null)
         {
             tv_title_main_page.setText("Find any World/Words that show 'Age'");
-           tv_text.setText("ramin1 ramin2 ramin3 ramin4 ramin5 ramin6 ramin7 ramin8 ramin9 ramin10 ramin11 ramin12 ramin13 ramin14 ramin15 ramin16 ramin17 ramin18 ramin20");
+           tv_text.setText("ramin1 ramin10 ramin3 ramin1 ramin5 ramin6 ramin7 ramin1 ramin9 ramin10 ramin11 ramin12 ramin13 ramin14 ramin15 ramin16 ramin17 ramin18 ramin20");
         }else if(getIntent().getExtras().getString("Normal") != null) {
 
             tv_count.setVisibility(View.INVISIBLE);
@@ -193,55 +194,92 @@ public class Activity_practice_read extends AppCompatActivity {
             }
         });
 
-
+        tv_text.setText(tv_text.getText().toString(), TextView.BufferType.SPANNABLE);
+        if(getIntent().getExtras().getString("Easy") == null) tv_count.setVisibility(View.INVISIBLE);
         tv_text.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+
                     int mOffset = tv_text.getOffsetForPosition(motionEvent.getX(), motionEvent.getY());
 
 
-                    boolean check = false;
-                    for(int i = 0;i<list_word_in_text.size();i++)
-                    {
-                        String s = list_word_in_text.get(i);
-                       if(findWordForRightHanded(tv_text.getText().toString(), mOffset).equals(s))
-                       {
 
-                           setColor(tv_text,tv_text.getText().toString(),findWordForRightHanded(tv_text.getText().toString(), mOffset),Color.BLACK);
-                           check = true;
-                           list_word_in_text.remove(i);
-                           if(getIntent().getExtras().getString("Easy") != null)
-                           {
-                               tv_count.setText(String.format("%d/4",list_word_in_text.size()));
-                           }
-                           break;
-                       }
+
+                    boolean check = false;
+                    for(int i = 0;i<list_num_word_in_text.size();i++)
+                    {
+
+                        String s = list_num_word_in_text.get(i);
+
+
+                        String[] array = s.split("@");
+                        int start =Integer.valueOf(array[0]);
+                        int end =Integer.valueOf(array[1]);
+
+                        if(mOffset > start && mOffset < end)
+                        {
+
+
+                            list_num_word_in_text.remove(i);
+                            list_word_in_text.remove(i);
+                            SetColorEndHighlight(tv_text,start,end);
+                            if(getIntent().getExtras().getString("Easy") != null)
+                            {
+                                tv_count.setText(String.format("%d/4",list_word_in_text.size()));
+                            }
+                            check = true;
+                            break;
+                        }
                     }
                     if(!check)
                     {
+                        String text = findWordForRightHanded(tv_text.getText().toString(), mOffset);
 
-                        if(getIntent().getExtras().getString("Easy") != null)
+                        text = text.replace(" " , "");
+
+
+                        int start = 0;
+                        int end = 0;
+                        int from = 0;
+                        while (true)
                         {
-                            if(list_word_in_text.size() <4) {
-
-                                list_word_in_text.add(findWordForRightHanded(tv_text.getText().toString(), mOffset));
-
-                                tv_count.setText(String.format("%d/4",list_word_in_text.size()));
-
-                                setColor_list(tv_text,tv_text.getText().toString(),list_word_in_text,Color.WHITE);
+                            start = tv_text.getText().toString().indexOf(text,from);
+                            end = start+text.length();
+                            if(mOffset > start && mOffset<end)
+                            {
+                                break;
                             }
-                        }else {
-                                list_word_in_text.add(findWordForRightHanded(tv_text.getText().toString(), mOffset));
-                                setColor_list(tv_text,tv_text.getText().toString(),list_word_in_text,Color.WHITE);
-
+                            if(start == -1) break;
+                            from = start+1;
                         }
 
+                        if(start != -1){
 
+                            if(list_word_in_text.size() <4)
+                            {
+
+                            }
+
+                            if(getIntent().getExtras().getString("Easy") != null)
+                            {
+                                if(list_word_in_text.size() <4)
+                                {
+                                    list_num_word_in_text.add(""+start+"@"+end);
+                                    list_word_in_text.add(text);
+                                    SetColorStartHighlight(tv_text,tv_text.getText().toString(),list_word_in_text,Color.WHITE,mOffset);
+
+                                    tv_count.setText(String.format("%d/4",list_word_in_text.size()));
+                                }
+                            }else {
+                                list_num_word_in_text.add(""+start+"@"+end);
+                                list_word_in_text.add(text);
+                                SetColorStartHighlight(tv_text,tv_text.getText().toString(),list_word_in_text,Color.WHITE,mOffset);
+
+                            }
+                        }
 
                     }
-
 
                 }
                 return false;
@@ -291,27 +329,40 @@ public class Activity_practice_read extends AppCompatActivity {
 
         return str.substring(startIndex, endIndex);
     }
-    private void setColor_list(TextView view, String fulltext, List<String> list, int color) {
-        view.setText(fulltext, TextView.BufferType.SPANNABLE);
+
+    private void SetColorStartHighlight(TextView view, String fulltext, List<String> list, int color,int offset) {
         Spannable str = (Spannable) view.getText();
         for (int zz = 0;zz<list.size();zz++)
         {
-            int i = fulltext.indexOf(list.get(zz));
-            str.setSpan(new ForegroundColorSpan(color), i, i + list.get(zz).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            str.setSpan(new BackgroundColorSpan(Color.BLUE), i, i + list.get(zz).length(), Spannable.SPAN_COMPOSING);
+            int index = fulltext.indexOf(list.get(zz));
+            if(offset > index && offset<list.get(zz).length()+index)
+            {
+                str.setSpan(new ForegroundColorSpan(color), index, index + list.get(zz).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                str.setSpan(new BackgroundColorSpan(Color.BLUE), index, index + list.get(zz).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            }else {
+                while (index >= 0) {
+                    index = fulltext.indexOf(list.get(zz), index + 1);
+                    if(index > -1)
+                    {
+                        if(offset > index && offset<list.get(zz).length()+index)
+                        {
+                            str.setSpan(new ForegroundColorSpan(color), index, index + list.get(zz).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            str.setSpan(new BackgroundColorSpan(Color.BLUE), index, index + list.get(zz).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        }
+                    }
+                }
+            }
         }
-
     }
-    private void setColor(TextView view, String fulltext,String substring, int color) {
-        //view.setText(fulltext, TextView.BufferType.SPANNABLE);
+
+    private void SetColorEndHighlight(TextView view,int start,int end)
+    {
         Spannable str = (Spannable) view.getText();
-        int i = fulltext.indexOf(substring);
-        str.setSpan(new ForegroundColorSpan(color), i, i + substring.length(), Spannable.SPAN_COMPOSING);
-        str.setSpan(new BackgroundColorSpan(Color.parseColor("#DAE3E4")), i, i + substring.length(), Spannable.SPAN_COMPOSING);
-
-
-
+        str.setSpan(new ForegroundColorSpan(Color.BLACK), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        str.setSpan(new BackgroundColorSpan(Color.parseColor("#DAE3E4")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
+
 
     public void Timer(final TextView tv_timer)
     {
