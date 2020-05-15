@@ -4,7 +4,7 @@
     package="ir.hhadanooo.ielts"
     tools:ignore="ExtraText">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,8 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Test.ActivityTestRead"></activity>
-        <activity android:name=".Challenge.ChallengeActivity"></activity>
+        <activity android:name=".Practice.Listen.ListenPracticeBActivity"></activity>
+        <activity android:name=".Test.ActivityTestRead" />
+        <activity android:name=".Challenge.ChallengeActivity" />
         <activity android:name=".Practice.Activity_practice_read" />
         <activity android:name=".Test.Listen.TestListenActivity" />
         <activity android:name=".Practice.Listen.ListenPracticeActivity" />

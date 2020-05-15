@@ -3,6 +3,7 @@ package ir.hhadanooo.ielts.Practice.Listen;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
@@ -381,6 +382,23 @@ public class ListenPracticeActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(ListenPracticeActivity.this, "pls wait for end", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        iv_shareAnswer_playerPL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                String myText =" ";
+                if (et_PracticeL.getText() != null){
+                    myText = et_PracticeL.getText().toString();
+                }
+                sendIntent.putExtra(Intent.EXTRA_TEXT, myText);
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
             }
         });
 
