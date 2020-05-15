@@ -3,6 +3,7 @@ package ir.hhadanooo.ielts.Test;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -29,6 +30,9 @@ public class ActivityTestWrite extends AppCompatActivity {
     TextView tv_timer;
     long time;
 
+    SharedPreferences sharedPreferences_et_Text;
+    SharedPreferences.Editor editor_sharedPreferences_et_Text;
+    String name_sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +102,8 @@ public class ActivityTestWrite extends AppCompatActivity {
         img_timer = findViewById(R.id.activity_test_write_img_timer);
 
         tv_timer = findViewById(R.id.activity_test_write_tv_timer);
+        sharedPreferences_et_Text = getSharedPreferences("et_text_value",MODE_PRIVATE);
+        editor_sharedPreferences_et_Text = sharedPreferences_et_Text.edit();
 
 
 
@@ -119,6 +125,7 @@ public class ActivityTestWrite extends AppCompatActivity {
             {
                 if(getIntent().getExtras().getInt("Number") != 0)
                 {
+                    name_sharedPreferences = "TextWriteAcademic"+getIntent().getExtras().getInt("Number");
                     tv_PathLogo_SimpleText.setText("Writing/Academic");
                     tv_title_main_page.setText("TOPIC Academic " + getIntent().getExtras().getInt("Number"));
                     }
@@ -126,7 +133,7 @@ public class ActivityTestWrite extends AppCompatActivity {
             {
                 if(getIntent().getExtras().getInt("Number") != 0)
                 {
-
+                    name_sharedPreferences = "TextWriteGeneral"+getIntent().getExtras().getInt("Number");
                     tv_PathLogo_SimpleText.setText("Writing/General");
                     tv_title_main_page.setText("TOPIC General " + getIntent().getExtras().getInt("Number"));
 
@@ -224,13 +231,15 @@ public class ActivityTestWrite extends AppCompatActivity {
 
 
 
+        et_main_page.setText(sharedPreferences_et_Text.getString(name_sharedPreferences,""));
 
+        Toast.makeText(this,name_sharedPreferences,Toast.LENGTH_LONG).show();
 
 
         img_see_example.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(ActivityTestWrite.this,"See Sample",Toast.LENGTH_LONG).show();
             }
         });
         img_shareanswer.setOnClickListener(new View.OnClickListener() {
@@ -247,24 +256,20 @@ public class ActivityTestWrite extends AppCompatActivity {
                 }else {
                     Toast.makeText(getApplicationContext(),"et empty",Toast.LENGTH_LONG).show();
                 }
-
             }
         });
         img_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(!et_main_page.getText().toString().isEmpty())
+                {
+                    editor_sharedPreferences_et_Text.putString(name_sharedPreferences,et_main_page.getText().toString()).apply();
+                    Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(getApplicationContext(),"et_empty",Toast.LENGTH_LONG).show();
+                }
             }
         });
-        img_timer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-
-
 
     }
 

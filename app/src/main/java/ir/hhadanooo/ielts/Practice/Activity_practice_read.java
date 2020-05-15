@@ -10,6 +10,7 @@ import android.text.Spannable;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -181,20 +182,70 @@ public class Activity_practice_read extends AppCompatActivity {
         img_timer.getLayoutParams().width = (int) (dm.widthPixels * 0.08);
         img_timer.getLayoutParams().height = (int) (dm.widthPixels * 0.08);
 
-
+        tv_text.setText(tv_text.getText().toString(), TextView.BufferType.SPANNABLE);
         img_see_answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String ss = "";
-                for (String s:list_word_in_text)
+                List<String> list_answer = new ArrayList<>();
+                list_answer.add("ramin1");
+                list_answer.add("ramin3");
+                list_answer.add("ramin18");
+                list_answer.add("ramin14");
+
+                String text = tv_text.getText().toString();
+                int from = 0;
+                Spannable str = (Spannable) tv_text.getText();
+                for(int i = 0;i<list_answer.size();i++)
                 {
-                    ss += s + "\n";
+                    from =0;
+                    while (true)
+                    {
+                        int index = text.indexOf(list_answer.get(i),from);
+                        if(index == -1) break;
+                        int num = (index + list_answer.get(i).length()) + 1;
+                        String ch = String.valueOf(text.charAt(num));
+                        if(ch.contains(" "))
+                        {
+                            Log.i("raminhacker1234", ""+ch);
+
+                        }else {
+                            str.setSpan(new ForegroundColorSpan(Color.WHITE), index, index + list_answer.get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            str.setSpan(new BackgroundColorSpan(Color.GREEN), index, index + list_answer.get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                        }
+
+                        from = index+1;
+                    }
+
+
                 }
-                Toast.makeText(Activity_practice_read.this,ss,Toast.LENGTH_LONG).show();
+                boolean check_answer = false;
+                for (int i = 0;i<list_word_in_text.size();i++)
+                {
+                    check_answer = false;
+                    for(int j = 0;j<list_answer.size();j++)
+                    {
+                        if(list_word_in_text.get(i).equals(list_answer.get(j)))
+                        {
+                            check_answer = true;
+                            break;
+                        }
+                    }
+                    if(!check_answer)
+                    {
+                        String[] split = list_num_word_in_text.get(i).split("@");
+                        int start = Integer.valueOf(split[0]);
+                        int end = Integer.valueOf(split[1]);
+                        str.setSpan(new ForegroundColorSpan(Color.WHITE), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        str.setSpan(new BackgroundColorSpan(Color.RED), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    }
+                }
+
             }
         });
 
-        tv_text.setText(tv_text.getText().toString(), TextView.BufferType.SPANNABLE);
+
         if(getIntent().getExtras().getString("Easy") == null) tv_count.setVisibility(View.INVISIBLE);
         tv_text.setOnTouchListener(new View.OnTouchListener() {
             @Override
