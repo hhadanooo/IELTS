@@ -99,13 +99,29 @@
                         android:layout_weight="1.9"
                         android:id="@+id/view_space_playerPL"/>
 
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/repeat_icon"
-                        android:layout_gravity="center_vertical"
-                        android:id="@+id/iv_repeat_playerPL"/>
+                   <LinearLayout
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_weight="1"
+                       android:layout_gravity="center"
+                       android:orientation="vertical">
+
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="center"
+                           android:id="@+id/tv_parts_playerPL"
+                           android:layout_marginBottom="3dp"/>
+
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_gravity="center"
+                           android:text="00:00"
+                           android:id="@+id/tv_time_playerPL"/>
+
+
+                   </LinearLayout>
 
                     <ImageView
                         android:layout_width="0dp"
