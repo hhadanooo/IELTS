@@ -71,7 +71,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/layA"
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -84,7 +86,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/tick_result_icon"
+                    android:src="@drawable/tick_result_icon"
                     android:id="@+id/iv_result_A_chlng"/>
 
             </LinearLayout>
@@ -95,7 +97,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/layB"
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -110,7 +114,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/tick_result_icon"
+                    android:src="@drawable/tick_result_icon"
                     android:id="@+id/iv_result_B_chlng"/>
 
             </LinearLayout>
@@ -131,7 +135,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/layC"
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -144,7 +150,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/tick_result_icon"
+                    android:src="@drawable/tick_result_icon"
                     android:id="@+id/iv_result_C_chlng"/>
 
             </LinearLayout>
@@ -155,7 +161,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/layD"
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -170,19 +178,35 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/tick_result_icon"
+                    android:src="@drawable/tick_result_icon"
+
                     android:id="@+id/iv_result_D_chlng"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/iv_next_chlng"
-            android:background="@drawable/next_icon"/>
+           >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/iv_next_chlng"
+                android:background="@drawable/next_arrow_icon"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/iv_Tick_check_chlng"
+                android:background="@drawable/tick"/>
+
+        </RelativeLayout>
+
+
 
 
     </LinearLayout>

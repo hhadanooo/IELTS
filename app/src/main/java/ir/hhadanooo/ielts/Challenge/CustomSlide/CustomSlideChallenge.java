@@ -1,31 +1,56 @@
 package ir.hhadanooo.ielts.Challenge.CustomSlide;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.Arrays;
+
+import ir.hhadanooo.ielts.Challenge.ChallengeActivity;
 import ir.hhadanooo.ielts.R;
 
 public class CustomSlideChallenge extends LinearLayout {
 
-    ImageView iv_result_A_chlng,iv_result_B_chlng , iv_result_C_chlng ,iv_result_D_chlng , iv_next_chlng;
-    TextView tv_todayScore_chlng
-            , tv_totalScore_chlng , tv_question_chlng , tv_result_A_chlng ,
-            tv_result_B_chlng , tv_result_C_chlng , tv_result_D_chlng;
+    ImageView iv_result_A_chlng,iv_result_B_chlng  ,iv_Tick_check_chlng , iv_result_C_chlng ,iv_result_D_chlng , iv_next_chlng;
+    TextView tv_todayScore_chlng;
+    TextView tv_totalScore_chlng;
+    TextView tv_question_chlng;
+    TextView tv_result_A_chlng;
+    TextView tv_result_B_chlng;
+    TextView tv_result_C_chlng;
+    TextView tv_result_D_chlng;
 
     View view_center_score_chlng , view_center_AB_chlng ,view_center_CD_chlng
             , view_center_AB_CD_chlng;
 
-    LinearLayout lay_chlng;
+    LinearLayout lay_chlng , layA , layB , layC , layD;
     ScrollView lay_tv_question_chlng;
     private View rootView;
-    public CustomSlideChallenge(Context context , DisplayMetrics dm) {
-        super(context);
 
+    int idView;
+
+
+    boolean selectA = false;
+    boolean selectB = false;
+    boolean selectC = false;
+    boolean selectD = false;
+    boolean accessSelect = true;
+    boolean[] arrayTf ;
+    Context context;
+    @SuppressLint("SetTextI18n")
+    public CustomSlideChallenge(final Context context , DisplayMetrics dm , final int id
+            , String question , boolean[] arrayTF ) {
+        super(context);
+        this.arrayTf = arrayTF;
+        this.idView = id;
         rootView = inflate(context , R.layout.custom_slide_challenge , this);
         lay_chlng = findViewById(R.id.lay_chlng);
         tv_todayScore_chlng = rootView.findViewById(R.id.tv_todayScore_chlng);
@@ -45,6 +70,11 @@ public class CustomSlideChallenge extends LinearLayout {
         tv_result_D_chlng = rootView.findViewById(R.id.tv_result_D_chlng);
         view_center_AB_CD_chlng = rootView.findViewById(R.id.view_center_AB_CD_chlng);
         iv_next_chlng = rootView.findViewById(R.id.iv_next_chlng);
+        iv_Tick_check_chlng = rootView.findViewById(R.id.iv_Tick_check_chlng);
+        layA = rootView.findViewById(R.id.layA);
+        layB = rootView.findViewById(R.id.layB);
+        layC = rootView.findViewById(R.id.layC);
+        layD = rootView.findViewById(R.id.layD);
 
 
         lay_chlng.getLayoutParams().width = (int) (dm.widthPixels*.93);
@@ -53,21 +83,25 @@ public class CustomSlideChallenge extends LinearLayout {
 
         tv_totalScore_chlng.setTextSize((int) (dm.widthPixels*.014));
 
+        tv_todayScore_chlng.setText("Today Score: "+ChallengeActivity.todayS);
+        tv_totalScore_chlng.setText("Total Score: "+ChallengeActivity.totalS);
+
         view_center_score_chlng.getLayoutParams().width = (int) (dm.widthPixels*.15);
         view_center_score_chlng.getLayoutParams().height = (int) (dm.widthPixels*.01);
 
         lay_tv_question_chlng.getLayoutParams().width = (int) (dm.widthPixels*.75);
-        lay_tv_question_chlng.getLayoutParams().height = (int) (dm.widthPixels*.55);
+        lay_tv_question_chlng.getLayoutParams().height = (int) (dm.widthPixels*.48);
 
         tv_question_chlng.setTextSize((int) (dm.widthPixels*.016));
+        tv_question_chlng.setText(question);
 
         iv_result_A_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
         iv_result_A_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);
 
         tv_result_A_chlng.setTextSize((int) (dm.widthPixels*.03));
 
-        view_center_AB_chlng.getLayoutParams().width = (int) (dm.widthPixels*.1);
-        view_center_AB_chlng.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        view_center_AB_chlng.getLayoutParams().width = (int) (dm.widthPixels*.05);
+        view_center_AB_chlng.getLayoutParams().height = (int) (dm.widthPixels*.05);
 
         iv_result_B_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
         iv_result_B_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);
@@ -79,22 +113,201 @@ public class CustomSlideChallenge extends LinearLayout {
 
         tv_result_C_chlng.setTextSize((int) (dm.widthPixels*.03));
 
-        view_center_CD_chlng.getLayoutParams().width = (int) (dm.widthPixels*.1);
-        view_center_CD_chlng.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        view_center_CD_chlng.getLayoutParams().width = (int) (dm.widthPixels*.05);
+        view_center_CD_chlng.getLayoutParams().height = (int) (dm.widthPixels*.05);
 
         iv_result_D_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
         iv_result_D_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);
 
         tv_result_D_chlng.setTextSize((int) (dm.widthPixels*.03));
 
-        view_center_AB_CD_chlng.getLayoutParams().width = (int) (dm.widthPixels*.1);
-        view_center_AB_CD_chlng.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        view_center_AB_CD_chlng.getLayoutParams().width = (int) (dm.widthPixels*.05);
+        view_center_AB_CD_chlng.getLayoutParams().height = (int) (dm.widthPixels*.05);
 
         iv_next_chlng.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_next_chlng.getLayoutParams().height = (int) (dm.widthPixels*.1);
 
+        iv_Tick_check_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
+        iv_Tick_check_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);
+        iv_Tick_check_chlng.setEnabled(false);
+
+
+        iv_result_A_chlng.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (accessSelect){
+                    if (selectA){
+                        iv_Tick_check_chlng.setEnabled(false);
+                        selectA = false;
+                        layA .setBackgroundResource(R.drawable.unselect_bg);
+                    }else {
+                        iv_Tick_check_chlng.setEnabled(true);
+                        selectA = true;
+                        layA .setBackgroundResource(R.drawable.select_bg);
+                    }
+                }
+
+
+
+
+            }
+        });
+        iv_result_B_chlng.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (accessSelect){
+                    if (selectB){
+                        iv_Tick_check_chlng.setEnabled(false);
+                        selectB = false;
+                        layB .setBackgroundResource(R.drawable.unselect_bg);
+                    }else {
+                        selectB = true;
+                        iv_Tick_check_chlng.setEnabled(true);
+                        layB .setBackgroundResource(R.drawable.select_bg);
+                    }
+                }
+
+
+
+            }
+        });
+        iv_result_C_chlng.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (accessSelect){
+                    if (selectC){
+                        selectC = false;
+                        iv_Tick_check_chlng.setEnabled(false);
+                        layC .setBackgroundResource(R.drawable.unselect_bg);
+                    }else {
+                        selectC = true;
+                        iv_Tick_check_chlng.setEnabled(true);
+                        layC .setBackgroundResource(R.drawable.select_bg);
+                    }
+
+                }
+
+
+
+
+            }
+        });
+        iv_result_D_chlng.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (accessSelect){
+                    if (selectD){
+                        selectD = false;
+                        iv_Tick_check_chlng.setEnabled(false);
+                        layD .setBackgroundResource(R.drawable.unselect_bg);
+                    }else {
+                        selectD = true;
+                        iv_Tick_check_chlng.setEnabled(true);
+                        layD .setBackgroundResource(R.drawable.select_bg);
+                    }
+                }
+
+
+
+            }
+        });
+
+        iv_Tick_check_chlng.setOnClickListener(new OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                iv_Tick_check_chlng.setEnabled(false);
+                Log.i("tAndta" , "arr : "+ Arrays.toString(arrayTf) +
+                        "\n A : "+selectA+
+                        "\n B : "+selectB+
+                        "\n C : "+selectC+
+                        "\n D : "+selectD);
+                accessSelect = false;
+                if (arrayTf[0]){
+                    layA .setBackgroundResource(R.drawable.true_bg);
+                    if (selectA){
+                        ChallengeActivity.plusTodayScore(1);
+                        ChallengeActivity.plusTotalScore(1);
+                        tv_todayScore_chlng.setText("Today Score: "+ChallengeActivity.todayS);
+                        tv_totalScore_chlng.setText("Total Score: "+ChallengeActivity.totalS);
+
+                        //Log.i("tAndt" , "A"+todayS+"A"+totalS);
+                    }
+                }else{
+                    layA .setBackgroundResource(R.drawable.false_bg);
+                    tv_todayScore_chlng.setText("Today Score: "+ChallengeActivity.todayS);
+                    tv_totalScore_chlng.setText("Total Score: "+ChallengeActivity.totalS);
+                }
+                if (arrayTf[1]){
+                    layB .setBackgroundResource(R.drawable.true_bg);
+                    if (selectB){
+                        ChallengeActivity.plusTodayScore(1);
+                        ChallengeActivity.plusTotalScore(1);
+                        tv_todayScore_chlng.setText("Today Score: "+ChallengeActivity.todayS);
+                        tv_totalScore_chlng.setText("Total Score: "+ChallengeActivity.totalS);
+
+                        //Log.i("tAndt" , "A"+todayS+"A"+totalS);
+                    }
+                }else {
+                    layB .setBackgroundResource(R.drawable.false_bg);
+                    tv_todayScore_chlng.setText("Today Score: "+ChallengeActivity.todayS);
+                    tv_totalScore_chlng.setText("Total Score: "+ChallengeActivity.totalS);
+                }
+                if (arrayTf[2]){
+                    if (selectC){
+                        ChallengeActivity.plusTodayScore(1);
+                        ChallengeActivity.plusTotalScore(1);
+                        tv_todayScore_chlng.setText("Today Score: "+ChallengeActivity.todayS);
+                        tv_totalScore_chlng.setText("Total Score: "+ChallengeActivity.totalS);
+
+                        //Log.i("tAndt" , "A"+todayS+"A"+totalS);
+                    }
+                    layC .setBackgroundResource(R.drawable.true_bg);
+                }else{
+                    layC .setBackgroundResource(R.drawable.false_bg);
+                    tv_todayScore_chlng.setText("Today Score: "+ChallengeActivity.todayS);
+                    tv_totalScore_chlng.setText("Total Score: "+ChallengeActivity.totalS);
+                }
+                if (arrayTf[3]){
+                    if (selectD){
+                        ChallengeActivity.plusTodayScore(1);
+                        ChallengeActivity.plusTotalScore(1);
+                        tv_todayScore_chlng.setText("Today Score: "+ChallengeActivity.todayS);
+                        tv_totalScore_chlng.setText("Total Score: "+ChallengeActivity.totalS);
+
+                        //Log.i("tAndt" , "A"+todayS+"A"+totalS);
+                    }
+                    layD .setBackgroundResource(R.drawable.true_bg);
+                }else {
+                    layD .setBackgroundResource(R.drawable.false_bg);
+                    tv_todayScore_chlng.setText("Today Score: "+ChallengeActivity.todayS);
+                    tv_totalScore_chlng.setText("Total Score: "+ChallengeActivity.totalS);
+                }
+
+                /*Toast.makeText(context, "Today"+ChallengeActivity.todayS+
+                        "Total"+ChallengeActivity.totalS, Toast.LENGTH_SHORT).show();*/
+                ChallengeActivity.addIdRemovePage(id);
+                ChallengeActivity.Solve();
+
+
+            }
+        });
+
+
+        iv_next_chlng.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChallengeActivity.next_page_viewPager();
+            }
+        });
+
 
     }
+
 }
 
 
