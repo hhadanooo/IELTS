@@ -72,7 +72,7 @@ public class SlideFragmentTestReading extends Fragment {
 
         CheckIntnet();
 
-        time = 2400000;
+        time = 3600000;
         Timer(tv_timer);
         
 
@@ -214,13 +214,13 @@ public class SlideFragmentTestReading extends Fragment {
             public void onClick(View view) {
                 if(num_tab == 1)
                 {
-
+                    Toast.makeText(getContext(),"TAB 1",Toast.LENGTH_LONG).show();
                 }else if(num_tab == 2)
                 {
-
+                    Toast.makeText(getContext(),"TAB 2",Toast.LENGTH_LONG).show();
                 }else if(num_tab == 3)
                 {
-
+                    Toast.makeText(getContext(),"TAB 3",Toast.LENGTH_LONG).show();
                 }
             }
         });
