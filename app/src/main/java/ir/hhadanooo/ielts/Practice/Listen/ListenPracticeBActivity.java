@@ -48,6 +48,7 @@ public class ListenPracticeBActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listen_practice_b);
+        Log.i("RaminMaleki1234", "onCreate: ");
         Objects.requireNonNull(getSupportActionBar()).hide();
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);

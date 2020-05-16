@@ -39,6 +39,8 @@ public class Activity_practice_read extends AppCompatActivity {
 
     List<String> list_word_in_text,list_num_word_in_text;
 
+    boolean CheckClickAnswer = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -186,6 +188,7 @@ public class Activity_practice_read extends AppCompatActivity {
         img_see_answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                CheckClickAnswer = true;
                 String ss = "";
                 List<String> list_answer = new ArrayList<>();
                 list_answer.add("ramin1");
@@ -250,7 +253,8 @@ public class Activity_practice_read extends AppCompatActivity {
         tv_text.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN && !CheckClickAnswer) {
 
                     int mOffset = tv_text.getOffsetForPosition(motionEvent.getX(), motionEvent.getY());
 

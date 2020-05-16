@@ -17,6 +17,7 @@ import android.widget.TextView;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.Practice.Listen.ListenPracticeActivity;
+import ir.hhadanooo.ielts.Practice.Listen.ListenPracticeBActivity;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.Test.Activity_test;
 
@@ -233,7 +234,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Easy","Easy");
                             intent.putExtra("Number",1);
@@ -243,7 +244,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Easy","Easy");
                             intent.putExtra("Number",2);
@@ -253,7 +254,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Easy","Easy");
                             intent.putExtra("Number",3);
@@ -263,7 +264,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Easy","Easy");
                             intent.putExtra("Number",4);
@@ -273,7 +274,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Easy","Easy");
                             intent.putExtra("Number",5);
@@ -390,7 +391,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Normal","Noraml");
                             intent.putExtra("Number",1);
@@ -400,7 +401,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Normal","Normal");
                             intent.putExtra("Number",2);
@@ -410,7 +411,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Normal","Noraml");
                             intent.putExtra("Number",3);
@@ -420,7 +421,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Normal","Noraml");
                             intent.putExtra("Number",4);
@@ -430,7 +431,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Normal","Noraml");
                             intent.putExtra("Number",5);
@@ -546,7 +547,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Hard","Hard");
                             intent.putExtra("Number",1);
@@ -556,7 +557,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Hard","Hard");
                             intent.putExtra("Number",2);
@@ -566,7 +567,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom3.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Hard","Hard");
                             intent.putExtra("Number",3);
@@ -576,7 +577,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Hard","Hard");
                             intent.putExtra("Number",4);
@@ -586,7 +587,7 @@ public class Activity_Practice extends AppCompatActivity {
                     custom5.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
+                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
                             intent.putExtra("Type2","Type2");
                             intent.putExtra("Hard","Hard");
                             intent.putExtra("Number",5);
