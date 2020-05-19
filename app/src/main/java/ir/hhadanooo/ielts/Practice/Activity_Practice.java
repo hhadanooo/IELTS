@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.File;
+
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.Practice.Listen.ListenPracticeActivity;
@@ -129,165 +131,38 @@ public class Activity_Practice extends AppCompatActivity {
     {
         if(num_type == 1)
         {
-            Log.i("Raminhacker1234", "1: ");
             if(getIntent().getExtras().getString("Easy") != null)
             {
-                Log.i("Raminhacker1234", "2: ");
                 if(getIntent().getExtras().getString("Type1") != null)
                 {
-                    Log.i("Raminhacker1234", "3: ");
 
-                    CustomViewItem custom1 = new CustomViewItem(this);
-                    CustomViewItem custom2 = new CustomViewItem(this);
-                    CustomViewItem custom3 = new CustomViewItem(this);
-                    CustomViewItem custom4 = new CustomViewItem(this);
-                    CustomViewItem custom5 = new CustomViewItem(this);
+                    File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typea/easy");
 
+                    File[] files = file.listFiles();
 
-                    SetSettingCustomItem("","type a easy 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a easy 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a easy 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a easy 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a easy 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
-
-                    //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
-
-
-                    custom1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",1);
-                            startActivity(intent);
-                        }
-                    });
-                    custom2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",2);
-                            startActivity(intent);
-                        }
-                    });
-                    custom3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",3);
-                            startActivity(intent);
-                        }
-                    });
-                    custom4.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",4);
-                            startActivity(intent);
-                        }
-                    });
-                    custom5.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",5);
-                            startActivity(intent);
-                        }
-                    });
-
-
-                    lin.addView(custom1);
-                    lin.addView(custom2);
-                    lin.addView(custom3);
-                    lin.addView(custom4);
-                    lin.addView(custom5);
+                    for(int i = 0;i<files.length;i++)
+                    {
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Easy",false);
+                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        lin.addView(custom1);
+                    }
 
 
                 }else if(getIntent().getExtras().getString("Type2") != null)
                 {
 
-                    CustomViewItem custom1 = new CustomViewItem(this);
-                    CustomViewItem custom2 = new CustomViewItem(this);
-                    CustomViewItem custom3 = new CustomViewItem(this);
-                    CustomViewItem custom4 = new CustomViewItem(this);
-                    CustomViewItem custom5 = new CustomViewItem(this);
 
+                    File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typeb/easy");
 
-                    SetSettingCustomItem("","type b easy 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b easy 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b easy 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b easy 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b easy 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
+                    File[] files = file.listFiles();
 
-                    //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+                    for(int i = 0;i<files.length;i++)
+                    {
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Easy",false);
+                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        lin.addView(custom1);
+                    }
 
-
-                    custom1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",1);
-                            startActivity(intent);
-                        }
-                    });
-                    custom2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",2);
-                            startActivity(intent);
-                        }
-                    });
-                    custom3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",3);
-                            startActivity(intent);
-                        }
-                    });
-                    custom4.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",4);
-                            startActivity(intent);
-                        }
-                    });
-                    custom5.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Easy","Easy");
-                            intent.putExtra("Number",5);
-                            startActivity(intent);
-                        }
-                    });
-
-
-                    lin.addView(custom1);
-                    lin.addView(custom2);
-                    lin.addView(custom3);
-                    lin.addView(custom4);
-                    lin.addView(custom5);
 
                 }
             }else  if(getIntent().getExtras().getString("Normal") != null)
@@ -295,316 +170,72 @@ public class Activity_Practice extends AppCompatActivity {
                 if(getIntent().getExtras().getString("Type1") != null)
                 {
 
-                    CustomViewItem custom1 = new CustomViewItem(this);
-                    CustomViewItem custom2 = new CustomViewItem(this);
-                    CustomViewItem custom3 = new CustomViewItem(this);
-                    CustomViewItem custom4 = new CustomViewItem(this);
-                    CustomViewItem custom5 = new CustomViewItem(this);
+                    File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typea/noraml");
+
+                    File[] files = file.listFiles();
+
+                    for(int i = 0;i<files.length;i++)
+                    {
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Normal",false);
+                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        lin.addView(custom1);
+                    }
 
 
-
-                    SetSettingCustomItem("","type a normal 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a normal 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a normal 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a normal 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a normal 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
-
-                    //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
-
-
-                    custom1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Normal","Noraml");
-                            intent.putExtra("Number",1);
-                            startActivity(intent);
-                        }
-                    });
-                    custom2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Normal","Noraml");
-                            intent.putExtra("Number",2);
-                            startActivity(intent);
-                        }
-                    });
-                    custom3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Normal","Noraml");
-                            intent.putExtra("Number",3);
-                            startActivity(intent);
-                        }
-                    });
-                    custom4.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Normal","Noraml");
-                            intent.putExtra("Number",4);
-                            startActivity(intent);
-                        }
-                    });
-                    custom5.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Normal","Noraml");
-                            intent.putExtra("Number",5);
-                            startActivity(intent);
-                        }
-                    });
-
-
-                    lin.addView(custom1);
-                    lin.addView(custom2);
-                    lin.addView(custom3);
-                    lin.addView(custom4);
-                    lin.addView(custom5);
                 }else if(getIntent().getExtras().getString("Type2") != null)
                 {
-                    CustomViewItem custom1 = new CustomViewItem(this);
-                    CustomViewItem custom2 = new CustomViewItem(this);
-                    CustomViewItem custom3 = new CustomViewItem(this);
-                    CustomViewItem custom4 = new CustomViewItem(this);
-                    CustomViewItem custom5 = new CustomViewItem(this);
+
+                    File file = new File(getFilesDir() + "/ielts/listening/practice/typeb/noraml");
+
+                    File[] files = file.listFiles();
+
+                    for(int i = 0;i<files.length;i++)
+                    {
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Normal",false);
+                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        lin.addView(custom1);
+                    }
 
 
-
-                    SetSettingCustomItem("","type b normal 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b normal 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b normal 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b normal 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b normal 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
-
-                    //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
-
-
-                    custom1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Normal","Noraml");
-                            intent.putExtra("Number",1);
-                            startActivity(intent);
-                        }
-                    });
-                    custom2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Normal","Normal");
-                            intent.putExtra("Number",2);
-                            startActivity(intent);
-                        }
-                    });
-                    custom3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Normal","Noraml");
-                            intent.putExtra("Number",3);
-                            startActivity(intent);
-                        }
-                    });
-                    custom4.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Normal","Noraml");
-                            intent.putExtra("Number",4);
-                            startActivity(intent);
-                        }
-                    });
-                    custom5.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Normal","Noraml");
-                            intent.putExtra("Number",5);
-                            startActivity(intent);
-                        }
-                    });
-
-
-                    lin.addView(custom1);
-                    lin.addView(custom2);
-                    lin.addView(custom3);
-                    lin.addView(custom4);
-                    lin.addView(custom5);
                 }
             }else if(getIntent().getExtras().getString("Hard") != null)
             {
                 if(getIntent().getExtras().getString("Type1") != null)
                 {
 
-                    CustomViewItem custom1 = new CustomViewItem(this);
-                    CustomViewItem custom2 = new CustomViewItem(this);
-                    CustomViewItem custom3 = new CustomViewItem(this);
-                    CustomViewItem custom4 = new CustomViewItem(this);
-                    CustomViewItem custom5 = new CustomViewItem(this);
+                    File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typea/hard");
+
+                    File[] files = file.listFiles();
+
+                    for(int i = 0;i<files.length;i++)
+                    {
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Hard",false);
+                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        lin.addView(custom1);
+                    }
 
 
-
-                    SetSettingCustomItem("","type a hard 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a hard 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a hard 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a hard 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type a hard 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
-
-                    //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
-
-
-                    custom1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",1);
-                            startActivity(intent);
-                        }
-                    });
-                    custom2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",2);
-                            startActivity(intent);
-                        }
-                    });
-                    custom3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",3);
-                            startActivity(intent);
-                        }
-                    });
-                    custom4.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",4);
-                            startActivity(intent);
-                        }
-                    });
-                    custom5.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeActivity.class);
-                            intent.putExtra("Type1","Type1");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",5);
-                            startActivity(intent);
-                        }
-                    });
-
-
-                    lin.addView(custom1);
-                    lin.addView(custom2);
-                    lin.addView(custom3);
-                    lin.addView(custom4);
-                    lin.addView(custom5);
                 }else if(getIntent().getExtras().getString("Type2") != null)
                 {
-                    CustomViewItem custom1 = new CustomViewItem(this);
-                    CustomViewItem custom2 = new CustomViewItem(this);
-                    CustomViewItem custom3 = new CustomViewItem(this);
-                    CustomViewItem custom4 = new CustomViewItem(this);
-                    CustomViewItem custom5 = new CustomViewItem(this);
+                    File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typeb/hard");
 
+                    File[] files = file.listFiles();
 
+                    for(int i = 0;i<files.length;i++)
+                    {
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Hard",false);
+                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        lin.addView(custom1);
+                    }
 
-                    SetSettingCustomItem("","type b hard 1",custom1,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b hard 2",custom2,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b hard 3",custom3,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b hard 4",custom4,getResources().getDrawable(R.drawable.practice_icon));
-                    SetSettingCustomItem("","type b hard 5",custom5,getResources().getDrawable(R.drawable.practice_icon));
-
-                    //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
-
-
-                    custom1.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",1);
-                            startActivity(intent);
-                        }
-                    });
-                    custom2.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",2);
-                            startActivity(intent);
-                        }
-                    });
-                    custom3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",3);
-                            startActivity(intent);
-                        }
-                    });
-                    custom4.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",4);
-                            startActivity(intent);
-                        }
-                    });
-                    custom5.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
-                            intent.putExtra("Type2","Type2");
-                            intent.putExtra("Hard","Hard");
-                            intent.putExtra("Number",5);
-                            startActivity(intent);
-                        }
-                    });
-
-
-                    lin.addView(custom1);
-                    lin.addView(custom2);
-                    lin.addView(custom3);
-                    lin.addView(custom4);
-                    lin.addView(custom5);
                 }
             }else {
-                CustomViewItem custom1 = new CustomViewItem(this);
-                CustomViewItem custom2 = new CustomViewItem(this);
+
+
+
+
+                CustomViewItem custom1 = new CustomViewItem(this,"","","",0,"","",true);
+                CustomViewItem custom2 = new CustomViewItem(this,"","","",0,"","",true);
 
 
 

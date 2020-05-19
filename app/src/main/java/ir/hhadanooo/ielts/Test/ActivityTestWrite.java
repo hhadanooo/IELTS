@@ -16,6 +16,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import ir.hhadanooo.ielts.CustomView.CustomEditText;
 import ir.hhadanooo.ielts.R;
 
@@ -29,6 +34,8 @@ public class ActivityTestWrite extends AppCompatActivity {
     ImageView img_timer;
     TextView tv_timer;
     long time;
+
+    String TextSeeSample,TextTitleMainPage;
 
     SharedPreferences sharedPreferences_et_Text;
     SharedPreferences.Editor editor_sharedPreferences_et_Text;
@@ -125,14 +132,96 @@ public class ActivityTestWrite extends AppCompatActivity {
             {
                 if(getIntent().getExtras().getInt("Number") != 0)
                 {
+
+                    File file_text_see_sample = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/TextSeeSample.txt");
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_see_sample);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextSeeSample = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+                    File file_text_title_main_page = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/TextTitle.txt");
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_title_main_page);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextTitleMainPage = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+
+
+
+
                     name_sharedPreferences = "TextWriteAcademic"+getIntent().getExtras().getInt("Number");
                     tv_PathLogo_SimpleText.setText("Writing/Academic");
-                    tv_title_main_page.setText("TOPIC Academic " + getIntent().getExtras().getInt("Number"));
+                    tv_title_main_page.setText(TextTitleMainPage);
                     }
             }else if(getIntent().getExtras().getString("General") != null)
             {
                 if(getIntent().getExtras().getInt("Number") != 0)
                 {
+
+
+                    File file_text_see_sample = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/general/test"+ getIntent().getExtras().getInt("Number") +"/TextSeeSample.txt");
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_see_sample);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextSeeSample = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+                    File file_text_title_main_page = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/general/test"+ getIntent().getExtras().getInt("Number") +"/TextTitle.txt");
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_title_main_page);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextTitleMainPage = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+
+
+
                     name_sharedPreferences = "TextWriteGeneral"+getIntent().getExtras().getInt("Number");
                     tv_PathLogo_SimpleText.setText("Writing/General");
                     tv_title_main_page.setText("TOPIC General " + getIntent().getExtras().getInt("Number"));
@@ -239,7 +328,7 @@ public class ActivityTestWrite extends AppCompatActivity {
         img_see_example.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ActivityTestWrite.this,"See Sample",Toast.LENGTH_LONG).show();
+                Toast.makeText(ActivityTestWrite.this,TextSeeSample,Toast.LENGTH_LONG).show();
             }
         });
         img_shareanswer.setOnClickListener(new View.OnClickListener() {

@@ -3,6 +3,7 @@ package ir.hhadanooo.ielts.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 import ir.hhadanooo.ielts.R;
 
@@ -35,7 +42,10 @@ public class SlideFragmentTestReading extends Fragment {
     int num_tab;
 
 
-    public static SlideFragmentTestReading newSlide(int Width,int Height,String intent,int num,int num_tab){
+    String TextQuestion1,TextQuestion2,TextQuestion3,Question1,Question2,Question3,TextAnswer1,TextAnswer2,TextAnswer3;
+
+
+    public static SlideFragmentTestReading newSlide(int Width,int Height,String intent,int num,int num_tab,String TextQuestion1,String TextQuestion2,String TextQuestion3,String Question1,String Question2,String Question3,String TextAnswer1,String TextAnswer2,String TextAnswer3){
         SlideFragmentTestReading fragment = new SlideFragmentTestReading();
         Bundle args = new Bundle();
         args.putInt("Width",Width);
@@ -43,6 +53,17 @@ public class SlideFragmentTestReading extends Fragment {
         args.putString("Intent",intent);
         args.putInt("num",num);
         args.putInt("num_tab",num_tab);
+        args.putString("TextQuestion1",TextQuestion1);
+        args.putString("TextQuestion2",TextQuestion2);
+        args.putString("TextQuestion3",TextQuestion3);
+
+        args.putString("Question1",Question1);
+        args.putString("Question2",Question2);
+        args.putString("Question3",Question3);
+
+        args.putString("TextAnswer1",TextAnswer1);
+        args.putString("TextAnswer2",TextAnswer2);
+        args.putString("TextAnswer3",TextAnswer3);
         fragment.setArguments(args);
         return fragment;
     }
@@ -57,6 +78,19 @@ public class SlideFragmentTestReading extends Fragment {
         intent = args.getString("Intent");
         num  = args.getInt("num");
         num_tab = args.getInt("num_tab");
+
+        TextQuestion1 = args.getString("TextQuestion1");
+        TextQuestion2 = args.getString("TextQuestion2");
+        TextQuestion3 = args.getString("TextQuestion3");
+
+        Question1 = args.getString("Question1");
+        Question2 = args.getString("Question2");
+        Question3 = args.getString("Question3");
+
+        TextAnswer1 = args.getString("TextAnswer1");
+        TextAnswer2 = args.getString("TextAnswer2");
+        TextAnswer3 = args.getString("TextAnswer3");
+
 
 
     }
@@ -87,31 +121,24 @@ public class SlideFragmentTestReading extends Fragment {
             {
                 if(num_tab == 1)
                 {
-                    tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            " rhoncus eltricies lacus     TAB 1");
-                    tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting academic " + num);
+
+                    tv_text.setText(TextQuestion1);
+                    tv_question.setText(Question1);
+
+
+
+
                 }else if(num_tab == 2)
                 {
-                    tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            " rhoncus eltricies lacus     TAB 2");
-                    tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting academic " + num);
-                }else if(num_tab == 3)
-                {
-                    tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            " rhoncus eltricies lacus    TAB 3");
-                    tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting academic " + num);
+
+                    tv_text.setText(TextQuestion2);
+                    tv_question.setText(Question2);
+
+
+                }else if(num_tab == 3) {
+                    tv_text.setText(TextQuestion3);
+                    tv_question.setText(Question3);
+
                 }
 
             }
@@ -121,31 +148,21 @@ public class SlideFragmentTestReading extends Fragment {
             {
                 if(num_tab == 1)
                 {
-                    tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            " rhoncus eltricies lacus     TAB 1");
-                    tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting academic " + num);
+
+                    tv_text.setText(TextQuestion1);
+                    tv_question.setText(Question1);
+
                 }else if(num_tab == 2)
                 {
-                    tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            " rhoncus eltricies lacus     TAB 2");
-                    tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting academic " + num);
+                    tv_text.setText(TextQuestion2);
+                    tv_question.setText(Question2);
+
+
                 }else if(num_tab == 3)
                 {
-                    tv_text.setText("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit cursus risus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            "rhoncus est pellentesque ellit ullamcorper. velit euismod in pellentesque massa placerat duis ultricies lacus");
-                    tv_text.append("Morbi blandit sus at ultrices mi tempus imperdiet. id velit ut tortor pretium viverra suspendisse. Vestibulum " +
-                            " rhoncus eltricies lacus    TAB 3");
-                    tv_question.setText("1- Cons of the commuting \n \n2- Cons of the commuting academic " + num);
+                    tv_text.setText(TextQuestion3);
+                    tv_question.setText(Question3);
+
                 }
             }
         }
@@ -214,13 +231,13 @@ public class SlideFragmentTestReading extends Fragment {
             public void onClick(View view) {
                 if(num_tab == 1)
                 {
-                    Toast.makeText(getContext(),"TAB 1",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),""+TextAnswer1,Toast.LENGTH_LONG).show();
                 }else if(num_tab == 2)
                 {
-                    Toast.makeText(getContext(),"TAB 2",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),""+TextAnswer2,Toast.LENGTH_LONG).show();
                 }else if(num_tab == 3)
                 {
-                    Toast.makeText(getContext(),"TAB 3",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),""+TextAnswer3,Toast.LENGTH_LONG).show();
                 }
             }
         });

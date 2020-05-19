@@ -6,6 +6,7 @@ import androidx.core.app.NavUtils;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
@@ -14,6 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Objects;
 
 import ir.hhadanooo.ielts.R;
@@ -27,6 +32,10 @@ public class SimpleTextActivity extends AppCompatActivity {
     DisplayMetrics dm;
     ImageView iv_arrowBack_SimpleText , iv_ic_logoPage_SimpleText;
     public String fileName = "test.html";
+
+    String TextTitleMainPage = "";
+
+    File file_html;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -47,10 +56,30 @@ public class SimpleTextActivity extends AppCompatActivity {
 
             if(getIntent().getExtras().getString("Tip") != null)
             {
+
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
-                    String file_name = "ReadTip"+getIntent().getExtras().getInt("number");
-                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/tips/tips"+ getIntent().getExtras().getInt("number") +"/index.html");
+                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_answer1);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextTitleMainPage = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+
+
                 }
             }
 
@@ -62,8 +91,27 @@ public class SimpleTextActivity extends AppCompatActivity {
             {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
-                    String file_name = "ListenTip"+getIntent().getExtras().getInt("number");
-                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/listening/tips/tips"+ getIntent().getExtras().getInt("number") +"/index.html");
+                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/listening/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_answer1);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextTitleMainPage = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
                 }
             }
 
@@ -75,15 +123,54 @@ public class SimpleTextActivity extends AppCompatActivity {
 
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
-                    String file_name = "WriteTip"+getIntent().getExtras().getInt("number");
-                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+
+
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_answer1);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextTitleMainPage = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+
                 }
             }else if(getIntent().getExtras().getString("Vocab") != null)
             {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
-                    String file_name = "WriteVocab"+getIntent().getExtras().getInt("number");
-                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/vocab/vocab"+ getIntent().getExtras().getInt("number") +"/index.html");
+                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/vocab/vocab"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_answer1);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextTitleMainPage = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
                 }
             }
 
@@ -95,23 +182,85 @@ public class SimpleTextActivity extends AppCompatActivity {
 
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
-                    String file_name = "SpeakTip"+getIntent().getExtras().getInt("number");
-                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/tips/tips"+ getIntent().getExtras().getInt("number") +"/index.html");
+                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_answer1);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextTitleMainPage = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+
+
+
                 }
             }else if(getIntent().getExtras().getString("Vocab") != null)
             {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
-                    String file_name = "SpeakVocab"+getIntent().getExtras().getInt("number");
-                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/vocab/vocab"+ getIntent().getExtras().getInt("number") +"/index.html");
+                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/vocab/vocab"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+
+
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_answer1);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextTitleMainPage = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
                 }
             }
             else if(getIntent().getExtras().getString("Test") != null)
             {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
-                    String file_name = "SpeakTest"+getIntent().getExtras().getInt("number");
-                    Toast.makeText(SimpleTextActivity.this,file_name,Toast.LENGTH_LONG).show();
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/test/test"+ getIntent().getExtras().getInt("number") +"/index.html");
+                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/test/test"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+
+
+
+                    try {
+
+                        InputStream inputStream = new FileInputStream(file_text_answer1);
+                        String text = "";
+                        byte[] bytes = new byte[8192];
+                        inputStream.read(bytes);
+                        for(byte b:bytes)
+                        {
+                            text+= (char) b;
+                        }
+                        TextTitleMainPage = text;
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+                    }
+
+
                 }
             }
 
@@ -119,15 +268,13 @@ public class SimpleTextActivity extends AppCompatActivity {
 
 
 
-
         //set value
         Simple_text_WebView.getSettings().setJavaScriptEnabled(true);
         Simple_text_WebView.loadUrl("file:///android_asset/" + fileName);
-        tv_title_Simple_text.setText("Title");
 
 
 
-
+        tv_title_Simple_text.setText(TextTitleMainPage);
 
 
 

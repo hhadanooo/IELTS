@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.SimpleText.SimpleTextActivity;
@@ -134,274 +136,45 @@ public class Activity_Vocab extends AppCompatActivity {
 
     public void SetPropertiesCustomView()
     {
-        CustomViewItem custom1 = new CustomViewItem(this);
-        CustomViewItem custom2 = new CustomViewItem(this);
-        CustomViewItem custom3 = new CustomViewItem(this);
-        CustomViewItem custom4 = new CustomViewItem(this);
-        CustomViewItem custom5 = new CustomViewItem(this);
-        CustomViewItem custom6 = new CustomViewItem(this);
-        CustomViewItem custom7 = new CustomViewItem(this);
-        CustomViewItem custom8 = new CustomViewItem(this);
-        CustomViewItem custom9 = new CustomViewItem(this);
-        CustomViewItem custom10 = new CustomViewItem(this);
+
+
+
+
 
         if(num_type == 1)
         {
-            SetSettingCustomItem("","vocab 1",custom1,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 2",custom2,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 3",custom3,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 4",custom4,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 5",custom5,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 6",custom6,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 7",custom7,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 8",custom8,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 9",custom9,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 10",custom10,getResources().getDrawable(R.drawable.vocab));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/writing/vocab");
+
+            File[] files = file.listFiles();
+
+            for(int i = 0;i<files.length;i++)
+            {
+                CustomViewItem custom1 = new CustomViewItem(this,"Writing","Vocab","",i+1,"","",false);
+                SetSettingCustomItem("","vocab "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                lin.addView(custom1);
+            }
 
 
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",1);
-                    startActivity(intent);
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",2);
-                    startActivity(intent);
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",3);
-                    startActivity(intent);
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",4);
-                    startActivity(intent);
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",5);
-                    startActivity(intent);
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",6);
-                    startActivity(intent);
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",7);
-                    startActivity(intent);
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",8);
-                    startActivity(intent);
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",9);
-                    startActivity(intent);
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",10);
-                    startActivity(intent);
-                }
-            });
 
 
         }
         if(num_type == 3)
         {
 
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/speaking/vocab");
 
-            SetSettingCustomItem("","vocab 1",custom1,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 2",custom2,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 3",custom3,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 4",custom4,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 5",custom5,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab6",custom6,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 7",custom7,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 8",custom8,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 9",custom9,getResources().getDrawable(R.drawable.vocab));
-            SetSettingCustomItem("","vocab 10",custom10,getResources().getDrawable(R.drawable.vocab));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+            File[] files = file.listFiles();
+
+            for(int i = 0;i<files.length;i++)
+            {
+                CustomViewItem custom1 = new CustomViewItem(this,"Speaking","Vocab","",i+1,"","",false);
+                SetSettingCustomItem("","vocab "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                lin.addView(custom1);
+            }
 
 
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",1);
-                    startActivity(intent);
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",2);
-                    startActivity(intent);
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",3);
-                    startActivity(intent);
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",4);
-                    startActivity(intent);
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",5);
-                    startActivity(intent);
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",6);
-                    startActivity(intent);
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",7);
-                    startActivity(intent);
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",8);
-                    startActivity(intent);
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",9);
-                    startActivity(intent);
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_Vocab.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Vocab","Vocab");
-                    intent.putExtra("number",10);
-                    startActivity(intent);
-                }
-            });
 
         }
-
-
-        lin.addView(custom1);
-        lin.addView(custom2);
-        lin.addView(custom3);
-        lin.addView(custom4);
-        lin.addView(custom5);
-        lin.addView(custom6);
-        lin.addView(custom7);
-        lin.addView(custom8);
-        lin.addView(custom9);
-        lin.addView(custom10);
-
-
-
-
-
-
-
-
 
 
     }
