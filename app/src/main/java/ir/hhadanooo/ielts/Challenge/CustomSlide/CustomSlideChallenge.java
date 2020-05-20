@@ -84,8 +84,11 @@ public class CustomSlideChallenge extends LinearLayout {
         if (numAns == 2){
             layC.setVisibility(GONE);
             layD.setVisibility(GONE);
+            view_center_CD_chlng.setVisibility(GONE);
+            view_center_AB_CD_chlng.setVisibility(GONE);
         }else if (numAns == 3){
             layD.setVisibility(GONE);
+            view_center_CD_chlng.setVisibility(GONE);
         }
 
 
