@@ -171,18 +171,23 @@
             </RelativeLayout>
 
 
-            <EditText
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="#dee4de"
-                android:inputType="textMultiLine"
-                android:maxLength="5000"
-                android:padding="10dp"
-                android:scrollbars="vertical"
-                android:gravity="top"
-                android:layout_marginBottom="25dp"
-                android:id="@+id/et_TestL"/>
+                android:padding="3dp"
+                android:layout_marginBottom="20dp">
+
+                <WebView
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/webView_TestL"
+                    tools:ignore="WebViewLayout" />
+
+            </RelativeLayout>
+
 
 
 
@@ -198,6 +203,19 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/iv_seeAnswer_playerTL"
                     android:background="@drawable/seeanswer_icon1"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/view_center_see_audio"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_audioscripts_playerTL"
+                    android:background="@drawable/audioscripts"
                     android:layout_marginBottom="10dp"
                     />
 

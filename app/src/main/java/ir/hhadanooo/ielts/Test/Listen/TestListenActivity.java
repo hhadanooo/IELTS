@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.DialogChlng.DialogChlngShow;
 import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.R;
 
@@ -39,20 +43,22 @@ public class TestListenActivity extends AppCompatActivity {
     LinearLayout lay_TestL , lay_box_playerTL;
     RelativeLayout lay_playerTL;
     ImageView iv_play_playerTL , iv_ic_org_playerTL , iv_seeAnswer_playerTL , iv_time_TestL , iv_ic_logoPage_TestL
-            , iv_arrowBack_TestL , iv_ic_backward_playerTL , iv_ic_forward_playerTL;
-    View view_space_playerTL ;
-    EditText et_TestL , et_TestL_Result;
+            , iv_arrowBack_TestL , iv_ic_backward_playerTL , iv_ic_forward_playerTL ,iv_audioscripts_playerTL;
+    View view_space_playerTL , view_center_see_audio;
+    EditText  et_TestL_Result;
     TextView tv_time_TestL , tv_TitleLogo_TestL ,tv_PathLogo_TestL , tv_time_playerTL;
     SeekBar seekBar_playerTL;
     MediaPlayer mPlayer;
     Handler mHandler = new Handler();
+    WebView webView_TestL;
     int min = 0;
     int sec = 0;
     int duration = 0;
     long time = 2400000;
+    public String fileName = "test.html";
     List<String> answerList = new ArrayList<>();
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "SetJavaScriptEnabled"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -164,32 +170,23 @@ public class TestListenActivity extends AppCompatActivity {
         iv_seeAnswer_playerTL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                et_TestL_Result.setText("hhadanooo hassan ramin matiooo ni al ali reza bis");
-                answerList.clear();
-                String test = et_TestL.getText().toString();
-                String[] tests = test.split(" ");
-                String result = et_TestL_Result.getText().toString();
-                String[] results = result.split(" ");
-                int darsad = (100/results.length);
-                int ttrue = 0;
-                int d = 0;
-                for (int i = 0; i < results.length ;i++ ){
-                    for (int j = 0; j < tests.length ;j++){
-                        if (!checkForRepeatTrueAnswer(tests[j])){
-                            if (tests[j].equals(results[i])){
-                                ttrue++;
+                webView_TestL.getSettings().setJavaScriptEnabled(true);
+                webView_TestL.loadUrl("file:///android_asset/" + fileName);
+            }
+        });
 
-                                d = d+darsad;
-                                if (ttrue == results.length ){
-                                    d = 100;
-                                }
-                                Log.i("tesssst" , ""+tests[j]);
-                                answerList.add(tests[j]);
-                            }
-                        }
-                    }
-                }
-                Toast.makeText(TestListenActivity.this, " number of true answer : "+ttrue+"\n number of answer : "+results.length+"\n percentage of true answer : "+d+"%", Toast.LENGTH_LONG).show();
+        iv_audioscripts_playerTL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dia = new Dialog(TestListenActivity.this);
+                dia.setContentView(R.layout.layout_dialog_audioscripts);
+                Objects.requireNonNull(dia.getWindow()).setLayout((int) (dm.widthPixels*.9)
+                        , (int) (dm.heightPixels*.75) );
+                WebView webView_dia = dia.findViewById(R.id.webView_dia);
+                webView_dia.getSettings().setJavaScriptEnabled(true);
+                webView_dia.loadUrl("file:///android_asset/" + fileName);
+                dia.show();
+
             }
         });
 
@@ -235,7 +232,7 @@ public class TestListenActivity extends AppCompatActivity {
         mPlayer.stop();
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "SetJavaScriptEnabled"})
     public void init(){
         lay_TestL = findViewById(R.id.lay_TestL);
         lay_playerTL = findViewById(R.id.lay_playerTL);
@@ -244,7 +241,7 @@ public class TestListenActivity extends AppCompatActivity {
         iv_seeAnswer_playerTL = findViewById(R.id.iv_seeAnswer_playerTL);
         iv_time_TestL = findViewById(R.id.iv_time_TestL);
         view_space_playerTL = findViewById(R.id.view_space_playerTL);
-        et_TestL = findViewById(R.id.et_TestL);
+        webView_TestL = findViewById(R.id.webView_TestL);
         tv_time_TestL = findViewById(R.id.tv_time_TestL);
         lay_box_playerTL = findViewById(R.id.lay_box_playerTL);
         seekBar_playerTL = findViewById(R.id.seekBar_playerTL);
@@ -252,6 +249,8 @@ public class TestListenActivity extends AppCompatActivity {
         iv_ic_backward_playerTL = findViewById(R.id.iv_ic_backward_playerTL);
         iv_ic_forward_playerTL = findViewById(R.id.iv_ic_forward_playerTL);
         tv_time_playerTL = findViewById(R.id.tv_time_playerTL);
+        iv_audioscripts_playerTL = findViewById(R.id.iv_audioscripts_playerTL);
+        view_center_see_audio = findViewById(R.id.view_center_see_audio);
 
 
 
@@ -269,6 +268,7 @@ public class TestListenActivity extends AppCompatActivity {
 
         lay_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.8);
         lay_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.275);
+
 
 
         lay_box_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.23);
@@ -290,12 +290,21 @@ public class TestListenActivity extends AppCompatActivity {
 
 
 
-        et_TestL.getLayoutParams().width = (int) (dm.widthPixels*.75);
-        et_TestL.getLayoutParams().height = (int) (dm.widthPixels*.4);
+        webView_TestL.getLayoutParams().width = (int) (dm.widthPixels*.75);
+        webView_TestL.getLayoutParams().height = (int) (dm.widthPixels*.4);
+
+        webView_TestL.getSettings().setJavaScriptEnabled(true);
+        webView_TestL.loadUrl("file:///android_asset/" + fileName);
 
 
         iv_seeAnswer_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         iv_seeAnswer_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.074);
+
+        iv_audioscripts_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
+        iv_audioscripts_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.074);
+
+
+        view_center_see_audio.getLayoutParams().width = (int) (dm.widthPixels*.15);
 
         // seekBar_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         seekBar_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.03);
@@ -344,12 +353,12 @@ public class TestListenActivity extends AppCompatActivity {
             }
         });
 
-        et_TestL.setOnTouchListener(new View.OnTouchListener() {
+        webView_TestL.setOnTouchListener(new View.OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                if (et_TestL.hasFocus()) {
+                if (webView_TestL.hasFocus()) {
                     v.getParent().requestDisallowInterceptTouchEvent(true);
                     if ((event.getAction() & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_SCROLL) {
                         v.getParent().requestDisallowInterceptTouchEvent(false);
