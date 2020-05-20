@@ -213,7 +213,7 @@ public class TestListenActivity extends AppCompatActivity {
                 TextView tv_audioScripts = dia.findViewById(R.id.tv_audioScripts);
                 tv_audioScripts.getLayoutParams().width = (int) (dm.widthPixels*.8);
                 tv_audioScripts.getLayoutParams().height = (int) (dm.heightPixels*.7);
-                tv_audioScripts.setTextSize((int) (dm.heightPixels*.01));
+                tv_audioScripts.setTextSize((int) (dm.widthPixels*.015));
                 tv_audioScripts.setText(text);
                 dia.show();
 

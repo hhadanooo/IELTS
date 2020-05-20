@@ -195,23 +195,13 @@
 
             </LinearLayout>
 
-
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:background="#dee4de"
                 android:scrollbars="vertical"
-                android:maxLength="5000"
-                android:padding="10dp"
-                android:lines="14"
-                android:maxLines="20"
-                android:hint="Click Button SeeAnswer"
-                android:gravity="top"
-                android:layout_marginBottom="25dp"
-                android:id="@+id/et_PracticeLResult"
-                />
-
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/tv_PracticeLResult"/>
 
         </LinearLayout>
 

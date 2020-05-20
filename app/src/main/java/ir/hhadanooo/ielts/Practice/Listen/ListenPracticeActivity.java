@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,10 +18,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +45,8 @@ public class ListenPracticeActivity extends AppCompatActivity {
             , iv_shareAnswer_playerPL , iv_seeAnswer_playerPL , iv_arrowBack_practiceL
             , iv_ic_logoPage_practiceL;
     View view_space_playerPL , view_space_button_see_share;
-    EditText et_PracticeL , et_PracticeLResult;
-    TextView tv_TitleLogo_practiceL , tv_PathLogo_practiceL , tv_parts_playerPL ,tv_time_playerPL;
+    EditText et_PracticeL;
+    TextView tv_TitleLogo_practiceL , tv_PathLogo_practiceL , tv_parts_playerPL ,tv_time_playerPL , tv_PracticeLResult;
     List<String> answerList = new ArrayList<>();
     Handler mHandler = new Handler();
     MediaPlayer mPlayer;
@@ -73,14 +79,27 @@ public class ListenPracticeActivity extends AppCompatActivity {
         init();
 
 
+        String intent = "text 1";
+        String intent1 = "easy";
+        int pageNum = Integer.parseInt(intent.substring(intent.length()-1));
+
+        Log.i("pagenum" , "("+pageNum+")");
+
 
         mPlayer = new MediaPlayer();
         try {
-            mPlayer.setDataSource(Environment.getExternalStorageDirectory().getAbsolutePath()+"/bit.mp3");
+
+            FileInputStream fileInputStream = new FileInputStream(getFilesDir().
+                    getAbsolutePath()+"/ielts/listening/practice/" +
+                    "typea/"+intent1+"/"+intent1+pageNum+"/audio.mp3");
+            mPlayer.setDataSource(fileInputStream.getFD());
             mPlayer.prepare();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+
 
         duration = mPlayer.getDuration()/1000;
 
@@ -329,21 +348,33 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
             }
         });
-        et_PracticeLResult.setOnTouchListener(new View.OnTouchListener() {
+
+        tv_PracticeLResult.setOnTouchListener(new View.OnTouchListener() {
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                if (et_PracticeLResult.hasFocus()) {
-                    v.getParent().requestDisallowInterceptTouchEvent(true);
-                    if ((event.getAction() & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_SCROLL) {
-                        v.getParent().requestDisallowInterceptTouchEvent(false);
-                        return true;
-                    }
-                }
-                return false;
+                tv_PracticeLResult.getParent().requestDisallowInterceptTouchEvent(true);
 
+                return false;
             }
         });
+
+        File file = new File(getFilesDir().
+                getAbsolutePath()+"/ielts/listening/practice/" +
+                "typea/"+intent1+"/"+intent1+pageNum+"/answer.txt");
+
+        final StringBuilder text = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+            }
+            br.close() ;
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         iv_seeAnswer_playerPL.setOnClickListener(new View.OnClickListener() {
@@ -353,11 +384,11 @@ public class ListenPracticeActivity extends AppCompatActivity {
                 if ((mPlayer.getCurrentPosition() / 1000) == (mPlayer.getDuration() / 1000) ||
                 (mPlayer.getCurrentPosition()/1000)+timePart == (mPlayer.getDuration()/1000)){
 
-                    et_PracticeLResult.setText("hhadanooo hassan ramin matiooo ni al ali reza bis");
+                    tv_PracticeLResult.setText(text);
                     answerList.clear();
                     String test = et_PracticeL.getText().toString();
                     String[] tests = test.split(" ");
-                    String result = et_PracticeLResult.getText().toString();
+                    String result = tv_PracticeLResult.getText().toString();
                     String[] results = result.split(" ");
                     int darsad = (100 / results.length);
                     int ttrue = 0;
@@ -441,10 +472,11 @@ public class ListenPracticeActivity extends AppCompatActivity {
         view_space_playerPL = findViewById(R.id.view_space_playerPL);
         iv_ic_org_playerPL = findViewById(R.id.iv_ic_org_playerPL);
         et_PracticeL = findViewById(R.id.et_PracticeL);
-        et_PracticeLResult = findViewById(R.id.et_PracticeLResult);
+        tv_PracticeLResult = findViewById(R.id.tv_PracticeLResult);
         iv_shareAnswer_playerPL = findViewById(R.id.iv_shareAnswer_playerPL);
         iv_seeAnswer_playerPL = findViewById(R.id.iv_seeAnswer_playerPL);
         view_space_button_see_share = findViewById(R.id.view_space_button_see_share);
+        tv_PracticeLResult = findViewById(R.id.tv_PracticeLResult);
 
 
         lay_PracticeL.getLayoutParams().width = (int) (dm.widthPixels*.93);
@@ -480,8 +512,12 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
         et_PracticeL.getLayoutParams().width = (int) (dm.widthPixels*.75);
         et_PracticeL.getLayoutParams().height = (int) (dm.widthPixels*.4);
-        et_PracticeLResult.getLayoutParams().width = (int) (dm.widthPixels*.75);
-        et_PracticeLResult.getLayoutParams().height = (int) (dm.widthPixels*.4);
+        tv_PracticeLResult.getLayoutParams().width = (int) (dm.widthPixels*.75);
+        tv_PracticeLResult.getLayoutParams().height = (int) (dm.widthPixels*.4);
+        tv_PracticeLResult.setMovementMethod(new ScrollingMovementMethod());
+        //lay_tv_PracticeLResult.getLayoutParams().width = (int) (dm.widthPixels*.75);
+        //lay_tv_PracticeLResult.getLayoutParams().height = (int) (dm.widthPixels*.4);
+        tv_PracticeLResult.setTextSize((int) (dm.widthPixels*.015));
 
         iv_shareAnswer_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         iv_shareAnswer_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.074);
@@ -566,6 +602,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+                mPlayer.stop();
             }
         });
 
@@ -577,4 +614,9 @@ public class ListenPracticeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mPlayer.stop();
+    }
 }
