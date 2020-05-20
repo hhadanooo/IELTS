@@ -47,13 +47,15 @@ public class CustomSlideChallenge extends LinearLayout {
     Context context;
     int numTrue;
     int numSel = 0;
+    int numAns = 0;
     @SuppressLint("SetTextI18n")
     public CustomSlideChallenge(final Context context , DisplayMetrics dm , final int id
-            , String question , boolean[] arrayTF  , final int numTrue) {
+            , String question , boolean[] arrayTF  , final int numTrue , final int numAns) {
         super(context);
         this.arrayTf = arrayTF;
         this.idView = id;
         this.numTrue = numTrue;
+        this.numAns = numAns;
         rootView = inflate(context , R.layout.custom_slide_challenge , this);
         lay_chlng = findViewById(R.id.lay_chlng);
         tv_todayScore_chlng = rootView.findViewById(R.id.tv_todayScore_chlng);
@@ -78,6 +80,13 @@ public class CustomSlideChallenge extends LinearLayout {
         layB = rootView.findViewById(R.id.layB);
         layC = rootView.findViewById(R.id.layC);
         layD = rootView.findViewById(R.id.layD);
+
+        if (numAns == 2){
+            layC.setVisibility(GONE);
+            layD.setVisibility(GONE);
+        }else if (numAns == 3){
+            layD.setVisibility(GONE);
+        }
 
 
         lay_chlng.getLayoutParams().width = (int) (dm.widthPixels*.93);

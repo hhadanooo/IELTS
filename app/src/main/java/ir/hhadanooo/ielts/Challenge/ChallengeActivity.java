@@ -153,12 +153,13 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
             boolean[] answers = new boolean[4];
             int lineNum = 0;
             int numTrue = 0;
+            int numAns = 0;
             final StringBuilder answer = new StringBuilder();
             try {
                 BufferedReader br1 = new BufferedReader(new FileReader(file1));
                 String line;
                 while ((line = br1.readLine()) != null) {
-
+                    numAns++;
                     if (line.contains("f")){
                         answers[lineNum] = false;
                     }else if (line.contains("t")){
@@ -176,8 +177,8 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
             Log.i("Striiiin" , "1"+answer);
 
             CustomSlideChallenge cvq = new CustomSlideChallenge(ChallengeActivity.this
-                    , dm , i ,String.valueOf(text) , answers , numTrue );
-            Log.i("numt" , "a "+numTrue );
+                    , dm , i ,String.valueOf(text) , answers , numTrue , numAns );
+            Log.i("numAns" , "a "+numAns  );
             viewForCustom.add(cvq);
             slideForCustom.add(cvq);
         }
