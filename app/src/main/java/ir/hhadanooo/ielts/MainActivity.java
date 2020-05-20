@@ -10,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -19,7 +20,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.Html;
+import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,12 +36,22 @@ import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.zip.ZipEntry;
@@ -69,11 +82,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     RelativeLayout rel_body;
 
+    SharedPreferences newDayPerf;
+    int dPassed = 0;
+    int mPassed = 0;
+    int yPassed = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
+
+        newDayPerf = getSharedPreferences("newDayPerf" , MODE_PRIVATE);
+        dPassed = newDayPerf.getInt("dPassed" , 0);
+        mPassed = newDayPerf.getInt("mPassed" , 0);
+        yPassed = newDayPerf.getInt("yPassed" , 0);
 
 
         File ZipFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/ielts.zip");
@@ -136,6 +160,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SetPropertiesCustomView();
 
 
+        newDay();
 
 
 
@@ -207,6 +232,125 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         lin_list_item.addView(custom5);
 
 
+
+    }
+
+    public void newDay(){
+        Date date = new Date();
+        CharSequence d  = DateFormat.format("d", date.getTime());
+        CharSequence m  = DateFormat.format("M", date.getTime());
+        CharSequence y  = DateFormat.format("y", date.getTime());
+
+        int day = Integer.parseInt(String.valueOf(d));
+        int mound = Integer.parseInt(String.valueOf(m));
+        int years = Integer.parseInt(String.valueOf(y));
+
+        if (dPassed == 0){
+            newDayPerf.edit().putInt("dPassed" , day).apply();
+            newDayPerf.edit().putInt("mPassed" , mound).apply();
+            newDayPerf.edit().putInt("yPassed" , years).apply();
+            setTodayQuiz();
+            //Toast.makeText(this, "0", Toast.LENGTH_SHORT).show();
+
+        }else {
+            int days = newDayPerf.getInt("dPassed" , 0);
+            int mounds = newDayPerf.getInt("mPassed" , 0);
+            int yearss = newDayPerf.getInt("yPassed" , 0);
+            if (day > days && mound >= mounds && years >= yearss){
+                newDayPerf.edit().putInt("dPassed" , day).apply();
+                newDayPerf.edit().putInt("mPassed" , mound).apply();
+                newDayPerf.edit().putInt("yPassed" , years).apply();
+                //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+                setTodayQuiz();
+            }else if (day <= days && mound > mounds && years >= yearss) {
+                newDayPerf.edit().putInt("dPassed" , day).apply();
+                newDayPerf.edit().putInt("mPassed" , mound).apply();
+                newDayPerf.edit().putInt("yPassed" , years).apply();
+                setTodayQuiz();
+                //Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+
+            }else if (day <= days && mound <= mounds && years > yearss) {
+                newDayPerf.edit().putInt("dPassed" , day).apply();
+                newDayPerf.edit().putInt("mPassed" , mound).apply();
+                newDayPerf.edit().putInt("yPassed" , years).apply();
+                setTodayQuiz();
+                //Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+
+            }else {
+                Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
+
+            }
+
+        }
+        int days = newDayPerf.getInt("dPassed" , 0);
+        int mounds = newDayPerf.getInt("mPassed" , 0);
+        int yearss = newDayPerf.getInt("yPassed" , 0);
+
+        Log.i("newdays" , "day : "+day+" mound : "+mound+" years : "+years+
+                "\n days : "+days+" mounds : "+mounds+" yearss : "+yearss);
+        Log.i("tiiime" , ""+d+"\n"+m+"\n"+y);
+    }
+
+    public void setTodayQuiz(){
+        ArrayList<Integer> number = new ArrayList<>();
+        for (int i = 1; i <= 20; ++i) number.add(i);
+        Collections.shuffle(number);
+        Log.i("randnum" , ""+number.subList(0 , 10));
+
+        String pathAllQuiz = getFilesDir().
+                getAbsolutePath()+"/ielts/challenge/allquiz";
+
+        String pathToday = getFilesDir().
+                getAbsolutePath()+"/ielts/challenge/today/";
+
+        for (int i = 0; i < 10; ++i){
+
+            File file = new File(pathAllQuiz+"/quiz"+number.get(i)+"/quiz.txt");
+            StringBuilder text = new StringBuilder();
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    text.append(line);
+                    text.append('\n');
+                }
+                br.close() ;
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            File file1 = new File(pathAllQuiz+"/quiz"+number.get(i)+"/answer.txt");
+            StringBuilder answer = new StringBuilder();
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file1));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    answer.append(line+"\n");
+
+                }
+                br.close() ;
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //Log.i("Striiiin" , ""+text);
+            try {
+                File gpxfile = new File(pathToday+"quiz"+(i+1)+"/quiz.txt");
+                FileWriter writer = new FileWriter(gpxfile);
+                writer.write(number.get(i)+"\n"+text);
+                writer.flush();
+                writer.close();
+                //Toast.makeText(MainActivity.this, "Saved your text", Toast.LENGTH_LONG).show();
+            } catch (Exception e) { }
+            try {
+                File gpxfile1 = new File(pathToday+"quiz"+(i+1)+"/answer.txt");
+                FileWriter writer1 = new FileWriter(gpxfile1);
+                writer1.write(String.valueOf(answer));
+                writer1.flush();
+                writer1.close();
+                //Toast.makeText(MainActivity.this, "Saved your text", Toast.LENGTH_LONG).show();
+            } catch (Exception e) { }
+        }
 
     }
 

@@ -16,6 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -32,7 +36,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
     public static ViewPager ViewPager_Challenge;
     DisplayMetrics dm;
     static ViewPagerAdapterChlng viewPagerAdapterChlng;
-    boolean[] answers = {true , true , false ,false};
+
     public static int todayS = 0;
     public static int totalS = 0;
 
@@ -60,6 +64,10 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
         spf = getPreferences(MODE_PRIVATE);
         todayS = spf.getInt("todayS" , 0);
         totalS = spf.getInt("totalS" , 0);
+        //Log.i("Striiiin" , "slm");
+
+
+
 
         makeViewForSlider();
 
@@ -111,6 +119,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
     }
 
     public void makeViewForSlider(){
+
         for (int i = 0 ; i < num_quiz ; i++){
 
             int page = spf.getInt("page"+i , 0);
@@ -121,8 +130,54 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
                 }
                 continue;
             }
+
+            File file = new File(getFilesDir().
+                    getAbsolutePath()+"/ielts/challenge/today/quiz"+(i+1)+"/quiz.txt");
+
+            final StringBuilder text = new StringBuilder();
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    text.append(line);
+                    //text.append('\n');
+                }
+                br.close() ;
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+            //Log.i("Striiiin" , "0"+text);
+            File file1 = new File(getFilesDir().
+                    getAbsolutePath()+"/ielts/challenge/today/quiz"+(i+1)+"/answer.txt");
+
+            boolean[] answers = new boolean[4];
+            int lineNum = 0;
+            int numTrue = 0;
+            final StringBuilder answer = new StringBuilder();
+            try {
+                BufferedReader br1 = new BufferedReader(new FileReader(file1));
+                String line;
+                while ((line = br1.readLine()) != null) {
+
+                    if (line.contains("f")){
+                        answers[lineNum] = false;
+                    }else if (line.contains("t")){
+                        answers[lineNum] = true;
+                        numTrue++;
+                    }
+                    lineNum++;
+                    //answer.append(line);
+                    //text.append('\n');
+                }
+                br1.close() ;
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+            Log.i("Striiiin" , "1"+answer);
+
             CustomSlideChallenge cvq = new CustomSlideChallenge(ChallengeActivity.this
-                    , dm , i , i+" "+getResources().getString(R.string.text) , answers );
+                    , dm , i ,String.valueOf(text) , answers , numTrue );
+            Log.i("numt" , "a "+numTrue );
             viewForCustom.add(cvq);
             slideForCustom.add(cvq);
         }

@@ -45,12 +45,15 @@ public class CustomSlideChallenge extends LinearLayout {
     boolean accessSelect = true;
     boolean[] arrayTf ;
     Context context;
+    int numTrue;
+    int numSel = 0;
     @SuppressLint("SetTextI18n")
     public CustomSlideChallenge(final Context context , DisplayMetrics dm , final int id
-            , String question , boolean[] arrayTF ) {
+            , String question , boolean[] arrayTF  , final int numTrue) {
         super(context);
         this.arrayTf = arrayTF;
         this.idView = id;
+        this.numTrue = numTrue;
         rootView = inflate(context , R.layout.custom_slide_challenge , this);
         lay_chlng = findViewById(R.id.lay_chlng);
         tv_todayScore_chlng = rootView.findViewById(R.id.tv_todayScore_chlng);
@@ -135,21 +138,32 @@ public class CustomSlideChallenge extends LinearLayout {
         iv_result_A_chlng.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (numSel < numTrue){
+                    if (accessSelect){
+                        if (selectA){
+                            iv_Tick_check_chlng.setEnabled(false);
+                            selectA = false;
+                            numSel--;
+                            layA .setBackgroundResource(R.drawable.unselect_bg);
+                        }else {
+                            iv_Tick_check_chlng.setEnabled(true);
+                            selectA = true;
+                            numSel++;
+                            layA .setBackgroundResource(R.drawable.select_bg);
+                        }
+                    }
 
-                if (accessSelect){
+                }else {
                     if (selectA){
                         iv_Tick_check_chlng.setEnabled(false);
                         selectA = false;
+                        numSel--;
                         layA .setBackgroundResource(R.drawable.unselect_bg);
-                    }else {
-                        iv_Tick_check_chlng.setEnabled(true);
-                        selectA = true;
-                        layA .setBackgroundResource(R.drawable.select_bg);
                     }
                 }
 
 
-
+                Log.i("numt" , numSel+" a "+numTrue );
 
             }
         });
@@ -157,18 +171,32 @@ public class CustomSlideChallenge extends LinearLayout {
             @Override
             public void onClick(View v) {
 
-                if (accessSelect){
+                if (numSel < numTrue){
+                    if (accessSelect){
+                        if (selectB){
+                            iv_Tick_check_chlng.setEnabled(false);
+                            selectB = false;
+                            numSel--;
+                            layB .setBackgroundResource(R.drawable.unselect_bg);
+                        }else {
+                            iv_Tick_check_chlng.setEnabled(true);
+                            selectB = true;
+                            numSel++;
+                            layB .setBackgroundResource(R.drawable.select_bg);
+                        }
+                    }
+
+                }else {
                     if (selectB){
                         iv_Tick_check_chlng.setEnabled(false);
                         selectB = false;
+                        numSel--;
                         layB .setBackgroundResource(R.drawable.unselect_bg);
-                    }else {
-                        selectB = true;
-                        iv_Tick_check_chlng.setEnabled(true);
-                        layB .setBackgroundResource(R.drawable.select_bg);
                     }
                 }
 
+
+                Log.i("numt" , numSel+" a "+numTrue );
 
 
             }
@@ -177,42 +205,60 @@ public class CustomSlideChallenge extends LinearLayout {
             @Override
             public void onClick(View v) {
 
-                if (accessSelect){
-                    if (selectC){
-                        selectC = false;
-                        iv_Tick_check_chlng.setEnabled(false);
-                        layC .setBackgroundResource(R.drawable.unselect_bg);
-                    }else {
-                        selectC = true;
-                        iv_Tick_check_chlng.setEnabled(true);
-                        layC .setBackgroundResource(R.drawable.select_bg);
+                if (numSel < numTrue){
+                    if (accessSelect){
+                        if (selectC){
+                            iv_Tick_check_chlng.setEnabled(false);
+                            selectC = false;
+                            numSel--;
+                            layC .setBackgroundResource(R.drawable.unselect_bg);
+                        }else {
+                            iv_Tick_check_chlng.setEnabled(true);
+                            selectC = true;
+                            numSel++;
+                            layC .setBackgroundResource(R.drawable.select_bg);
+                        }
                     }
 
+                }else {
+                    if (selectC){
+                        iv_Tick_check_chlng.setEnabled(false);
+                        selectC = false;
+                        numSel--;
+                        layC .setBackgroundResource(R.drawable.unselect_bg);
+                    }
                 }
-
-
-
+                Log.i("numt" , numSel+" a "+numTrue );
 
             }
         });
         iv_result_D_chlng.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (numSel < numTrue){
+                    if (accessSelect){
+                        if (selectD){
+                            iv_Tick_check_chlng.setEnabled(false);
+                            selectD = false;
+                            numSel--;
+                            layD .setBackgroundResource(R.drawable.unselect_bg);
+                        }else {
+                            iv_Tick_check_chlng.setEnabled(true);
+                            selectD = true;
+                            numSel++;
+                            layD .setBackgroundResource(R.drawable.select_bg);
+                        }
+                    }
 
-                if (accessSelect){
+                }else {
                     if (selectD){
-                        selectD = false;
                         iv_Tick_check_chlng.setEnabled(false);
+                        selectD = false;
+                        numSel--;
                         layD .setBackgroundResource(R.drawable.unselect_bg);
-                    }else {
-                        selectD = true;
-                        iv_Tick_check_chlng.setEnabled(true);
-                        layD .setBackgroundResource(R.drawable.select_bg);
                     }
                 }
-
-
-
+                Log.i("numt" , numSel+" a "+numTrue );
             }
         });
 
