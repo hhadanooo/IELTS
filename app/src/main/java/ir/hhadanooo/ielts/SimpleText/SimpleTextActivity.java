@@ -270,7 +270,8 @@ public class SimpleTextActivity extends AppCompatActivity {
 
         //set value
         Simple_text_WebView.getSettings().setJavaScriptEnabled(true);
-        Simple_text_WebView.loadUrl("file:///android_asset/" + fileName);
+        //Simple_text_WebView.loadUrl("file:///android_asset/" + fileName);
+        Simple_text_WebView.loadUrl("file:///" + file_html);
 
 
 
