@@ -27,7 +27,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,9 +86,18 @@ public class TestListenActivity extends AppCompatActivity {
         }
 
 
+        String intent = "text 1";
+        int pageNum = Integer.parseInt(intent.substring(intent.length()-1));
+
+        Log.i("pagenum" , "("+pageNum+")");
+
+
         mPlayer = new MediaPlayer();
         try {
-            mPlayer.setDataSource(Environment.getExternalStorageDirectory().getAbsolutePath()+"/hh.mp3");
+
+            FileInputStream fileInputStream = new FileInputStream(getFilesDir().
+                    getAbsolutePath()+"/ielts/listening/test/test"+pageNum+"/audio.mp3");
+            mPlayer.setDataSource(fileInputStream.getFD());
             mPlayer.prepare();
         } catch (IOException e) {
             e.printStackTrace();
@@ -175,32 +187,40 @@ public class TestListenActivity extends AppCompatActivity {
             }
         });
 
+        File file = new File(getFilesDir().
+                getAbsolutePath()+"/ielts/listening/test/test"+pageNum+"/audioscripts.txt");
+
+        final StringBuilder text = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                text.append(line).append("\n");
+            }
+            br.close() ;
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
         iv_audioscripts_playerTL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Dialog dia = new Dialog(TestListenActivity.this);
                 dia.setContentView(R.layout.layout_dialog_audioscripts);
-                Objects.requireNonNull(dia.getWindow()).setLayout((int) (dm.widthPixels*.9)
-                        , (int) (dm.heightPixels*.75) );
-                WebView webView_dia = dia.findViewById(R.id.webView_dia);
-                webView_dia.getSettings().setJavaScriptEnabled(true);
-                webView_dia.loadUrl("file:///android_asset/" + fileName);
+               /* Objects.requireNonNull(dia.getWindow()).setLayout((int) (dm.widthPixels*.9)
+                        , (int) (dm.heightPixels*.75) );*/
+
+                TextView tv_audioScripts = dia.findViewById(R.id.tv_audioScripts);
+                tv_audioScripts.getLayoutParams().width = (int) (dm.widthPixels*.8);
+                tv_audioScripts.getLayoutParams().height = (int) (dm.heightPixels*.7);
+                tv_audioScripts.setTextSize((int) (dm.heightPixels*.01));
+                tv_audioScripts.setText(text);
                 dia.show();
 
             }
         });
 
 
-    }
-
-    public boolean checkForRepeatTrueAnswer(String answer){
-        boolean repeat = false;
-        for (int i = 0 ; i < answerList.size() ; i++){
-            if (answerList.get(i).equals(answer)){
-                repeat = true;
-            }
-        }
-        return repeat;
     }
 
 
