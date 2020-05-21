@@ -56,13 +56,6 @@ public class ActivityTestRead extends AppCompatActivity {
         {
            if(getIntent().getExtras().getInt("Number") != 0)
            {
-               String TextQuestion1 = "";
-               String TextQuestion2 = "";
-               String TextQuestion3 = "";
-
-               String Question1 = "";
-               String Question2 = "";
-               String Question3 = "";
 
                String TextAnswer1 = "";
                String TextAnswer2 = "";
@@ -74,43 +67,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
-               File file_text_question1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/TextQuestionPassage1.txt");
 
-               try {
-
-                   InputStream inputStream = new FileInputStream(file_text_question1);
-                   String text = "";
-                   byte[] bytes = new byte[8192];
-                   inputStream.read(bytes);
-                   for(byte b:bytes)
-                   {
-                       text+= (char) b;
-                   }
-                   TextQuestion1 = text;
-               } catch (IOException e) {
-
-                   e.printStackTrace();
-               }
-
-
-
-               File file_question1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+getIntent().getExtras().getInt("Number")+"/QuestionPassage1.txt");
-
-               try {
-
-                   InputStream inputStream = new FileInputStream(file_question1);
-                   String text = "";
-                   byte[] bytes = new byte[8192];
-                   inputStream.read(bytes);
-                   for(byte b:bytes)
-                   {
-                       text+= (char) b;
-                   }
-                   Question1 = text;
-               } catch (IOException e) {
-
-                   e.printStackTrace();
-               }
 
 
 
@@ -134,43 +91,6 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
                /////////////
-               File file_text_question2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/TextQuestionPassage2.txt");
-
-               try {
-
-                   InputStream inputStream = new FileInputStream(file_text_question2);
-                   String text = "";
-                   byte[] bytes = new byte[8192];
-                   inputStream.read(bytes);
-                   for(byte b:bytes)
-                   {
-                       text+= (char) b;
-                   }
-                   TextQuestion2 = text;
-               } catch (IOException e) {
-
-                   e.printStackTrace();
-               }
-
-
-
-               File file_question2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+getIntent().getExtras().getInt("Number")+"/QuestionPassage2.txt");
-
-               try {
-
-                   InputStream inputStream = new FileInputStream(file_question2);
-                   String text = "";
-                   byte[] bytes = new byte[8192];
-                   inputStream.read(bytes);
-                   for(byte b:bytes)
-                   {
-                       text+= (char) b;
-                   }
-                   Question2 = text;
-               } catch (IOException e) {
-
-                   e.printStackTrace();
-               }
 
                File file_text_answer2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage2.txt");
 
@@ -193,43 +113,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
                /////////
 
-               File file_text_question3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/TextQuestionPassage3.txt");
 
-               try {
-
-                   InputStream inputStream = new FileInputStream(file_text_question3);
-                   String text = "";
-                   byte[] bytes = new byte[8192];
-                   inputStream.read(bytes);
-                   for(byte b:bytes)
-                   {
-                       text+= (char) b;
-                   }
-                   TextQuestion3 = text;
-               } catch (IOException e) {
-
-                   e.printStackTrace();
-               }
-
-
-
-               File file_question3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+getIntent().getExtras().getInt("Number")+"/QuestionPassage3.txt");
-
-               try {
-
-                   InputStream inputStream = new FileInputStream(file_question3);
-                   String text = "";
-                   byte[] bytes = new byte[8192];
-                   inputStream.read(bytes);
-                   for(byte b:bytes)
-                   {
-                       text+= (char) b;
-                   }
-                   Question3 = text;
-               } catch (IOException e) {
-
-                   e.printStackTrace();
-               }
 
                File file_text_answer3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage3.txt");
 
@@ -262,7 +146,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
-               viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"Academic", getIntent().getExtras().getInt("Number"),TextQuestion1,TextQuestion2,TextQuestion3,Question1,Question2,Question3,TextAnswer1,TextAnswer2,TextAnswer3));
+               viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"Academic", getIntent().getExtras().getInt("Number"),TextAnswer1,TextAnswer2,TextAnswer3));
                tabLayout.setupWithViewPager(viewPager);
            }
         }else if(getIntent().getExtras().get("General") != null)
@@ -270,58 +154,11 @@ public class ActivityTestRead extends AppCompatActivity {
             if(getIntent().getExtras().getInt("Number") != 0)
             {
 
-
-                String TextQuestion1 = "";
-                String TextQuestion2 = "";
-                String TextQuestion3 = "";
-
-                String Question1 = "";
-                String Question2 = "";
-                String Question3 = "";
-
                 String TextAnswer1 = "";
                 String TextAnswer2 = "";
                 String TextAnswer3 = "";
 
 
-
-                File file_text_question1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/TextQuestionPassage1.txt");
-
-                try {
-
-                    InputStream inputStream = new FileInputStream(file_text_question1);
-                    String text = "";
-                    byte[] bytes = new byte[8192];
-                    inputStream.read(bytes);
-                    for(byte b:bytes)
-                    {
-                        text+= (char) b;
-                    }
-                    TextQuestion1 = text;
-                } catch (IOException e) {
-
-                    e.printStackTrace();
-                }
-
-
-
-                File file_question1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+getIntent().getExtras().getInt("Number")+"/QuestionPassage1.txt");
-
-                try {
-
-                    InputStream inputStream = new FileInputStream(file_question1);
-                    String text = "";
-                    byte[] bytes = new byte[8192];
-                    inputStream.read(bytes);
-                    for(byte b:bytes)
-                    {
-                        text+= (char) b;
-                    }
-                    Question1 = text;
-                } catch (IOException e) {
-
-                    e.printStackTrace();
-                }
 
 
 
@@ -345,43 +182,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
                 /////////////
-                File file_text_question2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/TextQuestionPassage2.txt");
 
-                try {
-
-                    InputStream inputStream = new FileInputStream(file_text_question2);
-                    String text = "";
-                    byte[] bytes = new byte[8192];
-                    inputStream.read(bytes);
-                    for(byte b:bytes)
-                    {
-                        text+= (char) b;
-                    }
-                    TextQuestion2 = text;
-                } catch (IOException e) {
-
-                    e.printStackTrace();
-                }
-
-
-
-                File file_question2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+getIntent().getExtras().getInt("Number")+"/QuestionPassage2.txt");
-
-                try {
-
-                    InputStream inputStream = new FileInputStream(file_question2);
-                    String text = "";
-                    byte[] bytes = new byte[8192];
-                    inputStream.read(bytes);
-                    for(byte b:bytes)
-                    {
-                        text+= (char) b;
-                    }
-                    Question2 = text;
-                } catch (IOException e) {
-
-                    e.printStackTrace();
-                }
 
                 File file_text_answer2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage2.txt");
 
@@ -404,43 +205,6 @@ public class ActivityTestRead extends AppCompatActivity {
 
                 /////////
 
-                File file_text_question3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/TextQuestionPassage3.txt");
-
-                try {
-
-                    InputStream inputStream = new FileInputStream(file_text_question3);
-                    String text = "";
-                    byte[] bytes = new byte[8192];
-                    inputStream.read(bytes);
-                    for(byte b:bytes)
-                    {
-                        text+= (char) b;
-                    }
-                    TextQuestion3 = text;
-                } catch (IOException e) {
-
-                    e.printStackTrace();
-                }
-
-
-
-                File file_question3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+getIntent().getExtras().getInt("Number")+"/QuestionPassage3.txt");
-
-                try {
-
-                    InputStream inputStream = new FileInputStream(file_question3);
-                    String text = "";
-                    byte[] bytes = new byte[8192];
-                    inputStream.read(bytes);
-                    for(byte b:bytes)
-                    {
-                        text+= (char) b;
-                    }
-                    Question3 = text;
-                } catch (IOException e) {
-
-                    e.printStackTrace();
-                }
 
                 File file_text_answer3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage3.txt");
 
@@ -467,7 +231,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
-                viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"General", getIntent().getExtras().getInt("Number"),TextQuestion1,TextQuestion2,TextQuestion3,Question1,Question2,Question3,TextAnswer1,TextAnswer2,TextAnswer3));
+                viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"General", getIntent().getExtras().getInt("Number"),TextAnswer1,TextAnswer2,TextAnswer3));
                 tabLayout.setupWithViewPager(viewPager);
             }
         }
@@ -552,21 +316,15 @@ public class ActivityTestRead extends AppCompatActivity {
         int Width,Height;
         String intent;
         int num;
-        String TextQuestion1,TextQuestion2,TextQuestion3,Question1,Question2,Question3,TextAnswer1,TextAnswer2,TextAnswer3;
-        public SectionPagerAdapter(FragmentManager fm,int Width,int Height,String intent,int num,String TextQuestion1,String TextQuestion2,String TextQuestion3,String Question1,String Question2,String Question3,String TextAnswer1,String TextAnswer2,String TextAnswer3) {
+        String TextAnswer1,TextAnswer2,TextAnswer3;
+        public SectionPagerAdapter(FragmentManager fm,int Width,int Height,String intent,int num,String TextAnswer1,String TextAnswer2,String TextAnswer3) {
 
             super(fm);
             this.Width = Width;
             this.Height = Height;
             this.intent = intent;
             this.num = num;
-            this.TextQuestion1 = TextQuestion1;
-            this.TextQuestion2 = TextQuestion2;
-            this.TextQuestion3 = TextQuestion3;
 
-            this.Question1 = Question1;
-            this.Question2 = Question2;
-            this.Question3 = Question3;
 
             this.TextAnswer1 = TextAnswer1;
             this.TextAnswer2 = TextAnswer2;
@@ -578,7 +336,7 @@ public class ActivityTestRead extends AppCompatActivity {
         public Fragment getItem(int position) {
 
             tab_num++;
-            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num,TextQuestion1,TextQuestion2,TextQuestion3,Question1,Question2,Question3,TextAnswer1,TextAnswer2,TextAnswer3);
+            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num,TextAnswer1,TextAnswer2,TextAnswer3);
         }
 
         @Override
