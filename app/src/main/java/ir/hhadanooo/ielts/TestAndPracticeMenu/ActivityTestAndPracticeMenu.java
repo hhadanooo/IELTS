@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 
+import java.io.File;
+
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.DialogAG.DialogAGShow;
@@ -55,6 +57,8 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_and_practice_menu);
 
+
+
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         getSupportActionBar().hide();
@@ -65,6 +69,17 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
 
 
     }
+    public void deleteRecursive(File fileOrDirectory) {
+
+        if (fileOrDirectory.isDirectory()) {
+            for (File child : fileOrDirectory.listFiles()) {
+                deleteRecursive(child);
+            }
+        }
+
+        fileOrDirectory.delete();
+    }
+
     public void init()
     {
         rel_body = findViewById(R.id.activity_test_menu_rel_body);

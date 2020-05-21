@@ -143,6 +143,7 @@ public class CustomViewItem extends RelativeLayout {
                             intent.putExtra("Write","Write");
                             intent.putExtra("Academic","Academic");
                             intent.putExtra("Number",number);
+                            intent.putExtra("name",type_listen);
                             context.startActivity(intent);
                         }
                     });
@@ -155,6 +156,7 @@ public class CustomViewItem extends RelativeLayout {
                             intent.putExtra("Write","Write");
                             intent.putExtra("General","General");
                             intent.putExtra("Number",number);
+                            intent.putExtra("name",type_listen);
                             context.startActivity(intent);
                         }
                     });

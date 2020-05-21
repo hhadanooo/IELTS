@@ -10,6 +10,7 @@ import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -27,7 +28,7 @@ import ir.hhadanooo.ielts.R;
 public class ActivityTestWrite extends AppCompatActivity {
     RelativeLayout rel_body, rel_main_page,rel_title_main_page;
 
-    TextView tv_TitleLogo_SimpleText,tv_PathLogo_SimpleText,tv_title_main_page;
+    TextView tv_TitleLogo_SimpleText,tv_PathLogo_SimpleText;
     ImageView img_back;
     ImageView img_see_example,img_shareanswer,img_submit;
     CustomEditText et_main_page;
@@ -40,6 +41,8 @@ public class ActivityTestWrite extends AppCompatActivity {
     SharedPreferences sharedPreferences_et_Text;
     SharedPreferences.Editor editor_sharedPreferences_et_Text;
     String name_sharedPreferences;
+    WebView webView_title;
+    File file_html;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,12 +95,18 @@ public class ActivityTestWrite extends AppCompatActivity {
     }
     public void init()
     {
+        webView_title = findViewById(R.id.activity_test_write_webview_title);
+
+        webView_title.getSettings().setJavaScriptEnabled(true);
+
+
+
         rel_body = findViewById(R.id.activity_test_Write_rel_body);
         rel_main_page = findViewById(R.id.activity_test_write_rel_main_page);
         rel_title_main_page= findViewById(R.id.activity_test_write_rel_title_main_page);
 
 
-        tv_title_main_page = findViewById(R.id.activity_test_write_tv_title_main_page);
+
 
         img_see_example = findViewById(R.id.activity_test_write_img_see_example);
         img_shareanswer = findViewById(R.id.activity_test_write_img_shareanswer);
@@ -133,7 +142,7 @@ public class ActivityTestWrite extends AppCompatActivity {
                 if(getIntent().getExtras().getInt("Number") != 0)
                 {
 
-                    File file_text_see_sample = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/TextSeeSample.txt");
+                    File file_text_see_sample = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/academic/" +getIntent().getExtras().getString("name") +"/TextSeeSample.txt");
 
                     try {
 
@@ -151,23 +160,8 @@ public class ActivityTestWrite extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    File file_text_title_main_page = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/TextTitle.txt");
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/academic/" + getIntent().getExtras().getString("name") + "/title.html");
 
-                    try {
-
-                        InputStream inputStream = new FileInputStream(file_text_title_main_page);
-                        String text = "";
-                        byte[] bytes = new byte[8192];
-                        inputStream.read(bytes);
-                        for(byte b:bytes)
-                        {
-                            text+= (char) b;
-                        }
-                        TextTitleMainPage = text;
-                    } catch (IOException e) {
-
-                        e.printStackTrace();
-                    }
 
 
 
@@ -175,7 +169,7 @@ public class ActivityTestWrite extends AppCompatActivity {
 
                     name_sharedPreferences = "TextWriteAcademic"+getIntent().getExtras().getInt("Number");
                     tv_PathLogo_SimpleText.setText("Writing/Academic");
-                    tv_title_main_page.setText(TextTitleMainPage);
+
                     }
             }else if(getIntent().getExtras().getString("General") != null)
             {
@@ -183,7 +177,7 @@ public class ActivityTestWrite extends AppCompatActivity {
                 {
 
 
-                    File file_text_see_sample = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/general/test"+ getIntent().getExtras().getInt("Number") +"/TextSeeSample.txt");
+                    File file_text_see_sample = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/general/"+ getIntent().getExtras().getString("name") +"/TextSeeSample.txt");
 
                     try {
 
@@ -201,30 +195,14 @@ public class ActivityTestWrite extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    File file_text_title_main_page = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/general/test"+ getIntent().getExtras().getInt("Number") +"/TextTitle.txt");
-
-                    try {
-
-                        InputStream inputStream = new FileInputStream(file_text_title_main_page);
-                        String text = "";
-                        byte[] bytes = new byte[8192];
-                        inputStream.read(bytes);
-                        for(byte b:bytes)
-                        {
-                            text+= (char) b;
-                        }
-                        TextTitleMainPage = text;
-                    } catch (IOException e) {
-
-                        e.printStackTrace();
-                    }
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/general/"+ getIntent().getExtras().getString("name")+"/title.html");
 
 
 
 
                     name_sharedPreferences = "TextWriteGeneral"+getIntent().getExtras().getInt("Number");
                     tv_PathLogo_SimpleText.setText("Writing/General");
-                    tv_title_main_page.setText("TOPIC General " + getIntent().getExtras().getInt("Number"));
+
 
                 }
             }
@@ -248,12 +226,8 @@ public class ActivityTestWrite extends AppCompatActivity {
         rel_title_main_page.getLayoutParams().width = (int) (dm.widthPixels*.75);
         rel_title_main_page.getLayoutParams().height = (int)(dm.widthPixels*0.25);
 
-        tv_title_main_page.setMaxWidth((int) (dm.widthPixels * 0.65));
-        tv_title_main_page.setMaxHeight((int) (dm.heightPixels * 0.13));
 
-        tv_title_main_page.setTextSize((int) (dm.widthPixels * 0.011));
-
-        tv_title_main_page.setTextColor(Color.BLACK);
+        webView_title.loadUrl("file:///" + file_html);
 
 
         img_see_example.getLayoutParams().width = (int) (dm.widthPixels*0.25);
