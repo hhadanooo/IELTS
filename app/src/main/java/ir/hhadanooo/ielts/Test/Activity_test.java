@@ -282,7 +282,7 @@ public class Activity_test extends AppCompatActivity {
                 for(int i = 0;i<files.length;i++)
                 {
                     CustomViewItem custom1 = new CustomViewItem(this,"Writing","Test","General",i+1,files[i].getName(),"",false);
-                    SetSettingCustomItem("","test "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                    SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
                     lin.addView(custom1);
                 }
 
