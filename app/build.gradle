@@ -44,5 +44,6 @@ dependencies {
     implementation 'com.rom4ek:arcnavigationview:1.0.3'
     implementation 'com.github.stefanodp91.android:circularseekbar:0.2'
     implementation 'com.google.android.material:material:1.2.0-alpha06'
+    implementation 'com.android.volley:volley:1.1.1'
 
 }

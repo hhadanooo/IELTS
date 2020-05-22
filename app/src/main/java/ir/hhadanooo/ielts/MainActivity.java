@@ -8,6 +8,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +17,10 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -32,6 +37,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 
@@ -47,6 +59,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,10 +97,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     RelativeLayout rel_body;
 
+    boolean IELTSZip = false;
+
     SharedPreferences newDayPerf;
     int dPassed = 0;
     int mPassed = 0;
     int yPassed = 0;
+    private ProgressDialog pDialog;
+    public static final int progress_bar_type = 0;
+
+    int update_code= 0;
+
+    // File url to download
+    private static String file_url = "https://www.toptoop.ir/files/images/98-tir/Photos-of-the-new-Siamak-name-for-the-profile-(1).jpg";
+    private static String check_update_url = "http://hrwanheda.ir/update/index.php";
+    private static String update_url = "http://hrwanheda.ir/update/index.php";
+    String nameFile = "ielts.zip";
+    RequestQueue requestQueue;
+    boolean connected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,14 +122,58 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         newDayPerf = getSharedPreferences("newDayPerf" , MODE_PRIVATE);
+        IELTSZip = newDayPerf.getBoolean("IELTSZip" , false);
+        update_code = newDayPerf.getInt("update_code" , 0);
         dPassed = newDayPerf.getInt("dPassed" , 0);
         mPassed = newDayPerf.getInt("mPassed" , 0);
         yPassed = newDayPerf.getInt("yPassed" , 0);
 
 
-        File ZipFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/ielts.zip");
+
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            Toast.makeText(this, "Internet Access!", Toast.LENGTH_SHORT).show();
+
+            connected = true;
+            if (!IELTSZip){
+                new DownloadFileFromURL().execute(file_url);
+                Toast.makeText(this, "Download!", Toast.LENGTH_SHORT).show();
+            }else {
+                StringRequest s = new StringRequest(Request.Method.GET, check_update_url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (Integer.parseInt(response) > update_code){
+                            newDayPerf.edit().putInt("update_code" , Integer.parseInt(response)).apply();
+                            Toast.makeText(MainActivity.this, "Update", Toast.LENGTH_SHORT).show();
+                            update_data();
+                        }else{
+
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+                requestQueue.add(s);
+            }
+        } else{
+            connected = false;
+            Toast.makeText(this, "no Internet Access!", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+
+
+       /* File ZipFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/ielts.zip");
         File TargetFile = new File(getFilesDir().getAbsolutePath());
 
         try {
@@ -110,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
 
         }
-
+*/
 
         //responsive
         dm = new DisplayMetrics();
@@ -166,6 +238,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+    }
+
+    private void update_data(){
+        file_url = "https://www.toptoop.ir/files/images/98-tir/Photos-of-the-new-Siamak-name-for-the-profile-(1).jpg";
+        nameFile = "update.zip";
+        new DownloadFileFromURL().execute(file_url);
     }
 
     public void SetPropertiesCustomView()
@@ -279,7 +357,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
 
             }else {
-                Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -570,7 +648,113 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case progress_bar_type: // we set this to 0
+                pDialog = new ProgressDialog(this);
+                pDialog.setMessage("Downloading file. Please wait...");
+                pDialog.setIndeterminate(false);
+                pDialog.setMax(100);
+                pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                pDialog.setCancelable(true);
+                pDialog.show();
+                return pDialog;
+            default:
+                return null;
+        }
+    }
+
+    /**
+     * Background Async Task to download file
+     * */
+    class DownloadFileFromURL extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Bar Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            showDialog(progress_bar_type);
+        }
+
+        /**
+         * Downloading file in background thread
+         * */
+        @Override
+        protected String doInBackground(String... f_url) {
+            int count;
+            try {
+                URL url = new URL(f_url[0]);
+                URLConnection conection = url.openConnection();
+                conection.connect();
+
+                // this will be useful so that you can show a tipical 0-100%
+                // progress bar
+                int lenghtOfFile = conection.getContentLength();
+
+                // download the file
+                InputStream input = new BufferedInputStream(url.openStream(),
+                        8192);
+
+                // Output stream
+                OutputStream output = new FileOutputStream(getFilesDir().
+                        getAbsolutePath()
+                        + "/"+nameFile);
+
+                byte data[] = new byte[1024];
+
+                long total = 0;
+
+                while ((count = input.read(data)) != -1) {
+                    total += count;
+                    // publishing the progress....
+                    // After this onProgressUpdate will be called
+                    publishProgress("" + (int) ((total * 100) / lenghtOfFile));
+
+                    // writing data to file
+                    output.write(data, 0, count);
+                }
+
+                // flushing output
+                output.flush();
+
+                // closing streams
+                output.close();
+                input.close();
+
+            } catch (Exception e) {
+                Log.e("Error: ", e.getMessage());
+            }
+
+            return null;
+        }
+
+        /**
+         * Updating progress bar
+         * */
+        protected void onProgressUpdate(String... progress) {
+            // setting progress percentage
+            pDialog.setProgress(Integer.parseInt(progress[0]));
+        }
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        @Override
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after the file was downloaded
+            dismissDialog(progress_bar_type);
+            //Toast.makeText(MainActivity.this, "Downloaded", Toast.LENGTH_SHORT).show();
+            IELTSZip = true;
+            newDayPerf.edit().putBoolean("IELTSZip" , true ).apply();
 
 
+        }
 
+    }
 }
+
+
+
