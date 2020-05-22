@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,12 +24,15 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -61,6 +65,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
     int timePart = 10;
     int totalParts = 0;
     boolean lockButton = false;
+    int finalD = 0;
 
 
     @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
@@ -103,7 +108,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
         duration = mPlayer.getDuration()/1000;
 
-        int parts = duration%timePart;
+        final int parts = duration%timePart;
         if (parts == 0){
             totalParts = (duration/timePart);
         }
@@ -369,7 +374,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
             while ((line = br.readLine()) != null) {
-                text.append(line);
+                text.append(line).append(" ");
             }
             br.close() ;
         }catch (IOException e) {
@@ -381,35 +386,77 @@ public class ListenPracticeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if ((mPlayer.getCurrentPosition() / 1000) == (mPlayer.getDuration() / 1000) ||
-                (mPlayer.getCurrentPosition()/1000)+timePart == (mPlayer.getDuration()/1000)){
+                if ((mPlayer.getCurrentPosition() / 1000) == (mPlayer.getDuration() / 1000) && counterPlay < 2 ||
+                (mPlayer.getCurrentPosition()/1000)+timePart == (mPlayer.getDuration()/1000)&& counterPlay < 2){
 
                     tv_PracticeLResult.setText(text);
+                    iv_seeAnswer_playerPL.setEnabled(false);
+                    String result  = String.valueOf(text);
+                    result = result.replace(   "\n" , " " );
+                    result = result.replace(   "  " , " " );
+                    result = result.replace(   "   " , " " );
                     answerList.clear();
-                    String test = et_PracticeL.getText().toString();
-                    String[] tests = test.split(" ");
-                    String result = tv_PracticeLResult.getText().toString();
+                    String test = et_PracticeL.getText().toString()+" ";
                     String[] results = result.split(" ");
-                    int darsad = (100 / results.length);
+                    List<String> lis = Arrays.asList(results);
+                    float darsad =  (100f/lis.size());
                     int ttrue = 0;
-                    int d = 0;
-                    for (int i = 0; i < results.length; i++) {
-                        for (int j = 0; j < tests.length; j++) {
-                            if (!checkForRepeatTrueAnswer(tests[j])) {
-                                if (tests[j].equals(results[i])) {
-                                    ttrue++;
-
-                                    d = d + darsad;
-                                    if (ttrue == results.length) {
-                                        d = 100;
-                                    }
-                                    Log.i("tesssst", "" + tests[j]);
-                                    answerList.add(tests[j]);
-                                }
+                    float d = 0;
+                    test = test.replace(   "\n" , " " );
+                    test = test.replace(   "  " , " " );
+                    test = test.replace(   "   " , " " );
+                    for (int i = 0; i < lis.size() ;i++ ){
+                        if (test.contains(lis.get(i)+" ")){
+                            ttrue++;
+                            d = d+darsad;
+                            if (ttrue == lis.size() ){
+                                d = 100;
                             }
+                            answerList.add(lis.get(i));
+                            test = test.replaceFirst(   lis.get(i) , "true01" );
+                            finalD = (int) d;
+                            Log.i("tesssst" , d+" \n"+finalD);
                         }
                     }
-                    Toast.makeText(ListenPracticeActivity.this, " number of true answer : " + ttrue + "\n number of answer : " + results.length + "\n percentage of true answer : " + d + "%", Toast.LENGTH_LONG).show();
+                Toast.makeText(ListenPracticeActivity.this, " number of true answer : "
+                        +ttrue+"\n number of answer : "+lis.size()+"\n percentage of true answer : "+finalD+"%", Toast.LENGTH_LONG).show();
+
+
+                    if (ttrue == lis.size() ){
+                        final Snackbar snackbar;
+                        snackbar = Snackbar.make(v, " 100% results true.", Snackbar.LENGTH_LONG);
+                        snackbar.setAction("ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                snackbar.dismiss();
+                            }
+                        });
+                        snackbar.getView().setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                        snackbar.show();
+                    }else if (ttrue >= (lis.size()/2) ){
+                        final Snackbar snackbar;
+                        snackbar = Snackbar.make(v, finalD+"% results is true.", Snackbar.LENGTH_INDEFINITE);
+                        snackbar.setAction("ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                snackbar.dismiss();
+                            }
+                        });
+                        snackbar.getView().setBackgroundColor(Color.YELLOW);
+                        snackbar.show();
+                    }else{
+                        final Snackbar snackbar;
+                        snackbar = Snackbar.make(v, finalD+"% results is true.", Snackbar.LENGTH_INDEFINITE);
+                        snackbar.setAction("ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                snackbar.dismiss();
+                            }
+                        });
+                        snackbar.getView().setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        snackbar.show();
+                    }
+
                 }else {
                     Toast.makeText(ListenPracticeActivity.this, "pls wait for end", Toast.LENGTH_SHORT).show();
                 }
@@ -419,17 +466,19 @@ public class ListenPracticeActivity extends AppCompatActivity {
         iv_shareAnswer_playerPL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                String myText =" ";
-                if (et_PracticeL.getText() != null){
-                    myText = et_PracticeL.getText().toString();
-                }
-                sendIntent.putExtra(Intent.EXTRA_TEXT, myText);
-                sendIntent.setType("text/plain");
+                String myText =et_PracticeL.getText().toString();
+                if (!myText.isEmpty() && !myText.equals(" ")){
+                    Intent sendIntent = new Intent();
+                    sendIntent.setAction(Intent.ACTION_SEND);
+                    if (et_PracticeL.getText() != null){
+                        myText = et_PracticeL.getText().toString();
+                    }
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, myText);
+                    sendIntent.setType("text/plain");
 
-                Intent shareIntent = Intent.createChooser(sendIntent, null);
-                startActivity(shareIntent);
+                    Intent shareIntent = Intent.createChooser(sendIntent, null);
+                    startActivity(shareIntent);
+                }
             }
         });
 

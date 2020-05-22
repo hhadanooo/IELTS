@@ -18,8 +18,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,6 +51,8 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
     List<String> answerList = new ArrayList<>();
 
+    int finalD = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,15 +64,24 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
         initActionBar();
         init();
+        String intent = "text 1";
+        String intent1 = "easy";
+        int pageNum = Integer.parseInt(intent.substring(intent.length()-1));
+
+        Log.i("pagenum" , "("+pageNum+")");
+
 
         mPlayer = new MediaPlayer();
         try {
-            mPlayer.setDataSource(Environment.getExternalStorageDirectory().getAbsolutePath()+"/hh.mp3");
+
+            FileInputStream fileInputStream = new FileInputStream(getFilesDir().
+                    getAbsolutePath()+"/ielts/listening/practice/" +
+                    "typeb/"+intent1+"/"+intent1+pageNum+"/audio.mp3");
+            mPlayer.setDataSource(fileInputStream.getFD());
             mPlayer.prepare();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         duration = mPlayer.getDuration()/1000;
         iv_play_playerPBL.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,52 +130,98 @@ public class ListenPracticeBActivity extends AppCompatActivity {
             }
         });
 
+        File file = new File(getFilesDir().
+                getAbsolutePath()+"/ielts/listening/practice/" +
+                "typeb/"+intent1+"/"+intent1+pageNum+"/answer.txt");
+
+        final StringBuilder text = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                text.append(line);
+            }
+            br.close() ;
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
 
         iv_checkAnswer_playerPBL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String result  = "hhadanooo hassan ramin matiooo ni al ali reza bis";
+                iv_checkAnswer_playerPBL.setEnabled(false);
+                String result  = String.valueOf(text);
                 answerList.clear();
-                String test = et_PracticeBL.getText().toString();
-                String[] tests = test.split(" ");
+                String test = et_PracticeBL.getText().toString()+" ";
                 String[] results = result.split(" ");
-                int darsad = (100/results.length);
+                List<String> lis = Arrays.asList(results);
+                float darsad =  (100f/lis.size());
                 int ttrue = 0;
-                int d = 0;
-                for (int i = 0; i < results.length ;i++ ){
-                    for (int j = 0; j < tests.length ;j++){
-                        if (!checkForRepeatTrueAnswer(tests[j])){
-                            if (tests[j].equals(results[i])){
-                                ttrue++;
-
-                                d = d+darsad;
-                                if (ttrue == results.length ){
-                                    d = 100;
-                                }
-                                Log.i("tesssst" , ""+tests[j]);
-                                answerList.add(tests[j]);
-                            }
+                float d = 0;
+                test = test.replace(   "\n" , " " );
+                for (int i = 0; i < lis.size() ;i++ ){
+                    if (test.contains(lis.get(i)+" ")){
+                        ttrue++;
+                        d = d+darsad;
+                        if (ttrue == lis.size() ){
+                            d = 100;
                         }
+                        answerList.add(lis.get(i));
+                        test = test.replaceFirst(   lis.get(i) , "true01" );
+                        Log.i("tesssst" , ""+test);
+                        finalD = (int)d;
                     }
                 }
-                Toast.makeText(ListenPracticeBActivity.this, " number of true answer : "+ttrue+"\n number of answer : "+results.length+"\n percentage of true answer : "+d+"%", Toast.LENGTH_LONG).show();
+               /* Toast.makeText(ListenPracticeBActivity.this, " number of true answer : "
+                        +ttrue+"\n number of answer : "+lis.size()+"\n percentage of true answer : "+d+"%", Toast.LENGTH_LONG).show();*/
+
+
+                if (ttrue == lis.size() ){
+                    final Snackbar snackbar;
+                    snackbar = Snackbar.make(v, " results true", Snackbar.LENGTH_LONG);
+                    snackbar.setAction("ok", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            snackbar.dismiss();
+                        }
+                    });
+                    snackbar.getView().setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                    snackbar.show();
+                }else {
+                    final Snackbar snackbar;
+                    snackbar = Snackbar.make(v, " results is false.\n true results : "+result, Snackbar.LENGTH_INDEFINITE);
+                    snackbar.setAction("ok", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            snackbar.dismiss();
+                        }
+                    });
+                    snackbar.getView().setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                    snackbar.show();
+                }
+
+
+
             }
         });
 
         iv_shareAnswer_playerPBL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                String myText =" ";
-                if (et_PracticeBL.getText() != null){
-                    myText = et_PracticeBL.getText().toString();
-                }
-                sendIntent.putExtra(Intent.EXTRA_TEXT, myText);
-                sendIntent.setType("text/plain");
+                String myText =et_PracticeBL.getText().toString();
+                if (!myText.isEmpty() && !myText.equals(" ")){
+                    Intent sendIntent = new Intent();
+                    sendIntent.setAction(Intent.ACTION_SEND);
+                    if (et_PracticeBL.getText() != null){
+                        myText = et_PracticeBL.getText().toString();
+                    }
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, myText);
+                    sendIntent.setType("text/plain");
 
-                Intent shareIntent = Intent.createChooser(sendIntent, null);
-                startActivity(shareIntent);
+                    Intent shareIntent = Intent.createChooser(sendIntent, null);
+                    startActivity(shareIntent);
+                }
+
             }
         });
 
