@@ -58,7 +58,8 @@ public class TestListenActivity extends AppCompatActivity {
     int sec = 0;
     int duration = 0;
     long time = 2400000;
-    public String fileName = "test.html";
+    String fileName ;
+    int pageNum;
     List<String> answerList = new ArrayList<>();
 
     @SuppressLint({"ClickableViewAccessibility", "SetJavaScriptEnabled"})
@@ -73,6 +74,8 @@ public class TestListenActivity extends AppCompatActivity {
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
+        String intent = "text 1";
+        pageNum = Integer.parseInt(intent.substring(intent.length()-1));
 
         init();
         initActionBar();
@@ -86,8 +89,7 @@ public class TestListenActivity extends AppCompatActivity {
         }
 
 
-        String intent = "text 1";
-        int pageNum = Integer.parseInt(intent.substring(intent.length()-1));
+
 
         Log.i("pagenum" , "("+pageNum+")");
 
@@ -313,8 +315,11 @@ public class TestListenActivity extends AppCompatActivity {
         webView_TestL.getLayoutParams().width = (int) (dm.widthPixels*.75);
         webView_TestL.getLayoutParams().height = (int) (dm.widthPixels*.4);
 
+        fileName  = getFilesDir().
+                getAbsolutePath()+"/ielts/listening/test/test"+pageNum+"/index.html";
+
         webView_TestL.getSettings().setJavaScriptEnabled(true);
-        webView_TestL.loadUrl("file:///android_asset/" + fileName);
+        webView_TestL.loadUrl("file:///" + fileName);
 
 
         iv_seeAnswer_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
