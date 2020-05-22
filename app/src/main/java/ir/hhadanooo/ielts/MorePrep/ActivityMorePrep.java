@@ -132,6 +132,7 @@ public class ActivityMorePrep extends AppCompatActivity {
 
     public void SetPropertiesCustomView()
     {
+        /*
 
         CustomViewItem custom1 = new CustomViewItem(this);
         CustomViewItem custom2 = new CustomViewItem(this);
@@ -183,6 +184,8 @@ public class ActivityMorePrep extends AppCompatActivity {
         lin.addView(custom3);
         lin.addView(custom4);
         lin.addView(custom5);
+
+         */
 
 
 

@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.File;
 
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
@@ -163,113 +166,26 @@ public class Activity_test extends AppCompatActivity {
 
     public void SetPropertiesCustomView()
     {
-        CustomViewItem custom1 = new CustomViewItem(this);
-        CustomViewItem custom2 = new CustomViewItem(this);
-        CustomViewItem custom3 = new CustomViewItem(this);
-        CustomViewItem custom4 = new CustomViewItem(this);
-        CustomViewItem custom5 = new CustomViewItem(this);
-        CustomViewItem custom6 = new CustomViewItem(this);
-        CustomViewItem custom7 = new CustomViewItem(this);
-        CustomViewItem custom8 = new CustomViewItem(this);
-        CustomViewItem custom9 = new CustomViewItem(this);
-        CustomViewItem custom10 = new CustomViewItem(this);
+
+
+
+
+
+
 
         if(num_type == 1)
         {
-            SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 6",custom6,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 7",custom7,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 8",custom8,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 9",custom9,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 10",custom10,getResources().getDrawable(R.drawable.test_menue));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/test/");
 
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            File[] files = file.listFiles();
 
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",1);
-                    startActivity(intent);
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",2);
-                    startActivity(intent);
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",3);
-                    startActivity(intent);
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",4);
-                    startActivity(intent);
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",5);
-                    startActivity(intent);
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",6);
-                    startActivity(intent);
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",7);
-                    startActivity(intent);
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",8);
-                    startActivity(intent);
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",9);
-                    startActivity(intent);
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, TestListenActivity.class);
-                    intent.putExtra("Number",10);
-                    startActivity(intent);
-                }
-            });
+            for(int i = 0;i<files.length;i++)
+            {
+                CustomViewItem custom1 = new CustomViewItem(this,"Listening","Test","",i+1,"","",false);
+                SetSettingCustomItem("","test "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                lin.addView(custom1);
+            }
 
 
         }
@@ -277,241 +193,55 @@ public class Activity_test extends AppCompatActivity {
         {
 
 
-            SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 6",custom6,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 7",custom7,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 8",custom8,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 9",custom9,getResources().getDrawable(R.drawable.test_menue));
-            SetSettingCustomItem("","test 10",custom10,getResources().getDrawable(R.drawable.test_menue));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/speaking/test/");
 
+            File[] files = file.listFiles();
 
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            for(int i = 0;i<files.length;i++)
+            {
+                CustomViewItem custom1 = new CustomViewItem(this,"Speaking","Test","",i+1,"","",false);
+                SetSettingCustomItem("","test "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                lin.addView(custom1);
+            }
 
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",1);
-                    startActivity(intent);
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",2);
-                    startActivity(intent);
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",3);
-                    startActivity(intent);
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",4);
-                    startActivity(intent);
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",5);
-                    startActivity(intent);
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",6);
-                    startActivity(intent);
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",7);
-                    startActivity(intent);
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",8);
-                    startActivity(intent);
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",9);
-                    startActivity(intent);
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Activity_test.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Test","Test");
-                    intent.putExtra("number",10);
-                    startActivity(intent);
-                }
-            });
 
         }
         if(num_type == 3)
         {
+
+
             if(getIntent().getExtras().getString("Academic") != null)
             {
-                SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
-                custom1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",1);
-                        startActivity(intent);
-                    }
-                });
-                custom2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",2);
-                        startActivity(intent);
-                    }
-                });
-                custom3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",3);
-                        startActivity(intent);
-                    }
-                });
-                custom4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",4);
-                        startActivity(intent);
-                    }
-                });
-                custom5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",5);
-                        startActivity(intent);
-                    }
-                });
-                lin.addView(custom1);
-                lin.addView(custom2);
-                lin.addView(custom3);
-                lin.addView(custom4);
-                lin.addView(custom5);
+                File file = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic");
+
+
+                File[] files = file.listFiles();
+
+                for(int i = 0;i<files.length;i++)
+                {
+                    CustomViewItem custom1 = new CustomViewItem(this,"Reading","Test","Academic",i+1,"","",false);
+                    SetSettingCustomItem("","test "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                    lin.addView(custom1);
+                }
+
+
+
+
 
             }else if(getIntent().getExtras().getString("General") != null)
             {
-                SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
-                custom1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",1);
-                        startActivity(intent);
-                    }
-                });
-                custom2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",2);
-                        startActivity(intent);
-                    }
-                });
-                custom3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",3);
-                        startActivity(intent);
-                    }
-                });
-                custom4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",4);
-                        startActivity(intent);
-                    }
-                });
-                custom5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestRead.class);
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",5);
-                        startActivity(intent);
-                    }
-                });
-                lin.addView(custom1);
-                lin.addView(custom2);
-                lin.addView(custom3);
-                lin.addView(custom4);
-                lin.addView(custom5);
+                File file = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/test/general");
+
+                File[] files = file.listFiles();
+
+                for(int i = 0;i<files.length;i++)
+                {
+                    CustomViewItem custom1 = new CustomViewItem(this,"Reading","Test","General",i+1,"","",false);
+                    SetSettingCustomItem("","test "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                    lin.addView(custom1);
+                }
 
             }
 
@@ -527,159 +257,39 @@ public class Activity_test extends AppCompatActivity {
 
             if(getIntent().getExtras().getString("Academic") != null)
             {
-                SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
-                custom1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",1);
-                        startActivity(intent);
-                    }
-                });
-                custom2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",2);
-                        startActivity(intent);
-                    }
-                });
-                custom3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",3);
-                        startActivity(intent);
-                    }
-                });
-                custom4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",4);
-                        startActivity(intent);
-                    }
-                });
-                custom5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("Academic","Academic");
-                        intent.putExtra("Number",5);
-                        startActivity(intent);
-                    }
-                });
-                lin.addView(custom1);
-                lin.addView(custom2);
-                lin.addView(custom3);
-                lin.addView(custom4);
-                lin.addView(custom5);
+                File file = new File(getFilesDir().getAbsolutePath() + "/ielts/writing/test/academic");
+
+                File[] files = file.listFiles();
+
+                for(int i = 0;i<files.length;i++)
+                {
+
+                    CustomViewItem custom1 = new CustomViewItem(this,"Writing","Test","Academic",i+1,files[i].getName(),"",false);
+                    SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
+                    lin.addView(custom1);
+                }
+
+
 
             }else if(getIntent().getExtras().getString("General") != null)
             {
-                SetSettingCustomItem("","test 1",custom1,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 2",custom2,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 3",custom3,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 4",custom4,getResources().getDrawable(R.drawable.test_menue));
-                SetSettingCustomItem("","test 5",custom5,getResources().getDrawable(R.drawable.test_menue));
 
-                custom1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",1);
-                        startActivity(intent);
-                    }
-                });
-                custom2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",2);
-                        startActivity(intent);
-                    }
-                });
-                custom3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",3);
-                        startActivity(intent);
-                    }
-                });
-                custom4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",4);
-                        startActivity(intent);
-                    }
-                });
-                custom5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(Activity_test.this,ActivityTestWrite.class);
-                        intent.putExtra("Write","Write");
-                        intent.putExtra("General","General");
-                        intent.putExtra("Number",5);
-                        startActivity(intent);
-                    }
-                });
-                lin.addView(custom1);
-                lin.addView(custom2);
-                lin.addView(custom3);
-                lin.addView(custom4);
-                lin.addView(custom5);
+                File file = new File(getFilesDir().getAbsolutePath() + "/ielts/writing/test/general");
+
+                File[] files = file.listFiles();
+
+                for(int i = 0;i<files.length;i++)
+                {
+                    CustomViewItem custom1 = new CustomViewItem(this,"Writing","Test","General",i+1,files[i].getName(),"",false);
+                    SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
+                    lin.addView(custom1);
+                }
+
 
             }
 
         }
-
-        if(num_type != 3 && num_type != 4)
-        {
-            lin.addView(custom1);
-            lin.addView(custom2);
-            lin.addView(custom3);
-            lin.addView(custom4);
-            lin.addView(custom5);
-            lin.addView(custom6);
-            lin.addView(custom7);
-            lin.addView(custom8);
-            lin.addView(custom9);
-            lin.addView(custom10);
-        }
-
-
-
-
-
-
-
-
-
-
 
 
     }

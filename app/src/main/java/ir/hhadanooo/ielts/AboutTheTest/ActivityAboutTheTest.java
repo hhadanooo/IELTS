@@ -138,6 +138,7 @@ public class ActivityAboutTheTest extends AppCompatActivity {
 
     public void SetPropertiesCustomView(int check)
     {
+        /*
         if(check == 1)
         {
             CustomViewItem custom1 = new CustomViewItem(this);
@@ -357,6 +358,8 @@ public class ActivityAboutTheTest extends AppCompatActivity {
             lin.addView(custom6);
 
         }
+
+         */
 
 
 

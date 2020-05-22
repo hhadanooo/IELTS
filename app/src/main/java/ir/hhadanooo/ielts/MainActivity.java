@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             unzip(ZipFile,TargetFile);
         } catch (IOException e) {
             e.printStackTrace();
+
         }
 
 
@@ -172,11 +173,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        CustomViewItem custom1 = new CustomViewItem(this);
-        CustomViewItem custom2 = new CustomViewItem(this);
-        CustomViewItem custom3 = new CustomViewItem(this);
-        CustomViewItem custom4 = new CustomViewItem(this);
-        CustomViewItem custom5 = new CustomViewItem(this);
+        CustomViewItem custom1 = new CustomViewItem(this,"","","",1,"","",true);
+        CustomViewItem custom2 = new CustomViewItem(this,"","","",1,"","",true);
+        CustomViewItem custom3 = new CustomViewItem(this,"","","",1,"","",true);
+        CustomViewItem custom4 = new CustomViewItem(this,"","","",1,"","",true);
+        CustomViewItem custom5 = new CustomViewItem(this,"","","",1,"","",true);
 
         SetSettingCustomItem("Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do ","Reading",custom1,getResources().getDrawable(R.drawable.reading_icon));
         SetSettingCustomItem("Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do","Writing",custom2,getResources().getDrawable(R.drawable.writing_icon));

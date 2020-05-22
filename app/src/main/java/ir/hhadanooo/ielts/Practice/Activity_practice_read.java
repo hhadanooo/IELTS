@@ -18,8 +18,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import ir.hhadanooo.ielts.R;
 
@@ -40,6 +45,7 @@ public class Activity_practice_read extends AppCompatActivity {
     List<String> list_word_in_text,list_num_word_in_text;
 
     boolean CheckClickAnswer = false;
+    List<String> list_answer = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,20 +102,230 @@ public class Activity_practice_read extends AppCompatActivity {
     {
         if(getIntent().getExtras().getString("Easy") != null)
         {
-            tv_title_main_page.setText("Find any World/Words that show 'Age'");
-           tv_text.setText("ramin1 ramin10 ramin3 ramin1 ramin5 ramin6 ramin7 ramin1 ramin9 ramin10 ramin11 ramin12 ramin13 ramin14 ramin15 ramin16 ramin17 ramin18 ramin20");
+
+            String TextTitle = "";
+            String TextAllWord = "";
+            String TextAnswer = "";
+            File f = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy");
+            File[]files = f.listFiles();
+            Random random = new Random();
+            int num_rand = random.nextInt(files.length);
+
+            File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy/easy"+(num_rand+1)+"/TextTitleMainPage.txt");
+
+            try {
+
+                InputStream inputStream = new FileInputStream(file_title_main_page);
+                String text = "";
+                byte[] bytes = new byte[8192];
+                inputStream.read(bytes);
+                for(byte b:bytes)
+                {
+                    text+= (char) b;
+                }
+                TextTitle = text;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            File file_all_word = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy/easy"+(num_rand+1)+"/TextAllWord.txt");
+
+            try {
+
+                InputStream inputStream = new FileInputStream(file_all_word);
+                String text = "";
+                byte[] bytes = new byte[8192];
+                inputStream.read(bytes);
+                for(byte b:bytes)
+                {
+                    text+= (char) b;
+                }
+                TextAllWord = text;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            File file_text_answer = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy/easy"+(num_rand+1)+"/TextAnswer.txt");
+
+            try {
+
+                InputStream inputStream = new FileInputStream(file_text_answer);
+                String text = "";
+                byte[] bytes = new byte[inputStream.available()];
+                inputStream.read(bytes);
+                for(byte b:bytes)
+                {
+                    text+= (char) b;
+                }
+                TextAnswer = text;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            String[] split = TextAnswer.split("@");
+            for(int i = 0;i<split.length;i++)
+            {
+                list_answer.add(split[i]);
+            }
+
+            tv_title_main_page.setText(TextTitle);
+           tv_text.setText(TextAllWord);
         }else if(getIntent().getExtras().getString("Normal") != null) {
 
             tv_count.setVisibility(View.INVISIBLE);
-            tv_title_main_page.setText("Find any World/Words that show 'Age'");
-            tv_text.setText("hassan ramin hhadanooo matiooo hassan1 ramin1 hhadanooo1 matiooo1 hassan2 ramin2 hhadanooo2 matioo2o hassan3 ramin3 hhadanooo3 matiooo3 hassan4 ramin4 hhadanooo4 matiooo4");
+
+
+            String TextTitle = "";
+            String TextAllWord = "";
+            String TextAnswer = "";
+            File f = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal");
+            File[]files = f.listFiles();
+            Random random = new Random();
+            int num_rand = random.nextInt(files.length);
+            Toast.makeText(this,files.length+"",Toast.LENGTH_LONG).show();
+            File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal/normal"+(num_rand+1)+"/TextTitleMainPage.txt");
+
+            try {
+
+                InputStream inputStream = new FileInputStream(file_title_main_page);
+                String text = "";
+                byte[] bytes = new byte[8192];
+                inputStream.read(bytes);
+                for(byte b:bytes)
+                {
+                    text+= (char) b;
+                }
+                TextTitle = text;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            File file_all_word = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal/normal"+(num_rand+1)+"/TextAllWord.txt");
+
+            try {
+
+                InputStream inputStream = new FileInputStream(file_all_word);
+                String text = "";
+                byte[] bytes = new byte[8192];
+                inputStream.read(bytes);
+                for(byte b:bytes)
+                {
+                    text+= (char) b;
+                }
+                TextAllWord = text;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            File file_text_answer = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal/normal"+(num_rand+1)+"/TextAnswer.txt");
+
+            try {
+
+                InputStream inputStream = new FileInputStream(file_text_answer);
+                String text = "";
+                byte[] bytes = new byte[inputStream.available()];
+                inputStream.read(bytes);
+                for(byte b:bytes)
+                {
+                    text+= (char) b;
+                }
+                TextAnswer = text;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            String[] split = TextAnswer.split("@");
+            for(int i = 0;i<split.length;i++)
+            {
+                list_answer.add(split[i]);
+            }
+
+            tv_title_main_page.setText(TextTitle);
+            tv_text.setText(TextAllWord);
 
         }else if(getIntent().getExtras().getString("Hard") != null)
         {
             tv_count.setVisibility(View.INVISIBLE);
-            tv_title_main_page.setText("Find any World/Words that show 'Age'");
-            tv_text.setText("hassan ramin hhadanooo matiooo hassan1 ramin1 hhadanooo1 matiooo1 hassan2 ramin2 hhadanooo2 matioo2o hassan3 ramin3 hhadanooo3 matiooo3 hassan4 ramin4 hhadanooo4 matiooo4");
 
+            String TextTitle = "";
+            String TextAllWord = "";
+            String TextAnswer = "";
+            File f = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard");
+            File[]files = f.listFiles();
+            Random random = new Random();
+            int num_rand = random.nextInt(files.length);
+            Toast.makeText(this,files.length+"",Toast.LENGTH_LONG).show();
+            File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/hard"+(num_rand+1)+"/TextTitleMainPage.txt");
+
+            try {
+
+                InputStream inputStream = new FileInputStream(file_title_main_page);
+                String text = "";
+                byte[] bytes = new byte[8192];
+                inputStream.read(bytes);
+                for(byte b:bytes)
+                {
+                    text+= (char) b;
+                }
+                TextTitle = text;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            File file_all_word = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/hard"+(num_rand+1)+"/TextAllWord.txt");
+
+            try {
+
+                InputStream inputStream = new FileInputStream(file_all_word);
+                String text = "";
+                byte[] bytes = new byte[8192];
+                inputStream.read(bytes);
+                for(byte b:bytes)
+                {
+                    text+= (char) b;
+                }
+                TextAllWord = text;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+
+            File file_text_answer = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/hard"+(num_rand+1)+"/TextAnswer.txt");
+
+            try {
+
+                InputStream inputStream = new FileInputStream(file_text_answer);
+                String text = "";
+                byte[] bytes = new byte[inputStream.available()];
+                inputStream.read(bytes);
+                for(byte b:bytes)
+                {
+                    text+= (char) b;
+                }
+                TextAnswer = text;
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+
+            String[] split = TextAnswer.split("@");
+            for(int i = 0;i<split.length;i++)
+            {
+                list_answer.add(split[i]);
+            }
+
+
+
+            tv_title_main_page.setText(TextTitle);
+            tv_text.setText(TextAllWord);
 
         }
     }
@@ -190,11 +406,9 @@ public class Activity_practice_read extends AppCompatActivity {
             public void onClick(View view) {
                 CheckClickAnswer = true;
                 String ss = "";
-                List<String> list_answer = new ArrayList<>();
-                list_answer.add("ramin1");
-                list_answer.add("ramin3");
-                list_answer.add("ramin18");
-                list_answer.add("ramin14");
+
+
+
 
                 String text = tv_text.getText().toString();
                 int from = 0;
@@ -254,6 +468,7 @@ public class Activity_practice_read extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                int count_word_easy = list_answer.size();
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN && !CheckClickAnswer) {
 
                     int mOffset = tv_text.getOffsetForPosition(motionEvent.getX(), motionEvent.getY());
@@ -272,6 +487,7 @@ public class Activity_practice_read extends AppCompatActivity {
                         int start =Integer.valueOf(array[0]);
                         int end =Integer.valueOf(array[1]);
 
+
                         if(mOffset > start && mOffset < end)
                         {
 
@@ -281,7 +497,7 @@ public class Activity_practice_read extends AppCompatActivity {
                             SetColorEndHighlight(tv_text,start,end);
                             if(getIntent().getExtras().getString("Easy") != null)
                             {
-                                tv_count.setText(String.format("%d/4",list_word_in_text.size()));
+                                tv_count.setText(String.format("%d/%d",list_word_in_text.size(),count_word_easy));
                             }
                             check = true;
                             break;
@@ -311,20 +527,17 @@ public class Activity_practice_read extends AppCompatActivity {
 
                         if(start != -1){
 
-                            if(list_word_in_text.size() <4)
-                            {
 
-                            }
 
                             if(getIntent().getExtras().getString("Easy") != null)
                             {
-                                if(list_word_in_text.size() <4)
+                                if(list_word_in_text.size() <count_word_easy)
                                 {
                                     list_num_word_in_text.add(""+start+"@"+end);
                                     list_word_in_text.add(text);
                                     SetColorStartHighlight(tv_text,tv_text.getText().toString(),list_word_in_text,Color.WHITE,mOffset);
 
-                                    tv_count.setText(String.format("%d/4",list_word_in_text.size()));
+                                    tv_count.setText(String.format("%d/%d",list_word_in_text.size(),count_word_easy));
                                 }
                             }else {
                                 list_num_word_in_text.add(""+start+"@"+end);

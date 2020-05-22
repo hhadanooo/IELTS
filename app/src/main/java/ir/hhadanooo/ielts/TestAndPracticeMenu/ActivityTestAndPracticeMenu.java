@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 
+import java.io.File;
+
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.DialogAG.DialogAGShow;
@@ -55,6 +57,8 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_and_practice_menu);
 
+
+
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         getSupportActionBar().hide();
@@ -65,6 +69,17 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
 
 
     }
+    public void deleteRecursive(File fileOrDirectory) {
+
+        if (fileOrDirectory.isDirectory()) {
+            for (File child : fileOrDirectory.listFiles()) {
+                deleteRecursive(child);
+            }
+        }
+
+        fileOrDirectory.delete();
+    }
+
     public void init()
     {
         rel_body = findViewById(R.id.activity_test_menu_rel_body);
@@ -160,9 +175,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
 
         if(num_type == 4 || num_type == 2)
         {
-            CustomViewItem custom1 = new CustomViewItem(this);
-            CustomViewItem custom2 = new CustomViewItem(this);
-            CustomViewItem custom3 = new CustomViewItem(this);
+            CustomViewItem custom1 = new CustomViewItem(this,"","","",1,"","",true);
+            CustomViewItem custom2 = new CustomViewItem(this,"","","",1,"","",true);
+            CustomViewItem custom3 = new CustomViewItem(this,"","","",1,"","",true);
 
             SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.test_menue));
             SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.tip_icon));
@@ -206,9 +221,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         }
         if(num_type == 3 || num_type == 1)
         {
-            CustomViewItem custom1 = new CustomViewItem(this);
-            CustomViewItem custom2 = new CustomViewItem(this);
-            CustomViewItem custom3 = new CustomViewItem(this);
+            CustomViewItem custom1 = new CustomViewItem(this,"","","",1,"","",true);
+            CustomViewItem custom2 = new CustomViewItem(this,"","","",1,"","",true);
+            CustomViewItem custom3 = new CustomViewItem(this,"","","",1,"","",true);
 
             SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.test_menue));
             SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.tip_icon));

@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,6 +17,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import ir.hhadanooo.ielts.Fragment.SlideFragmentTestReading;
 import ir.hhadanooo.ielts.R;
@@ -50,14 +56,182 @@ public class ActivityTestRead extends AppCompatActivity {
         {
            if(getIntent().getExtras().getInt("Number") != 0)
            {
-               viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"Academic", getIntent().getExtras().getInt("Number")));
+
+               String TextAnswer1 = "";
+               String TextAnswer2 = "";
+               String TextAnswer3 = "";
+
+
+
+
+
+
+
+
+
+
+
+               File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage1.txt");
+
+               try {
+
+                   InputStream inputStream = new FileInputStream(file_text_answer1);
+                   String text = "";
+                   byte[] bytes = new byte[8192];
+                   inputStream.read(bytes);
+                   for(byte b:bytes)
+                   {
+                       text+= (char) b;
+                   }
+                   TextAnswer1 = text;
+               } catch (IOException e) {
+
+                   e.printStackTrace();
+               }
+
+
+               /////////////
+
+               File file_text_answer2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage2.txt");
+
+               try {
+
+                   InputStream inputStream = new FileInputStream(file_text_answer2);
+                   String text = "";
+                   byte[] bytes = new byte[8192];
+                   inputStream.read(bytes);
+                   for(byte b:bytes)
+                   {
+                       text+= (char) b;
+                   }
+                   TextAnswer2 = text;
+               } catch (IOException e) {
+
+                   e.printStackTrace();
+               }
+
+
+               /////////
+
+
+
+               File file_text_answer3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage3.txt");
+
+               try {
+
+                   InputStream inputStream = new FileInputStream(file_text_answer3);
+                   String text = "";
+                   byte[] bytes = new byte[8192];
+                   inputStream.read(bytes);
+                   for(byte b:bytes)
+                   {
+                       text+= (char) b;
+                   }
+                   TextAnswer3 = text;
+               } catch (IOException e) {
+
+                   e.printStackTrace();
+               }
+
+
+               ////////
+
+
+
+
+
+
+
+
+
+
+
+               viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"Academic", getIntent().getExtras().getInt("Number"),TextAnswer1,TextAnswer2,TextAnswer3));
                tabLayout.setupWithViewPager(viewPager);
            }
         }else if(getIntent().getExtras().get("General") != null)
         {
             if(getIntent().getExtras().getInt("Number") != 0)
             {
-                viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"General", getIntent().getExtras().getInt("Number")));
+
+                String TextAnswer1 = "";
+                String TextAnswer2 = "";
+                String TextAnswer3 = "";
+
+
+
+
+
+                File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage1.txt");
+
+                try {
+
+                    InputStream inputStream = new FileInputStream(file_text_answer1);
+                    String text = "";
+                    byte[] bytes = new byte[8192];
+                    inputStream.read(bytes);
+                    for(byte b:bytes)
+                    {
+                        text+= (char) b;
+                    }
+                    TextAnswer1 = text;
+                } catch (IOException e) {
+
+                    e.printStackTrace();
+                }
+
+
+                /////////////
+
+
+                File file_text_answer2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage2.txt");
+
+                try {
+
+                    InputStream inputStream = new FileInputStream(file_text_answer2);
+                    String text = "";
+                    byte[] bytes = new byte[8192];
+                    inputStream.read(bytes);
+                    for(byte b:bytes)
+                    {
+                        text+= (char) b;
+                    }
+                    TextAnswer2 = text;
+                } catch (IOException e) {
+
+                    e.printStackTrace();
+                }
+
+
+                /////////
+
+
+                File file_text_answer3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage3.txt");
+
+                try {
+
+                    InputStream inputStream = new FileInputStream(file_text_answer3);
+                    String text = "";
+                    byte[] bytes = new byte[8192];
+                    inputStream.read(bytes);
+                    for(byte b:bytes)
+                    {
+                        text+= (char) b;
+                    }
+                    TextAnswer3 = text;
+                } catch (IOException e) {
+
+                    e.printStackTrace();
+                }
+
+
+                ////////
+
+
+
+
+
+                viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"General", getIntent().getExtras().getInt("Number"),TextAnswer1,TextAnswer2,TextAnswer3));
                 tabLayout.setupWithViewPager(viewPager);
             }
         }
@@ -142,7 +316,8 @@ public class ActivityTestRead extends AppCompatActivity {
         int Width,Height;
         String intent;
         int num;
-        public SectionPagerAdapter(FragmentManager fm,int Width,int Height,String intent,int num) {
+        String TextAnswer1,TextAnswer2,TextAnswer3;
+        public SectionPagerAdapter(FragmentManager fm,int Width,int Height,String intent,int num,String TextAnswer1,String TextAnswer2,String TextAnswer3) {
 
             super(fm);
             this.Width = Width;
@@ -150,13 +325,18 @@ public class ActivityTestRead extends AppCompatActivity {
             this.intent = intent;
             this.num = num;
 
+
+            this.TextAnswer1 = TextAnswer1;
+            this.TextAnswer2 = TextAnswer2;
+            this.TextAnswer3 = TextAnswer3;
+
         }
 
         @Override
         public Fragment getItem(int position) {
 
             tab_num++;
-            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num);
+            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num,TextAnswer1,TextAnswer2,TextAnswer3);
         }
 
         @Override

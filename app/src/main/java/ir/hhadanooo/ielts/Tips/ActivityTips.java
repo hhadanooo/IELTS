@@ -15,10 +15,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.SimpleText.SimpleTextActivity;
+import ir.hhadanooo.ielts.Test.ActivityTestWrite;
+import ir.hhadanooo.ielts.Test.Activity_test;
 import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
 
 public class ActivityTips extends AppCompatActivity {
@@ -163,509 +167,74 @@ public class ActivityTips extends AppCompatActivity {
 
     public void SetPropertiesCustomView()
     {
-        CustomViewItem custom1 = new CustomViewItem(this);
-        CustomViewItem custom2 = new CustomViewItem(this);
-        CustomViewItem custom3 = new CustomViewItem(this);
-        CustomViewItem custom4 = new CustomViewItem(this);
-        CustomViewItem custom5 = new CustomViewItem(this);
-        CustomViewItem custom6 = new CustomViewItem(this);
-        CustomViewItem custom7 = new CustomViewItem(this);
-        CustomViewItem custom8 = new CustomViewItem(this);
-        CustomViewItem custom9 = new CustomViewItem(this);
-        CustomViewItem custom10 = new CustomViewItem(this);
+
 
         if(num_type == 1)
         {
-            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
 
 
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",1);
-                    startActivity(intent);
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",2);
-                    startActivity(intent);
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",3);
-                    startActivity(intent);
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",4);
-                    startActivity(intent);
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",5);
-                    startActivity(intent);
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",6);
-                    startActivity(intent);
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",7);
-                    startActivity(intent);
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",8);
-                    startActivity(intent);
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",9);
-                    startActivity(intent);
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Listen","Listen");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",10);
-                    startActivity(intent);
-                }
-            });
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/tips");
+
+            File[] files = file.listFiles();
+
+            for(int i = 0;i<files.length;i++)
+            {
+                CustomViewItem custom1 = new CustomViewItem(this,"Listening","Tips","",i+1,"","",false);
+                SetSettingCustomItem("","tips "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                lin.addView(custom1);
+            }
+
 
 
         }
         if(num_type == 2)
         {
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/speaking/tips");
+
+            File[] files = file.listFiles();
+
+            for(int i = 0;i<files.length;i++)
+            {
+                CustomViewItem custom1 = new CustomViewItem(this,"Speaking","Tips","",i+1,"","",false);
+                SetSettingCustomItem("","tips "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                lin.addView(custom1);
+            }
 
 
-            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
-
-
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",1);
-                    startActivity(intent);
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",2);
-                    startActivity(intent);
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",3);
-                    startActivity(intent);
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",4);
-                    startActivity(intent);
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",5);
-                    startActivity(intent);
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",6);
-                    startActivity(intent);
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",7);
-                    startActivity(intent);
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",8);
-                    startActivity(intent);
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",9);
-                    startActivity(intent);
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Speak","Speak");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",10);
-                    startActivity(intent);
-                }
-            });
 
         }
         if(num_type == 3)
         {
 
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/tips");
 
-            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+            File[] files = file.listFiles();
 
+            for(int i = 0;i<files.length;i++)
+            {
+                CustomViewItem custom1 = new CustomViewItem(this,"Reading","Tips","",i+1,"","",false);
+                SetSettingCustomItem("","tips "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                lin.addView(custom1);
+            }
 
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",1);
-                    startActivity(intent);
-
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",2);
-                    startActivity(intent);
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",3);
-                    startActivity(intent);
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",4);
-                    startActivity(intent);
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",5);
-                    startActivity(intent);
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",6);
-                    startActivity(intent);
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",7);
-                    startActivity(intent);
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",8);
-                    startActivity(intent);
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",9);
-                    startActivity(intent);
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Read","Read");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",10);
-                    startActivity(intent);
-                }
-            });
 
 
         }
         if(num_type == 4)
         {
 
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/writing/tips");
 
-            SetSettingCustomItem("","tip 1",custom1,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 2",custom2,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 3",custom3,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 4",custom4,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 5",custom5,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 6",custom6,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 7",custom7,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 8",custom8,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 9",custom9,getResources().getDrawable(R.drawable.tip_item_icon));
-            SetSettingCustomItem("","tip 10",custom10,getResources().getDrawable(R.drawable.tip_item_icon));
-            //SetSettingCustomItem("","How i can Go to office ...",custom4,getResources().getDrawable(R.drawable.gif_icon),getResources().getDrawable(R.drawable.tip_item_gift_icon));
+            File[] files = file.listFiles();
 
-
-            custom1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",1);
-                    startActivity(intent);
-                }
-            });
-            custom2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",2);
-                    startActivity(intent);
-                }
-            });
-            custom3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",3);
-                    startActivity(intent);
-                }
-            });
-            custom4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",4);
-                    startActivity(intent);
-                }
-            });
-            custom5.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",5);
-                    startActivity(intent);
-                }
-            });
-            custom6.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",6);
-                    startActivity(intent);
-                }
-            });
-            custom7.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",7);
-                    startActivity(intent);
-                }
-            });
-            custom8.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",8);
-                    startActivity(intent);
-                }
-            });
-            custom9.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",9);
-                    startActivity(intent);
-                }
-            });
-            custom10.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ActivityTips.this, SimpleTextActivity.class);
-                    intent.putExtra("Write","Write");
-                    intent.putExtra("Tip","Tip");
-                    intent.putExtra("number",10);
-                    startActivity(intent);
-                }
-            });
-
+            for(int i = 0;i<files.length;i++)
+            {
+                CustomViewItem custom1 = new CustomViewItem(this,"Writing","Tips","",i+1,"","",false);
+                SetSettingCustomItem("","tips "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                lin.addView(custom1);
+            }
 
         }
-
-        lin.addView(custom1);
-        lin.addView(custom2);
-        lin.addView(custom3);
-        lin.addView(custom4);
-        lin.addView(custom5);
-        lin.addView(custom6);
-        lin.addView(custom7);
-        lin.addView(custom8);
-        lin.addView(custom9);
-        lin.addView(custom10);
-
-
-
 
 
 
