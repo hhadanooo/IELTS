@@ -184,8 +184,10 @@ public class TestListenActivity extends AppCompatActivity {
         iv_seeAnswer_playerTL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fileName  = getFilesDir().
+                        getAbsolutePath()+"/ielts/listening/test/test"+pageNum+"/index1.html";
                 webView_TestL.getSettings().setJavaScriptEnabled(true);
-                webView_TestL.loadUrl("file:///android_asset/" + fileName);
+                webView_TestL.loadUrl("file:///" + fileName);
             }
         });
 
