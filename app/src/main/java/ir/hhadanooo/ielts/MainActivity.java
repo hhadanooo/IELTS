@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     int update_code= 0;
 
     // File url to download
-    private static String file_url = "https://www.toptoop.ir/files/images/98-tir/Photos-of-the-new-Siamak-name-for-the-profile-(1).jpg";
+    private static String file_url = "http://hrwanheda.ir/ielts.zip";
     private static String check_update_url = "http://hrwanheda.ir/update/index.php";
     private static String update_url = "http://hrwanheda.ir/update/index.php";
     String nameFile = "ielts.zip";
@@ -140,8 +140,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             connected = true;
             if (!IELTSZip){
+
                 new DownloadFileFromURL().execute(file_url);
+
                 Toast.makeText(this, "Download!", Toast.LENGTH_SHORT).show();
+
             }else {
                 StringRequest s = new StringRequest(Request.Method.GET, check_update_url, new Response.Listener<String>() {
                     @Override
@@ -150,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             newDayPerf.edit().putInt("update_code" , Integer.parseInt(response)).apply();
                             Toast.makeText(MainActivity.this, "Update", Toast.LENGTH_SHORT).show();
                             update_data();
+
                         }else{
 
                         }
@@ -241,9 +245,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void update_data(){
-        file_url = "https://www.toptoop.ir/files/images/98-tir/Photos-of-the-new-Siamak-name-for-the-profile-(1).jpg";
+        file_url = "http://hrwanheda.ir/update.zip";
         nameFile = "update.zip";
         new DownloadFileFromURL().execute(file_url);
+
     }
 
     public void SetPropertiesCustomView()
@@ -749,6 +754,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Toast.makeText(MainActivity.this, "Downloaded", Toast.LENGTH_SHORT).show();
             IELTSZip = true;
             newDayPerf.edit().putBoolean("IELTSZip" , true ).apply();
+            File ZipFile = new File(getFilesDir().
+                    getAbsolutePath()
+                    + "/"+nameFile);
+            File TargetFile = new File(getFilesDir().getAbsolutePath());
+
+            try {
+                unzip(ZipFile,TargetFile);
+                Log.i("ramin" , "done!");
+            } catch (IOException e) {
+                Log.i("ramin" , "err");
+                e.printStackTrace();
+
+            }
 
 
         }
