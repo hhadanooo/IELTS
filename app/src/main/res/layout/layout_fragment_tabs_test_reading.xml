@@ -7,11 +7,11 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:id="@+id/layout_fragment_rel_text_question">
         <WebView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             tools:ignore="WebViewLayout"
             android:id="@+id/layout_fragment_webview"/>
     </RelativeLayout>
