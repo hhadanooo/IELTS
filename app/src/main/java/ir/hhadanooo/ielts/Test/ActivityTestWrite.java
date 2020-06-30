@@ -160,7 +160,7 @@ public class ActivityTestWrite extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/academic/" + getIntent().getExtras().getString("name") + "/title.html");
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/academic/" + getIntent().getExtras().getString("name") + "/index.html");
 
 
 
@@ -195,7 +195,7 @@ public class ActivityTestWrite extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/general/"+ getIntent().getExtras().getString("name")+"/title.html");
+                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/test/general/"+ getIntent().getExtras().getString("name")+"/index.html");
 
 
 

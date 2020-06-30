@@ -98,7 +98,7 @@ public class TestListenActivity extends AppCompatActivity {
         try {
 
             FileInputStream fileInputStream = new FileInputStream(getFilesDir().
-                    getAbsolutePath()+"/ielts/listening/test/test"+pageNum+"/audio.mp3");
+                    getAbsolutePath()+"/ielts/listening/test/"+ getIntent().getExtras().getString("NameFile")+"/audio.mp3");
             mPlayer.setDataSource(fileInputStream.getFD());
             mPlayer.prepare();
         } catch (IOException e) {
@@ -185,14 +185,14 @@ public class TestListenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 fileName  = getFilesDir().
-                        getAbsolutePath()+"/ielts/listening/test/test"+pageNum+"/index1.html";
+                        getAbsolutePath()+"/ielts/listening/test/"+getIntent().getExtras().getString("NameFile")+"/Answer.html";
                 webView_TestL.getSettings().setJavaScriptEnabled(true);
                 webView_TestL.loadUrl("file:///" + fileName);
             }
         });
 
         File file = new File(getFilesDir().
-                getAbsolutePath()+"/ielts/listening/test/test"+pageNum+"/audioscripts.txt");
+                getAbsolutePath()+"/ielts/listening/test/"+getIntent().getExtras().getString("NameFile")+"/audioscripts.txt");
 
         final StringBuilder text = new StringBuilder();
         try {
@@ -318,7 +318,7 @@ public class TestListenActivity extends AppCompatActivity {
         webView_TestL.getLayoutParams().height = (int) (dm.widthPixels*.4);
 
         fileName  = getFilesDir().
-                getAbsolutePath()+"/ielts/listening/test/test"+pageNum+"/index.html";
+                getAbsolutePath()+"/ielts/listening/test/"+getIntent().getExtras().getString("NameFile")+"/Question.html";
 
         webView_TestL.getSettings().setJavaScriptEnabled(true);
         webView_TestL.loadUrl("file:///" + fileName);

@@ -71,7 +71,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
-               File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage1.txt");
+               File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/"+getIntent().getExtras().getString("NameFile") +"/AnswerPassage1.txt");
 
                try {
 
@@ -92,7 +92,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
                /////////////
 
-               File file_text_answer2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage2.txt");
+               File file_text_answer2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/" + getIntent().getExtras().getString("NameFile") +"/AnswerPassage2.txt");
 
                try {
 
@@ -115,7 +115,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
-               File file_text_answer3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage3.txt");
+               File file_text_answer3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/academic/" + getIntent().getExtras().getString("NameFile") +"/AnswerPassage3.txt");
 
                try {
 
@@ -146,7 +146,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
-               viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"Academic", getIntent().getExtras().getInt("Number"),TextAnswer1,TextAnswer2,TextAnswer3));
+               viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"Academic", getIntent().getExtras().getInt("Number"),TextAnswer1,TextAnswer2,TextAnswer3,getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile")));
                tabLayout.setupWithViewPager(viewPager);
            }
         }else if(getIntent().getExtras().get("General") != null)
@@ -162,7 +162,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
-                File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage1.txt");
+                File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/" + getIntent().getExtras().getString("NameFile") +"/AnswerPassage1.txt");
 
                 try {
 
@@ -184,7 +184,7 @@ public class ActivityTestRead extends AppCompatActivity {
                 /////////////
 
 
-                File file_text_answer2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage2.txt");
+                File file_text_answer2 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/"+ getIntent().getExtras().getString("NameFile") +"/AnswerPassage2.txt");
 
                 try {
 
@@ -206,7 +206,7 @@ public class ActivityTestRead extends AppCompatActivity {
                 /////////
 
 
-                File file_text_answer3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/test"+ getIntent().getExtras().getInt("Number") +"/AnswerPassage3.txt");
+                File file_text_answer3 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/test/general/" + getIntent().getExtras().getString("NameFile")+"/AnswerPassage3.txt");
 
                 try {
 
@@ -231,7 +231,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
-                viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"General", getIntent().getExtras().getInt("Number"),TextAnswer1,TextAnswer2,TextAnswer3));
+                viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"General", getIntent().getExtras().getInt("Number"),TextAnswer1,TextAnswer2,TextAnswer3,getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile")));
                 tabLayout.setupWithViewPager(viewPager);
             }
         }
@@ -316,8 +316,8 @@ public class ActivityTestRead extends AppCompatActivity {
         int Width,Height;
         String intent;
         int num;
-        String TextAnswer1,TextAnswer2,TextAnswer3;
-        public SectionPagerAdapter(FragmentManager fm,int Width,int Height,String intent,int num,String TextAnswer1,String TextAnswer2,String TextAnswer3) {
+        String TextAnswer1,TextAnswer2,TextAnswer3,filename1,filename2,filename3;
+        public SectionPagerAdapter(FragmentManager fm,int Width,int Height,String intent,int num,String TextAnswer1,String TextAnswer2,String TextAnswer3,String filename1,String filename2,String filename3) {
 
             super(fm);
             this.Width = Width;
@@ -330,13 +330,17 @@ public class ActivityTestRead extends AppCompatActivity {
             this.TextAnswer2 = TextAnswer2;
             this.TextAnswer3 = TextAnswer3;
 
+            this.filename1 = filename1;
+            this.filename2 = filename2;
+            this.filename3 = filename3;
+
         }
 
         @Override
         public Fragment getItem(int position) {
 
             tab_num++;
-            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num,TextAnswer1,TextAnswer2,TextAnswer3);
+            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num,TextAnswer1,TextAnswer2,TextAnswer3,filename1,filename2,filename3);
         }
 
         @Override

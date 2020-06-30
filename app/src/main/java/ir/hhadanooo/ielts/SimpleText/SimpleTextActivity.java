@@ -59,23 +59,27 @@ public class SimpleTextActivity extends AppCompatActivity {
 
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
-                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/tips/tips"+ getIntent().getExtras().getInt("number") +"/index.html");
-                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+                    if(getIntent().getExtras().getString("NameFile") != null)
+                    {
+                        file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/tips/" + getIntent().getExtras().getString("NameFile") +"/index.html");
+                        File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/reading/tips/" + getIntent().getExtras().getString("NameFile") +"/TextTitleMainPage.txt");
 
-                    try {
+                        try {
 
-                        InputStream inputStream = new FileInputStream(file_text_answer1);
-                        String text = "";
-                        byte[] bytes = new byte[8192];
-                        inputStream.read(bytes);
-                        for(byte b:bytes)
-                        {
-                            text+= (char) b;
+                            InputStream inputStream = new FileInputStream(file_text_answer1);
+                            String text = "";
+                            byte[] bytes = new byte[8192];
+                            inputStream.read(bytes);
+                            for(byte b:bytes)
+                            {
+                                text+= (char) b;
+                            }
+                            TextTitleMainPage = text;
+                        } catch (IOException e) {
+
+                            e.printStackTrace();
                         }
-                        TextTitleMainPage = text;
-                    } catch (IOException e) {
 
-                        e.printStackTrace();
                     }
 
 
@@ -92,25 +96,29 @@ public class SimpleTextActivity extends AppCompatActivity {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
 
-                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/listening/tips/tips"+ getIntent().getExtras().getInt("number") +"/index.html");
-                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/listening/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+                    if(getIntent().getExtras().getString("NameFile") != null)
+                    {
+                        file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/listening/tips/"+ getIntent().getExtras().getString("NameFile") +"/index.html");
+                        File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/listening/tips/"+getIntent().getExtras().getString("NameFile") +"/TextTitleMainPage.txt");
 
 
-                    try {
+                        try {
 
-                        InputStream inputStream = new FileInputStream(file_text_answer1);
-                        String text = "";
-                        byte[] bytes = new byte[8192];
-                        inputStream.read(bytes);
-                        for(byte b:bytes)
-                        {
-                            text+= (char) b;
+                            InputStream inputStream = new FileInputStream(file_text_answer1);
+                            String text = "";
+                            byte[] bytes = new byte[8192];
+                            inputStream.read(bytes);
+                            for(byte b:bytes)
+                            {
+                                text+= (char) b;
+                            }
+                            TextTitleMainPage = text;
+                        } catch (IOException e) {
+
+                            e.printStackTrace();
                         }
-                        TextTitleMainPage = text;
-                    } catch (IOException e) {
-
-                        e.printStackTrace();
                     }
+
 
                 }
             }
@@ -124,26 +132,30 @@ public class SimpleTextActivity extends AppCompatActivity {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
 
-                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
-                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+                    if(getIntent().getExtras().getString("NameFile") != null)
+                    {
+                        file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/tips/"+getIntent().getExtras().getString("NameFile") +"/index.html");
+                        File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/tips/"+getIntent().getExtras().getString("NameFile") +"/TextTitleMainPage.txt");
 
 
 
-                    try {
+                        try {
 
-                        InputStream inputStream = new FileInputStream(file_text_answer1);
-                        String text = "";
-                        byte[] bytes = new byte[8192];
-                        inputStream.read(bytes);
-                        for(byte b:bytes)
-                        {
-                            text+= (char) b;
+                            InputStream inputStream = new FileInputStream(file_text_answer1);
+                            String text = "";
+                            byte[] bytes = new byte[8192];
+                            inputStream.read(bytes);
+                            for(byte b:bytes)
+                            {
+                                text+= (char) b;
+                            }
+                            TextTitleMainPage = text;
+                        } catch (IOException e) {
+
+                            e.printStackTrace();
                         }
-                        TextTitleMainPage = text;
-                    } catch (IOException e) {
-
-                        e.printStackTrace();
                     }
+
 
 
                 }
@@ -152,25 +164,29 @@ public class SimpleTextActivity extends AppCompatActivity {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
 
-                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/vocab/vocab"+ getIntent().getExtras().getInt("number") +"/index.html");
-                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/vocab/vocab"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+                    if(getIntent().getExtras().getString("NameFile") != null)
+                    {
+                        file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/vocabulary/"+getIntent().getExtras().getString("NameFile") +"/index.html");
+                        File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/writing/vocabulary/"+getIntent().getExtras().getString("NameFile") +"/TextTitleMainPage.txt");
 
 
-                    try {
+                        try {
 
-                        InputStream inputStream = new FileInputStream(file_text_answer1);
-                        String text = "";
-                        byte[] bytes = new byte[8192];
-                        inputStream.read(bytes);
-                        for(byte b:bytes)
-                        {
-                            text+= (char) b;
+                            InputStream inputStream = new FileInputStream(file_text_answer1);
+                            String text = "";
+                            byte[] bytes = new byte[8192];
+                            inputStream.read(bytes);
+                            for(byte b:bytes)
+                            {
+                                text+= (char) b;
+                            }
+                            TextTitleMainPage = text;
+                        } catch (IOException e) {
+
+                            e.printStackTrace();
                         }
-                        TextTitleMainPage = text;
-                    } catch (IOException e) {
-
-                        e.printStackTrace();
                     }
+
                 }
             }
 
@@ -183,24 +199,28 @@ public class SimpleTextActivity extends AppCompatActivity {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
 
-                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/tips/tips"+ getIntent().getExtras().getInt("number") +"/index.html");
-                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/tips/tips"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+                    if(getIntent().getExtras().getString("NameFile") != null)
+                    {
+                        file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/tips/"+getIntent().getExtras().getString("NameFile") +"/index.html");
+                        File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/tips/"+getIntent().getExtras().getString("NameFile") +"/TextTitleMainPage.txt");
 
 
-                    try {
+                        try {
 
-                        InputStream inputStream = new FileInputStream(file_text_answer1);
-                        String text = "";
-                        byte[] bytes = new byte[8192];
-                        inputStream.read(bytes);
-                        for(byte b:bytes)
-                        {
-                            text+= (char) b;
+                            InputStream inputStream = new FileInputStream(file_text_answer1);
+                            String text = "";
+                            byte[] bytes = new byte[8192];
+                            inputStream.read(bytes);
+                            for(byte b:bytes)
+                            {
+                                text+= (char) b;
+                            }
+                            TextTitleMainPage = text;
+                        } catch (IOException e) {
+
+                            e.printStackTrace();
                         }
-                        TextTitleMainPage = text;
-                    } catch (IOException e) {
 
-                        e.printStackTrace();
                     }
 
 
@@ -212,26 +232,30 @@ public class SimpleTextActivity extends AppCompatActivity {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
 
-                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/vocab/vocab"+ getIntent().getExtras().getInt("number") +"/index.html");
-                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/vocab/vocab"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+                    if(getIntent().getExtras().getString("NameFile") != null)
+                    {
+                        file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/vocabulary/"+ getIntent().getExtras().getString("NameFile")+"/index.html");
+                        File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/vocabulary/"+getIntent().getExtras().getString("NameFile") +"/TextTitleMainPage.txt");
 
 
 
-                    try {
+                        try {
 
-                        InputStream inputStream = new FileInputStream(file_text_answer1);
-                        String text = "";
-                        byte[] bytes = new byte[8192];
-                        inputStream.read(bytes);
-                        for(byte b:bytes)
-                        {
-                            text+= (char) b;
+                            InputStream inputStream = new FileInputStream(file_text_answer1);
+                            String text = "";
+                            byte[] bytes = new byte[8192];
+                            inputStream.read(bytes);
+                            for(byte b:bytes)
+                            {
+                                text+= (char) b;
+                            }
+                            TextTitleMainPage = text;
+                        } catch (IOException e) {
+
+                            e.printStackTrace();
                         }
-                        TextTitleMainPage = text;
-                    } catch (IOException e) {
-
-                        e.printStackTrace();
                     }
+
 
                 }
             }
@@ -239,26 +263,30 @@ public class SimpleTextActivity extends AppCompatActivity {
             {
                 if(getIntent().getExtras().getInt("number") != 0)
                 {
-                    file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/test/test"+ getIntent().getExtras().getInt("number") +"/index.html");
-                    File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/test/test"+ getIntent().getExtras().getInt("number") +"/TextTitleMainPage.txt");
+                    if(getIntent().getExtras().getString("NameFile") != null)
+                    {
+                        file_html = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/test/" + getIntent().getExtras().getString("NameFile") +"/index.html");
+                        File file_text_answer1 = new File(getFilesDir().getAbsolutePath()+"/ielts/speaking/test/" + getIntent().getExtras().getString("NameFile")+"/TextTitleMainPage.txt");
 
 
 
-                    try {
+                        try {
 
-                        InputStream inputStream = new FileInputStream(file_text_answer1);
-                        String text = "";
-                        byte[] bytes = new byte[8192];
-                        inputStream.read(bytes);
-                        for(byte b:bytes)
-                        {
-                            text+= (char) b;
+                            InputStream inputStream = new FileInputStream(file_text_answer1);
+                            String text = "";
+                            byte[] bytes = new byte[8192];
+                            inputStream.read(bytes);
+                            for(byte b:bytes)
+                            {
+                                text+= (char) b;
+                            }
+                            TextTitleMainPage = text;
+                        } catch (IOException e) {
+
+                            e.printStackTrace();
                         }
-                        TextTitleMainPage = text;
-                    } catch (IOException e) {
-
-                        e.printStackTrace();
                     }
+
 
 
                 }

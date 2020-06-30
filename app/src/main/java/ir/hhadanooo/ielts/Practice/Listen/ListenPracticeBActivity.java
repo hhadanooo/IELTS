@@ -76,7 +76,7 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
             FileInputStream fileInputStream = new FileInputStream(getFilesDir().
                     getAbsolutePath()+"/ielts/listening/practice/" +
-                    "typeb/"+intent1+"/"+intent1+pageNum+"/audio.mp3");
+                    "transcription/"+intent1+"/"+getIntent().getExtras().getString("NameFile")+"/audio.mp3");
             mPlayer.setDataSource(fileInputStream.getFD());
             mPlayer.prepare();
         } catch (IOException e) {
@@ -132,7 +132,7 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
         File file = new File(getFilesDir().
                 getAbsolutePath()+"/ielts/listening/practice/" +
-                "typeb/"+intent1+"/"+intent1+pageNum+"/answer.txt");
+                "transcription/"+intent1+"/"+getIntent().getExtras().getString("NameFile")+"/answer.txt");
 
         final StringBuilder text = new StringBuilder();
         try {

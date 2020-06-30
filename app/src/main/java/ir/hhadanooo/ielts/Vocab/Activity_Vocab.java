@@ -143,13 +143,13 @@ public class Activity_Vocab extends AppCompatActivity {
 
         if(num_type == 1)
         {
-            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/writing/vocab");
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/writing/vocabulary");
 
             File[] files = file.listFiles();
 
             for(int i = 0;i<files.length;i++)
             {
-                CustomViewItem custom1 = new CustomViewItem(this,"Writing","Vocab","",i+1,"","",false);
+                CustomViewItem custom1 = new CustomViewItem(this,"Writing","Vocab","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("","vocab "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
                 lin.addView(custom1);
             }
@@ -161,13 +161,13 @@ public class Activity_Vocab extends AppCompatActivity {
         if(num_type == 3)
         {
 
-            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/speaking/vocab");
+            File file = new File(getFilesDir().getAbsolutePath() + "/ielts/speaking/vocabulary");
 
             File[] files = file.listFiles();
 
             for(int i = 0;i<files.length;i++)
             {
-                CustomViewItem custom1 = new CustomViewItem(this,"Speaking","Vocab","",i+1,"","",false);
+                CustomViewItem custom1 = new CustomViewItem(this,"Speaking","Vocab","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("","vocab "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
                 lin.addView(custom1);
             }

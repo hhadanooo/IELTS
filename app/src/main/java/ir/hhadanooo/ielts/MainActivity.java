@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -72,6 +73,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import ir.hhadanooo.ielts.AboutTheTest.ActivityAboutTheTest;
+import ir.hhadanooo.ielts.Challenge.ChallengeActivity;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialagENH.DialogENH;
 import ir.hhadanooo.ielts.DialogChlng.DialogChlngShow;
@@ -115,14 +117,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String nameFile = "ielts.zip";
     RequestQueue requestQueue;
     boolean connected = false;
+    public static SharedPreferences publicSpf;
+    public static int solveQuiz = 0;
+    public static SharedPreferences deleteItem;
+    public static SharedPreferences spf;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-
+        publicSpf = getSharedPreferences("numberQuiz",MODE_PRIVATE);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        deleteItem = getSharedPreferences("delete" , MODE_PRIVATE);
+        spf = getSharedPreferences("spf" , MODE_PRIVATE);
 
         newDayPerf = getSharedPreferences("newDayPerf" , MODE_PRIVATE);
         IELTSZip = newDayPerf.getBoolean("IELTSZip" , false);
@@ -136,16 +146,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-            Toast.makeText(this, "Internet Access!", Toast.LENGTH_SHORT).show();
+            //oast.makeText(this, "Internet Access!"+update_code, Toast.LENGTH_SHORT).show();
 
             connected = true;
             if (!IELTSZip){
 
                 new DownloadFileFromURL().execute(file_url);
 
-                Toast.makeText(this, "Download!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Download!", Toast.LENGTH_SHORT).show();
 
             }else {
+                newDay();
                 StringRequest s = new StringRequest(Request.Method.GET, check_update_url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -171,6 +182,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else{
             connected = false;
             Toast.makeText(this, "no Internet Access!", Toast.LENGTH_SHORT).show();
+            if(IELTSZip){
+
+                newDay();
+            }
         }
 
 
@@ -238,15 +253,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SetPropertiesCustomView();
 
 
-        newDay();
+        //newDay();
+
 
 
 
     }
 
+    @SuppressLint("CommitPrefEdits")
+    public static void addIdRemovePage(int id){
+        MainActivity.deleteItem.edit().putInt("page"+id , id+1).apply();
+    }
+
     private void update_data(){
-        file_url = "http://hrwanheda.ir/update.zip";
-        nameFile = "update.zip";
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("ramin1333131", "update_data: ");
+            }
+        });
+        Toast.makeText(this,"",Toast.LENGTH_LONG).show();
+
+        file_url = "http://hrwanheda.ir/ielts-update.zip";
+        nameFile = "ielts-update.zip";
         new DownloadFileFromURL().execute(file_url);
 
     }
@@ -256,11 +285,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        CustomViewItem custom1 = new CustomViewItem(this,"","","",1,"","",true);
-        CustomViewItem custom2 = new CustomViewItem(this,"","","",1,"","",true);
-        CustomViewItem custom3 = new CustomViewItem(this,"","","",1,"","",true);
-        CustomViewItem custom4 = new CustomViewItem(this,"","","",1,"","",true);
-        CustomViewItem custom5 = new CustomViewItem(this,"","","",1,"","",true);
+        CustomViewItem custom1 = new CustomViewItem(this,"","","",1,"","",true,"");
+        CustomViewItem custom2 = new CustomViewItem(this,"","","",1,"","",true,"");
+        CustomViewItem custom3 = new CustomViewItem(this,"","","",1,"","",true,"");
+        CustomViewItem custom4 = new CustomViewItem(this,"","","",1,"","",true,"");
+        CustomViewItem custom5 = new CustomViewItem(this,"","","",1,"","",true,"");
 
         SetSettingCustomItem("Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do ","Reading",custom1,getResources().getDrawable(R.drawable.reading_icon));
         SetSettingCustomItem("Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do","Writing",custom2,getResources().getDrawable(R.drawable.writing_icon));
@@ -320,6 +349,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    @SuppressLint("CommitPrefEdits")
     public void newDay(){
         Date date = new Date();
         CharSequence d  = DateFormat.format("d", date.getTime());
@@ -335,9 +365,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             newDayPerf.edit().putInt("mPassed" , mound).apply();
             newDayPerf.edit().putInt("yPassed" , years).apply();
             setTodayQuiz();
-            //Toast.makeText(this, "0", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "0", Toast.LENGTH_SHORT).show();
+
 
         }else {
+
             int days = newDayPerf.getInt("dPassed" , 0);
             int mounds = newDayPerf.getInt("mPassed" , 0);
             int yearss = newDayPerf.getInt("yPassed" , 0);
@@ -345,27 +377,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 newDayPerf.edit().putInt("dPassed" , day).apply();
                 newDayPerf.edit().putInt("mPassed" , mound).apply();
                 newDayPerf.edit().putInt("yPassed" , years).apply();
-                //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
                 setTodayQuiz();
+                ChallengeActivity.solveQuiz = 0;
+                publicSpf.edit().putInt("numQuizSolve",solveQuiz).apply();
+                deleteItem.edit().clear().apply();
+                spf.edit().remove("todayS").apply();
+                Log.i("asfdas" , ""+deleteItem.getAll().toString());
+
             }else if (day <= days && mound > mounds && years >= yearss) {
                 newDayPerf.edit().putInt("dPassed" , day).apply();
                 newDayPerf.edit().putInt("mPassed" , mound).apply();
                 newDayPerf.edit().putInt("yPassed" , years).apply();
                 setTodayQuiz();
-                //Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+                ChallengeActivity.solveQuiz = 0;
+                publicSpf.edit().putInt("numQuizSolve",solveQuiz).apply();
+                deleteItem.edit().clear().apply();
+                spf.edit().remove("todayS").apply();
+
 
             }else if (day <= days && mound <= mounds && years > yearss) {
                 newDayPerf.edit().putInt("dPassed" , day).apply();
                 newDayPerf.edit().putInt("mPassed" , mound).apply();
                 newDayPerf.edit().putInt("yPassed" , years).apply();
                 setTodayQuiz();
-                //Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+                ChallengeActivity.solveQuiz = 0;
+                publicSpf.edit().putInt("numQuizSolve",solveQuiz).apply();
+                deleteItem.edit().clear().apply();
+                spf.edit().remove("todayS").apply();
 
             }else {
-                //Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
             }
-
         }
         int days = newDayPerf.getInt("dPassed" , 0);
         int mounds = newDayPerf.getInt("mPassed" , 0);
@@ -418,7 +463,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 e.printStackTrace();
             }
 
-            //Log.i("Striiiin" , ""+text);
+            Log.i("Striiiin" , ""+text);
             try {
                 File gpxfile = new File(pathToday+"quiz"+(i+1)+"/quiz.txt");
                 FileWriter writer = new FileWriter(gpxfile);
@@ -426,7 +471,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 writer.flush();
                 writer.close();
                 //Toast.makeText(MainActivity.this, "Saved your text", Toast.LENGTH_LONG).show();
-            } catch (Exception e) { }
+            } catch (Exception e) {  Log.i("raminaadsa" , ""+e.getMessage());}
             try {
                 File gpxfile1 = new File(pathToday+"quiz"+(i+1)+"/answer.txt");
                 FileWriter writer1 = new FileWriter(gpxfile1);
@@ -434,7 +479,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 writer1.flush();
                 writer1.close();
                 //Toast.makeText(MainActivity.this, "Saved your text", Toast.LENGTH_LONG).show();
-            } catch (Exception e) { }
+            } catch (Exception e) { Log.i("raminaadsa" , ""+e.getMessage()); }
         }
 
     }
@@ -689,6 +734,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          * */
         @Override
         protected String doInBackground(String... f_url) {
+            pDialog.setCancelable(false);
             int count;
             try {
                 URL url = new URL(f_url[0]);
@@ -749,28 +795,399 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          * **/
         @Override
         protected void onPostExecute(String file_url) {
+
             // dismiss the dialog after the file was downloaded
             dismissDialog(progress_bar_type);
             //Toast.makeText(MainActivity.this, "Downloaded", Toast.LENGTH_SHORT).show();
-            IELTSZip = true;
-            newDayPerf.edit().putBoolean("IELTSZip" , true ).apply();
-            File ZipFile = new File(getFilesDir().
-                    getAbsolutePath()
-                    + "/"+nameFile);
-            File TargetFile = new File(getFilesDir().getAbsolutePath());
+            if(!IELTSZip)
+            {
+                IELTSZip = true;
 
-            try {
-                unzip(ZipFile,TargetFile);
-                Log.i("ramin" , "done!");
-            } catch (IOException e) {
-                Log.i("ramin" , "err");
-                e.printStackTrace();
+                newDayPerf.edit().putBoolean("IELTSZip" , true ).apply();
+                File ZipFile = new File(getFilesDir().
+                        getAbsolutePath()
+                        + "/"+nameFile);
+                File TargetFile = new File(getFilesDir().getAbsolutePath());
 
+                try {
+                    unzip(ZipFile,TargetFile);
+                    Log.i("ramin" , "done!");
+                } catch (IOException e) {
+                    Log.i("ramin" , "err");
+                    e.printStackTrace();
+
+                }
+                newDay();
+            }else {
+
+                newDayPerf.edit().putBoolean("IELTSZip" , true ).apply();
+                File ZipFile = new File(getFilesDir().
+                        getAbsolutePath()
+                        + "/"+nameFile);
+                File TargetFile = new File(getFilesDir().getAbsolutePath());
+
+                try {
+                    unzip(ZipFile,TargetFile);
+                    Log.i("ramin" , "done!");
+                } catch (IOException e) {
+                    Log.i("ramin" , "err");
+                    e.printStackTrace();
+
+                }
+                UpdateFile();
+                deleteRecursive(ZipFile);
+                File folder_update = new File(getFilesDir().getAbsolutePath() +"/ielts-update");
+                deleteRecursive(folder_update);
             }
+
 
 
         }
 
+    }
+
+    public void deleteRecursive(File fileOrDirectory) {
+
+        if (fileOrDirectory.isDirectory()) {
+            for (File child : fileOrDirectory.listFiles()) {
+                deleteRecursive(child);
+            }
+        }
+
+        fileOrDirectory.delete();
+    }
+
+
+    public boolean UpdateFile()
+    {
+        //START READING
+
+
+        // ielts reading test academic
+        File file_update_reading_test_academic = new File(getFilesDir().getAbsolutePath() + "/ielts-update/reading/test/academic");
+
+        File[] list_file_update_reading_test_academic = file_update_reading_test_academic.listFiles();
+
+        for(File f:list_file_update_reading_test_academic)
+        {
+
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/");
+        }
+
+
+
+        // ielts reading test general
+
+        File file_update_reading_test_general = new File(getFilesDir().getAbsolutePath() + "/ielts-update/reading/test/general");
+
+        File[] list_file_update_reading_test_general = file_update_reading_test_general.listFiles();
+
+        for(File f:list_file_update_reading_test_general)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/reading/test/general");
+        }
+
+
+        //ielts reading tips
+        File file_update_reading_tips = new File(getFilesDir().getAbsolutePath() + "/ielts-update/reading/tips");
+
+        File[] list_file_update_reading_tips = file_update_reading_tips.listFiles();
+
+        for(File f:list_file_update_reading_tips)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/reading/tips");
+        }
+
+
+
+        //reading practice easy
+        File file_update_reading_practice_easy = new File(getFilesDir().getAbsolutePath() + "/ielts-update/reading/practice/easy");
+
+        File[] list_file_update_reading_practice_easy = file_update_reading_practice_easy.listFiles();
+
+        for(File f:list_file_update_reading_practice_easy)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy");
+        }
+
+        //reading practice normal
+        File file_update_reading_practice_normal = new File(getFilesDir().getAbsolutePath() + "/ielts-update/reading/practice/normal");
+
+        File[] list_file_update_reading_practice_normal = file_update_reading_practice_normal.listFiles();
+
+        for(File f:list_file_update_reading_practice_normal)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal");
+        }
+
+        //reading practice hard
+        File file_update_reading_practice_hard = new File(getFilesDir().getAbsolutePath() + "/ielts-update/reading/practice/hard");
+
+        File[] list_file_update_reading_practice_hard = file_update_reading_practice_hard.listFiles();
+
+        for(File f:list_file_update_reading_practice_hard)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard");
+        }
+
+
+        //END READING
+
+
+        //START WRITING
+
+
+
+        // ielts writing test academic
+        File file_update_writing_test_academic = new File(getFilesDir().getAbsolutePath() + "/ielts-update/writing/test/academic");
+
+        File[] list_file_update_writing_test_academic = file_update_writing_test_academic.listFiles();
+
+        for(File f:list_file_update_writing_test_academic)
+        {
+
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/writing/test/academic/");
+        }
+
+
+
+        // ielts writing test general
+
+        File file_update_writing_test_general = new File(getFilesDir().getAbsolutePath() + "/ielts-update/writing/test/general");
+
+        File[] list_file_update_writing_test_general = file_update_writing_test_general.listFiles();
+
+        for(File f:list_file_update_writing_test_general)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/writing/test/general");
+        }
+
+
+        //ielts writing tips
+        File file_update_writing_tips = new File(getFilesDir().getAbsolutePath() + "/ielts-update/writing/tips");
+
+        File[] list_file_update_writing_tips = file_update_writing_tips.listFiles();
+
+        for(File f:list_file_update_writing_tips)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/writing/tips");
+        }
+
+
+        //ielts writing vocab
+        File file_update_writing_vocab = new File(getFilesDir().getAbsolutePath() + "/ielts-update/writing/vocab");
+
+        File[] list_file_update_writing_vocab = file_update_writing_vocab.listFiles();
+
+        for(File f:list_file_update_writing_vocab)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/writing/vocab");
+        }
+
+
+        //END WRITING
+
+
+        //START SPEAKING
+
+        //ielts speaking test
+        File file_update_speaking_test = new File(getFilesDir().getAbsolutePath() + "/ielts-update/speaking/test");
+
+        File[] list_file_update_speaking_test = file_update_speaking_test.listFiles();
+
+        for(File f:list_file_update_speaking_test)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/speaking/test");
+        }
+
+        //ielts speaking tips
+        File file_update_speaking_tips = new File(getFilesDir().getAbsolutePath() + "/ielts-update/speaking/tips");
+
+        File[] list_file_update_speaking_tips = file_update_speaking_tips.listFiles();
+
+        for(File f:list_file_update_speaking_tips)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/speaking/tips");
+        }
+
+        //ielts speaking vocab
+        File file_update_speaking_vocab = new File(getFilesDir().getAbsolutePath() + "/ielts-update/speaking/vocab");
+
+        File[] list_file_update_speaking_vocab = file_update_speaking_vocab.listFiles();
+
+        for(File f:list_file_update_speaking_vocab)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/speaking/vocab");
+        }
+
+        //END SPEAKING
+
+        //START LISTENING
+
+
+        //ielts listening test
+        File file_update_listening_test = new File(getFilesDir().getAbsolutePath() + "/ielts-update/listening/test");
+
+        File[] list_file_update_listening_test = file_update_listening_test.listFiles();
+
+        for(File f:list_file_update_listening_test)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/listening/test");
+        }
+
+        //ielts listening tips
+        File file_update_listening_tips = new File(getFilesDir().getAbsolutePath() + "/ielts-update/listening/tips");
+
+        File[] list_file_update_listening_tips = file_update_listening_tips.listFiles();
+
+        for(File f:list_file_update_listening_tips)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/listening/tips");
+        }
+
+
+        //listening practice typea easy
+        File file_update_listening_practice_typea_easy = new File(getFilesDir().getAbsolutePath() + "/ielts-update/listening/practice/typea/easy");
+
+        File[] list_file_update_listening_practice_typea_easy = file_update_listening_practice_typea_easy.listFiles();
+
+        for(File f:list_file_update_listening_practice_typea_easy)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typea/easy");
+        }
+
+
+        //listening practice typea normal
+        File file_update_listening_practice_typea_normal = new File(getFilesDir().getAbsolutePath() + "/ielts-update/listening/practice/typea/normal");
+
+        File[] list_file_update_listening_practice_typea_normal = file_update_listening_practice_typea_normal.listFiles();
+
+        for(File f:list_file_update_listening_practice_typea_normal)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typea/normal");
+        }
+
+        //listening practice typea hard
+        File file_update_listening_practice_typea_hard = new File(getFilesDir().getAbsolutePath() + "/ielts-update/listening/practice/typea/hard");
+
+        File[] list_file_update_listening_practice_typea_hard = file_update_listening_practice_typea_hard.listFiles();
+
+        for(File f:list_file_update_listening_practice_typea_hard)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typea/hard");
+        }
+
+
+
+        //listening practice typeb easy
+        File file_update_listening_practice_typeb_easy = new File(getFilesDir().getAbsolutePath() + "/ielts-update/listening/practice/typeb/easy");
+
+        File[] list_file_update_listening_practice_typeb_easy = file_update_listening_practice_typeb_easy.listFiles();
+
+        for(File f:list_file_update_listening_practice_typeb_easy)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typeb/easy");
+        }
+
+
+        //listening practice typeb normal
+        File file_update_listening_practice_typeb_normal = new File(getFilesDir().getAbsolutePath() + "/ielts-update/listening/practice/typeb/normal");
+
+        File[] list_file_update_listening_practice_typeb_normal = file_update_listening_practice_typeb_normal.listFiles();
+
+        for(File f:list_file_update_listening_practice_typeb_normal)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typeb/normal");
+        }
+
+        //listening practice typeb hard
+        File file_update_listening_practice_typeb_hard = new File(getFilesDir().getAbsolutePath() + "/ielts-update/listening/practice/typeb/hard");
+
+        File[] list_file_update_listening_practice_typeb_hard = file_update_listening_practice_typeb_hard.listFiles();
+
+        for(File f:list_file_update_listening_practice_typeb_hard)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/listening/practice/typeb/hard");
+        }
+
+
+        //END LISTENING
+
+
+        //START CHALLENGE
+
+
+        //challenge allquiz
+        File file_update_challenge_allquiz = new File(getFilesDir().getAbsolutePath() + "/ielts-update/challenge/allquiz");
+
+        File[] list_file_update_challenge_allquiz = file_update_challenge_allquiz.listFiles();
+
+        for(File f:list_file_update_challenge_allquiz)
+        {
+            copyFileOrDirectory(f.getAbsolutePath(),getFilesDir().getAbsolutePath() + "/ielts/challenge/allquiz");
+        }
+
+        //END CHALLENGE
+
+
+
+
+
+
+
+
+
+
+        return true;
+    }
+
+    public static void copyFileOrDirectory(String srcDir, String dstDir) {
+
+        try {
+            File src = new File(srcDir);
+            File dst = new File(dstDir, src.getName());
+
+            if (src.isDirectory()) {
+
+                String files[] = src.list();
+                int filesLength = files.length;
+                for (int i = 0; i < filesLength; i++) {
+                    String src1 = (new File(src, files[i]).getPath());
+                    String dst1 = dst.getPath();
+                    copyFileOrDirectory(src1, dst1);
+
+                }
+            } else {
+                copyFile(src, dst);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void copyFile(File sourceFile, File destFile) throws IOException {
+        if (!destFile.getParentFile().exists())
+            destFile.getParentFile().mkdirs();
+
+        if (!destFile.exists()) {
+            destFile.createNewFile();
+        }
+
+        FileChannel source = null;
+        FileChannel destination = null;
+
+        try {
+            source = new FileInputStream(sourceFile).getChannel();
+            destination = new FileOutputStream(destFile).getChannel();
+            destination.transferFrom(source, 0, source.size());
+        } finally {
+            if (source != null) {
+                source.close();
+            }
+            if (destination != null) {
+                destination.close();
+            }
+        }
     }
 }
 

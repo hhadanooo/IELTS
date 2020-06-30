@@ -175,9 +175,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
 
         if(num_type == 4 || num_type == 2)
         {
-            CustomViewItem custom1 = new CustomViewItem(this,"","","",1,"","",true);
-            CustomViewItem custom2 = new CustomViewItem(this,"","","",1,"","",true);
-            CustomViewItem custom3 = new CustomViewItem(this,"","","",1,"","",true);
+            CustomViewItem custom1 = new CustomViewItem(this,"","","",1,"","",true,"");
+            CustomViewItem custom2 = new CustomViewItem(this,"","","",1,"","",true,"");
+            CustomViewItem custom3 = new CustomViewItem(this,"","","",1,"","",true,"");
 
             SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.test_menue));
             SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.tip_icon));
@@ -221,9 +221,9 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         }
         if(num_type == 3 || num_type == 1)
         {
-            CustomViewItem custom1 = new CustomViewItem(this,"","","",1,"","",true);
-            CustomViewItem custom2 = new CustomViewItem(this,"","","",1,"","",true);
-            CustomViewItem custom3 = new CustomViewItem(this,"","","",1,"","",true);
+            CustomViewItem custom1 = new CustomViewItem(this,"","","",1,"","",true,"");
+            CustomViewItem custom2 = new CustomViewItem(this,"","","",1,"","",true,"");
+            CustomViewItem custom3 = new CustomViewItem(this,"","","",1,"","",true,"");
 
             SetSettingCustomItem("","Test",custom1,getResources().getDrawable(R.drawable.test_menue));
             SetSettingCustomItem("","Tips",custom2,getResources().getDrawable(R.drawable.tip_icon));

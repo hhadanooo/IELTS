@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.Arrays;
 
 import ir.hhadanooo.ielts.Challenge.ChallengeActivity;
+import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.R;
 
 public class CustomSlideChallenge extends LinearLayout {
@@ -348,7 +349,7 @@ public class CustomSlideChallenge extends LinearLayout {
 
                 /*Toast.makeText(context, "Today"+ChallengeActivity.todayS+
                         "Total"+ChallengeActivity.totalS, Toast.LENGTH_SHORT).show();*/
-                ChallengeActivity.addIdRemovePage(id);
+                MainActivity.addIdRemovePage(id);
                 ChallengeActivity.Solve();
 
 

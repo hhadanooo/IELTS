@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import ir.hhadanooo.ielts.Challenge.CustomSlide.CustomSlideChallenge;
+import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.Quiz.AnimationSliderQuiz.CubeOutRotationTransformation;
 import ir.hhadanooo.ielts.R;
 
@@ -44,6 +45,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
     public static SharedPreferences spf;
     static SharedPreferences publicSpf;
 
+
     public static int solveQuiz = 0;
 
     int num_quiz = 10;
@@ -60,8 +62,9 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
         initActionBar();
 
         publicSpf = getSharedPreferences("numberQuiz" , MODE_PRIVATE);
+
         solveQuiz = publicSpf.getInt("numQuizSolve" , 0);
-        spf = getPreferences(MODE_PRIVATE);
+        spf = getSharedPreferences("spf" , MODE_PRIVATE);
         todayS = spf.getInt("todayS" , 0);
         totalS = spf.getInt("totalS" , 0);
         //Log.i("Striiiin" , "slm");
@@ -90,10 +93,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
     }
 
-    @SuppressLint("CommitPrefEdits")
-    public static void addIdRemovePage(int id){
-        spf.edit().putInt("page"+id , id+1).apply();
-    }
+
     @SuppressLint("CommitPrefEdits")
     public static void Solve(){
         solveQuiz++;
@@ -122,12 +122,13 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
         for (int i = 0 ; i < num_quiz ; i++){
 
-            int page = spf.getInt("page"+i , 0);
+            int page = MainActivity.deleteItem.getInt("page"+i , 0);
             if ( page > 0){
                 ans_quiz++;
                 if (ans_quiz == num_quiz){
                     Toast.makeText(this, "finish for today", Toast.LENGTH_SHORT).show();
                 }
+                Log.i("rttada" , ""+page);
                 continue;
             }
 

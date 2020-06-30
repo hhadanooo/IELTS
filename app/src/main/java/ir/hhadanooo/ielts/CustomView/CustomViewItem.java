@@ -40,7 +40,8 @@ public class CustomViewItem extends RelativeLayout {
     boolean Check_page;
     String type_listen;
     String level;
-    public CustomViewItem(Context context,String page,String type,String type_test,int number,String type_listen,String level,boolean check_page) {
+    String file_name;
+    public CustomViewItem(Context context,String page,String type,String type_test,int number,String type_listen,String level,boolean check_page,String name_file) {
         super(context);
         this.page = page;
         this.type = type;
@@ -49,6 +50,7 @@ public class CustomViewItem extends RelativeLayout {
         this.type_listen = type_listen;
         this.level = level;
         this.Check_page = check_page;
+        this.file_name =name_file;
 
         init(context);
     }
@@ -98,6 +100,7 @@ public class CustomViewItem extends RelativeLayout {
                             Intent intent = new Intent(context, ActivityTestRead.class);
                             intent.putExtra("Academic","Academic");
                             intent.putExtra("Number",number);
+                            intent.putExtra("NameFile",file_name);
                             context.startActivity(intent);
                         }
                     });
@@ -109,6 +112,7 @@ public class CustomViewItem extends RelativeLayout {
                             Intent intent = new Intent(context,ActivityTestRead.class);
                             intent.putExtra("General","General");
                             intent.putExtra("Number",number);
+                            intent.putExtra("NameFile",file_name);
                             Toast.makeText(context,"",Toast.LENGTH_LONG).show();
                             context.startActivity(intent);
                         }
@@ -123,6 +127,7 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("Read","Read");
                         intent.putExtra("Tip","Tip");
                         intent.putExtra("number",number);
+                        intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
                     }
                 });
@@ -144,6 +149,7 @@ public class CustomViewItem extends RelativeLayout {
                             intent.putExtra("Academic","Academic");
                             intent.putExtra("Number",number);
                             intent.putExtra("name",type_listen);
+                            intent.putExtra("NameFile",file_name);
                             context.startActivity(intent);
                         }
                     });
@@ -157,6 +163,7 @@ public class CustomViewItem extends RelativeLayout {
                             intent.putExtra("General","General");
                             intent.putExtra("Number",number);
                             intent.putExtra("name",type_listen);
+                            intent.putExtra("NameFile",file_name);
                             context.startActivity(intent);
                         }
                     });
@@ -170,6 +177,7 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("Write","Write");
                         intent.putExtra("Tip","Tip");
                         intent.putExtra("number",number);
+                        intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
                     }
                 });
@@ -182,6 +190,7 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("Write","Write");
                         intent.putExtra("Vocab","Vocab");
                         intent.putExtra("number",number);
+                        intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
                     }
                 });
@@ -197,6 +206,7 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("Speak","Speak");
                         intent.putExtra("Test","Test");
                         intent.putExtra("number",number);
+                        intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
                     }
                 });
@@ -209,6 +219,7 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("Speak","Speak");
                         intent.putExtra("Tip","Tip");
                         intent.putExtra("number",number);
+                        intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
                     }
                 });
@@ -221,6 +232,7 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("Speak","Speak");
                         intent.putExtra("Vocab","Vocab");
                         intent.putExtra("number",number);
+                        intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
                     }
                 });
@@ -234,6 +246,7 @@ public class CustomViewItem extends RelativeLayout {
                     public void onClick(View view) {
                         Intent intent = new Intent(context, TestListenActivity.class);
                         intent.putExtra("Number",number);
+                        intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
                     }
                 });
@@ -246,6 +259,7 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("Listen","Listen");
                         intent.putExtra("Tip","Tip");
                         intent.putExtra("number",number);
+                        intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
                     }
                 });
@@ -263,6 +277,7 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Type1","Type1");
                                 intent.putExtra("Easy","Easy");
                                 intent.putExtra("Number",number);
+                                intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
                             }
                         });
@@ -275,6 +290,7 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Type1","Type1");
                                 intent.putExtra("Normal","Noraml");
                                 intent.putExtra("Number",number);
+                                intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
                             }
                         });
@@ -287,6 +303,7 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Type1","Type1");
                                 intent.putExtra("Hard","Hard");
                                 intent.putExtra("Number",number);
+                                intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
                             }
                         });
@@ -302,6 +319,7 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Type2","Type2");
                                 intent.putExtra("Easy","Easy");
                                 intent.putExtra("Number",number);
+                                intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
                             }
                         });
@@ -314,6 +332,7 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Type2","Type2");
                                 intent.putExtra("Normal","Noraml");
                                 intent.putExtra("Number",number);
+                                intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
                             }
                         });
@@ -326,6 +345,7 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Type2","Type2");
                                 intent.putExtra("Hard","Hard");
                                 intent.putExtra("Number",number);
+                                intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
                             }
                         });

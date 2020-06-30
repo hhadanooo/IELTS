@@ -45,10 +45,10 @@ public class SlideFragmentTestReading extends Fragment {
     WebView webView;
 
 
-    String TextAnswer1,TextAnswer2,TextAnswer3;
+    String TextAnswer1,TextAnswer2,TextAnswer3,Filename1,Filename2,Filename3;
 
 
-    public static SlideFragmentTestReading newSlide(int Width,int Height,String intent,int num,int num_tab,String TextAnswer1,String TextAnswer2,String TextAnswer3){
+    public static SlideFragmentTestReading newSlide(int Width,int Height,String intent,int num,int num_tab,String TextAnswer1,String TextAnswer2,String TextAnswer3,String filename1,String filename2,String filename3){
         SlideFragmentTestReading fragment = new SlideFragmentTestReading();
         Bundle args = new Bundle();
         args.putInt("Width",Width);
@@ -61,6 +61,12 @@ public class SlideFragmentTestReading extends Fragment {
         args.putString("TextAnswer1",TextAnswer1);
         args.putString("TextAnswer2",TextAnswer2);
         args.putString("TextAnswer3",TextAnswer3);
+
+        args.putString("filename1",filename1);
+        args.putString("filename2",filename2);
+        args.putString("filename3",filename3);
+
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -80,6 +86,10 @@ public class SlideFragmentTestReading extends Fragment {
         TextAnswer1 = args.getString("TextAnswer1");
         TextAnswer2 = args.getString("TextAnswer2");
         TextAnswer3 = args.getString("TextAnswer3");
+
+        Filename1 = args.getString("filename1");
+        Filename2 = args.getString("filename2");
+        Filename3 = args.getString("filename3");
 
 
 
@@ -113,18 +123,18 @@ public class SlideFragmentTestReading extends Fragment {
                 {
 
                     //tab 1 academic
-                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/test"+num + "/passage1.html");
+                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/" + Filename1+ "/passage1.html");
                     webView.loadUrl("file:///" + file_html);
 
                 }else if(num_tab == 2)
                 {
-                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/test"+num + "/passage2.html");
+                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/" + Filename2 + "/passage2.html");
                     webView.loadUrl("file:///" + file_html);
                     //tab 2 academic
 
                 }else if(num_tab == 3) {
                     //tab 3 academic
-                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/test"+num + "/passage3.html");
+                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/"+Filename3 + "/passage3.html");
                     webView.loadUrl("file:///" + file_html);
                 }
 
@@ -137,20 +147,20 @@ public class SlideFragmentTestReading extends Fragment {
                 {
 
                     //tab 1 general
-                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/general/test"+num + "/passage1.html");
+                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/general/" + Filename1 + "/passage1.html");
                     webView.loadUrl("file:///" + file_html);
 
                 }else if(num_tab == 2)
                 {
                     //tab 2 general
-                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/general/test"+num + "/passage2.html");
+                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/general/" + Filename2 + "/passage2.html");
                     webView.loadUrl("file:///" + file_html);
 
 
                 }else if(num_tab == 3)
                 {
                     //tab 3 general
-                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/test"+num + "/passage3.html");
+                    File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/" + Filename3 + "/passage3.html");
                     webView.loadUrl("file:///" + file_html);
                 }
             }

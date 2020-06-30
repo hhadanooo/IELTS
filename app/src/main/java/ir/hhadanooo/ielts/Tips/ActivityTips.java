@@ -179,7 +179,7 @@ public class ActivityTips extends AppCompatActivity {
 
             for(int i = 0;i<files.length;i++)
             {
-                CustomViewItem custom1 = new CustomViewItem(this,"Listening","Tips","",i+1,"","",false);
+                CustomViewItem custom1 = new CustomViewItem(this,"Listening","Tips","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("","tips "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
                 lin.addView(custom1);
             }
@@ -195,7 +195,7 @@ public class ActivityTips extends AppCompatActivity {
 
             for(int i = 0;i<files.length;i++)
             {
-                CustomViewItem custom1 = new CustomViewItem(this,"Speaking","Tips","",i+1,"","",false);
+                CustomViewItem custom1 = new CustomViewItem(this,"Speaking","Tips","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("","tips "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
                 lin.addView(custom1);
             }
@@ -212,7 +212,7 @@ public class ActivityTips extends AppCompatActivity {
 
             for(int i = 0;i<files.length;i++)
             {
-                CustomViewItem custom1 = new CustomViewItem(this,"Reading","Tips","",i+1,"","",false);
+                CustomViewItem custom1 = new CustomViewItem(this,"Reading","Tips","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("","tips "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
                 lin.addView(custom1);
             }
@@ -229,7 +229,7 @@ public class ActivityTips extends AppCompatActivity {
 
             for(int i = 0;i<files.length;i++)
             {
-                CustomViewItem custom1 = new CustomViewItem(this,"Writing","Tips","",i+1,"","",false);
+                CustomViewItem custom1 = new CustomViewItem(this,"Writing","Tips","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("","tips "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
                 lin.addView(custom1);
             }
