@@ -165,11 +165,22 @@ public class Activity_practice_read extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+
+
             String[] split = TextAnswer.split("@");
+
+
             for(int i = 0;i<split.length;i++)
             {
                 list_answer.add(split[i]);
+
             }
+
+
+
+
+
+
 
             tv_title_main_page.setText(TextTitle);
            tv_text.setText(TextAllWord);
@@ -263,6 +274,7 @@ public class Activity_practice_read extends AppCompatActivity {
             Toast.makeText(this,files.length+"",Toast.LENGTH_LONG).show();
             File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/hard"+(num_rand+1)+"/TextTitleMainPage.txt");
 
+
             try {
 
                 InputStream inputStream = new FileInputStream(file_title_main_page);
@@ -320,6 +332,7 @@ public class Activity_practice_read extends AppCompatActivity {
             for(int i = 0;i<split.length;i++)
             {
                 list_answer.add(split[i]);
+
             }
 
 
@@ -404,8 +417,10 @@ public class Activity_practice_read extends AppCompatActivity {
         img_see_answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CheckClickAnswer = true;
-                String ss = "";
+
+
+
+
 
 
 
@@ -413,30 +428,9 @@ public class Activity_practice_read extends AppCompatActivity {
                 String text = tv_text.getText().toString();
                 int from = 0;
                 Spannable str = (Spannable) tv_text.getText();
-                for(int i = 0;i<list_answer.size();i++)
-                {
-                    from =0;
-                    while (true)
-                    {
-                        int index = text.indexOf(list_answer.get(i),from);
-                        if(index == -1) break;
-                        int num = (index + list_answer.get(i).length()) + 1;
-                        String ch = String.valueOf(text.charAt(num));
-                        if(ch.contains(" "))
-                        {
-                            Log.i("raminhacker1234", ""+ch);
-
-                        }else {
-                            str.setSpan(new ForegroundColorSpan(Color.WHITE), index, index + list_answer.get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                            str.setSpan(new BackgroundColorSpan(Color.GREEN), index, index + list_answer.get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                        }
-
-                        from = index+1;
-                    }
 
 
-                }
+
                 boolean check_answer = false;
                 for (int i = 0;i<list_word_in_text.size();i++)
                 {
@@ -458,6 +452,42 @@ public class Activity_practice_read extends AppCompatActivity {
                         str.setSpan(new BackgroundColorSpan(Color.RED), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
                 }
+
+                CheckClickAnswer = true;
+                for(int i = 0;i<list_answer.size();i++)
+                {
+                    from =0;
+                    while (true)
+                    {
+
+                        int index = text.indexOf(list_answer.get(i),from);
+                        if(index == -1) break;
+                        int num = (index + list_answer.get(i).length()) + 1;
+                        String ch = String.valueOf(text.charAt(num));
+
+                        /*
+                        if(ch.contains(" "))
+                        {
+                            Log.i("raminmaleki54523w", "ramin"+ch);
+
+                        }else {
+                            str.setSpan(new ForegroundColorSpan(Color.WHITE), index, index + list_answer.get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            str.setSpan(new BackgroundColorSpan(Color.GREEN), index, index + list_answer.get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                        }
+
+                         */
+
+
+                        str.setSpan(new ForegroundColorSpan(Color.WHITE), index, index + list_answer.get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        str.setSpan(new BackgroundColorSpan(Color.GREEN), index, index + list_answer.get(i).length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                        from = index+1;
+                    }
+
+
+                }
+
 
             }
         });
@@ -483,6 +513,7 @@ public class Activity_practice_read extends AppCompatActivity {
                         String s = list_num_word_in_text.get(i);
 
 
+                        Log.i("raminmaleki54523w", ""+s);
                         String[] array = s.split("@");
                         int start =Integer.valueOf(array[0]);
                         int end =Integer.valueOf(array[1]);
@@ -506,7 +537,7 @@ public class Activity_practice_read extends AppCompatActivity {
                     if(!check)
                     {
                         String text = findWordForRightHanded(tv_text.getText().toString(), mOffset);
-
+                        Log.i("raminmaleki54523w", ""+text);
                         text = text.replace(" " , "");
 
 
