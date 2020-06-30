@@ -9,6 +9,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -111,7 +112,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     int update_code= 0;
 
     // File url to download
-    private static String file_url = "http://hrwanheda.ir/ielts.zip";
+    private static String file_url = "http://192.168.1.100/matiooo/ielts.zip";
+    //private static String file_url = "https://irsv.upmusics.com/Tracks/Songs/Masih%20ft%20Arash%20AP%20%E2%80%93%20Goli128(UpMusic).mp3";
     private static String check_update_url = "http://hrwanheda.ir/update/index.php";
     private static String update_url = "http://hrwanheda.ir/update/index.php";
     String nameFile = "ielts.zip";
@@ -150,9 +152,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             connected = true;
             if (!IELTSZip){
-
                 new DownloadFileFromURL().execute(file_url);
-
                 //Toast.makeText(this, "Download!", Toast.LENGTH_SHORT).show();
 
             }else {
@@ -648,7 +648,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void unzip(File zipFile, File targetDirectory) throws IOException {
         ZipInputStream zis = new ZipInputStream(
                 new BufferedInputStream(new FileInputStream(zipFile)));
-
         try {
             ZipEntry ze;
             int count;
@@ -676,6 +675,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         } finally {
             zis.close();
+
         }
     }
     public void writeFileOnInternalStorage(Context mcoContext, String sFileName, String sBody){
@@ -795,55 +795,94 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          * **/
         @Override
         protected void onPostExecute(String file_url) {
+            Log.i("pDialog" , "ramin :"+pDialog.getProgress());
+            if (pDialog.getProgress() == 100){
+                // dismiss the dialog after the file was downloaded
+                dismissDialog(progress_bar_type);
+                //Toast.makeText(MainActivity.this, "Downloaded", Toast.LENGTH_SHORT).show();
+                if(!IELTSZip)
+                {
+                    IELTSZip = true;
 
-            // dismiss the dialog after the file was downloaded
-            dismissDialog(progress_bar_type);
-            //Toast.makeText(MainActivity.this, "Downloaded", Toast.LENGTH_SHORT).show();
-            if(!IELTSZip)
-            {
-                IELTSZip = true;
+                    newDayPerf.edit().putBoolean("IELTSZip" , true ).apply();
+                    final File ZipFile = new File(getFilesDir().
+                            getAbsolutePath()
+                            + "/"+nameFile);
+                    final File TargetFile = new File(getFilesDir().getAbsolutePath());
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                unzip(ZipFile,TargetFile);
+                                Log.i("ramin" , "done!");
+                            } catch (IOException e) {
+                                Log.i("ramin" , "err");
+                                e.printStackTrace();
 
-                newDayPerf.edit().putBoolean("IELTSZip" , true ).apply();
-                File ZipFile = new File(getFilesDir().
-                        getAbsolutePath()
-                        + "/"+nameFile);
-                File TargetFile = new File(getFilesDir().getAbsolutePath());
+                            }
+                        }
+                    }).start();
 
-                try {
-                    unzip(ZipFile,TargetFile);
-                    Log.i("ramin" , "done!");
-                } catch (IOException e) {
-                    Log.i("ramin" , "err");
-                    e.printStackTrace();
+                    newDay();
 
+                }else {
+
+                    newDayPerf.edit().putBoolean("IELTSZip" , true ).apply();
+                    File ZipFile = new File(getFilesDir().
+                            getAbsolutePath()
+                            + "/"+nameFile);
+                    File TargetFile = new File(getFilesDir().getAbsolutePath());
+                    try {
+                        unzip(ZipFile,TargetFile);
+                        Log.i("ramin" , "done!");
+                    } catch (IOException e) {
+                        Log.i("ramin" , "err");
+                        e.printStackTrace();
+
+                    }
+
+                    UpdateFile();
+                    deleteRecursive(ZipFile);
+                    File folder_update = new File(getFilesDir().getAbsolutePath() +"/ielts-update");
+                    deleteRecursive(folder_update);
                 }
-                newDay();
+
+
             }else {
-
-                newDayPerf.edit().putBoolean("IELTSZip" , true ).apply();
-                File ZipFile = new File(getFilesDir().
-                        getAbsolutePath()
-                        + "/"+nameFile);
-                File TargetFile = new File(getFilesDir().getAbsolutePath());
-
-                try {
-                    unzip(ZipFile,TargetFile);
-                    Log.i("ramin" , "done!");
-                } catch (IOException e) {
-                    Log.i("ramin" , "err");
-                    e.printStackTrace();
-
-                }
-                UpdateFile();
-                deleteRecursive(ZipFile);
-                File folder_update = new File(getFilesDir().getAbsolutePath() +"/ielts-update");
-                deleteRecursive(folder_update);
+                ((ActivityManager) Objects.requireNonNull(getSystemService(ACTIVITY_SERVICE)))
+                        .clearApplicationUserData();
+                deleteCache(MainActivity.this);
+                finish();
             }
 
 
 
         }
 
+    }
+
+    public static void deleteCache(Context context) {
+        try {
+            File dir = context.getCacheDir();
+            deleteDir(dir);
+        } catch (Exception e) { e.printStackTrace();}
+    }
+
+    public static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+            return dir.delete();
+        } else if(dir!= null && dir.isFile()) {
+            return dir.delete();
+        } else {
+            return false;
+        }
     }
 
     public void deleteRecursive(File fileOrDirectory) {
@@ -856,6 +895,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         fileOrDirectory.delete();
     }
+
 
 
     public boolean UpdateFile()
