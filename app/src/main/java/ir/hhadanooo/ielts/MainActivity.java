@@ -3,11 +3,13 @@ package ir.hhadanooo.ielts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.Dialog;
@@ -15,6 +17,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -30,6 +33,7 @@ import android.text.Html;
 import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +89,10 @@ import ir.hhadanooo.ielts.Quiz.QuizActivity;
 import ir.hhadanooo.ielts.SimpleText.SimpleTextActivity;
 import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
 import ir.hhadanooo.ielts.TestAndPracticeMenu.ActivityTestAndPracticeMenu;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -123,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public static int solveQuiz = 0;
     public static SharedPreferences deleteItem;
     public static SharedPreferences spf;
+    TourGuide mtg;
 
 
     @Override
@@ -145,50 +154,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-            //oast.makeText(this, "Internet Access!"+update_code, Toast.LENGTH_SHORT).show();
-
-            connected = true;
-            if (!IELTSZip){
-                new DownloadFileFromURL().execute(file_url);
-                //Toast.makeText(this, "Download!", Toast.LENGTH_SHORT).show();
-
-            }else {
-                newDay();
-                StringRequest s = new StringRequest(Request.Method.GET, check_update_url, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        if (Integer.parseInt(response) > update_code){
-                            newDayPerf.edit().putInt("update_code" , Integer.parseInt(response)).apply();
-                            Toast.makeText(MainActivity.this, "Update", Toast.LENGTH_SHORT).show();
-                            update_data();
-
-                        }else{
-
-                        }
-
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-                requestQueue.add(s);
-            }
-        } else{
-            connected = false;
-            Toast.makeText(this, "no Internet Access!", Toast.LENGTH_SHORT).show();
-            if(IELTSZip){
-
-                newDay();
-            }
+        if (ActivityCompat.checkSelfPermission(this , Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this , new String[] {Manifest.permission.READ_EXTERNAL_STORAGE} , 123);
+        }else {
+            downData();
         }
-
-
 
 
 
@@ -256,6 +227,67 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //newDay();
 
 
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 123){
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                downData();
+            }else{
+                finish();
+            }
+        }
+
+    }
+
+    public void downData(){
+
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //oast.makeText(this, "Internet Access!"+update_code, Toast.LENGTH_SHORT).show();
+
+            connected = true;
+            if (!IELTSZip){
+                new DownloadFileFromURL().execute(file_url);
+                //Toast.makeText(this, "Download!", Toast.LENGTH_SHORT).show();
+
+            }else {
+                newDay();
+                StringRequest s = new StringRequest(Request.Method.GET, check_update_url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (Integer.parseInt(response) > update_code){
+                            newDayPerf.edit().putInt("update_code" , Integer.parseInt(response)).apply();
+                            Toast.makeText(MainActivity.this, "Update", Toast.LENGTH_SHORT).show();
+                            update_data();
+
+                        }else{
+
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+                requestQueue.add(s);
+            }
+        } else{
+            connected = false;
+            Toast.makeText(this, "no Internet Access!", Toast.LENGTH_SHORT).show();
+            if(IELTSZip){
+
+                newDay();
+            }
+        }
 
 
     }

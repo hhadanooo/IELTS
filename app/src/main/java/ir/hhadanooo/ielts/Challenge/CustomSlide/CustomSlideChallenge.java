@@ -1,10 +1,13 @@
 package ir.hhadanooo.ielts.Challenge.CustomSlide;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,6 +20,10 @@ import java.util.Arrays;
 import ir.hhadanooo.ielts.Challenge.ChallengeActivity;
 import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.R;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 public class CustomSlideChallenge extends LinearLayout {
 
@@ -43,21 +50,25 @@ public class CustomSlideChallenge extends LinearLayout {
     boolean selectB = false;
     boolean selectC = false;
     boolean selectD = false;
+    boolean showHelp = false;
     boolean accessSelect = true;
     boolean[] arrayTf ;
     Context context;
+    Activity activity;
     int numTrue;
     int numSel = 0;
     int numAns = 0;
+    TourGuide mtg;
+
     @SuppressLint("SetTextI18n")
-    public CustomSlideChallenge(final Context context , DisplayMetrics dm , final int id
+    public CustomSlideChallenge(final Activity activity , DisplayMetrics dm , final int id
             , String question , boolean[] arrayTF  , final int numTrue , final int numAns) {
-        super(context);
+        super(activity);
         this.arrayTf = arrayTF;
         this.idView = id;
         this.numTrue = numTrue;
         this.numAns = numAns;
-        rootView = inflate(context , R.layout.custom_slide_challenge , this);
+        rootView = inflate(activity , R.layout.custom_slide_challenge , this);
         lay_chlng = findViewById(R.id.lay_chlng);
         tv_todayScore_chlng = rootView.findViewById(R.id.tv_todayScore_chlng);
         tv_totalScore_chlng = rootView.findViewById(R.id.tv_totalScore_chlng);
@@ -357,6 +368,8 @@ public class CustomSlideChallenge extends LinearLayout {
         });
 
 
+
+
         iv_next_chlng.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -365,6 +378,9 @@ public class CustomSlideChallenge extends LinearLayout {
         });
 
 
+    }
+    public ImageView iv(){
+        return iv_next_chlng;
     }
 
 }

@@ -3,6 +3,7 @@ package ir.hhadanooo.ielts.Practice;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -11,6 +12,7 @@ import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,9 +26,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 import ir.hhadanooo.ielts.R;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 public class Activity_practice_read extends AppCompatActivity {
     RelativeLayout rel_body,rel_main_page,rel_title_main_page;
@@ -47,11 +54,26 @@ public class Activity_practice_read extends AppCompatActivity {
     boolean CheckClickAnswer = false;
     List<String> list_answer = new ArrayList<>();
 
+    TourGuide mtg;
+    TourGuide mtg1;
+    SharedPreferences showHelppp2;
+    boolean showHelp = false;
+    boolean showHelp1 = false;
+    boolean isShow = false;
+    boolean isShow1 = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_read);
         getSupportActionBar().hide();
+
+        showHelppp2 = getSharedPreferences("show" ,MODE_PRIVATE);
+        //showHelp = showHelppp2.getBoolean("rel_text" , false);
+        //showHelp1 = showHelppp2.getBoolean("img_see_answer" , false);
+
+
         init();
         CheckIntent();
         SetPropertiesRelBody();
@@ -364,6 +386,45 @@ public class Activity_practice_read extends AppCompatActivity {
         img_timer = findViewById(R.id.activity_practice_read_img_timer);
         tv_timer = findViewById(R.id.activity_practice_read_tv_timer);
 
+        if (!showHelp){
+            isShow = true;
+            mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
+            mtg.setPointer(new Pointer())
+                    .setToolTip( new ToolTip()
+                            .setDescription("... to MrBool website!!")
+                            .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                            .setShadow(true).setGravity(Gravity.TOP ))
+                    .setOverlay(new Overlay()) ;
+            mtg.playOn(rel_text) ;
+            showHelppp2.edit().putBoolean("rel_text" , true).apply();
+            showHelp = true;
+        }
+        tv_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isShow){
+                    mtg.cleanUp();
+                    isShow = false;
+                    if (!showHelp1){
+                        isShow1 = true;
+                        mtg1 = TourGuide.init(Activity_practice_read.this).with(TourGuide.Technique.CLICK);
+                        mtg1.setPointer(new Pointer())
+                                .setToolTip( new ToolTip()
+                                        .setDescription("... to MrBool website!!")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP ))
+                                .setOverlay(new Overlay()) ;
+                        mtg1.playOn(img_see_answer) ;
+                        showHelppp2.edit().putBoolean("img_see_answer" , true).apply();
+                        showHelp1 = true;
+                    }
+                }
+
+            }
+        });
+
+
+
 
     }
 
@@ -418,11 +479,11 @@ public class Activity_practice_read extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if (isShow1){
 
-
-
-
-
+                    mtg1.cleanUp();
+                    isShow1 = false;
+                }
 
 
                 String text = tv_text.getText().toString();

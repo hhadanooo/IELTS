@@ -83,10 +83,6 @@ public class TestListenActivity extends AppCompatActivity {
 
         Timer(tv_time_TestL);
 
-        if (ActivityCompat.checkSelfPermission(this , Manifest.permission.READ_EXTERNAL_STORAGE) !=
-                PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this , new String[] {Manifest.permission.READ_EXTERNAL_STORAGE} , 123);
-        }
 
 
 

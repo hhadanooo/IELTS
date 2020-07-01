@@ -6,10 +6,13 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,6 +30,10 @@ import ir.hhadanooo.ielts.Challenge.CustomSlide.CustomSlideChallenge;
 import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.Quiz.AnimationSliderQuiz.CubeOutRotationTransformation;
 import ir.hhadanooo.ielts.R;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 public class ChallengeActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 
@@ -44,6 +51,9 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
     public static SharedPreferences spf;
     static SharedPreferences publicSpf;
+    TourGuide mtg;
+    SharedPreferences showHelppp;
+    boolean showHelp = false;
 
 
     public static int solveQuiz = 0;
@@ -62,7 +72,8 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
         initActionBar();
 
         publicSpf = getSharedPreferences("numberQuiz" , MODE_PRIVATE);
-
+        showHelppp = getSharedPreferences("show" , MODE_PRIVATE);
+        //showHelp = showHelppp.getBoolean("helper" , false);
         solveQuiz = publicSpf.getInt("numQuizSolve" , 0);
         spf = getSharedPreferences("spf" , MODE_PRIVATE);
         todayS = spf.getInt("todayS" , 0);
@@ -88,8 +99,13 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
         ViewPager_Challenge.setAdapter(viewPagerAdapterChlng);
         //ViewPager_Challenge.addOnPageChangeListener(viewPagerPageChangeListener);
 
-
         ViewPager_Challenge.setOnPageChangeListener(this);
+
+
+
+
+
+
 
     }
 
@@ -118,6 +134,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
         ViewPager_Challenge.setCurrentItem(ViewPager_Challenge.getCurrentItem()+1);
     }
 
+    @SuppressLint("CommitPrefEdits")
     public void makeViewForSlider(){
 
         for (int i = 0 ; i < num_quiz ; i++){
@@ -169,7 +186,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
                     }
                     lineNum++;
                     //answer.append(line);
-                    //text.append('\n');
+                    //text.append('\n');00
                 }
                 br1.close() ;
             }catch (IOException e) {
@@ -177,8 +194,28 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
             }
             Log.i("Striiiin" , "1"+answer);
 
-            CustomSlideChallenge cvq = new CustomSlideChallenge(ChallengeActivity.this
+            CustomSlideChallenge cvq = new CustomSlideChallenge( ChallengeActivity.this
                     , dm , i ,String.valueOf(text) , answers , numTrue , numAns );
+            if (!showHelp){
+                ImageView iv = cvq.iv();
+                mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
+                mtg.setPointer(new Pointer())
+                        .setToolTip( new ToolTip()
+                                .setDescription("... to MrBool website!!")
+                                .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                .setShadow(true).setGravity(Gravity.TOP |Gravity.LEFT ))
+                        .setOverlay(new Overlay()) ;
+                mtg.playOn(iv) ;
+                showHelppp.edit().putBoolean("helper" , true).apply();
+                showHelp = true;
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mtg.cleanUp();
+                    }
+                });
+            }
+
             Log.i("numAns" , "a "+numAns  );
             viewForCustom.add(cvq);
             slideForCustom.add(cvq);

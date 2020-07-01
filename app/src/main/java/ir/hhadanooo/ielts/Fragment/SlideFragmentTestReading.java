@@ -1,11 +1,17 @@
 package ir.hhadanooo.ielts.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -22,8 +28,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
 import ir.hhadanooo.ielts.R;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 
 public class SlideFragmentTestReading extends Fragment {
@@ -43,6 +54,11 @@ public class SlideFragmentTestReading extends Fragment {
     int num_tab;
 
     WebView webView;
+    @SuppressLint("StaticFieldLeak")
+    public static TourGuide mtg;
+    SharedPreferences showHelppp1;
+    boolean showHelp = false;
+    public static boolean isShow = false;
 
 
     String TextAnswer1,TextAnswer2,TextAnswer3,Filename1,Filename2,Filename3;
@@ -82,7 +98,8 @@ public class SlideFragmentTestReading extends Fragment {
         num  = args.getInt("num");
         num_tab = args.getInt("num_tab");
 
-
+        showHelppp1 = Objects.requireNonNull(getContext()).getSharedPreferences("show" , getContext().MODE_PRIVATE);
+        showHelp = showHelppp1.getBoolean("helper" , false);
         TextAnswer1 = args.getString("TextAnswer1");
         TextAnswer2 = args.getString("TextAnswer2");
         TextAnswer3 = args.getString("TextAnswer3");
@@ -126,6 +143,27 @@ public class SlideFragmentTestReading extends Fragment {
                     File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/" + Filename1+ "/passage1.html");
                     webView.loadUrl("file:///" + file_html);
 
+                    if (!showHelp){
+                        isShow =true;
+                        mtg = TourGuide.init(Objects.requireNonNull(getActivity())).with(TourGuide.Technique.HORIZONTAL_LEFT);
+                        mtg.setPointer(new Pointer())
+                                .setToolTip( new ToolTip()
+                                        .setDescription("... to MrBool website!!")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP ))
+                                .setOverlay(new Overlay()) ;
+                        mtg.playOn(rel_text_and_question) ;
+                        showHelppp1.edit().putBoolean("helper" , true).apply();
+                        showHelp = true;
+                    }
+
+
+              /*   new Handler().postDelayed(new Runnable() {
+                     @Override
+                     public void run() {
+                         mtg.cleanUp();
+                     }
+                 } , 3000);*/
                 }else if(num_tab == 2)
                 {
                     File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/" + Filename2 + "/passage2.html");
@@ -170,7 +208,6 @@ public class SlideFragmentTestReading extends Fragment {
 
 
 
-
     public void init()
     {
         webView = rootview.findViewById(R.id.layout_fragment_webview);
@@ -204,7 +241,6 @@ public class SlideFragmentTestReading extends Fragment {
         rel_text_and_question.getLayoutParams().width = (int) (Width*.90);
         rel_text_and_question.getLayoutParams().height = (int)(Height*0.61);
 
-
         img_timer.getLayoutParams().width = (int) (Width*0.1);
         img_timer.getLayoutParams().height = (int) (Width*0.1);
 
@@ -229,6 +265,8 @@ public class SlideFragmentTestReading extends Fragment {
                 }
             }
         });
+
+
 
     }
 

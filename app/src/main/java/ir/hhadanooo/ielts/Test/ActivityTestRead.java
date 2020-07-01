@@ -147,6 +147,25 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
                viewPager.setAdapter(new SectionPagerAdapter(getSupportFragmentManager(),dm.widthPixels,dm.heightPixels,"Academic", getIntent().getExtras().getInt("Number"),TextAnswer1,TextAnswer2,TextAnswer3,getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile")));
+               viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                   @Override
+                   public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                   }
+
+                   @Override
+                   public void onPageSelected(int position) {
+                       if (SlideFragmentTestReading.isShow){
+                           SlideFragmentTestReading.mtg.cleanUp();
+                           SlideFragmentTestReading.isShow = false;
+                       }
+                   }
+
+                   @Override
+                   public void onPageScrollStateChanged(int state) {
+
+                   }
+               });
                tabLayout.setupWithViewPager(viewPager);
            }
         }else if(getIntent().getExtras().get("General") != null)

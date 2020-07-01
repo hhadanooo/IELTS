@@ -2,13 +2,16 @@ package ir.hhadanooo.ielts.Test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
@@ -24,6 +27,10 @@ import java.io.InputStream;
 
 import ir.hhadanooo.ielts.CustomView.CustomEditText;
 import ir.hhadanooo.ielts.R;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 public class ActivityTestWrite extends AppCompatActivity {
     RelativeLayout rel_body, rel_main_page,rel_title_main_page;
@@ -43,10 +50,24 @@ public class ActivityTestWrite extends AppCompatActivity {
     String name_sharedPreferences;
     WebView webView_title;
     File file_html;
+
+
+    TourGuide mtg;
+    TourGuide mtg1;
+    SharedPreferences showHelppp;
+    boolean showHelp = false;
+    boolean showHelp1 = false;
+    boolean isShow = false;
+    boolean isShow1 = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_write);
+
+        showHelppp = getSharedPreferences("show" ,MODE_PRIVATE);
+        //showHelp = showHelppp.getBoolean("webView_title" , false);
+        //showHelp1 = showHelppp.getBoolean("img_see_answer" , false);
 
         getSupportActionBar().hide();
         initActionBar();
@@ -93,6 +114,7 @@ public class ActivityTestWrite extends AppCompatActivity {
         });
 
     }
+    @SuppressLint("ClickableViewAccessibility")
     public void init()
     {
         webView_title = findViewById(R.id.activity_test_write_webview_title);
@@ -121,6 +143,21 @@ public class ActivityTestWrite extends AppCompatActivity {
         sharedPreferences_et_Text = getSharedPreferences("et_text_value",MODE_PRIVATE);
         editor_sharedPreferences_et_Text = sharedPreferences_et_Text.edit();
 
+
+
+        if (!showHelp){
+            isShow = true;
+            mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
+            mtg.setPointer(new Pointer())
+                    .setToolTip( new ToolTip()
+                            .setDescription("... to MrBool website!!")
+                            .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                            .setShadow(true).setGravity(Gravity.BOTTOM ))
+                    .setOverlay(new Overlay()) ;
+            mtg.playOn(webView_title) ;
+            showHelppp.edit().putBoolean("webView_title" , true).apply();
+            showHelp = true;
+        }
 
 
 
