@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -151,6 +152,7 @@ public class Activity_Vocab extends AppCompatActivity {
             {
                 CustomViewItem custom1 = new CustomViewItem(this,"Writing","Vocab","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("","vocab "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                 lin.addView(custom1);
             }
 
@@ -169,6 +171,7 @@ public class Activity_Vocab extends AppCompatActivity {
             {
                 CustomViewItem custom1 = new CustomViewItem(this,"Speaking","Vocab","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("","vocab "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                 lin.addView(custom1);
             }
 

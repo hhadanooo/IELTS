@@ -30,6 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
 
@@ -204,6 +205,8 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
             }
         });
+
+        CustomViewItem.progressDialog.dismiss();
 
         iv_shareAnswer_playerPBL.setOnClickListener(new View.OnClickListener() {
             @Override

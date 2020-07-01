@@ -1,5 +1,6 @@
 package ir.hhadanooo.ielts.CustomView;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -41,6 +42,7 @@ public class CustomViewItem extends RelativeLayout {
     String type_listen;
     String level;
     String file_name;
+    public static ProgressDialog progressDialog;
     public CustomViewItem(Context context,String page,String type,String type_test,int number,String type_listen,String level,boolean check_page,String name_file) {
         super(context);
         this.page = page;
@@ -51,6 +53,7 @@ public class CustomViewItem extends RelativeLayout {
         this.level = level;
         this.Check_page = check_page;
         this.file_name =name_file;
+        progressDialog = new ProgressDialog(context);
 
         init(context);
     }
@@ -102,6 +105,10 @@ public class CustomViewItem extends RelativeLayout {
                             intent.putExtra("Number",number);
                             intent.putExtra("NameFile",file_name);
                             context.startActivity(intent);
+
+                            progressDialog.setMessage("      Loading Page...     ");
+                            progressDialog.show();
+
                         }
                     });
                 }else  if(type_test.equals("General"))
@@ -113,8 +120,10 @@ public class CustomViewItem extends RelativeLayout {
                             intent.putExtra("General","General");
                             intent.putExtra("Number",number);
                             intent.putExtra("NameFile",file_name);
-                            Toast.makeText(context,"",Toast.LENGTH_LONG).show();
+                            //Toast.makeText(context,"",Toast.LENGTH_LONG).show();
                             context.startActivity(intent);
+                            progressDialog.setMessage("      Loading Page...     ");
+                            progressDialog.show();
                         }
                     });
                 }
@@ -129,6 +138,8 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("number",number);
                         intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
+                        progressDialog.setMessage("      Loading Page...     ");
+                        progressDialog.show();
                     }
                 });
             }else  if(type.equals("Practice"))
@@ -151,6 +162,8 @@ public class CustomViewItem extends RelativeLayout {
                             intent.putExtra("name",type_listen);
                             intent.putExtra("NameFile",file_name);
                             context.startActivity(intent);
+                            progressDialog.setMessage("      Loading Page...     ");
+                            progressDialog.show();
                         }
                     });
                 }else  if(type_test.equals("General"))
@@ -165,6 +178,8 @@ public class CustomViewItem extends RelativeLayout {
                             intent.putExtra("name",type_listen);
                             intent.putExtra("NameFile",file_name);
                             context.startActivity(intent);
+                            progressDialog.setMessage("      Loading Page...     ");
+                            progressDialog.show();
                         }
                     });
                 }
@@ -179,6 +194,8 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("number",number);
                         intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
+                        progressDialog.setMessage("      Loading Page...     ");
+                        progressDialog.show();
                     }
                 });
             }else  if(type.equals("Vocab"))
@@ -192,6 +209,8 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("number",number);
                         intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
+                        progressDialog.setMessage("      Loading Page...     ");
+                        progressDialog.show();
                     }
                 });
             }
@@ -208,6 +227,8 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("number",number);
                         intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
+                        progressDialog.setMessage("      Loading Page...     ");
+                        progressDialog.show();
                     }
                 });
             }else  if(type.equals("Tips"))
@@ -221,6 +242,8 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("number",number);
                         intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
+                        progressDialog.setMessage("      Loading Page...     ");
+                        progressDialog.show();
                     }
                 });
             }else  if(type.equals("Vocab"))
@@ -234,6 +257,8 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("number",number);
                         intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
+                        progressDialog.setMessage("      Loading Page...     ");
+                        progressDialog.show();
                     }
                 });
             }
@@ -248,6 +273,8 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("Number",number);
                         intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
+                        progressDialog.setMessage("      Loading Page...     ");
+                        progressDialog.show();
                     }
                 });
             }else  if(type.equals("Tips"))
@@ -261,6 +288,8 @@ public class CustomViewItem extends RelativeLayout {
                         intent.putExtra("number",number);
                         intent.putExtra("NameFile",file_name);
                         context.startActivity(intent);
+                        progressDialog.setMessage("      Loading Page...     ");
+                        progressDialog.show();
                     }
                 });
             }else  if(type.equals("Practice"))
@@ -279,6 +308,8 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Number",number);
                                 intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
+                                progressDialog.setMessage("      Loading Page...     ");
+                                progressDialog.show();
                             }
                         });
                     }else if(level.equals("Normal"))
@@ -292,6 +323,8 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Number",number);
                                 intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
+                                progressDialog.setMessage("      Loading Page...     ");
+                                progressDialog.show();
                             }
                         });
                     }else if(level.equals("Hard"))
@@ -305,6 +338,8 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Number",number);
                                 intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
+                                progressDialog.setMessage("      Loading Page...     ");
+                                progressDialog.show();
                             }
                         });
                     }
@@ -321,6 +356,8 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Number",number);
                                 intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
+                                progressDialog.setMessage("      Loading Page...     ");
+                                progressDialog.show();
                             }
                         });
                     }else if(level.equals("Normal"))
@@ -334,6 +371,8 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Number",number);
                                 intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
+                                progressDialog.setMessage("      Loading Page...     ");
+                                progressDialog.show();
                             }
                         });
                     }else if(level.equals("Hard"))
@@ -347,6 +386,8 @@ public class CustomViewItem extends RelativeLayout {
                                 intent.putExtra("Number",number);
                                 intent.putExtra("NameFile",file_name);
                                 context.startActivity(intent);
+                                progressDialog.setMessage("      Loading Page...     ");
+                                progressDialog.show();
                             }
                         });
                     }

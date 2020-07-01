@@ -2,7 +2,11 @@ package ir.hhadanooo.ielts.Test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+<<<<<<< HEAD
 import android.annotation.SuppressLint;
+=======
+import android.app.Dialog;
+>>>>>>> 89f7ed3806aac0f91c4089cdeefd55718de54612
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -26,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import ir.hhadanooo.ielts.CustomView.CustomEditText;
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
@@ -255,7 +260,7 @@ public class ActivityTestWrite extends AppCompatActivity {
 
     public void SetPropertiesMainPage()
     {
-        DisplayMetrics dm = new DisplayMetrics();
+        final DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         rel_main_page.getLayoutParams().width = (int) (dm.widthPixels*.90);
         //rel_main_page.getLayoutParams().height = (int)(dm.heightPixels*0.78);
@@ -330,7 +335,6 @@ public class ActivityTestWrite extends AppCompatActivity {
         img_timer.getLayoutParams().height = (int) (dm.widthPixels*0.07);
 
 
-
         et_main_page.setText(sharedPreferences_et_Text.getString(name_sharedPreferences,""));
 
         Toast.makeText(this,name_sharedPreferences,Toast.LENGTH_LONG).show();
@@ -339,7 +343,15 @@ public class ActivityTestWrite extends AppCompatActivity {
         img_see_example.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ActivityTestWrite.this,TextSeeSample,Toast.LENGTH_LONG).show();
+                Dialog dia = new Dialog(ActivityTestWrite.this);
+                dia.setContentView(R.layout.layout_dialog_audioscripts);
+                TextView tv_audioScripts = dia.findViewById(R.id.tv_audioScripts);
+
+                tv_audioScripts.getLayoutParams().width = (int) (dm.widthPixels*.8);
+                //tv_audioScripts.getLayoutParams().height = (int) (Height);
+                tv_audioScripts.setTextSize((int) (dm.widthPixels*.015));
+                tv_audioScripts.setText(TextSeeSample);
+                dia.show();
             }
         });
         img_shareanswer.setOnClickListener(new View.OnClickListener() {
@@ -370,6 +382,8 @@ public class ActivityTestWrite extends AppCompatActivity {
                 }
             }
         });
+
+        CustomViewItem.progressDialog.dismiss();
 
     }
 

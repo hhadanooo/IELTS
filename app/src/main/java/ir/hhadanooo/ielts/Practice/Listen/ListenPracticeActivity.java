@@ -36,6 +36,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
 
@@ -284,6 +285,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
         });
 
 
+        CustomViewItem.progressDialog.dismiss();
         iv_next_playerPL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -36,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialogChlng.DialogChlngShow;
 import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.R;
@@ -219,6 +220,7 @@ public class TestListenActivity extends AppCompatActivity {
 
             }
         });
+        CustomViewItem.progressDialog.dismiss();
 
 
     }

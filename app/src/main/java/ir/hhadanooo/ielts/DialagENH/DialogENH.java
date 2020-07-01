@@ -1,6 +1,7 @@
 package ir.hhadanooo.ielts.DialagENH;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.Practice.Activity_Practice;
 import ir.hhadanooo.ielts.Practice.Activity_practice_read;
 import ir.hhadanooo.ielts.R;
@@ -48,6 +50,7 @@ public class DialogENH {
 
         iv_h_dialogENH.getLayoutParams().width = (int) (dm.widthPixels*0.2);
         iv_h_dialogENH.getLayoutParams().height = (int) (dm.widthPixels*0.07);
+
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         iv_e_dialogENH.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +62,7 @@ public class DialogENH {
                     i.putExtra("Type1","type1");
                     i.putExtra("Listen","listen");
                     dialog.dismiss();
+
                     context.startActivity(i);
                 }else if (intent.equals("Type2")){
                     Intent i = new Intent(context, Activity_Practice.class);
@@ -73,6 +77,9 @@ public class DialogENH {
                     intent.putExtra("Easy","Easy");
                     dismiss();
                     context.startActivity(intent);
+                    CustomViewItem.progressDialog = new ProgressDialog(context);
+                    CustomViewItem.progressDialog.setMessage("     Loading Page...     ");
+                    CustomViewItem.progressDialog.show();
 
                 }
             }
@@ -101,6 +108,9 @@ public class DialogENH {
                     intent.putExtra("Normal","Normal");
                     dismiss();
                     context.startActivity(intent);
+                    CustomViewItem.progressDialog = new ProgressDialog(context);
+                    CustomViewItem.progressDialog.setMessage("     Loading Page...     ");
+                    CustomViewItem.progressDialog.show();
                 }
             }
         });
@@ -128,6 +138,9 @@ public class DialogENH {
                     intent.putExtra("Hard","Hard");
                     dismiss();
                     context.startActivity(intent);
+                    CustomViewItem.progressDialog = new ProgressDialog(context);
+                    CustomViewItem.progressDialog.setMessage("     Loading Page...     ");
+                    CustomViewItem.progressDialog.show();
                 }
             }
         });

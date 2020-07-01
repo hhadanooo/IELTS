@@ -1,6 +1,10 @@
 package ir.hhadanooo.ielts.Fragment;
 
+<<<<<<< HEAD
 import android.annotation.SuppressLint;
+=======
+import android.app.Dialog;
+>>>>>>> 89f7ed3806aac0f91c4089cdeefd55718de54612
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -30,11 +34,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
+<<<<<<< HEAD
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
 import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
+=======
+import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
+>>>>>>> 89f7ed3806aac0f91c4089cdeefd55718de54612
 
 
 public class SlideFragmentTestReading extends Fragment {
@@ -241,6 +250,11 @@ public class SlideFragmentTestReading extends Fragment {
         rel_text_and_question.getLayoutParams().width = (int) (Width*.90);
         rel_text_and_question.getLayoutParams().height = (int)(Height*0.61);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 89f7ed3806aac0f91c4089cdeefd55718de54612
         img_timer.getLayoutParams().width = (int) (Width*0.1);
         img_timer.getLayoutParams().height = (int) (Width*0.1);
 
@@ -249,19 +263,46 @@ public class SlideFragmentTestReading extends Fragment {
         img_see_answer.getLayoutParams().width = (int) (Width*0.295);
         img_see_answer.getLayoutParams().height = (int) (Width*0.085);
 
+        CustomViewItem.progressDialog.dismiss();
 
         img_see_answer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(num_tab == 1)
                 {
-                    Toast.makeText(getContext(),""+TextAnswer1,Toast.LENGTH_LONG).show();
+
+                    Dialog dia = new Dialog(getContext());
+                    dia.setContentView(R.layout.layout_dialog_audioscripts);
+                    TextView tv_audioScripts = dia.findViewById(R.id.tv_audioScripts);
+
+                    tv_audioScripts.getLayoutParams().width = (int) (Width*.8);
+                    //tv_audioScripts.getLayoutParams().height = (int) (Height);
+                    tv_audioScripts.setTextSize((int) (Width*.015));
+                    tv_audioScripts.setText(TextAnswer1);
+                    dia.show();
+
                 }else if(num_tab == 2)
                 {
-                    Toast.makeText(getContext(),""+TextAnswer2,Toast.LENGTH_LONG).show();
+                    Dialog dia = new Dialog(getContext());
+                    dia.setContentView(R.layout.layout_dialog_audioscripts);
+                    TextView tv_audioScripts = dia.findViewById(R.id.tv_audioScripts);
+
+                    tv_audioScripts.getLayoutParams().width = (int) (Width*.8);
+                    //tv_audioScripts.getLayoutParams().height = (int) (Height);
+                    tv_audioScripts.setTextSize((int) (Width*.015));
+                    tv_audioScripts.setText(TextAnswer2);
+                    dia.show();
                 }else if(num_tab == 3)
                 {
-                    Toast.makeText(getContext(),""+TextAnswer3,Toast.LENGTH_LONG).show();
+                    Dialog dia = new Dialog(getContext());
+                    dia.setContentView(R.layout.layout_dialog_audioscripts);
+                    TextView tv_audioScripts = dia.findViewById(R.id.tv_audioScripts);
+
+                    tv_audioScripts.getLayoutParams().width = (int) (Width*.8);
+                    //tv_audioScripts.getLayoutParams().height = (int) (Height);
+                    tv_audioScripts.setTextSize((int) (Width*.015));
+                    tv_audioScripts.setText(TextAnswer3);
+                    dia.show();
                 }
             }
         });

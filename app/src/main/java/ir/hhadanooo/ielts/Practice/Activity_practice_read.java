@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
@@ -553,6 +554,8 @@ public class Activity_practice_read extends AppCompatActivity {
             }
         });
 
+
+        CustomViewItem.progressDialog.dismiss();
 
         if(getIntent().getExtras().getString("Easy") == null) tv_count.setVisibility(View.INVISIBLE);
         tv_text.setOnTouchListener(new View.OnTouchListener() {

@@ -23,6 +23,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.Fragment.SlideFragmentTestReading;
 import ir.hhadanooo.ielts.R;
 
@@ -54,6 +55,7 @@ public class ActivityTestRead extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         if(getIntent().getExtras().getString("Academic") != null)
         {
+
            if(getIntent().getExtras().getInt("Number") != 0)
            {
 
