@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -184,6 +185,9 @@ public class Activity_test extends AppCompatActivity {
             {
                 CustomViewItem custom1 = new CustomViewItem(this,"Listening","Test","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
+                custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+
+
                 lin.addView(custom1);
             }
 
@@ -201,6 +205,7 @@ public class Activity_test extends AppCompatActivity {
             {
                 CustomViewItem custom1 = new CustomViewItem(this,"Speaking","Test","",i+1,"","",false,files[i].getName());
                 SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
+                custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                 lin.addView(custom1);
             }
 
@@ -222,6 +227,7 @@ public class Activity_test extends AppCompatActivity {
                 {
                     CustomViewItem custom1 = new CustomViewItem(this,"Reading","Test","Academic",i+1,"","",false,files[i].getName());
                     SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
+                    custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                     lin.addView(custom1);
                 }
 
@@ -240,6 +246,7 @@ public class Activity_test extends AppCompatActivity {
                 {
                     CustomViewItem custom1 = new CustomViewItem(this,"Reading","Test","General",i+1,"","",false,files[i].getName());
                     SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
+                    custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                     lin.addView(custom1);
                 }
 
@@ -267,6 +274,7 @@ public class Activity_test extends AppCompatActivity {
 
                     CustomViewItem custom1 = new CustomViewItem(this,"Writing","Test","Academic",i+1,files[i].getName(),"",false,files[i].getName());
                     SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
+                    custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                     lin.addView(custom1);
                 }
 
@@ -283,6 +291,7 @@ public class Activity_test extends AppCompatActivity {
                 {
                     CustomViewItem custom1 = new CustomViewItem(this,"Writing","Test","General",i+1,files[i].getName(),"",false,files[i].getName());
                     SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
+                    custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                     lin.addView(custom1);
                 }
 

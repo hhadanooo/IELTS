@@ -33,6 +33,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     LinearLayout lin_list_item;
 
     boolean showMenu = true;
+    boolean check_zip = false;
 
     TextView tv1_about_icon,tv2_about_icon;
 
@@ -107,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     int mPassed = 0;
     int yPassed = 0;
     private ProgressDialog pDialog;
+    ProgressDialog progressDialog_unzip;
     public static final int progress_bar_type = 0;
 
     int update_code= 0;
@@ -129,6 +132,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressDialog_unzip = new ProgressDialog(this);
         getSupportActionBar().hide();
         publicSpf = getSharedPreferences("numberQuiz",MODE_PRIVATE);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -337,6 +342,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 dialogChlngShow.show();
             }
         });
+
+
+
+        custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+        custom2.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+        custom3.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+        custom4.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+        custom5.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+
 
 
         lin_list_item.addView(custom1);
@@ -809,19 +823,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             getAbsolutePath()
                             + "/"+nameFile);
                     final File TargetFile = new File(getFilesDir().getAbsolutePath());
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                unzip(ZipFile,TargetFile);
-                                Log.i("ramin" , "done!");
-                            } catch (IOException e) {
-                                Log.i("ramin" , "err");
-                                e.printStackTrace();
 
-                            }
-                        }
-                    }).start();
+
+                    progressDialog_unzip.setMessage("loading database.please wait.... ");
+                    progressDialog_unzip.setCancelable(false);
+                    progressDialog_unzip.show();
+
+                   check_zip = false;
+                   Thread thread = new Thread(new Runnable() {
+                       @Override
+                       public void run() {
+                           try {
+                               Log.i("raminfdsfdsfds", "start");
+                               unzip(ZipFile,TargetFile);
+                               Log.i("raminfdsfdsfds", "stop");
+                               Log.i("ramin" , "done!");
+
+                           } catch (IOException e) {
+                               Log.i("ramin" , "err");
+                               check_zip = false;
+                               e.printStackTrace();
+                           }
+                       }
+                   });
+                   thread.start();
+
+                   new Handler().postDelayed(new Runnable() {
+                       @Override
+                       public void run() {
+                           progressDialog_unzip.dismiss();
+                       }
+                   },10000);
+
+
+                    //
 
                     newDay();
 

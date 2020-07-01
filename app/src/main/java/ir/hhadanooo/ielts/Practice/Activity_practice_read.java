@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 
 public class Activity_practice_read extends AppCompatActivity {
@@ -492,6 +493,8 @@ public class Activity_practice_read extends AppCompatActivity {
             }
         });
 
+
+        CustomViewItem.progressDialog.dismiss();
 
         if(getIntent().getExtras().getString("Easy") == null) tv_count.setVisibility(View.INVISIBLE);
         tv_text.setOnTouchListener(new View.OnTouchListener() {

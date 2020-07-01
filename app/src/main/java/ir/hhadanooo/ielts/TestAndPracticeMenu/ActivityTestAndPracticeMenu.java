@@ -12,8 +12,10 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -214,6 +216,10 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
                 }
             });
 
+            custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+            custom2.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+            custom3.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+
 
             lin.addView(custom1);
             lin.addView(custom2);
@@ -264,6 +270,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
                         intent.putExtra(Type, Type);
                         startActivity(intent);
                     }else {
+                        Log.i("raminhacker234234", "fd");
                         DialogENH enh = new DialogENH(ActivityTestAndPracticeMenu.this,dm,"ReadPractice");
                         enh.show();
 
@@ -273,6 +280,11 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
                 }
             });
 
+
+
+            custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+            custom2.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+            custom3.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
 
 
             lin.addView(custom1);

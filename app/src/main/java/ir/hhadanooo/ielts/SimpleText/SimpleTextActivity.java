@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 
 public class SimpleTextActivity extends AppCompatActivity {
@@ -314,6 +315,7 @@ public class SimpleTextActivity extends AppCompatActivity {
         tv_title_Simple_text.setTextSize((int) (dm.widthPixels*.015));
 
 
+        CustomViewItem.progressDialog.dismiss();
 
 
     }

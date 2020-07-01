@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import ir.hhadanooo.ielts.Challenge.CustomSlide.CustomSlideChallenge;
+import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.Quiz.AnimationSliderQuiz.CubeOutRotationTransformation;
 import ir.hhadanooo.ielts.R;
@@ -212,6 +213,8 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
                 onBackPressed();
             }
         });
+
+        CustomViewItem.progressDialog.dismiss();
 
     }
 

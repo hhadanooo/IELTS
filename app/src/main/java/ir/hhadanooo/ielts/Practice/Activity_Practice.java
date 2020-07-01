@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -144,6 +145,7 @@ public class Activity_Practice extends AppCompatActivity {
                     {
                         CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Easy",false,files[i].getName());
                         SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
 
@@ -160,6 +162,7 @@ public class Activity_Practice extends AppCompatActivity {
                     {
                         CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Easy",false,files[i].getName());
                         SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
 
@@ -178,6 +181,7 @@ public class Activity_Practice extends AppCompatActivity {
                     {
                         CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Normal",false,files[i].getName());
                         SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
 
@@ -193,6 +197,7 @@ public class Activity_Practice extends AppCompatActivity {
                     {
                         CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Normal",false,files[i].getName());
                         SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
 
@@ -211,6 +216,7 @@ public class Activity_Practice extends AppCompatActivity {
                     {
                         CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Hard",false,files[i].getName());
                         SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
 
@@ -225,6 +231,7 @@ public class Activity_Practice extends AppCompatActivity {
                     {
                         CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Hard",false,files[i].getName());
                         SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
 
@@ -264,6 +271,8 @@ public class Activity_Practice extends AppCompatActivity {
                     }
                 });
 
+                custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+                custom2.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                 lin.addView(custom1);
                 lin.addView(custom2);
             }
