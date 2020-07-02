@@ -21,6 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -107,6 +109,8 @@ public class ActivityTestWrite extends AppCompatActivity {
         tv_PathLogo_SimpleText.setText("Listening");
 
 
+        Glide.with(this).load(R.drawable.test_menue).into(iv_ic_logoPage_SimpleText);
+        Glide.with(this).load(R.drawable.icon_arrow_back).into(iv_arrowBack_SimpleText);
 
         iv_arrowBack_SimpleText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,9 +279,9 @@ public class ActivityTestWrite extends AppCompatActivity {
         et_main_page.getLayoutParams().width = (int) (dm.widthPixels*0.75);
         et_main_page.getLayoutParams().height = (int) (dm.widthPixels*0.59);
 
-        img_submit.setBackground(getDrawable(R.drawable.submit_icon1));
-        img_see_example.setBackground(getDrawable(R.drawable.seesample_icon1));
-        img_shareanswer.setBackground(getDrawable(R.drawable.shareanswer_icon1));
+        //img_submit.setBackground(getDrawable(R.drawable.submit_icon1));
+        //img_see_example.setBackground(getDrawable(R.drawable.seesample_icon1));
+        //img_shareanswer.setBackground(getDrawable(R.drawable.shareanswer_icon1));
 
         //set max line 40
         et_main_page.setOnKeyListener(new View.OnKeyListener() {
@@ -331,11 +335,16 @@ public class ActivityTestWrite extends AppCompatActivity {
         img_timer.getLayoutParams().width = (int) (dm.widthPixels*0.07);
         img_timer.getLayoutParams().height = (int) (dm.widthPixels*0.07);
 
+        Glide.with(this).load(R.drawable.timer_icon).into(img_timer);
+
 
         et_main_page.setText(sharedPreferences_et_Text.getString(name_sharedPreferences,""));
 
         Toast.makeText(this,name_sharedPreferences,Toast.LENGTH_LONG).show();
 
+        Glide.with(this).load(R.drawable.seesample_icon1).into(img_see_example);
+        Glide.with(this).load(R.drawable.shareanswer_icon1).into(img_shareanswer);
+        Glide.with(this).load(R.drawable.submit_icon1).into(img_submit);
 
         img_see_example.setOnClickListener(new View.OnClickListener() {
             @Override

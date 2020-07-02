@@ -24,6 +24,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -237,6 +239,9 @@ public class SlideFragmentTestReading extends Fragment {
         img_see_answer.getLayoutParams().width = (int) (Width*0.295);
         img_see_answer.getLayoutParams().height = (int) (Height*0.045);
 
+        Glide.with(this).load(R.drawable.timer_icon).into(img_timer);
+
+
 
 
     }
@@ -247,6 +252,7 @@ public class SlideFragmentTestReading extends Fragment {
         img_timer.getLayoutParams().height = (int) (Width*0.1);
 
         img_see_answer.setBackground(getContext().getDrawable(R.drawable.seeanswer_icon1));
+        //Glide.with(this).load(getContext().getDrawable(R.drawable.seeanswer_icon1)).into(img_see_answer);
 
         img_see_answer.getLayoutParams().width = (int) (Width*0.295);
         img_see_answer.getLayoutParams().height = (int) (Width*0.085);

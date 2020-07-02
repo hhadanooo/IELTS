@@ -13,10 +13,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Objects;
 
 import ir.hhadanooo.ielts.MainActivity;
 import ir.hhadanooo.ielts.R;
+import ir.hhadanooo.ielts.TestAndPracticeArrowBack.ActivityTestAndPracticeArrowBack;
 
 public class Activity_Welcome extends AppCompatActivity {
 
@@ -37,6 +40,7 @@ public class Activity_Welcome extends AppCompatActivity {
         ImageView logo_welcome =findViewById(R.id.logo_welcome);
         logo_welcome.getLayoutParams().width = (int)(dm.widthPixels*0.6);
         logo_welcome.getLayoutParams().height = (int)(dm.widthPixels*0.6);
+        Glide.with(this).load(R.drawable.logo).into(logo_welcome);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

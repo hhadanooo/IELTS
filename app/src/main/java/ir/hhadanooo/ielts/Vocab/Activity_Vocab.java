@@ -15,6 +15,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
 
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
@@ -95,13 +97,14 @@ public class Activity_Vocab extends AppCompatActivity {
             tv1_about_icon.setText("Vocab");
             tv2_about_icon.setText("Writeing");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.vocab));
+            Glide.with(this).load(R.drawable.writing_icon).into(img_body);
+            //img_body.setBackground(getResources().getDrawable(R.drawable.vocab));
         }if(num_type == 3)
         {
             tv1_about_icon.setText("Vocab");
             tv2_about_icon.setText("Speaking");
-
-            img_body.setBackground(getResources().getDrawable(R.drawable.vocab));
+            Glide.with(this).load(R.drawable.speaking_icon).into(img_body);
+            //img_body.setBackground(getResources().getDrawable(R.drawable.vocab));
         }
 
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
@@ -122,6 +125,7 @@ public class Activity_Vocab extends AppCompatActivity {
         img_back.getLayoutParams().width = (int) (dm.widthPixels*.1);
         img_back.getLayoutParams().height = (int) (dm.widthPixels*.1);
 
+        Glide.with(this).load(R.drawable.icon_arrow_back).into(img_back);
         img_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -195,8 +199,10 @@ public class Activity_Vocab extends AppCompatActivity {
 
         //Give value to view
         custom.SetTextTvTitle(title);
-        custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
-        img_icon1.setBackground(icon1);
+        Glide.with(this).load(R.drawable.arrowmore).into(img_icon);
+        Glide.with(this).load(icon1).into(img_icon1);
+        //custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
+        //img_icon1.setBackground(icon1);
 
 
         // set width and height icon custom view

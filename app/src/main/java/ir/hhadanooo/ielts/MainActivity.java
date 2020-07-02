@@ -51,6 +51,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     int update_code= 0;
 
     // File url to download
-    private static String file_url = "http://192.168.1.100/matiooo/ielts.zip";
+    private static String file_url = "http://192.168.1.104/matiooo/ielts.zip";
     //private static String file_url = "https://irsv.upmusics.com/Tracks/Songs/Masih%20ft%20Arash%20AP%20%E2%80%93%20Goli128(UpMusic).mp3";
     private static String check_update_url = "http://hrwanheda.ir/update/index.php";
     private static String update_url = "http://hrwanheda.ir/update/index.php";
@@ -223,6 +224,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         rel_body.getLayoutParams().height = (int) (dm.heightPixels*0.27);
 
 
+        Glide.with(this).load(R.drawable.logo).into(iv_cover_home);
 
 
         //btn on MainActivity
@@ -268,7 +270,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onResponse(String response) {
                         if (Integer.parseInt(response) > update_code){
                             newDayPerf.edit().putInt("update_code" , Integer.parseInt(response)).apply();
-                            Toast.makeText(MainActivity.this, "Update", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(MainActivity.this, "Update", Toast.LENGTH_SHORT).show();
                             update_data();
 
                         }else{
@@ -287,7 +289,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         } else{
             connected = false;
-            Toast.makeText(this, "no Internet Access!", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "no Internet Access!", Toast.LENGTH_SHORT).show();
             if(IELTSZip){
 
                 newDay();
@@ -309,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Log.i("ramin1333131", "update_data: ");
             }
         });
-        Toast.makeText(this,"",Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,"",Toast.LENGTH_LONG).show();
 
         file_url = "http://hrwanheda.ir/ielts-update.zip";
         nameFile = "ielts-update.zip";
@@ -333,6 +335,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SetSettingCustomItem("Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do","Speaking",custom3,getResources().getDrawable(R.drawable.speaking_icon));
         SetSettingCustomItem("Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do","Listening",custom4,getResources().getDrawable(R.drawable.listening_icon));
         SetSettingCustomItem("Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do","Chalenge",custom5,getResources().getDrawable(R.drawable.chalenge_icon));
+
+
+
+
+
+
 
 
         custom1.setOnClickListener(new View.OnClickListener() {
@@ -377,11 +385,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
+
+
+
+
+
+
         custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
         custom2.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
         custom3.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
         custom4.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
         custom5.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
+
 
 
 
@@ -411,7 +427,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             newDayPerf.edit().putInt("mPassed" , mound).apply();
             newDayPerf.edit().putInt("yPassed" , years).apply();
             setTodayQuiz();
-            Toast.makeText(this, "0", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "0", Toast.LENGTH_SHORT).show();
 
 
         }else {
@@ -423,7 +439,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 newDayPerf.edit().putInt("dPassed" , day).apply();
                 newDayPerf.edit().putInt("mPassed" , mound).apply();
                 newDayPerf.edit().putInt("yPassed" , years).apply();
-                Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
                 setTodayQuiz();
                 ChallengeActivity.solveQuiz = 0;
                 publicSpf.edit().putInt("numQuizSolve",solveQuiz).apply();
@@ -436,7 +452,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 newDayPerf.edit().putInt("mPassed" , mound).apply();
                 newDayPerf.edit().putInt("yPassed" , years).apply();
                 setTodayQuiz();
-                Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
                 ChallengeActivity.solveQuiz = 0;
                 publicSpf.edit().putInt("numQuizSolve",solveQuiz).apply();
                 deleteItem.edit().clear().apply();
@@ -448,14 +464,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 newDayPerf.edit().putInt("mPassed" , mound).apply();
                 newDayPerf.edit().putInt("yPassed" , years).apply();
                 setTodayQuiz();
-                Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
                 ChallengeActivity.solveQuiz = 0;
                 publicSpf.edit().putInt("numQuizSolve",solveQuiz).apply();
                 deleteItem.edit().clear().apply();
                 spf.edit().remove("todayS").apply();
 
             }else {
-                Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
             }
         }
         int days = newDayPerf.getInt("dPassed" , 0);
@@ -532,12 +548,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void SetSettingCustomItem(String Body, String title, CustomViewItem custom, Drawable icon2)
     {
+
+
         //init all view custom view
         TextView tv_title = custom.getTv_title();
         TextView tv_body = custom.getTv_body();
         ImageView img_icon = custom.getImg_icon();
         ImageView img_icon1 = custom.getImg_icon1();
-
 
         RelativeLayout relativeLayout = custom.getrel();
 
@@ -545,8 +562,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Give value to view
         custom.SetTextTvTitle(title);
         custom.SetTextTvBody(Body);
-        custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
-        img_icon1.setBackground(icon2);
+        Glide.with(this).load(R.drawable.arrowmore).into(img_icon);
+        Glide.with(this).load(icon2).into(img_icon1);
+        //custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
+        //img_icon1.setBackground(icon2);
 
 
         // set width and height icon custom view
@@ -580,6 +599,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tv_body.setTextSize((int) (dm.widthPixels * 0.012));
         tv_title.setTextSize((int) (dm.widthPixels * 0.016));
         tv_title.setTextColor(Color.BLACK);
+
+
+
 
         /*
         //set center veritcal tv title
@@ -621,7 +643,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //init
         ImageView img_icon = findViewById(R.id.actionbar_img_icon_menu);
 
-        img_icon.setBackground(getResources().getDrawable(R.drawable.menu_icon));
+        Glide.with(this).load(R.drawable.menu_icon).into(img_icon);
+        //img_icon.setBackground(getResources().getDrawable(R.drawable.menu_icon));
 
         menuNav = findViewById(R.id.nav_view);
 

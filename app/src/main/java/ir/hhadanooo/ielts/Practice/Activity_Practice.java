@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
 
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
@@ -94,7 +96,8 @@ public class Activity_Practice extends AppCompatActivity {
             tv1_about_icon.setText("Practice");
             tv2_about_icon.setText("Listening");
 
-            img_body.setBackground(getResources().getDrawable(R.drawable.practice_icon));
+            Glide.with(this).load(R.drawable.listening_icon).into(img_body);
+            //img_body.setBackground(getResources().getDrawable(R.drawable.practice_icon));
         }
 
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
@@ -121,6 +124,8 @@ public class Activity_Practice extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        Glide.with(this).load(R.drawable.icon_arrow_back).into(img_back);
+
 
 
 
@@ -298,8 +303,10 @@ public class Activity_Practice extends AppCompatActivity {
 
         //Give value to view
         custom.SetTextTvTitle(title);
-        custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
-        img_icon1.setBackground(icon1);
+        Glide.with(this).load(R.drawable.arrowmore).into(img_icon);
+        Glide.with(this).load(icon1).into(img_icon1);
+        //custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
+        //img_icon1.setBackground(icon1);
 
 
         // set width and height icon custom view

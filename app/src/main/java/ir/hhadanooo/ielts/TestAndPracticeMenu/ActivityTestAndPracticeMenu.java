@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 
@@ -136,22 +137,26 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         {
             tv1_about_icon.setText("LISTENING");
             tv2_about_icon.setText("ENJOY IELTS");
-            img_body.setBackground(getResources().getDrawable(R.drawable.listening_icon));
+            //img_body.setBackground(getResources().getDrawable(R.drawable.listening_icon));
+            Glide.with(this).load(R.drawable.listening_icon).into(img_body);
         }else if(num_type == 2)
         {
             tv1_about_icon.setText("SPEAKING");
             tv2_about_icon.setText("ENJOY IELTS");
-            img_body.setBackground(getResources().getDrawable(R.drawable.speaking_icon));
+            //img_body.setBackground(getResources().getDrawable(R.drawable.speaking_icon));
+            Glide.with(this).load(R.drawable.speaking_icon).into(img_body);
         }else if(num_type == 3)
         {
             tv1_about_icon.setText("READING");
             tv2_about_icon.setText("ENJOY IELTS");
-            img_body.setBackground(getResources().getDrawable(R.drawable.reading_icon));
+            //img_body.setBackground(getResources().getDrawable(R.drawable.reading_icon));
+            Glide.with(this).load(R.drawable.reading_icon).into(img_body);
         }else if(num_type == 4)
         {
             tv1_about_icon.setText("WRITING");
             tv2_about_icon.setText("ENJOY IELTS");
-            img_body.setBackground(getResources().getDrawable(R.drawable.writing_icon));
+            //img_body.setBackground(getResources().getDrawable(R.drawable.writing_icon));
+            Glide.with(this).load(R.drawable.writing_icon).into(img_body);
         }
 
         img_body.getLayoutParams().width = (int) (dm.widthPixels*.25);
@@ -311,8 +316,10 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
 
         //Give value to view
         custom.SetTextTvTitle(title);
-        custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
-        img_icon1.setBackground(icon1);
+        Glide.with(this).load(R.drawable.arrowmore).into(img_icon);
+        Glide.with(this).load(icon1).into(img_icon1);
+        //custom.SetIcon(getResources().getDrawable(R.drawable.arrowmore));
+        //img_icon1.setBackground(icon1);
 
 
         // set width and height icon custom view
@@ -395,7 +402,8 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         //init
         ImageView img_icon = findViewById(R.id.activity_test_menu_actionbar_img_icon_menu);
 
-        img_icon.setBackground(getResources().getDrawable(R.drawable.menu_icon));
+        Glide.with(this).load(R.drawable.menu_icon).into(img_icon);
+        //img_icon.setBackground(getResources().getDrawable(R.drawable.menu_icon));
 
         menuNav = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.activity_test_menu_drawer_layout);

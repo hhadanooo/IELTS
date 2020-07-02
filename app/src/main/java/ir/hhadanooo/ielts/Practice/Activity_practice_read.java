@@ -20,6 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -117,6 +119,8 @@ public class Activity_practice_read extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        Glide.with(this).load(R.drawable.icon_arrow_back).into(iv_arrowBack_SimpleText);
+        Glide.with(this).load(R.drawable.practice_icon).into(iv_ic_logoPage_SimpleText);
 
     }
 
@@ -385,6 +389,8 @@ public class Activity_practice_read extends AppCompatActivity {
         img_see_answer = findViewById(R.id.activity_practice_read_img_see_answer);
 
         img_timer = findViewById(R.id.activity_practice_read_img_timer);
+
+        Glide.with(this).load(R.drawable.timer_icon).into(img_timer);
         tv_timer = findViewById(R.id.activity_practice_read_tv_timer);
 
         if (!showHelp){
@@ -468,13 +474,14 @@ public class Activity_practice_read extends AppCompatActivity {
         img_see_answer.getLayoutParams().width = (int) (dm.widthPixels * 0.29);
         img_see_answer.getLayoutParams().height = (int) (dm.widthPixels * 0.085);
 
-        img_see_answer.setBackground(getDrawable(R.drawable.seeanswer_icon1));
+
 
         tv_count.setTextSize((int) (dm.widthPixels * 0.022));
 
         img_timer.getLayoutParams().width = (int) (dm.widthPixels * 0.08);
         img_timer.getLayoutParams().height = (int) (dm.widthPixels * 0.08);
 
+        Glide.with(this).load(R.drawable.seeanswer_icon1).into(img_see_answer);
         tv_text.setText(tv_text.getText().toString(), TextView.BufferType.SPANNABLE);
         img_see_answer.setOnClickListener(new View.OnClickListener() {
             @Override

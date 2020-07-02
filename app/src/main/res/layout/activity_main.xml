@@ -34,7 +34,7 @@
                android:layout_height="wrap_content"
                android:id="@+id/iv_cover_home"
 
-               android:background="@drawable/logo"
+
                android:layout_centerHorizontal="true"
                android:layout_alignParentTop="true"
                android:layout_marginTop="10dp"/>
