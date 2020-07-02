@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
+import ir.hhadanooo.ielts.Challenge.ChallengeActivity;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import tourguide.tourguide.Overlay;
@@ -39,7 +40,7 @@ import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
 
 public class Activity_practice_read extends AppCompatActivity {
-    RelativeLayout rel_body,rel_main_page,rel_title_main_page;
+    RelativeLayout rel_body,rel_main_page,rel_title_main_page ,layMgt;
 
     TextView tv_title_main_page,tv_count;
 
@@ -373,6 +374,7 @@ public class Activity_practice_read extends AppCompatActivity {
     public void init()
     {
         rel_body = findViewById(R.id.activity_practice_read_rel_body);
+        layMgt = findViewById(R.id.layMgt);
 
 
         rel_main_page = findViewById(R.id.activity_practice_read_rel_main_page);
@@ -394,11 +396,12 @@ public class Activity_practice_read extends AppCompatActivity {
         tv_timer = findViewById(R.id.activity_practice_read_tv_timer);
 
         if (!showHelp){
+            layMgt.setVisibility(View.VISIBLE);
             isShow = true;
             mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
             mtg.setPointer(new Pointer())
                     .setToolTip( new ToolTip()
-                            .setDescription("... to MrBool website!!")
+                            .setDescription("Try to find the answers in the text")
                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
                             .setShadow(true).setGravity(Gravity.TOP ))
                     .setOverlay(new Overlay()) ;
@@ -406,9 +409,11 @@ public class Activity_practice_read extends AppCompatActivity {
             showHelppp2.edit().putBoolean("rel_text" , true).apply();
             showHelp = true;
         }
-        tv_text.setOnClickListener(new View.OnClickListener() {
+        layMgt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Toast.makeText(ChallengeActivity.this, "asdas", Toast.LENGTH_SHORT).show();
                 if (isShow){
                     mtg.cleanUp();
                     isShow = false;
@@ -417,19 +422,23 @@ public class Activity_practice_read extends AppCompatActivity {
                         mtg1 = TourGuide.init(Activity_practice_read.this).with(TourGuide.Technique.CLICK);
                         mtg1.setPointer(new Pointer())
                                 .setToolTip( new ToolTip()
-                                        .setDescription("... to MrBool website!!")
+                                        .setDescription("Number of answers")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))
                                 .setOverlay(new Overlay()) ;
-                        mtg1.playOn(img_see_answer) ;
+                        mtg1.playOn(tv_count) ;
                         showHelppp2.edit().putBoolean("img_see_answer" , true).apply();
                         showHelp1 = true;
                     }
+                }else if (isShow1){
+
+                    mtg1.cleanUp();
+                    isShow1 = false;
+                    layMgt.setVisibility(View.GONE);
                 }
 
             }
         });
-
 
 
 
@@ -487,11 +496,6 @@ public class Activity_practice_read extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (isShow1){
-
-                    mtg1.cleanUp();
-                    isShow1 = false;
-                }
 
 
                 String text = tv_text.getText().toString();

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.os.Handler;
 import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,16 +38,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import ir.hhadanooo.ielts.Challenge.ChallengeActivity;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 public class ListenPracticeActivity extends AppCompatActivity {
 
 
     DisplayMetrics dm;
     LinearLayout lay_PracticeL , lay_box_playerPL;
-    RelativeLayout lay_playerPL;
+    RelativeLayout lay_playerPL , layMgt;
     ImageView   iv_play_playerPL , iv_next_playerPL , iv_ic_org_playerPL
             , iv_shareAnswer_playerPL , iv_seeAnswer_playerPL , iv_arrowBack_practiceL
             , iv_ic_logoPage_practiceL;
@@ -68,6 +75,17 @@ public class ListenPracticeActivity extends AppCompatActivity {
     boolean lockButton = false;
     int finalD = 0;
 
+    TourGuide mtg;
+    TourGuide mtg1;
+    TourGuide mtg2;
+    SharedPreferences showHelppp;
+    boolean showHelp = false;
+    boolean showHelp1 = false;
+    boolean showHelp2 = false;
+    boolean show = false;
+    boolean show1 = false;
+    boolean show2 = false;
+
 
     @SuppressLint({"ClickableViewAccessibility", "SetTextI18n"})
     @Override
@@ -77,7 +95,10 @@ public class ListenPracticeActivity extends AppCompatActivity {
         CheckIntent();
         Objects.requireNonNull(getSupportActionBar()).hide();
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+        showHelppp = getSharedPreferences("show" , MODE_PRIVATE);
+        showHelp = showHelppp.getBoolean("iv_play_playerPL" , false);
+        showHelp1 = showHelppp.getBoolean("iv_next_playerPL" , false);
+        showHelp2 = showHelppp.getBoolean("et_PracticeL" , false);
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
@@ -513,6 +534,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
 
     public void init(){
+        layMgt = findViewById(R.id.layMgt);
         lay_PracticeL = findViewById(R.id.lay_PracticeL);
         lay_box_playerPL = findViewById(R.id.lay_box_playerPL);
         lay_playerPL = findViewById(R.id.lay_playerPL);
@@ -577,6 +599,74 @@ public class ListenPracticeActivity extends AppCompatActivity {
         iv_seeAnswer_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.074);
 
         view_space_button_see_share.getLayoutParams().width = (int) (dm.widthPixels*.2);
+
+
+        if (!showHelp){
+            show = true;
+            layMgt.setVisibility(View.VISIBLE);
+            mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
+            mtg.setPointer(new Pointer())
+                    .setToolTip( new ToolTip()
+                            .setDescription("Repeat up to three times")
+                            .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                            .setShadow(true).setGravity(Gravity.TOP  ))
+                    .setOverlay(new Overlay()) ;
+            mtg.playOn(iv_play_playerPL) ;
+            showHelppp.edit().putBoolean("iv_play_playerPL" , true).apply();
+            showHelp = true;
+
+        }
+        layMgt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Toast.makeText(ChallengeActivity.this, "asdas", Toast.LENGTH_SHORT).show();
+                if (show){
+                    mtg.cleanUp();
+                    if (!showHelp1){
+                        show1 = true;
+                        mtg1 = TourGuide.init(ListenPracticeActivity.this).with(TourGuide.Technique.CLICK);
+                        mtg1.setPointer(new Pointer())
+                                .setToolTip( new ToolTip()
+                                        .setDescription("Go to next section")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP |Gravity.LEFT ))
+                                .setOverlay(new Overlay()) ;
+                        mtg1.playOn(iv_next_playerPL) ;
+                        showHelppp.edit().putBoolean("iv_next_playerPL" , true).apply();
+                        showHelp1 = true;
+
+                    }
+                    show = false;
+                }else if (show1){
+                    mtg1.cleanUp();
+                    if (!showHelp2) {
+                        show2 = true;
+                        mtg2 = TourGuide.init(ListenPracticeActivity.this).with(TourGuide.Technique.CLICK);
+                        mtg2.setPointer(new Pointer())
+                                .setToolTip(new ToolTip()
+                                        .setDescription("Listen and write here")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP ))
+                                .setOverlay(new Overlay());
+                        mtg2.playOn(et_PracticeL);
+                        showHelppp.edit().putBoolean("et_PracticeL", true).apply();
+                        showHelp2 = true;
+                    }
+                    show1 = false;
+                }else if (show2){
+                    mtg2.cleanUp();
+                    show2 = false;
+                    layMgt.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+
+
+
     }
 
 

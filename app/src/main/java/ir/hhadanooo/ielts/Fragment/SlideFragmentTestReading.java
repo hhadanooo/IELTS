@@ -153,7 +153,7 @@ public class SlideFragmentTestReading extends Fragment {
                         mtg = TourGuide.init(Objects.requireNonNull(getActivity())).with(TourGuide.Technique.HORIZONTAL_LEFT);
                         mtg.setPointer(new Pointer())
                                 .setToolTip( new ToolTip()
-                                        .setDescription("... to MrBool website!!")
+                                        .setDescription("Question box (Scroll to see more content)")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))
                                 .setOverlay(new Overlay()) ;
@@ -163,12 +163,7 @@ public class SlideFragmentTestReading extends Fragment {
                     }
 
 
-              /*   new Handler().postDelayed(new Runnable() {
-                     @Override
-                     public void run() {
-                         mtg.cleanUp();
-                     }
-                 } , 3000);*/
+
                 }else if(num_tab == 2)
                 {
                     File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/" + Filename2 + "/passage2.html");

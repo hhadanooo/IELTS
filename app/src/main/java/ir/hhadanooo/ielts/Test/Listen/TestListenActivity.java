@@ -6,7 +6,9 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,6 +16,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,13 +42,18 @@ import java.util.Objects;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.DialogChlng.DialogChlngShow;
 import ir.hhadanooo.ielts.MainActivity;
+import ir.hhadanooo.ielts.Practice.Listen.ListenPracticeActivity;
 import ir.hhadanooo.ielts.R;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 public class TestListenActivity extends AppCompatActivity {
 
     DisplayMetrics dm;
     LinearLayout lay_TestL , lay_box_playerTL;
-    RelativeLayout lay_playerTL;
+    RelativeLayout lay_playerTL , layMgt;
     ImageView iv_play_playerTL , iv_ic_org_playerTL , iv_seeAnswer_playerTL , iv_time_TestL , iv_ic_logoPage_TestL
             , iv_arrowBack_TestL , iv_ic_backward_playerTL , iv_ic_forward_playerTL ,iv_audioscripts_playerTL;
     View view_space_playerTL , view_center_see_audio;
@@ -63,6 +71,27 @@ public class TestListenActivity extends AppCompatActivity {
     int pageNum;
     List<String> answerList = new ArrayList<>();
 
+    TourGuide mtg;
+    TourGuide mtg1;
+    TourGuide mtg2;
+    TourGuide mtg3;
+    TourGuide mtg4;
+    TourGuide mtg5;
+    SharedPreferences showHelppp;
+    boolean showHelp = false;
+    boolean showHelp1 = false;
+    boolean showHelp2 = false;
+    boolean showHelp3 = false;
+    boolean showHelp4 = false;
+    boolean showHelp5 = false;
+    boolean show = false;
+    boolean show1 = false;
+    boolean show2 = false;
+    boolean show3 = false;
+    boolean show4 = false;
+    boolean show5 = false;
+
+
     @SuppressLint({"ClickableViewAccessibility", "SetJavaScriptEnabled"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +100,13 @@ public class TestListenActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
+        showHelppp = getSharedPreferences("show" , MODE_PRIVATE);
+        showHelp = showHelppp.getBoolean("iv_play_playerTL" , false);
+        showHelp1 = showHelppp.getBoolean("iv_ic_backward_playerTL" , false);
+        showHelp2 = showHelppp.getBoolean("iv_ic_forward_playerTL" , false);
+        showHelp3 = showHelppp.getBoolean("webView_TestL" , false);
+        showHelp4 = showHelppp.getBoolean("iv_audioscripts_playerTL" , false);
+        showHelp5 = showHelppp.getBoolean("et_TestL_Result" , false);
 
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -256,6 +292,7 @@ public class TestListenActivity extends AppCompatActivity {
 
     @SuppressLint({"ClickableViewAccessibility", "SetJavaScriptEnabled"})
     public void init(){
+        layMgt = findViewById(R.id.layMgt);
         lay_TestL = findViewById(R.id.lay_TestL);
         lay_playerTL = findViewById(R.id.lay_playerTL);
         iv_play_playerTL = findViewById(R.id.iv_play_playerTL);
@@ -273,6 +310,119 @@ public class TestListenActivity extends AppCompatActivity {
         tv_time_playerTL = findViewById(R.id.tv_time_playerTL);
         iv_audioscripts_playerTL = findViewById(R.id.iv_audioscripts_playerTL);
         view_center_see_audio = findViewById(R.id.view_center_see_audio);
+
+
+        if (!showHelp){
+            show = true;
+            layMgt.setVisibility(View.VISIBLE);
+            mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
+            mtg.setPointer(new Pointer())
+                    .setToolTip( new ToolTip()
+                            .setDescription("Play and listen")
+                            .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                            .setShadow(true).setGravity(Gravity.TOP  ))
+                    .setOverlay(new Overlay()) ;
+            mtg.playOn(iv_play_playerTL) ;
+            showHelppp.edit().putBoolean("iv_play_playerTL" , true).apply();
+            showHelp = true;
+
+        }
+        layMgt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Toast.makeText(ChallengeActivity.this, "asdas", Toast.LENGTH_SHORT).show();
+                if (show){
+                    mtg.cleanUp();
+                    if (!showHelp1){
+                        show1 = true;
+                        mtg1 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
+                        mtg1.setPointer(new Pointer())
+                                .setToolTip( new ToolTip()
+                                        .setDescription("A few seconds back")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP ))
+                                .setOverlay(new Overlay()) ;
+                        mtg1.playOn(iv_ic_backward_playerTL) ;
+                        showHelppp.edit().putBoolean("iv_ic_backward_playerTL" , true).apply();
+                        showHelp1 = true;
+
+                    }
+                    show = false;
+                }else if (show1){
+                    mtg1.cleanUp();
+                    if (!showHelp2) {
+                        show2 = true;
+                        mtg2 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
+                        mtg2.setPointer(new Pointer())
+                                .setToolTip(new ToolTip()
+                                        .setDescription("A few seconds forward")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP|Gravity.LEFT ))
+                                .setOverlay(new Overlay());
+                        mtg2.playOn(iv_ic_forward_playerTL);
+                        showHelppp.edit().putBoolean("iv_ic_forward_playerTL", true).apply();
+                        showHelp2 = true;
+                    }
+                    show1 = false;
+                }else if (show2){
+                    mtg2.cleanUp();
+                    if (!showHelp3) {
+                        show3 = true;
+                        mtg3 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
+                        mtg3.setPointer(new Pointer())
+                                .setToolTip(new ToolTip()
+                                        .setDescription("Question box (Scroll to see more content)")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP ))
+                                .setOverlay(new Overlay());
+                        mtg3.playOn(webView_TestL);
+                        showHelppp.edit().putBoolean("webView_TestL", true).apply();
+                        showHelp3 = true;
+                    }
+                    show2 = false;
+                }else if (show3){
+                    mtg3.cleanUp();
+                    if (!showHelp4) {
+                        show4 = true;
+                        mtg4 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
+                        mtg4.setPointer(new Pointer())
+                                .setToolTip(new ToolTip()
+                                        .setDescription("Audioscripts (written versions) of the recordings")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP|Gravity.LEFT ))
+                                .setOverlay(new Overlay());
+                        mtg4.playOn(iv_audioscripts_playerTL);
+                        showHelppp.edit().putBoolean("iv_audioscripts_playerTL", true).apply();
+                        showHelp4 = true;
+                    }
+                    show3 = false;
+                }else if (show4){
+                    mtg4.cleanUp();
+                    if (!showHelp5) {
+                        show5 = true;
+                        mtg5 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
+                        mtg5.setPointer(new Pointer())
+                                .setToolTip(new ToolTip()
+                                        .setDescription("You can write answers here")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP ))
+                                .setOverlay(new Overlay());
+                        mtg5.playOn(et_TestL_Result);
+                        showHelppp.edit().putBoolean("et_TestL_Result", true).apply();
+                        showHelp5 = true;
+                    }
+                    show4 = false;
+                }else if (show5){
+                    mtg5.cleanUp();
+                    show5 = false;
+                    layMgt.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
 
 
 
