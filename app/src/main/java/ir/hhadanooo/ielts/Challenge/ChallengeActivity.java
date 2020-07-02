@@ -74,7 +74,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
         publicSpf = getSharedPreferences("numberQuiz" , MODE_PRIVATE);
         showHelppp = getSharedPreferences("show" , MODE_PRIVATE);
-        //showHelp = showHelppp.getBoolean("helper" , false);
+        showHelp = showHelppp.getBoolean("helper" , false);
         solveQuiz = publicSpf.getInt("numQuizSolve" , 0);
         spf = getSharedPreferences("spf" , MODE_PRIVATE);
         todayS = spf.getInt("todayS" , 0);

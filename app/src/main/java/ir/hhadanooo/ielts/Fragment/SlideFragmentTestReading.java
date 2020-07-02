@@ -1,10 +1,7 @@
 package ir.hhadanooo.ielts.Fragment;
 
-<<<<<<< HEAD
 import android.annotation.SuppressLint;
-=======
 import android.app.Dialog;
->>>>>>> 89f7ed3806aac0f91c4089cdeefd55718de54612
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -36,14 +33,11 @@ import java.util.Objects;
 
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
-<<<<<<< HEAD
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
 import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
-=======
-import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
->>>>>>> 89f7ed3806aac0f91c4089cdeefd55718de54612
+
 
 
 public class SlideFragmentTestReading extends Fragment {
@@ -249,12 +243,6 @@ public class SlideFragmentTestReading extends Fragment {
     public void SetPropertiesRelBody() {
         rel_text_and_question.getLayoutParams().width = (int) (Width*.90);
         rel_text_and_question.getLayoutParams().height = (int)(Height*0.61);
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 89f7ed3806aac0f91c4089cdeefd55718de54612
         img_timer.getLayoutParams().width = (int) (Width*0.1);
         img_timer.getLayoutParams().height = (int) (Width*0.1);
 

@@ -2,11 +2,8 @@ package ir.hhadanooo.ielts.Test;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-<<<<<<< HEAD
 import android.annotation.SuppressLint;
-=======
 import android.app.Dialog;
->>>>>>> 89f7ed3806aac0f91c4089cdeefd55718de54612
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -71,8 +68,8 @@ public class ActivityTestWrite extends AppCompatActivity {
         setContentView(R.layout.activity_test_write);
 
         showHelppp = getSharedPreferences("show" ,MODE_PRIVATE);
-        //showHelp = showHelppp.getBoolean("webView_title" , false);
-        //showHelp1 = showHelppp.getBoolean("img_see_answer" , false);
+        showHelp = showHelppp.getBoolean("webView_title" , false);
+        showHelp1 = showHelppp.getBoolean("img_see_answer" , false);
 
         getSupportActionBar().hide();
         initActionBar();

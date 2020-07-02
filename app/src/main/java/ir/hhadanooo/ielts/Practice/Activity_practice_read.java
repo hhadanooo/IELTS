@@ -71,8 +71,8 @@ public class Activity_practice_read extends AppCompatActivity {
         getSupportActionBar().hide();
 
         showHelppp2 = getSharedPreferences("show" ,MODE_PRIVATE);
-        //showHelp = showHelppp2.getBoolean("rel_text" , false);
-        //showHelp1 = showHelppp2.getBoolean("img_see_answer" , false);
+        showHelp = showHelppp2.getBoolean("rel_text" , false);
+        showHelp1 = showHelppp2.getBoolean("img_see_answer" , false);
 
 
         init();
