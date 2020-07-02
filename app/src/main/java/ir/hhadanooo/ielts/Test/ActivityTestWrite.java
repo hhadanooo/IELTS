@@ -35,7 +35,7 @@ import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
 
 public class ActivityTestWrite extends AppCompatActivity {
-    RelativeLayout rel_body, rel_main_page,rel_title_main_page;
+    RelativeLayout rel_body, rel_main_page,rel_title_main_page , layMgt;
 
     TextView tv_TitleLogo_SimpleText,tv_PathLogo_SimpleText;
     ImageView img_back;
@@ -69,7 +69,6 @@ public class ActivityTestWrite extends AppCompatActivity {
 
         showHelppp = getSharedPreferences("show" ,MODE_PRIVATE);
         showHelp = showHelppp.getBoolean("webView_title" , false);
-        showHelp1 = showHelppp.getBoolean("img_see_answer" , false);
 
         getSupportActionBar().hide();
         initActionBar();
@@ -120,6 +119,7 @@ public class ActivityTestWrite extends AppCompatActivity {
     public void init()
     {
         webView_title = findViewById(R.id.activity_test_write_webview_title);
+        layMgt = findViewById(R.id.layMgt);
 
         webView_title.getSettings().setJavaScriptEnabled(true);
 
@@ -149,6 +149,7 @@ public class ActivityTestWrite extends AppCompatActivity {
 
         if (!showHelp){
             isShow = true;
+            layMgt.setVisibility(View.VISIBLE);
             mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
             mtg.setPointer(new Pointer())
                     .setToolTip( new ToolTip()
@@ -156,12 +157,28 @@ public class ActivityTestWrite extends AppCompatActivity {
                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
                             .setShadow(true).setGravity(Gravity.BOTTOM ))
                     .setOverlay(new Overlay()) ;
-            mtg.playOn(webView_title) ;
+            mtg.playOn(et_main_page) ;
             showHelppp.edit().putBoolean("webView_title" , true).apply();
             showHelp = true;
         }
+        et_main_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mtg.cleanUp();
+            }
+        });
 
 
+        layMgt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isShow){
+                    layMgt.setVisibility(View.GONE);
+                    mtg.cleanUp();
+                    isShow = false;
+                }
+            }
+        });
 
         checkIntent();
         SetPropertiesMainPage();

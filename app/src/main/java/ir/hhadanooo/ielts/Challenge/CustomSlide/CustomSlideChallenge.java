@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,7 @@ public class CustomSlideChallenge extends LinearLayout {
     View view_center_score_chlng , view_center_AB_chlng ,view_center_CD_chlng
             , view_center_AB_CD_chlng;
 
-    LinearLayout lay_chlng , layA , layB , layC , layD;
+    LinearLayout lay_chlng , layA , layB , layC , layD , layResultABCD;
     ScrollView lay_tv_question_chlng;
     private View rootView;
 
@@ -59,6 +60,7 @@ public class CustomSlideChallenge extends LinearLayout {
     int numSel = 0;
     int numAns = 0;
     TourGuide mtg;
+    RelativeLayout layMgt;
 
     @SuppressLint("SetTextI18n")
     public CustomSlideChallenge(final Activity activity , DisplayMetrics dm , final int id
@@ -70,6 +72,8 @@ public class CustomSlideChallenge extends LinearLayout {
         this.numAns = numAns;
         rootView = inflate(activity , R.layout.custom_slide_challenge , this);
         lay_chlng = findViewById(R.id.lay_chlng);
+        layMgt = findViewById(R.id.layMgt);
+        layResultABCD = rootView.findViewById(R.id.layResultABCD);
         tv_todayScore_chlng = rootView.findViewById(R.id.tv_todayScore_chlng);
         tv_totalScore_chlng = rootView.findViewById(R.id.tv_totalScore_chlng);
         view_center_score_chlng = rootView.findViewById(R.id.view_center_score_chlng);
@@ -379,7 +383,18 @@ public class CustomSlideChallenge extends LinearLayout {
 
 
     }
-    public ImageView iv(){
+    public LinearLayout iv(){
+        return layResultABCD;
+    }
+    public RelativeLayout rl(){
+        return layMgt;
+    }
+
+    public ImageView iv1(){
+        return iv_Tick_check_chlng;
+    }
+
+    public ImageView iv2(){
         return iv_next_chlng;
     }
 

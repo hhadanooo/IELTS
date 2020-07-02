@@ -181,14 +181,12 @@
                 android:text="60:00"/>
 
         </RelativeLayout>
-
-
-
-
-
-
-
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layMgt"
+        android:visibility="gone"/>
 
 </RelativeLayout>

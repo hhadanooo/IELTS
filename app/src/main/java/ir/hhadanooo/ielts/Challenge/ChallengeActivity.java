@@ -13,9 +13,12 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +48,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
     public static ViewPager ViewPager_Challenge;
     DisplayMetrics dm;
     static ViewPagerAdapterChlng viewPagerAdapterChlng;
+    LinearLayout parentLay;
 
     public static int todayS = 0;
     public static int totalS = 0;
@@ -53,8 +57,15 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
     public static SharedPreferences spf;
     static SharedPreferences publicSpf;
     TourGuide mtg;
+    TourGuide mtg1;
+    TourGuide mtg2;
     SharedPreferences showHelppp;
     boolean showHelp = false;
+    boolean showHelp1 = false;
+    boolean showHelp2 = false;
+    boolean show = false;
+    boolean show1 = false;
+    boolean show2 = false;
 
 
     public static int solveQuiz = 0;
@@ -74,7 +85,9 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
         publicSpf = getSharedPreferences("numberQuiz" , MODE_PRIVATE);
         showHelppp = getSharedPreferences("show" , MODE_PRIVATE);
-        showHelp = showHelppp.getBoolean("helper" , false);
+        showHelp = showHelppp.getBoolean("ChooseCorrectAnswers" , false);
+        showHelp1 = showHelppp.getBoolean("CheckYourAnswer" , false);
+        showHelp2 = showHelppp.getBoolean("NextQuestion" , false);
         solveQuiz = publicSpf.getInt("numQuizSolve" , 0);
         spf = getSharedPreferences("spf" , MODE_PRIVATE);
         todayS = spf.getInt("todayS" , 0);
@@ -87,6 +100,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
         makeViewForSlider();
 
         ViewPager_Challenge = findViewById(R.id.ViewPager_Challenge);
+        parentLay = findViewById(R.id.parentLay);
         ViewPager_Challenge.getLayoutParams().width = (int) (dm.widthPixels*.93);
 
         //DepthTransformation depthTransformation = new DepthTransformation();
@@ -135,7 +149,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
         ViewPager_Challenge.setCurrentItem(ViewPager_Challenge.getCurrentItem()+1);
     }
 
-    @SuppressLint("CommitPrefEdits")
+    @SuppressLint({"CommitPrefEdits", "ClickableViewAccessibility"})
     public void makeViewForSlider(){
 
         for (int i = 0 ; i < num_quiz ; i++){
@@ -197,25 +211,73 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
             CustomSlideChallenge cvq = new CustomSlideChallenge( ChallengeActivity.this
                     , dm , i ,String.valueOf(text) , answers , numTrue , numAns );
+            final LinearLayout lay = cvq.iv();
+            final ImageView img1 = cvq.iv1();
+            final ImageView img2 = cvq.iv2();
+            final RelativeLayout rl = cvq.rl();
             if (!showHelp){
-                ImageView iv = cvq.iv();
+                show = true;
+                rl.setVisibility(View.VISIBLE);
                 mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
                 mtg.setPointer(new Pointer())
                         .setToolTip( new ToolTip()
-                                .setDescription("... to MrBool website!!")
+                                .setDescription("Choose correct answers")
                                 .setBackgroundColor(Color.parseColor("#bcd9f9"))
-                                .setShadow(true).setGravity(Gravity.TOP |Gravity.LEFT ))
+                                .setShadow(true).setGravity(Gravity.TOP  ))
                         .setOverlay(new Overlay()) ;
-                mtg.playOn(iv) ;
-                showHelppp.edit().putBoolean("helper" , true).apply();
+                mtg.playOn(lay) ;
+                showHelppp.edit().putBoolean("ChooseCorrectAnswers" , true).apply();
                 showHelp = true;
-                iv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mtg.cleanUp();
-                    }
-                });
+
             }
+            rl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //Toast.makeText(ChallengeActivity.this, "asdas", Toast.LENGTH_SHORT).show();
+                    if (show){
+                        mtg.cleanUp();
+                        if (!showHelp1){
+                            show1 = true;
+                            mtg1 = TourGuide.init(ChallengeActivity.this).with(TourGuide.Technique.CLICK);
+                            mtg1.setPointer(new Pointer())
+                                    .setToolTip( new ToolTip()
+                                            .setDescription("Check your answer")
+                                            .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                            .setShadow(true).setGravity(Gravity.TOP |Gravity.LEFT ))
+                                    .setOverlay(new Overlay()) ;
+                            mtg1.playOn(img1) ;
+                            showHelppp.edit().putBoolean("CheckYourAnswer" , true).apply();
+                            showHelp1 = true;
+
+                        }
+                        show = false;
+                    }else if (show1){
+                        mtg1.cleanUp();
+                        if (!showHelp2) {
+                            show2 = true;
+                            mtg2 = TourGuide.init(ChallengeActivity.this).with(TourGuide.Technique.CLICK);
+                            mtg2.setPointer(new Pointer())
+                                    .setToolTip(new ToolTip()
+                                            .setDescription("Next question")
+                                            .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                            .setShadow(true).setGravity(Gravity.TOP | Gravity.LEFT))
+                                    .setOverlay(new Overlay());
+                            mtg2.playOn(img2);
+                            showHelppp.edit().putBoolean("NextQuestion", true).apply();
+                            showHelp2 = true;
+                        }
+                        show1 = false;
+                    }else if (show2){
+                        mtg2.cleanUp();
+                        show2 = false;
+                        rl.setVisibility(View.GONE);
+
+                    }
+
+
+                }
+            });
 
             Log.i("numAns" , "a "+numAns  );
             viewForCustom.add(cvq);

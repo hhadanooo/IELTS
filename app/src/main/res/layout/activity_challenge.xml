@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Challenge.ChallengeActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:id="@+id/parentLay">
 
     <RelativeLayout
         android:layout_width="match_parent"

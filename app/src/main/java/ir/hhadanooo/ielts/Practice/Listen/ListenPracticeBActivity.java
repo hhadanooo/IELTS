@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,6 +36,10 @@ import java.util.Objects;
 import ir.hhadanooo.ielts.CustomView.CustomViewItem;
 import ir.hhadanooo.ielts.R;
 import ir.hhadanooo.ielts.Test.Listen.TestListenActivity;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 public class ListenPracticeBActivity extends AppCompatActivity {
 
@@ -54,6 +61,17 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
     int finalD = 0;
 
+    TourGuide mtg;
+    TourGuide mtg1;
+    TourGuide mtg2;
+    SharedPreferences showHelppp;
+    boolean showHelp = false;
+    boolean showHelp1 = false;
+    boolean show = false;
+    boolean show1 = false;
+
+    RelativeLayout layMgt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +80,9 @@ public class ListenPracticeBActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-
+        showHelppp = getSharedPreferences("show" , MODE_PRIVATE);
+        showHelp = showHelppp.getBoolean("iv_play_playerPBL" , false);
+        showHelp1 = showHelppp.getBoolean("et_PracticeBL" , false);
         initActionBar();
         init();
         String intent = "text 1";
@@ -242,6 +262,7 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
     private void initActionBar() {
 
+        layMgt = findViewById(R.id.layMgt);
         iv_arrowBack_practiceBL = findViewById(R.id.iv_arrowBack_practiceBL);
         iv_ic_logoPage_practiceBL = findViewById(R.id.iv_ic_logoPage_practiceBL);
         tv_TitleLogo_practiceBL = findViewById(R.id.tv_TitleLogo_practiceBL);
@@ -319,6 +340,57 @@ public class ListenPracticeBActivity extends AppCompatActivity {
         iv_checkAnswer_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.074);
 
         viewB_space_button_see_share.getLayoutParams().width = (int) (dm.widthPixels*.2);
+
+
+        if (!showHelp){
+            show = true;
+            layMgt.setVisibility(View.VISIBLE);
+            mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
+            mtg.setPointer(new Pointer())
+                    .setToolTip( new ToolTip()
+                            .setDescription("Play and listen")
+                            .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                            .setShadow(true).setGravity(Gravity.TOP  ))
+                    .setOverlay(new Overlay()) ;
+            mtg.playOn(iv_play_playerPBL) ;
+            showHelppp.edit().putBoolean("iv_play_playerPBL" , true).apply();
+            showHelp = true;
+
+        }
+        layMgt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Toast.makeText(ChallengeActivity.this, "asdas", Toast.LENGTH_SHORT).show();
+                if (show){
+                    mtg.cleanUp();
+                    if (!showHelp1){
+                        show1 = true;
+                        mtg1 = TourGuide.init(ListenPracticeBActivity.this).with(TourGuide.Technique.CLICK);
+                        mtg1.setPointer(new Pointer())
+                                .setToolTip( new ToolTip()
+                                        .setDescription("Listen and write here")
+                                        .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                        .setShadow(true).setGravity(Gravity.TOP ))
+                                .setOverlay(new Overlay()) ;
+                        mtg1.playOn(et_PracticeBL) ;
+                        showHelppp.edit().putBoolean("et_PracticeBL" , true).apply();
+                        showHelp1 = true;
+
+                    }
+                    show = false;
+                }else if (show1){
+                    mtg1.cleanUp();
+                    show1 = false;
+                    layMgt.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+
+
     }
 
     @Override
