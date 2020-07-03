@@ -30,6 +30,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -426,12 +428,18 @@ public class TestListenActivity extends AppCompatActivity {
 
 
 
-        //iv_ic_backward_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.8);
+        iv_ic_backward_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.085);
         iv_ic_backward_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.05);
+        Glide.with(this).load(R.drawable.backward).into(iv_ic_backward_playerTL);
 
-        //iv_ic_forward_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.8);
+        iv_ic_forward_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.085);
         iv_ic_forward_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.05);
+        Glide.with(this).load(R.drawable.forward).into(iv_ic_forward_playerTL);
 
+        //Glide.with(this).load(R.drawable.play_icon).into(iv_play_playerTL);
+
+        tv_time_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.15);
+        tv_time_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.05);
         tv_time_playerTL.setTextSize((int) (dm.widthPixels*.015));
 
 
@@ -449,15 +457,19 @@ public class TestListenActivity extends AppCompatActivity {
 
         //iv_play_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.18);
         iv_play_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.15);
+        Glide.with(this).load(R.drawable.play_icon).into(iv_play_playerTL);
 
         //view_space_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         view_space_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.16);
 
         iv_ic_org_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.21);
         iv_ic_org_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.21);
+        Glide.with(this).load(R.drawable.icon).into(iv_ic_org_playerTL);
 
         iv_time_TestL.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_time_TestL.getLayoutParams().height = (int) (dm.widthPixels*.1);
+
+        Glide.with(this).load(R.drawable.timer_icon).into(iv_time_TestL);
 
 
 
@@ -474,9 +486,11 @@ public class TestListenActivity extends AppCompatActivity {
 
         iv_seeAnswer_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         iv_seeAnswer_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.074);
+        Glide.with(this).load(R.drawable.seeanswer_icon1).into(iv_seeAnswer_playerTL);
 
         iv_audioscripts_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         iv_audioscripts_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.074);
+        Glide.with(this).load(R.drawable.audioscripts).into(iv_audioscripts_playerTL);
 
 
         view_center_see_audio.getLayoutParams().width = (int) (dm.widthPixels*.15);
@@ -575,6 +589,8 @@ public class TestListenActivity extends AppCompatActivity {
         tv_TitleLogo_TestL.setText("Test1");
         tv_PathLogo_TestL.setText("Listening");
 
+        Glide.with(this).load(R.drawable.icon_arrow_back).into(iv_arrowBack_TestL);
+        Glide.with(this).load(R.drawable.test_menue).into(iv_ic_logoPage_TestL);
         iv_arrowBack_TestL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

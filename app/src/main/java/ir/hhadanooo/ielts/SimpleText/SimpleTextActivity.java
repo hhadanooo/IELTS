@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -347,6 +349,10 @@ public class SimpleTextActivity extends AppCompatActivity {
 
         iv_ic_logoPage_SimpleText.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_ic_logoPage_SimpleText.getLayoutParams().height = (int) (dm.widthPixels*.1);
+
+        Glide.with(this).load(R.drawable.tip_icon).into(iv_ic_logoPage_SimpleText);
+        Glide.with(this).load(R.drawable.icon_arrow_back).into(iv_arrowBack_SimpleText);
+
 
         tv_TitleLogo_SimpleText.setTextSize((int) (dm.widthPixels*.025));
 

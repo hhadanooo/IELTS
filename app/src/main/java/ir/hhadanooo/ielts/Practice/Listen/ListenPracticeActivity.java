@@ -26,6 +26,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.BufferedReader;
@@ -574,14 +575,18 @@ public class ListenPracticeActivity extends AppCompatActivity {
         iv_play_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.15);
         iv_play_playerPL.setImageResource(R.drawable.play3_icon);
 
+        Glide.with(this).load(R.drawable.play_icon).into(iv_play_playerPL);
+
         //iv_next_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.18);
         iv_next_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.15);
+        Glide.with(this).load(R.drawable.next_icon).into(iv_next_playerPL);
 
         //view_space_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         view_space_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.16);
 
         iv_ic_org_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.21);
         iv_ic_org_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.21);
+        Glide.with(this).load(R.drawable.icon).into(iv_ic_org_playerPL);
 
         et_PracticeL.getLayoutParams().width = (int) (dm.widthPixels*.75);
         et_PracticeL.getLayoutParams().height = (int) (dm.widthPixels*.4);
@@ -594,9 +599,11 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
         iv_shareAnswer_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         iv_shareAnswer_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.074);
+        Glide.with(this).load(R.drawable.shareanswer_icon1).into(iv_shareAnswer_playerPL);
 
         iv_seeAnswer_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         iv_seeAnswer_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.074);
+        Glide.with(this).load(R.drawable.seeanswer_icon1).into(iv_seeAnswer_playerPL);
 
         view_space_button_see_share.getLayoutParams().width = (int) (dm.widthPixels*.2);
 
@@ -728,9 +735,11 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
         iv_arrowBack_practiceL.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_arrowBack_practiceL.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        Glide.with(this).load(R.drawable.icon_arrow_back).into(iv_arrowBack_practiceL);
 
         iv_ic_logoPage_practiceL.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_ic_logoPage_practiceL.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        Glide.with(this).load(R.drawable.practice_icon).into(iv_ic_logoPage_practiceL);
 
         tv_TitleLogo_practiceL.setTextSize((int) (dm.widthPixels*.025));
 

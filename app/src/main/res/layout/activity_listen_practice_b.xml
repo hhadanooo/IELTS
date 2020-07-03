@@ -26,7 +26,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_margin="7dp"
-                android:src="@drawable/icon_arrow_back"/>
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/iv_ic_logoPage_practiceBL"
-                    android:background="@drawable/practice_icon"
+
                     android:layout_gravity="center_horizontal"
                     />
 
@@ -125,7 +125,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_gravity="center_vertical"
-                            android:background="@drawable/play_icon"
+
                             android:id="@+id/iv_play_playerPBL"/>
 
                         <ImageView
@@ -133,7 +133,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_gravity="center_vertical"
-                            android:background="@drawable/next_icon"
+
                             android:id="@+id/iv_next_playerPBL"/>
 
                     </LinearLayout>
@@ -144,7 +144,7 @@
                         android:layout_alignParentTop="true"
                         android:id="@+id/iv_ic_org_playerPBL"
                         android:layout_marginStart="25dp"
-                        android:background="@drawable/icon"
+
                         />
 
                 </RelativeLayout>
@@ -176,7 +176,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/iv_shareAnswer_playerPBL"
-                        android:background="@drawable/shareanswer_icon1"
+
                         />
                     <View
                         android:layout_width="wrap_content"
@@ -187,7 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/iv_checkAnswer_playerPBL"
-                        android:background="@drawable/chek_icon"
+
                         />
 
                 </LinearLayout>

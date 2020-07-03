@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.BufferedReader;
@@ -271,8 +272,11 @@ public class ListenPracticeBActivity extends AppCompatActivity {
         iv_arrowBack_practiceBL.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_arrowBack_practiceBL.getLayoutParams().height = (int) (dm.widthPixels*.1);
 
+        Glide.with(this).load(R.drawable.icon_arrow_back).into(iv_arrowBack_practiceBL);
+
         iv_ic_logoPage_practiceBL.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_ic_logoPage_practiceBL.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        Glide.with(this).load(R.drawable.practice_icon).into(iv_ic_logoPage_practiceBL);
 
         tv_TitleLogo_practiceBL.setTextSize((int) (dm.widthPixels*.025));
 
@@ -320,24 +324,29 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
         //iv_play_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.18);
         iv_play_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.15);
+        Glide.with(this).load(R.drawable.play_icon).into(iv_play_playerPBL);
 
         //iv_next_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.18);
         iv_next_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.15);
+        Glide.with(this).load(R.drawable.next_icon).into(iv_next_playerPBL);
 
         //view_space_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         view_space_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.16);
 
         iv_ic_org_playerPBL.getLayoutParams().width = (int) (dm.widthPixels*.21);
         iv_ic_org_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.21);
+        Glide.with(this).load(R.drawable.icon).into(iv_ic_org_playerPBL);
 
         et_PracticeBL.getLayoutParams().width = (int) (dm.widthPixels*.75);
         et_PracticeBL.getLayoutParams().height = (int) (dm.widthPixels*.4);
 
         iv_shareAnswer_playerPBL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         iv_shareAnswer_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.074);
+        Glide.with(this).load(R.drawable.shareanswer_icon1).into(iv_shareAnswer_playerPBL);
 
         iv_checkAnswer_playerPBL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         iv_checkAnswer_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.074);
+        Glide.with(this).load(R.drawable.chek_icon).into(iv_checkAnswer_playerPBL);
 
         viewB_space_button_see_share.getLayoutParams().width = (int) (dm.widthPixels*.2);
 

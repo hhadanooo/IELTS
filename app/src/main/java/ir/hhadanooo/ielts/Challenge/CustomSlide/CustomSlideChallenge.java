@@ -16,6 +16,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Arrays;
 
 import ir.hhadanooo.ielts.Challenge.ChallengeActivity;
@@ -110,6 +112,7 @@ public class CustomSlideChallenge extends LinearLayout {
 
         lay_chlng.getLayoutParams().width = (int) (dm.widthPixels*.93);
 
+
         tv_todayScore_chlng.setTextSize((int) (dm.widthPixels*.014));
 
         tv_totalScore_chlng.setTextSize((int) (dm.widthPixels*.014));
@@ -129,6 +132,8 @@ public class CustomSlideChallenge extends LinearLayout {
         iv_result_A_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
         iv_result_A_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);
 
+        Glide.with(this).load(R.drawable.tick_result_icon).into(iv_result_A_chlng);
+
         tv_result_A_chlng.setTextSize((int) (dm.widthPixels*.03));
 
         view_center_AB_chlng.getLayoutParams().width = (int) (dm.widthPixels*.05);
@@ -136,11 +141,13 @@ public class CustomSlideChallenge extends LinearLayout {
 
         iv_result_B_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
         iv_result_B_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);
+        Glide.with(this).load(R.drawable.tick_result_icon).into(iv_result_B_chlng);
 
         tv_result_B_chlng.setTextSize((int) (dm.widthPixels*.03));
 
         iv_result_C_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
         iv_result_C_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);
+        Glide.with(this).load(R.drawable.tick_result_icon).into(iv_result_C_chlng);
 
         tv_result_C_chlng.setTextSize((int) (dm.widthPixels*.03));
 
@@ -149,6 +156,7 @@ public class CustomSlideChallenge extends LinearLayout {
 
         iv_result_D_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
         iv_result_D_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);
+        Glide.with(this).load(R.drawable.tick_result_icon).into(iv_result_D_chlng);
 
         tv_result_D_chlng.setTextSize((int) (dm.widthPixels*.03));
 
@@ -157,6 +165,7 @@ public class CustomSlideChallenge extends LinearLayout {
 
         iv_next_chlng.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_next_chlng.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        Glide.with(this).load(R.drawable.next_arrow_icon).into(iv_next_chlng);
 
         iv_Tick_check_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
         iv_Tick_check_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);

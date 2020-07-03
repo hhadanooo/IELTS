@@ -1,13 +1,16 @@
 package ir.hhadanooo.ielts.TestAndPracticeMenu;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.navigation.NavigationView;
 import com.rom4ek.arcnavigationview.ArcNavigationView;
 
@@ -413,6 +418,79 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         menuNav.setNavigationItemSelectedListener(this);
         menuNav.getLayoutParams().width = (int) (dm.widthPixels*.5);
         menuNav.setItemIconTintList(null);
+
+        final MenuItem mi = menuNav.getMenu().getItem(0);
+        Glide.with(this).asBitmap().load(R.drawable.home_menu_icon).into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                mi.setIcon(new BitmapDrawable(getResources(), resource));
+            }
+        });
+
+        final MenuItem mi1 = menuNav.getMenu().getItem(1);
+        Glide.with(this).asBitmap().load(R.drawable.writing_icon).into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                mi1.setIcon(new BitmapDrawable(getResources(), resource));
+            }
+        });
+
+        final MenuItem mi2 = menuNav.getMenu().getItem(2);
+        Glide.with(this).asBitmap().load(R.drawable.reading_icon).into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                mi2.setIcon(new BitmapDrawable(getResources(), resource));
+            }
+        });
+
+        final MenuItem mi3 = menuNav.getMenu().getItem(3);
+        Glide.with(this).asBitmap().load(R.drawable.speaking_icon).into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                mi3.setIcon(new BitmapDrawable(getResources(), resource));
+            }
+        });
+
+        final MenuItem mi4 = menuNav.getMenu().getItem(4);
+        Glide.with(this).asBitmap().load(R.drawable.listening_icon).into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                mi4.setIcon(new BitmapDrawable(getResources(), resource));
+            }
+        });
+
+        final MenuItem mi5 = menuNav.getMenu().getItem(5);
+        Glide.with(this).asBitmap().load(R.drawable.challenge_menu_icon).into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                mi5.setIcon(new BitmapDrawable(getResources(), resource));
+            }
+        });
+
+        final MenuItem mi6 = menuNav.getMenu().getItem(6);
+        Glide.with(this).asBitmap().load(R.drawable.web_menu_icon).into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                mi6.setIcon(new BitmapDrawable(getResources(), resource));
+            }
+        });
+
+        final MenuItem mi7 = menuNav.getMenu().getItem(7);
+        Glide.with(this).asBitmap().load(R.drawable.rate_menu_icon).into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                mi7.setIcon(new BitmapDrawable(getResources(), resource));
+            }
+        });
+
+        final MenuItem mi8 = menuNav.getMenu().getItem(8);
+        Glide.with(this).asBitmap().load(R.drawable.about_menu_icon).into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                mi8.setIcon(new BitmapDrawable(getResources(), resource));
+            }
+        });
+
 
         if (num_type == 1){
             menuNav.getMenu().getItem(4).setEnabled(false);

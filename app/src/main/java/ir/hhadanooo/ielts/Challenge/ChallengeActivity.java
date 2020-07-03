@@ -22,6 +22,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -295,9 +297,11 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
         iv_arrowBack_chlng.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_arrowBack_chlng.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        Glide.with(this).load(R.drawable.icon_arrow_back).into(iv_arrowBack_chlng);
 
         iv_ic_logoPage_chlng.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_ic_logoPage_chlng.getLayoutParams().height = (int) (dm.widthPixels*.1);
+        Glide.with(this).load(R.drawable.chlng_icon).into(iv_ic_logoPage_chlng);
 
         tv_TitleLogo_chlng.setTextSize((int) (dm.widthPixels*.025));
 

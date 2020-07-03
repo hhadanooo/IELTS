@@ -98,7 +98,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/tick_result_icon"
+
                             android:id="@+id/iv_result_A_chlng"/>
 
                     </LinearLayout>
@@ -126,7 +126,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/tick_result_icon"
+
                             android:id="@+id/iv_result_B_chlng"/>
 
                     </LinearLayout>
@@ -162,7 +162,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/tick_result_icon"
+
                             android:id="@+id/iv_result_C_chlng"/>
 
                     </LinearLayout>
@@ -187,7 +187,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/tick_result_icon"
+
 
                             android:id="@+id/iv_result_D_chlng"/>
                     </LinearLayout>
@@ -202,7 +202,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:id="@+id/iv_next_chlng"
-                    android:background="@drawable/next_arrow_icon"/>
+                    />
 
                 <ImageView
                     android:layout_width="wrap_content"
