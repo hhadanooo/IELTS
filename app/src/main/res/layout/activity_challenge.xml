@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".Challenge.ChallengeActivity"
     android:background="@drawable/background"
+    android:layoutDirection="ltr"
     android:id="@+id/parentLay">
 
     <RelativeLayout
@@ -44,14 +45,18 @@
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#000"
-                android:id="@+id/tv_TitleLogo_chlng"/>
+                android:textAlignment="textStart"
+                android:id="@+id/tv_TitleLogo_chlng"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/tv_PathLogo_chlng"
-                android:layout_marginBottom="10dp"/>
+                android:textAlignment="textStart"
+                android:layout_marginBottom="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 

@@ -49,14 +49,18 @@
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal"
                     android:textColor="#000"
-                    android:id="@+id/tv_TitleLogo_TestL"/>
+                    android:textAlignment="textStart"
+                    android:id="@+id/tv_TitleLogo_TestL"
+                    tools:ignore="RtlCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
                     android:layout_gravity="center_horizontal"
                     android:id="@+id/tv_PathLogo_TestL"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="RtlCompat" />
 
             </LinearLayout>
 
@@ -141,8 +145,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
+                                    android:textAlignment="center"
                                     android:text="00:00"
-                                    android:id="@+id/tv_time_playerTL"/>
+                                    android:id="@+id/tv_time_playerTL"
+                                    tools:ignore="RtlCompat" />
 
                                 <ImageView
                                     android:layout_width="wrap_content"
@@ -240,8 +246,10 @@
                         android:layout_height="wrap_content"
                         android:text="30:14"
                         android:layout_margin="5dp"
+                        android:textAlignment="textStart"
                         android:layout_gravity="center_vertical"
-                        android:id="@+id/tv_time_TestL"/>
+                        android:id="@+id/tv_time_TestL"
+                        tools:ignore="RtlCompat" />
 
                 </LinearLayout>
 

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Test.Activity_test"
     xmlns:awesome="http://schemas.android.com/apk/res-auto"
-    android:background="#E3E1E0">
+    android:background="#E3E1E0"
+    android:layoutDirection="ltr">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,6 +43,7 @@
             android:layout_below="@id/activity_test_img_body"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
+            android:textAlignment="textStart"
             android:fontFamily="sans-serif"/>
         <TextView
             android:layout_width="wrap_content"
@@ -49,6 +51,7 @@
             android:id="@+id/activity_test_tv2_about_icon"
             android:layout_below="@id/activity_test_tv1_about_icon"
             android:layout_centerHorizontal="true"
+            android:textAlignment="textStart"
             android:textColor="#8A7D7D"/>
     </RelativeLayout>
 

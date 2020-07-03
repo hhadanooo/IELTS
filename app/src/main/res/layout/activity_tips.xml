@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Tips.ActivityTips"
     xmlns:awesome="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="ltr"
     android:background="#E3E1E0">
 
     <RelativeLayout
@@ -40,6 +41,7 @@
             android:id="@+id/activity_tips_tv1_about_icon"
             android:layout_below="@id/activity_tips_img_body"
             android:layout_centerHorizontal="true"
+            android:textAlignment="textStart"
             android:textStyle="bold"
             android:fontFamily="sans-serif"/>
         <TextView
@@ -48,6 +50,7 @@
             android:id="@+id/activity_tips_tv2_about_icon"
             android:layout_below="@id/activity_tips_tv1_about_icon"
             android:layout_centerHorizontal="true"
+            android:textAlignment="textStart"
             android:textColor="#8A7D7D"/>
     </RelativeLayout>
 

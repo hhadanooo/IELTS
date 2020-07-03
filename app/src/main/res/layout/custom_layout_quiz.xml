@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:layoutDirection="ltr"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -13,6 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAlignment="textStart"
             android:layout_centerInParent="true"
             android:id="@+id/tv_question"/>
 
@@ -41,6 +43,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
                     android:layout_centerInParent="true"
                     android:id="@+id/tv_Answer1"/>
             </RelativeLayout>
@@ -54,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:textAlignment="textStart"
                     android:id="@+id/tv_Answer2"/>
             </RelativeLayout>
             <RelativeLayout
@@ -63,6 +67,7 @@
                 android:background="@drawable/btn_quiz_false"
                 android:layout_margin="15dp">
                 <TextView
+                    android:textAlignment="textStart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"

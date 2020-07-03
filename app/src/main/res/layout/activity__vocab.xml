@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".Vocab.Activity_Vocab"
     xmlns:awesome="http://schemas.android.com/apk/res-auto"
-    android:background="#E3E1E0">
+    android:background="#E3E1E0"
+    android:layoutDirection="ltr">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/activity_vocab_tv1_about_icon"
             android:layout_below="@id/activity_vocab_img_body"
+            android:textAlignment="textStart"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
             android:fontFamily="sans-serif"/>
@@ -47,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/activity_vocab_tv2_about_icon"
+            android:textAlignment="textStart"
             android:layout_below="@id/activity_vocab_tv1_about_icon"
             android:layout_centerHorizontal="true"
             android:textColor="#8A7D7D"/>

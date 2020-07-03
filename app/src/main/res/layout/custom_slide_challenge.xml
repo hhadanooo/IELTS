@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
    >
 
     <LinearLayout
@@ -31,6 +32,7 @@
                     android:text="Today Score:"
                     android:textColor="#000"
                     android:textStyle="bold"
+                    android:textAlignment="textStart"
                     android:id="@+id/tv_todayScore_chlng"/>
 
                 <View
@@ -43,6 +45,7 @@
                     android:layout_height="wrap_content"
                     android:text="Total Scores:"
                     android:textColor="#000"
+                    android:textAlignment="textStart"
                     android:textStyle="bold"
                     android:id="@+id/tv_totalScore_chlng"/>
 
@@ -61,6 +64,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
                     android:id="@+id/tv_question_chlng"
                     android:text="@string/text"
                     />
@@ -93,6 +97,7 @@
                             android:id="@+id/tv_result_A_chlng"
                             android:textStyle="bold"
                             android:text="A"
+                            android:textAlignment="textStart"
                             android:textColor="#000"/>
 
                         <ImageView
@@ -116,6 +121,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textAlignment="textStart"
                             android:id="@+id/tv_result_B_chlng"
                             android:textStyle="bold"
                             android:text="B"
@@ -157,6 +163,7 @@
                             android:id="@+id/tv_result_C_chlng"
                             android:textStyle="bold"
                             android:text="C"
+                            android:textAlignment="textStart"
                             android:textColor="#000"/>
 
                         <ImageView
@@ -183,6 +190,7 @@
                             android:id="@+id/tv_result_D_chlng"
                             android:textStyle="bold"
                             android:text="D"
+                            android:textAlignment="textStart"
                             android:textColor="#000"/>
                         <ImageView
                             android:layout_width="wrap_content"
