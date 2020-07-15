@@ -78,6 +78,12 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_challenge);
+
+        File file = new File(getFilesDir().getAbsolutePath() + "/ielts.zip");
+        if(file.exists())
+        {
+            file.delete();
+        }
         Objects.requireNonNull(getSupportActionBar()).hide();
         dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -102,18 +108,13 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
         ViewPager_Challenge = findViewById(R.id.ViewPager_Challenge);
         parentLay = findViewById(R.id.parentLay);
         ViewPager_Challenge.getLayoutParams().width = (int) (dm.widthPixels*.93);
-
-        //DepthTransformation depthTransformation = new DepthTransformation();
-        //CubeOutDepthTransformation cube = new CubeOutDepthTransformation();
         CubeOutRotationTransformation cube = new CubeOutRotationTransformation();
-        //FanTransformation fan = new FanTransformation();
         ViewPager_Challenge.setPageTransformer(true, cube);
 
         viewPagerAdapterChlng = new ViewPagerAdapterChlng();
         viewPagerAdapterChlng.notifyDataSetChanged();
         ViewPager_Challenge.setAdapter(viewPagerAdapterChlng);
         //ViewPager_Challenge.addOnPageChangeListener(viewPagerPageChangeListener);
-
         ViewPager_Challenge.setOnPageChangeListener(this);
 
 

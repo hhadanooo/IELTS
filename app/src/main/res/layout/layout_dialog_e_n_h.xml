@@ -38,21 +38,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/btn_easy"
                 android:layout_margin="10dp"
                 android:id="@+id/iv_e_dialogENH" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/btn_normal"
                 android:layout_margin="10dp"
                 android:id="@+id/iv_n_dialogENH"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/btn_hard"
                 android:layout_margin="10dp"
                 android:id="@+id/iv_h_dialogENH"/>
 

@@ -95,7 +95,7 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
             FileInputStream fileInputStream = new FileInputStream(getFilesDir().
                     getAbsolutePath()+"/ielts/listening/practice/" +
-                    "transcription/"+intent1+"/"+getIntent().getExtras().getString("NameFile")+"/audio.mp3");
+                    "short items/"+intent1+"/"+getIntent().getExtras().getString("NameFile")+"/audio.mp3");
             mPlayer.setDataSource(fileInputStream.getFD());
             mPlayer.prepare();
         } catch (IOException e) {

@@ -61,12 +61,14 @@ public class ListenPracticeActivity extends AppCompatActivity {
     int duration = 0;
     int min = 0;
     int sec = 0;
-    int secPlay = 10;
+
 
     boolean nextPart = false;
     int counterPlay = 2;
 
-    int timePart = 10;
+    int timePart = 0;
+    int secPlay = 0;
+
     int totalParts = 0;
     boolean lockButton = false;
     int finalD = 0;
@@ -88,6 +90,22 @@ public class ListenPracticeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listen_practice);
+
+
+        if(getIntent().getExtras().getString("Easy") != null)
+        {
+           secPlay = 5;
+           timePart = 5;
+        }else if(getIntent().getExtras().getString("Normal") != null)
+        {
+            secPlay = 7;
+            timePart = 7;
+        }else if(getIntent().getExtras().getString("Hard") != null)
+        {
+            secPlay = 10;
+            timePart = 10;
+        }
+
         CheckIntent();
         Objects.requireNonNull(getSupportActionBar()).hide();
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -114,7 +132,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
             FileInputStream fileInputStream = new FileInputStream(getFilesDir().
                     getAbsolutePath()+"/ielts/listening/practice/" +
-                    "short items/" + intent1 + "/"+getIntent().getExtras().getString("NameFile")+"/audio.mp3");
+                    "transcription/" + intent1 + "/"+getIntent().getExtras().getString("NameFile")+"/audio.mp3");
             mPlayer.setDataSource(fileInputStream.getFD());
             mPlayer.prepare();
         } catch (IOException e) {
@@ -158,7 +176,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }  , 11500);
+                        }  , (timePart*1000)+1500);
                     }else if (counterPlay == 1){
                         iv_play_playerPL.setImageResource(R.drawable.play1_icon);
                         iv_play_playerPL.postDelayed(new Runnable() {
@@ -176,7 +194,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
                                 });
 
                             }
-                        }  , 11500);
+                        }  , (timePart*1000)+1500);
                     }else if (counterPlay == 0){
                         iv_play_playerPL.setImageResource(R.drawable.play_icon);
                         if ((mPlayer.getCurrentPosition()/1000)+timePart != (mPlayer.getDuration()/1000)){
@@ -194,7 +212,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
                                         }
                                     });
                                 }
-                            }  , 11500);
+                            }  , (timePart*1000)+1500);
                         }
                     }
 
@@ -212,7 +230,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
                                 int mCurrentPosition = mPlayer.getCurrentPosition() / 1000;
                                 if (duration > mCurrentPosition){
                                     if(mCurrentPosition < 60){
-                                        if (mCurrentPosition < 10){
+                                        if (mCurrentPosition < timePart){
                                             tv_time_playerPL.setText("00:0"+mCurrentPosition);
                                         }else {
                                             tv_time_playerPL.setText("00:"+mCurrentPosition);
@@ -220,14 +238,14 @@ public class ListenPracticeActivity extends AppCompatActivity {
                                     }else {
                                         sec = (mCurrentPosition%60);
                                         min = (mCurrentPosition-sec)/60;
-                                        if (min < 10 ){
-                                            if (sec < 10){
+                                        if (min < timePart ){
+                                            if (sec < timePart){
                                                 tv_time_playerPL.setText("0"+min+":0"+sec);
                                             }else {
                                                 tv_time_playerPL.setText("0"+min+":"+sec);
                                             }
                                         }else {
-                                            if (sec < 10){
+                                            if (sec < timePart){
                                                 tv_time_playerPL.setText(min+":0"+sec);
                                             }else {
                                                 tv_time_playerPL.setText(min+":"+sec);
@@ -248,7 +266,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
                                         nextPart = false;
                                         secPlay = secPlay+timePart;
                                     }else {
-                                        if ((mPlayer.getCurrentPosition() / 1000)  > 9){
+                                        if ((mPlayer.getCurrentPosition() / 1000)  > timePart-1){
                                             counterPlay = counterPlay-1;
                                             mPlayer.seekTo(mPlayer.getCurrentPosition()-(timePart*1000));
                                            // Log.i("timerP" , timePart+"cc"+(mPlayer.getCurrentPosition() / 1000));
@@ -286,7 +304,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
                                     iv_next_playerPL.setEnabled(false);
                                     iv_play_playerPL.setEnabled(false);
                                 }
-                            } , 10000);
+                            } , (timePart*1000));
 
                         }
                     }
@@ -318,7 +336,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
                     int mCurrentPosition = mPlayer.getCurrentPosition() / 1000;
                     if (duration > mCurrentPosition){
                         if(mCurrentPosition < 60){
-                            if (mCurrentPosition < 10){
+                            if (mCurrentPosition < timePart){
                                 tv_time_playerPL.setText("00:0"+mCurrentPosition);
                             }else {
                                 tv_time_playerPL.setText("00:"+mCurrentPosition);
@@ -326,14 +344,14 @@ public class ListenPracticeActivity extends AppCompatActivity {
                         }else {
                             sec = (mCurrentPosition%60);
                             min = (mCurrentPosition-sec)/60;
-                            if (min < 10 ){
-                                if (sec < 10){
+                            if (min < timePart ){
+                                if (sec < timePart){
                                     tv_time_playerPL.setText("0"+min+":0"+sec);
                                 }else {
                                     tv_time_playerPL.setText("0"+min+":"+sec);
                                 }
                             }else {
-                                if (sec < 10){
+                                if (sec < timePart){
                                     tv_time_playerPL.setText(min+":0"+sec);
                                 }else {
                                     tv_time_playerPL.setText(min+":"+sec);
@@ -499,6 +517,8 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
                     Intent shareIntent = Intent.createChooser(sendIntent, null);
                     startActivity(shareIntent);
+                }else {
+                    Toast.makeText(getApplicationContext(),"Please Write Something!",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -570,9 +590,9 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
         //iv_play_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.18);
         iv_play_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.15);
-        iv_play_playerPL.setImageResource(R.drawable.play3_icon);
+        //iv_play_playerPL.setImageResource(R.drawable.play3_icon);
 
-        Glide.with(this).load(R.drawable.play_icon).into(iv_play_playerPL);
+        Glide.with(this).load(R.drawable.play3_icon).into(iv_play_playerPL);
 
         //iv_next_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.18);
         iv_next_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.15);

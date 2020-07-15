@@ -64,6 +64,11 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_and_practice_menu);
 
+        File file = new File(getFilesDir().getAbsolutePath() + "/ielts.zip");
+        if(file.exists())
+        {
+            file.delete();
+        }
 
 
         dm = new DisplayMetrics();
@@ -515,6 +520,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
 
 
 
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -563,6 +569,7 @@ public class ActivityTestAndPracticeMenu extends AppCompatActivity implements Na
         return true;
 
     }
+
 
 
 }

@@ -8,13 +8,18 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.File;
@@ -32,11 +37,53 @@ public class ActivityTestRead extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     int tab_num = 0;
+
+    SlideFragmentTestReading slideFragmentTestReading;
+
+    SlideFragmentTestReading slideFragmentTestReading1;
+    SlideFragmentTestReading slideFragmentTestReading2;
+    SlideFragmentTestReading slideFragmentTestReading3;
+
+    long time = 3600000;
+
+    Handler handler_timer;
+    Runnable_Timer runnable_timer;
+
+    public static boolean CheckImgTimer = true;
+    public static boolean CheckEndTimer = false;
+    public static boolean CheckEndActivity = false;
+    public static boolean CheckStartTimer = false;
+    public static String str_time = "";
+
+    public static boolean CheckStartHandler1= false;
+    public static boolean CheckStartHandler2= false;
+    public static boolean CheckStartHandler3= false;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_read);
         getSupportActionBar().hide();
+
+        CheckEndTimer = false;
+        CheckImgTimer = true;
+        CheckEndActivity = true;
+        CheckStartTimer = false;
+
+        CheckStartHandler1 = false;
+        CheckStartHandler2 = false;
+        CheckStartHandler3 = false;
+
+
+
+        handler_timer = new Handler();
+        runnable_timer = new Runnable_Timer();
+
+
+
         init();
 
         CheckIntent();
@@ -45,6 +92,22 @@ public class ActivityTestRead extends AppCompatActivity {
         SetPropertiesTabLayout();
 
 
+
+
+        Timer();
+        //handler_timer.postDelayed(runnable_timer,1);
+
+
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        CheckEndActivity = false;
+        super.onBackPressed();
+
+        handler_timer.removeCallbacks(runnable_timer);
     }
 
     public void CheckIntent()
@@ -139,6 +202,10 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
+
+               slideFragmentTestReading1  = new SlideFragmentTestReading().newSlide(dm.widthPixels,dm.heightPixels,"Academic",getIntent().getExtras().getInt("Number"),1,TextAnswer1,TextAnswer2,TextAnswer3,getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"));
+               slideFragmentTestReading2  = new SlideFragmentTestReading().newSlide(dm.widthPixels,dm.heightPixels,"Academic",getIntent().getExtras().getInt("Number"),2,TextAnswer1,TextAnswer2,TextAnswer3,getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"));
+               slideFragmentTestReading3  = new SlideFragmentTestReading().newSlide(dm.widthPixels,dm.heightPixels,"Academic",getIntent().getExtras().getInt("Number"),3,TextAnswer1,TextAnswer2,TextAnswer3,getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"));
 
 
 
@@ -245,6 +312,11 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
                 ////////
+
+
+                slideFragmentTestReading1  = new SlideFragmentTestReading().newSlide(dm.widthPixels,dm.heightPixels,"General",getIntent().getExtras().getInt("Number"),1,TextAnswer1,TextAnswer2,TextAnswer3,getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"));
+                slideFragmentTestReading2  = new SlideFragmentTestReading().newSlide(dm.widthPixels,dm.heightPixels,"General",getIntent().getExtras().getInt("Number"),2,TextAnswer1,TextAnswer2,TextAnswer3,getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"));
+                slideFragmentTestReading3  = new SlideFragmentTestReading().newSlide(dm.widthPixels,dm.heightPixels,"General",getIntent().getExtras().getInt("Number"),3,TextAnswer1,TextAnswer2,TextAnswer3,getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"),getIntent().getExtras().getString("NameFile"));
 
 
 
@@ -359,7 +431,23 @@ public class ActivityTestRead extends AppCompatActivity {
         public Fragment getItem(int position) {
 
             tab_num++;
-            return new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num,TextAnswer1,TextAnswer2,TextAnswer3,filename1,filename2,filename3);
+            //slideFragmentTestReading =  new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num,TextAnswer1,TextAnswer2,TextAnswer3,filename1,filename2,filename3);
+
+            SlideFragmentTestReading slideFragmentTestReading =new SlideFragmentTestReading().newSlide(Width,Height,intent,num,tab_num,TextAnswer1,TextAnswer2,TextAnswer3,filename1,filename2,filename3);
+            Log.i("dsfdsfdsfdsfds", "getItem: " + position);
+            if(position == 0)
+            {
+
+                slideFragmentTestReading = slideFragmentTestReading1;
+            }else if (position == 1)
+            {
+                slideFragmentTestReading = slideFragmentTestReading2;
+            }else if(position == 2)
+            {
+                slideFragmentTestReading = slideFragmentTestReading3;
+            }
+
+            return slideFragmentTestReading;
         }
 
         @Override
@@ -379,5 +467,58 @@ public class ActivityTestRead extends AppCompatActivity {
             }
         }
     }
+
+    public void Timer()
+    {
+        new CountDownTimer(time,1000) {
+            @Override
+            public void onTick(long l) {
+                time = l;
+                int minute =(int) time / 60000;
+                int second = (int) time % 60000 / 1000;
+                String timestring = "" + minute;
+                timestring += ":";
+                if(second < 10) timestring += "0";
+                timestring += second;
+                //tv_timer.setText(timestring);
+
+                str_time = timestring;
+                if(minute == 0 && second <= 1 &&!CheckEndTimer)
+                {
+
+                    CheckEndTimer = true;
+                    handler_timer.postDelayed(runnable_timer,500);
+                    Toast.makeText(ActivityTestRead.this,"Time is over",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+    }
+
+    public class Runnable_Timer implements Runnable
+    {
+
+        boolean check = false;
+        @Override
+        public void run() {
+            if(check)
+            {
+                //Glide.with(ActivityTestWrite.this).load(ActivityTestWrite.this.getDrawable(R.drawable.timer_icon)).into(img_timer);
+                CheckImgTimer = true;
+                check = false;
+            }else {
+                //Glide.with(ActivityTestWrite.this).load(ActivityTestWrite.this.getDrawable(R.drawable.timer_iconw)).into(img_timer);
+                CheckImgTimer = false;
+                check = true;
+            }
+            handler_timer.postDelayed(this,1000);
+
+        }
+    }
+
 
 }

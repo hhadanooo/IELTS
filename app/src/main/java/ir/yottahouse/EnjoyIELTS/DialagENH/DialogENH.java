@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Objects;
 
 import ir.yottahouse.EnjoyIELTS.CustomView.CustomViewItem;
@@ -38,6 +40,10 @@ public class DialogENH {
         iv_e_dialogENH = dialog.findViewById(R.id.iv_e_dialogENH);
         iv_n_dialogENH = dialog.findViewById(R.id.iv_n_dialogENH);
         iv_h_dialogENH = dialog.findViewById(R.id.iv_h_dialogENH);
+
+        Glide.with(context).load(R.drawable.btn_easy1).into(iv_e_dialogENH);
+        Glide.with(context).load(R.drawable.btn_normal1).into(iv_n_dialogENH);
+        Glide.with(context).load(R.drawable.btn_hard1).into(iv_h_dialogENH);
 
         tv_title_dialogENH.setTextSize((int) (dm.widthPixels*0.02));
 

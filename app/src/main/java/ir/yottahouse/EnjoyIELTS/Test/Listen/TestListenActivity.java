@@ -38,6 +38,7 @@ import java.util.Objects;
 
 import ir.yottahouse.EnjoyIELTS.CustomView.CustomViewItem;
 import ir.yottahouse.EnjoyIELTS.R;
+import ir.yottahouse.EnjoyIELTS.Test.ActivityTestWrite;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
 import tourguide.tourguide.ToolTip;
@@ -60,7 +61,7 @@ public class TestListenActivity extends AppCompatActivity {
     int min = 0;
     int sec = 0;
     int duration = 0;
-    long time = 2400000;
+    long time = 1800000;
     String fileName ;
     int pageNum;
     List<String> answerList = new ArrayList<>();
@@ -85,12 +86,18 @@ public class TestListenActivity extends AppCompatActivity {
     boolean show4 = false;
     boolean show5 = false;
 
+    Handler handler_timer;
+    Runnable_Timer runnable_timer;
+
 
     @SuppressLint({"ClickableViewAccessibility", "SetJavaScriptEnabled"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_listen);
+
+        handler_timer = new Handler();
+        runnable_timer = new Runnable_Timer();
         Objects.requireNonNull(getSupportActionBar()).hide();
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
@@ -211,8 +218,7 @@ public class TestListenActivity extends AppCompatActivity {
         iv_seeAnswer_playerTL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fileName  = getFilesDir().
-                        getAbsolutePath()+"/ielts/listening/test/"+getIntent().getExtras().getString("NameFile")+"/Answer.html";
+                fileName  = getFilesDir().getAbsolutePath()+"/ielts/listening/test/"+getIntent().getExtras().getString("NameFile")+"/Answer.html";
                 webView_TestL.getSettings().setJavaScriptEnabled(true);
                 webView_TestL.loadUrl("file:///" + fileName);
             }
@@ -432,7 +438,7 @@ public class TestListenActivity extends AppCompatActivity {
 
         tv_time_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.15);
         tv_time_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.05);
-        tv_time_playerTL.setTextSize((int) (dm.widthPixels*.015));
+        //tv_time_playerTL.setTextSize((int) (dm.widthPixels*.015));
 
 
         lay_TestL.getLayoutParams().width = (int) (dm.widthPixels*.93);
@@ -586,6 +592,8 @@ public class TestListenActivity extends AppCompatActivity {
         iv_arrowBack_TestL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                handler_timer.removeCallbacks(runnable_timer);
+                finish();
                 onBackPressed();
             }
         });
@@ -613,6 +621,13 @@ public class TestListenActivity extends AppCompatActivity {
                 if(second < 10) timestring += "0";
                 timestring += second;
                 tv_timer.setText(timestring);
+
+                if(minute == 0 && second == 0)
+                {
+
+                    handler_timer.postDelayed(runnable_timer,500);
+                    Toast.makeText(TestListenActivity.this,"Time is over",Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -620,6 +635,32 @@ public class TestListenActivity extends AppCompatActivity {
 
             }
         }.start();
+    }
+
+    public class Runnable_Timer implements Runnable
+    {
+
+        boolean check = false;
+        @Override
+        public void run() {
+            if(check)
+            {
+                Glide.with(TestListenActivity.this).load(TestListenActivity.this.getDrawable(R.drawable.timer_icon)).into(iv_time_TestL);
+                check = false;
+            }else {
+                Glide.with(TestListenActivity.this).load(TestListenActivity.this.getDrawable(R.drawable.timer_iconw)).into(iv_time_TestL);
+                check = true;
+            }
+            handler_timer.postDelayed(this,1000);
+
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        handler_timer.removeCallbacks(runnable_timer);
+        finish();
     }
 
 }

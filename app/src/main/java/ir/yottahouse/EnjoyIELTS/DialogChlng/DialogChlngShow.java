@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Objects;
 
 import ir.yottahouse.EnjoyIELTS.Challenge.ChallengeActivity;
@@ -43,6 +45,7 @@ public class DialogChlngShow {
         tv_msg_dialogChlng = dialog.findViewById(R.id.tv_msg_dialogChlng);
         iv_start_dialogChlng = dialog.findViewById(R.id.iv_start_dialogChlng);
         tv_numQuiz_dialogChlng = dialog.findViewById(R.id.tv_numQuiz_dialogChlng);
+        Glide.with(context).load(R.drawable.btn_start).into(iv_start_dialogChlng);
 
         tv_title_dialogChlng.setTextSize((int) (dm.widthPixels*0.025));
         tv_title_dialogChlng.setText("Complete The Steps and Test Yourself ");

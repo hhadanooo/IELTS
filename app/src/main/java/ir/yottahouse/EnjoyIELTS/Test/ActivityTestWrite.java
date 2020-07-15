@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -31,6 +32,7 @@ import java.util.Objects;
 
 import ir.yottahouse.EnjoyIELTS.CustomView.CustomEditText;
 import ir.yottahouse.EnjoyIELTS.CustomView.CustomViewItem;
+import ir.yottahouse.EnjoyIELTS.Fragment.SlideFragmentTestReading;
 import ir.yottahouse.EnjoyIELTS.R;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
@@ -61,12 +63,17 @@ public class ActivityTestWrite extends AppCompatActivity {
     SharedPreferences showHelppp;
     boolean showHelp = false;
     boolean isShow = false;
+    Handler handler_timer;
+    Runnable_Timer runnable_timer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_write);
 
+        handler_timer = new Handler();
+        runnable_timer = new Runnable_Timer();
         showHelppp = getSharedPreferences("show" ,MODE_PRIVATE);
         showHelp = showHelppp.getBoolean("webView_title" , false);
 
@@ -113,6 +120,8 @@ public class ActivityTestWrite extends AppCompatActivity {
         iv_arrowBack_SimpleText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                handler_timer.removeCallbacks(runnable_timer);
+                finish();
                 onBackPressed();
             }
         });
@@ -364,8 +373,8 @@ public class ActivityTestWrite extends AppCompatActivity {
 
 
 
-        img_timer.getLayoutParams().width = (int) (dm.widthPixels*0.07);
-        img_timer.getLayoutParams().height = (int) (dm.widthPixels*0.07);
+        img_timer.getLayoutParams().width = (int) (dm.widthPixels*0.1);
+        img_timer.getLayoutParams().height = (int) (dm.widthPixels*0.1);
 
         Glide.with(this).load(R.drawable.timer_icon).into(img_timer);
 
@@ -404,7 +413,7 @@ public class ActivityTestWrite extends AppCompatActivity {
                     sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                     startActivity(Intent.createChooser(sharingIntent, ""));
                 }else {
-                    //Toast.makeText(getApplicationContext(),"et empty",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Please Write Something!",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -414,9 +423,9 @@ public class ActivityTestWrite extends AppCompatActivity {
                 if(!et_main_page.getText().toString().isEmpty())
                 {
                     editor_sharedPreferences_et_Text.putString(name_sharedPreferences,et_main_page.getText().toString()).apply();
-                    //Toast.makeText(getApplicationContext(),"Saved",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Your Text Saved!",Toast.LENGTH_LONG).show();
                 }else {
-                    //Toast.makeText(getApplicationContext(),"et_empty",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Please Write Something!",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -438,6 +447,13 @@ public class ActivityTestWrite extends AppCompatActivity {
                 if(second < 10) timestring += "0";
                 timestring += second;
                 tv_timer.setText(timestring);
+
+                if(minute == 0 && second == 0)
+                {
+
+                    handler_timer.postDelayed(runnable_timer,500);
+                    Toast.makeText(ActivityTestWrite.this,"Time is over",Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -445,5 +461,31 @@ public class ActivityTestWrite extends AppCompatActivity {
 
             }
         }.start();
+    }
+
+    public class Runnable_Timer implements Runnable
+    {
+
+        boolean check = false;
+        @Override
+        public void run() {
+            if(check)
+            {
+                Glide.with(ActivityTestWrite.this).load(ActivityTestWrite.this.getDrawable(R.drawable.timer_icon)).into(img_timer);
+                check = false;
+            }else {
+                Glide.with(ActivityTestWrite.this).load(ActivityTestWrite.this.getDrawable(R.drawable.timer_iconw)).into(img_timer);
+                check = true;
+            }
+            handler_timer.postDelayed(this,1000);
+
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        handler_timer.removeCallbacks(runnable_timer);
+        finish();
     }
 }

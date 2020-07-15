@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import java.util.Objects;
 
 import ir.yottahouse.EnjoyIELTS.CustomView.CustomViewItem;
 import ir.yottahouse.EnjoyIELTS.R;
+import ir.yottahouse.EnjoyIELTS.Test.ActivityTestRead;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
 import tourguide.tourguide.ToolTip;
@@ -56,6 +58,10 @@ public class SlideFragmentTestReading extends Fragment {
 
 
     String TextAnswer1,TextAnswer2,TextAnswer3,Filename1,Filename2,Filename3;
+
+    Handler handler_timer;
+    runnable_timer runnable_timer;
+
 
 
     public static SlideFragmentTestReading newSlide(int Width,int Height,String intent,int num,int num_tab,String TextAnswer1,String TextAnswer2,String TextAnswer3,String filename1,String filename2,String filename3){
@@ -115,10 +121,17 @@ public class SlideFragmentTestReading extends Fragment {
         SetPropertiesRelBody();
 
 
+
+
+
+        handler_timer = new Handler();
+        runnable_timer = new runnable_timer();
+
         CheckIntnet();
 
-        time = 3600000;
-        Timer(tv_timer);
+
+
+
         
 
         return rootview;
@@ -133,6 +146,11 @@ public class SlideFragmentTestReading extends Fragment {
                 if(num_tab == 1)
                 {
 
+                    if(!ActivityTestRead.CheckStartHandler1)
+                    {
+                        ActivityTestRead.CheckStartHandler1 = true;
+                        handler_timer.postDelayed(runnable_timer,1);
+                    }
                     //tab 1 academic
                     File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/" + Filename1+ "/passage1.html");
                     webView.loadUrl("file:///" + file_html);
@@ -155,11 +173,21 @@ public class SlideFragmentTestReading extends Fragment {
 
                 }else if(num_tab == 2)
                 {
+                    if(!ActivityTestRead.CheckStartHandler2)
+                    {
+                        ActivityTestRead.CheckStartHandler2 = true;
+                        handler_timer.postDelayed(runnable_timer,1);
+                    }
                     File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/" + Filename2 + "/passage2.html");
                     webView.loadUrl("file:///" + file_html);
                     //tab 2 academic
 
                 }else if(num_tab == 3) {
+                    if(!ActivityTestRead.CheckStartHandler3)
+                    {
+                        ActivityTestRead.CheckStartHandler3 = true;
+                        handler_timer.postDelayed(runnable_timer,1);
+                    }
                     //tab 3 academic
                     File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/"+Filename3 + "/passage3.html");
                     webView.loadUrl("file:///" + file_html);
@@ -289,28 +317,43 @@ public class SlideFragmentTestReading extends Fragment {
 
     }
 
-    public void Timer(final TextView tv_timer)
+    public class runnable_timer implements Runnable
     {
 
-        new CountDownTimer(time,1000) {
-            @Override
-            public void onTick(long l) {
-                time = l;
-                int minute =(int) time / 60000;
-                int second = (int) time % 60000 / 1000;
-                String timestring = "" + minute;
-                timestring += ":";
-                if(second < 10) timestring += "0";
-                timestring += second;
-                tv_timer.setText(timestring);
+        @Override
+        public void run() {
+            if(ActivityTestRead.CheckStartTimer)
+            {
+                if(ActivityTestRead.CheckEndActivity)
+                {
+                    tv_timer.setText(ActivityTestRead.str_time);
+                    if(ActivityTestRead.CheckImgTimer&&ActivityTestRead.CheckEndTimer)
+                    {
+                        Glide.with(getContext()).load(getContext().getDrawable(R.drawable.timer_icon)).into(img_timer);
+                    }else if(ActivityTestRead.CheckEndTimer) {
+                        Glide.with(getContext()).load(getContext().getDrawable(R.drawable.timer_iconw)).into(img_timer);
+                    }
+                }
             }
 
-            @Override
-            public void onFinish() {
 
+            if(ActivityTestRead.CheckEndActivity)
+            {
+                handler_timer.postDelayed(this,1000);
             }
-        }.start();
+
+        }
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
 
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser)
+        {
+            ActivityTestRead.CheckStartTimer = true;
+        }else {
+            ActivityTestRead.CheckStartTimer = false;
+        }
+    }
 }

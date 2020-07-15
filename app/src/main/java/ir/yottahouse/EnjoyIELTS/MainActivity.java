@@ -37,6 +37,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     int update_code= 0;
 
     // File url to download
-    private static String file_url = "http://192.168.1.104/matiooo/ielts.zip";
+    private static String file_url = "https://bit.ly/3e13a0r";
     //private static String file_url = "https://irsv.upmusics.com/Tracks/Songs/Masih%20ft%20Arash%20AP%20%E2%80%93%20Goli128(UpMusic).mp3";
     private static String check_update_url = "http://hrwanheda.ir/update/index.php";
     private static String update_url = "http://hrwanheda.ir/update/index.php";
@@ -141,12 +142,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-        if (ActivityCompat.checkSelfPermission(this , Manifest.permission.READ_EXTERNAL_STORAGE) !=
-                PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this , new String[] {Manifest.permission.READ_EXTERNAL_STORAGE} , 123);
-        }else {
-            downData();
-        }
+
+        downData();
 
 
 
@@ -219,18 +216,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 123){
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                downData();
-            }else{
-                finish();
-            }
-        }
-
-    }
 
     public void downData(){
 
@@ -251,10 +236,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onResponse(String response) {
                         if (Integer.parseInt(response) > update_code){
                             newDayPerf.edit().putInt("update_code" , Integer.parseInt(response)).apply();
-                           // Toast.makeText(MainActivity.this, "Update", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(MainActivity.this, "The app needs updating. please wait!", Toast.LENGTH_SHORT).show();
                             update_data();
-
-                        }else{
 
                         }
 
@@ -263,14 +246,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Toast.makeText(MainActivity.this,"The update link is broken. Please log in again!",Toast.LENGTH_LONG).show();
                     }
                 });
                 requestQueue.add(s);
             }
         } else{
             connected = false;
-           // Toast.makeText(this, "no Internet Access!", Toast.LENGTH_SHORT).show();
+           Toast.makeText(this, "no Internet Access!", Toast.LENGTH_SHORT).show();
+           finish();
             if(IELTSZip){
 
                 newDay();
@@ -510,7 +494,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             try {
                 File gpxfile = new File(pathToday+"quiz"+(i+1)+"/quiz.txt");
                 FileWriter writer = new FileWriter(gpxfile);
-                writer.write(number.get(i)+"\n"+text);
+                //writer.write(number.get(i)+"\n"+text);
+                writer.write(text+"");
                 writer.flush();
                 writer.close();
                 //Toast.makeText(MainActivity.this, "Saved your text", Toast.LENGTH_LONG).show();
@@ -973,6 +958,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     //
 
+                    //deleteRecursive(ZipFile);
                     newDay();
 
                 }else {
@@ -999,6 +985,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
             }else {
+                Toast.makeText(MainActivity.this, "no Internet Access!", Toast.LENGTH_SHORT).show();
                 ((ActivityManager) Objects.requireNonNull(getSystemService(ACTIVITY_SERVICE)))
                         .clearApplicationUserData();
                 deleteCache(MainActivity.this);

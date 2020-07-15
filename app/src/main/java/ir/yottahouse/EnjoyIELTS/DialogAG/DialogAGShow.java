@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Objects;
 
 import ir.yottahouse.EnjoyIELTS.R;
@@ -33,6 +35,8 @@ public class DialogAGShow {
         tv_title_dialogAG = dialog.findViewById(R.id.tv_title_dialogAG);
         iv_a_dialogAG = dialog.findViewById(R.id.iv_a_dialogAG);
         iv_g_dialogAG = dialog.findViewById(R.id.iv_g_dialogAG);
+        Glide.with(context).load(R.drawable.btn_academic1).into(iv_a_dialogAG);
+        Glide.with(context).load(R.drawable.btn_general1).into(iv_g_dialogAG);
 
         tv_title_dialogAG.setTextSize((int) (dm.widthPixels*0.02));
 

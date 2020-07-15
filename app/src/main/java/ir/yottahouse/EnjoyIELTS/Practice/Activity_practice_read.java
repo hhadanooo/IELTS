@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Random;
 
 import ir.yottahouse.EnjoyIELTS.CustomView.CustomViewItem;
+import ir.yottahouse.EnjoyIELTS.MainActivity;
 import ir.yottahouse.EnjoyIELTS.R;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
@@ -496,6 +497,7 @@ public class Activity_practice_read extends AppCompatActivity {
             public void onClick(View view) {
 
 
+                Toast.makeText(Activity_practice_read.this,"Check Done.Now you can see the answers!",Toast.LENGTH_LONG).show();
 
                 String text = tv_text.getText().toString();
                 int from = 0;
