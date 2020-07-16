@@ -48,15 +48,19 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal"
+                    android:textAlignment="textStart"
                     android:textColor="#000"
-                    android:id="@+id/tv_TitleLogo_practiceBL"/>
+                    android:id="@+id/tv_TitleLogo_practiceBL"
+                    tools:ignore="RtlCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:id="@+id/tv_PathLogo_practiceBL"
-                    android:layout_marginBottom="10dp"/>
+                    android:textAlignment="textStart"
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="RtlCompat" />
 
             </LinearLayout>
 
@@ -115,7 +119,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="00:00"
-                                android:id="@+id/tv_time_playerPBL"/>
+                                android:textAlignment="textStart"
+                                android:id="@+id/tv_time_playerPBL"
+                                tools:ignore="RtlCompat" />
 
 
                         </LinearLayout>

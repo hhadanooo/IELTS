@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Test.ActivityTestWrite"
+    android:layoutDirection="ltr"
     android:background="@drawable/background">
 
     <RelativeLayout
@@ -42,14 +43,18 @@
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#000"
-                android:id="@+id/Activity_test_write_tv_TitleLogo_SimpleText"/>
+                android:textAlignment="center"
+                android:id="@+id/Activity_test_write_tv_TitleLogo_SimpleText"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:layout_width="wrap_content"
+                android:textAlignment="textStart"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/Activity_test_Write_tv_PathLogo_SimpleText"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
@@ -58,128 +63,142 @@
 
 
 
-    <RelativeLayout
-        android:id="@+id/activity_test_write_rel_main_page"
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/dorw_background_customviewitem"
         android:layout_below="@id/activity_test_Write_rel_body"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        >
 
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="@color/colorPrimary"
-            android:id="@+id/activity_test_write_rel_title_main_page">
-            <WebView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/activity_test_write_webview_title"
-                tools:ignore="WebViewLayout" />
-
-        </RelativeLayout>
-
-
-        <ImageView
-            android:id="@+id/activity_test_write_img_see_example"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_alignRight="@id/activity_test_write_rel_title_main_page"
-            android:layout_below="@id/activity_test_write_rel_title_main_page"
-           />
 
 
         <RelativeLayout
+            android:id="@+id/activity_test_write_rel_main_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/Activity_test_write_rel_edit_text_main_page"
-            android:layout_below="@id/activity_test_write_img_see_example"
-            android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true"
-            android:background="#DAE3E4"
-            >
+            android:background="@drawable/dorw_background_customviewitem"
+           >
 
-            <ir.hhadanooo.ielts.CustomView.CustomEditText
 
-                android:layout_marginTop="5dp"
-                android:id="@+id/activity_test_write_edit_text_main_page"
-
-                android:background="#DAE3E4"
-
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:textColor="#3C3737"
-
                 android:layout_height="wrap_content"
-                android:padding="3dp"
-                android:lines="40"
-                android:maxLines="40"
-                android:textAlignment="viewStart"
-                android:gravity="start"
-                android:maxLength="400"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimary"
+                android:id="@+id/activity_test_write_rel_title_main_page">
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/activity_test_write_webview_title"
+                    tools:ignore="WebViewLayout" />
+
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/activity_test_write_img_see_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignRight="@id/activity_test_write_rel_title_main_page"
+                android:layout_below="@id/activity_test_write_rel_title_main_page"
                 />
 
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Activity_test_write_rel_edit_text_main_page"
+                android:layout_below="@id/activity_test_write_img_see_example"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:background="#DAE3E4"
+                >
+
+                <ir.yottahouse.EnjoyIELTS.CustomView.CustomEditText
+
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/activity_test_write_edit_text_main_page"
+
+                    android:background="#DAE3E4"
+
+                    android:layout_width="wrap_content"
+                    android:textColor="#3C3737"
+
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:lines="40"
+                    android:maxLines="40"
+                    android:textAlignment="viewStart"
+                    android:gravity="start"
+                    android:maxLength="400"
+                    />
+
+            </RelativeLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/activity_test_write_lin_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/Activity_test_write_rel_edit_text_main_page"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activity_test_write_img_shareanswer"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/activity_test_write_img_submit"
+                    android:layout_marginLeft="15dp"/>
+
+
+            </LinearLayout>
+
+
+
+
+            <RelativeLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/activity_test_write_lin_button"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activity_test_write_img_timer"
+
+                    android:layout_alignParentLeft="true"/>
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/activity_test_write_tv_timer"
+                    android:layout_toRightOf="@+id/activity_test_write_img_timer"
+                    android:layout_marginLeft="5dp"
+                    android:textAlignment="textStart"
+                    android:text="60:00"/>
+
+            </RelativeLayout>
         </RelativeLayout>
 
 
+    </ScrollView>
 
-
-        <LinearLayout
-            android:id="@+id/activity_test_write_lin_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/Activity_test_write_rel_edit_text_main_page"
-            android:layout_marginTop="10dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/activity_test_write_img_shareanswer"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:id="@+id/activity_test_write_img_submit"
-                android:layout_marginLeft="15dp"/>
-
-
-        </LinearLayout>
-
-
-
-
-        <RelativeLayout
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_below="@id/activity_test_write_lin_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/activity_test_write_img_timer"
-
-                android:layout_alignParentLeft="true"/>
-            <TextView
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/activity_test_write_tv_timer"
-                android:layout_toRightOf="@+id/activity_test_write_img_timer"
-                android:layout_marginLeft="5dp"
-                android:text="60:00"/>
-
-        </RelativeLayout>
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

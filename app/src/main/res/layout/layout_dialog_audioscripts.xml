@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="15dp"
+    android:layoutDirection="ltr"
     android:background="@drawable/dialog_bg">
 
 
@@ -15,7 +17,9 @@
             android:layout_height="wrap_content"
             android:background="#dee4de"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/tv_audioScripts"/>
+            android:textAlignment="textStart"
+            android:id="@+id/tv_audioScripts"
+            tools:ignore="RtlCompat" />
     </ScrollView>
 
 

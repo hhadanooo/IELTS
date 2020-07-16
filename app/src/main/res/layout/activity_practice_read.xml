@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Practice.Activity_practice_read"
+    android:layoutDirection="ltr"
     android:background="@drawable/background">
 
     <RelativeLayout
@@ -42,14 +43,18 @@
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#000"
-                android:id="@+id/Activity_practice_read_tv_TitleLogo_SimpleText"/>
+                android:textAlignment="textStart"
+                android:id="@+id/Activity_practice_read_tv_TitleLogo_SimpleText"
+                tools:ignore="RtlCompat" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/Activity_practice_read_tv_PathLogo_SimpleText"
-                android:layout_marginBottom="10dp"/>
+                android:textAlignment="textStart"
+                android:layout_marginBottom="10dp"
+                tools:ignore="RtlCompat" />
 
         </LinearLayout>
 
@@ -79,6 +84,7 @@
                 android:padding="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAlignment="textStart"
                 android:id="@+id/activity_practice_read_tv_title_main_page"/>
 
 
@@ -91,7 +97,7 @@
             android:layout_below="@id/activty_practice_read_rel_title"
             android:layout_marginTop="8dp"
             android:textColor="#1377CF"
-            android:text="0/4"
+            android:textAlignment="textStart"
             android:layout_centerHorizontal="true"/>
 
 
@@ -111,6 +117,7 @@
 
                     android:padding="12dp"
                     android:layout_width="wrap_content"
+                    android:textAlignment="textStart"
                     android:layout_height="wrap_content"
                     android:id="@+id/activity_practice_read_tv_text"/>
             </ScrollView>
@@ -139,6 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/activity_practice_read_tv_timer"
+                android:textAlignment="textStart"
                 android:layout_toRightOf="@id/activity_practice_read_img_timer"
                 android:layout_marginLeft="5dp"
                 android:text="60:00"/>

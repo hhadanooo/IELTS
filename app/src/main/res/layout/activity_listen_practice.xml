@@ -48,15 +48,19 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_gravity="center_horizontal"
+                    android:textAlignment="textStart"
                     android:textColor="#000"
-                    android:id="@+id/tv_TitleLogo_practiceL"/>
+                    android:id="@+id/tv_TitleLogo_practiceL"
+                    tools:ignore="RtlCompat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:textAlignment="textStart"
                     android:id="@+id/tv_PathLogo_practiceL"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"
+                    tools:ignore="RtlCompat" />
 
             </LinearLayout>
 
@@ -115,14 +119,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:id="@+id/tv_parts_playerPL"
-                                android:layout_marginBottom="3dp"/>
+                                android:textAlignment="textStart"
+                                android:layout_marginBottom="3dp"
+                                tools:ignore="RtlCompat" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="00:00"
-                                android:id="@+id/tv_time_playerPL"/>
+                                android:textAlignment="textStart"
+                                android:id="@+id/tv_time_playerPL"
+                                tools:ignore="RtlCompat" />
 
 
                         </LinearLayout>
@@ -206,7 +214,10 @@
                     android:background="#dee4de"
                     android:scrollbars="vertical"
                     android:layout_gravity="center_horizontal"
-                    android:id="@+id/tv_PracticeLResult"/>
+                    android:id="@+id/tv_PracticeLResult"
+                    android:textAlignment="textStart"
+                    tools:ignore="RtlCompat" />
+
 
             </LinearLayout>
 
