@@ -67,7 +67,6 @@ public class DialogENH {
                     i.putExtra("Type1","type1");
                     i.putExtra("Listen","listen");
                     dialog.dismiss();
-
                     context.startActivity(i);
                 }else if (intent.equals("Type2")){
                     Intent i = new Intent(context, Activity_Practice.class);

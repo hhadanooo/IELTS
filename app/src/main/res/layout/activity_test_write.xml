@@ -87,13 +87,15 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:background="@color/colorPrimary"
+                android:background="#dee4de"
+                android:padding="2dp"
                 android:id="@+id/activity_test_write_rel_title_main_page">
                 <WebView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/activity_test_write_webview_title"
-                    tools:ignore="WebViewLayout" />
+                    tools:ignore="WebViewLayout"
+                    />
 
             </RelativeLayout>
 
@@ -183,15 +185,14 @@
                     android:id="@+id/activity_test_write_img_timer"
 
                     android:layout_alignParentLeft="true"/>
-                <TextView
+                <Chronometer
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/activity_test_write_tv_timer"
                     android:layout_toRightOf="@+id/activity_test_write_img_timer"
                     android:layout_marginLeft="5dp"
-                    android:textAlignment="textStart"
-                    android:text="60:00"/>
+                    android:textAlignment="textStart" />
 
             </RelativeLayout>
         </RelativeLayout>
