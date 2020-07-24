@@ -165,7 +165,8 @@ public class ActivityTestWrite extends AppCompatActivity {
             mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
             mtg.setPointer(new Pointer())
                     .setToolTip( new ToolTip()
-                            .setDescription("... to MrBool website!!")
+                            .setTextColor(Color.parseColor("#212122"))
+                            .setDescription("You can write your answer here")
                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
                             .setShadow(true).setGravity(Gravity.BOTTOM ))
                     .setOverlay(new Overlay()) ;

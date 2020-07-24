@@ -119,7 +119,7 @@ public class CustomSlideChallenge extends LinearLayout {
         lay_tv_question_chlng.getLayoutParams().width = (int) (dm.widthPixels*.75);
         lay_tv_question_chlng.getLayoutParams().height = (int) (dm.widthPixels*.48);
 
-        tv_question_chlng.setTextSize((int) (dm.widthPixels*.016));
+        tv_question_chlng.setTextSize((int) (dm.widthPixels*.019));
         tv_question_chlng.setText(question);
 
         iv_result_A_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
@@ -161,7 +161,7 @@ public class CustomSlideChallenge extends LinearLayout {
         Glide.with(this).load(R.drawable.next_arrow_icon).into(iv_next_chlng);
 
         iv_Tick_check_chlng.getLayoutParams().width = (int) (dm.widthPixels*.12);
-        iv_Tick_check_chlng.getLayoutParams().height = (int) (dm.widthPixels*.12);
+        iv_Tick_check_chlng.getLayoutParams().height = (int) (dm.widthPixels*.15);
         iv_Tick_check_chlng.setEnabled(false);
 
 
@@ -381,7 +381,7 @@ public class CustomSlideChallenge extends LinearLayout {
         iv_next_chlng.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChallengeActivity.next_page_viewPager();
+                ChallengeActivity.next_page_viewPager(activity);
             }
         });
 

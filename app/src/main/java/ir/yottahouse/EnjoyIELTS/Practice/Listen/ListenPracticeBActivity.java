@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
@@ -29,6 +30,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -83,19 +85,44 @@ public class ListenPracticeBActivity extends AppCompatActivity {
         showHelp1 = showHelppp.getBoolean("et_PracticeBL" , false);
         initActionBar();
         init();
-        String intent = "text 1";
-        String intent1 = "easy";
-        int pageNum = Integer.parseInt(intent.substring(intent.length()-1));
-
-        //Log.i("pagenum" , "("+pageNum+")");
 
 
+
+        String intent1 = "";
+        if (getIntent().getExtras().getString("Easy") != null){
+            intent1 = "easy";
+        }else if (getIntent().getExtras().getString("Normal") != null){
+            intent1 = "normal";
+        }else if(getIntent().getExtras().getString("Hard") != null){
+            intent1 = "hard";
+        }
+
+
+
+
+
+        File pushe = new File(getFilesDir().
+                getAbsolutePath()+"/ielts/listening/practice/" +
+                "short items/"+intent1);
+        File[] f = pushe.listFiles();
+
+        //Toast.makeText(this, ""+f.length, Toast.LENGTH_LONG).show();
+
+        ArrayList<String> nameFile = new ArrayList<>();
+        for (int i = 1; i <= f.length; i++){
+            nameFile.add(f[(i-1)].getName());
+            Log.i("asfafa" , ""+nameFile);
+        }
+        Collections.shuffle(nameFile);
+
+       // Toast.makeText(this, ""+intent1, Toast.LENGTH_SHORT).show();
         mPlayer = new MediaPlayer();
         try {
 
+
             FileInputStream fileInputStream = new FileInputStream(getFilesDir().
                     getAbsolutePath()+"/ielts/listening/practice/" +
-                    "short items/"+intent1+"/"+getIntent().getExtras().getString("NameFile")+"/audio.mp3");
+                    "short items/"+intent1+"/"+ nameFile.get(0) +"/audio.mp3");
             mPlayer.setDataSource(fileInputStream.getFD());
             mPlayer.prepare();
         } catch (IOException e) {
@@ -151,7 +178,8 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
         File file = new File(getFilesDir().
                 getAbsolutePath()+"/ielts/listening/practice/" +
-                "transcription/"+intent1+"/"+getIntent().getExtras().getString("NameFile")+"/answer.txt");
+                "short items/"+intent1+"/"+ nameFile.get(0)+"/answer.txt");
+
 
         final StringBuilder text = new StringBuilder();
         try {
@@ -168,58 +196,62 @@ public class ListenPracticeBActivity extends AppCompatActivity {
         iv_checkAnswer_playerPBL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iv_checkAnswer_playerPBL.setEnabled(false);
-                String result  = String.valueOf(text);
-                answerList.clear();
-                String test = et_PracticeBL.getText().toString()+" ";
-                String[] results = result.split(" ");
-                List<String> lis = Arrays.asList(results);
-                float darsad =  (100f/lis.size());
-                int ttrue = 0;
-                float d = 0;
-                test = test.replace(   "\n" , " " );
-                for (int i = 0; i < lis.size() ;i++ ){
-                    if (test.contains(lis.get(i)+" ")){
-                        ttrue++;
-                        d = d+darsad;
-                        if (ttrue == lis.size() ){
-                            d = 100;
+                //Toast.makeText(ListenPracticeBActivity.this, ""+text, Toast.LENGTH_SHORT).show();
+                if (!et_PracticeBL.getText().toString().equals("")){
+                    iv_checkAnswer_playerPBL.setEnabled(false);
+                    String result  = String.valueOf(text);
+                    answerList.clear();
+                    String test = et_PracticeBL.getText().toString()+" ";
+                    String[] results = result.split(" ");
+                    List<String> lis = Arrays.asList(results);
+                    float darsad =  (100f/lis.size());
+                    int ttrue = 0;
+                    float d = 0;
+                    test = test.replace(   "\n" , " " );
+                    for (int i = 0; i < lis.size() ;i++ ){
+                        if (test.contains(lis.get(i)+" ")){
+                            ttrue++;
+                            d = d+darsad;
+                            if (ttrue == lis.size() ){
+                                d = 100;
+                            }
+                            answerList.add(lis.get(i));
+                            test = test.replaceFirst(   lis.get(i) , "true01" );
+                            //Log.i("tesssst" , ""+test);
+                            finalD = (int)d;
                         }
-                        answerList.add(lis.get(i));
-                        test = test.replaceFirst(   lis.get(i) , "true01" );
-                        //Log.i("tesssst" , ""+test);
-                        finalD = (int)d;
                     }
-                }
                /* Toast.makeText(ListenPracticeBActivity.this, " number of true answer : "
                         +ttrue+"\n number of answer : "+lis.size()+"\n percentage of true answer : "+d+"%", Toast.LENGTH_LONG).show();*/
 
 
-                if (ttrue == lis.size() ){
-                    final Snackbar snackbar;
-                    snackbar = Snackbar.make(v, " results true", Snackbar.LENGTH_LONG);
-                    snackbar.setAction("ok", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            snackbar.dismiss();
-                        }
-                    });
-                    snackbar.getView().setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-                    snackbar.show();
-                }else {
-                    final Snackbar snackbar;
-                    snackbar = Snackbar.make(v, " results is false.\n true results : "+result, Snackbar.LENGTH_INDEFINITE);
-                    snackbar.setAction("ok", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            snackbar.dismiss();
-                        }
-                    });
-                    snackbar.getView().setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                    snackbar.show();
+                    if (ttrue == lis.size() ){
+                        final Snackbar snackbar;
+                        snackbar = Snackbar.make(v, " results true", Snackbar.LENGTH_LONG);
+                        snackbar.setAction("ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                snackbar.dismiss();
+                            }
+                        });
+                        snackbar.getView().setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                        snackbar.show();
+                    }else {
+                        final Snackbar snackbar;
+                        snackbar = Snackbar.make(v, " results is false.\n true results : "+result, Snackbar.LENGTH_INDEFINITE);
+                        snackbar.setAction("ok", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                snackbar.dismiss();
+                            }
+                        });
+                        snackbar.getView().setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                        snackbar.show();
+                    }
+
+
+
                 }
-
-
 
             }
         });
@@ -316,7 +348,7 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
 
         lay_playerPBL.getLayoutParams().width = (int) (dm.widthPixels*.8);
-        lay_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.275);
+        lay_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.23);
 
         lay_box_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.23);
 
@@ -331,14 +363,14 @@ public class ListenPracticeBActivity extends AppCompatActivity {
 
         //iv_next_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.18);
         iv_next_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.15);
-        Glide.with(this).load(R.drawable.next_icon).into(iv_next_playerPBL);
+        Glide.with(this).load(R.drawable.next_iconfalse).into(iv_next_playerPBL);
 
         //view_space_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.25);
         view_space_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.16);
 
         iv_ic_org_playerPBL.getLayoutParams().width = (int) (dm.widthPixels*.21);
         iv_ic_org_playerPBL.getLayoutParams().height = (int) (dm.widthPixels*.21);
-        Glide.with(this).load(R.drawable.icon).into(iv_ic_org_playerPBL);
+        Glide.with(this).load(R.drawable.logo).into(iv_ic_org_playerPBL);
 
         et_PracticeBL.getLayoutParams().width = (int) (dm.widthPixels*.75);
         et_PracticeBL.getLayoutParams().height = (int) (dm.widthPixels*.4);
@@ -360,6 +392,7 @@ public class ListenPracticeBActivity extends AppCompatActivity {
             mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
             mtg.setPointer(new Pointer())
                     .setToolTip( new ToolTip()
+                            .setTextColor(Color.parseColor("#212122"))
                             .setDescription("Play and listen")
                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
                             .setShadow(true).setGravity(Gravity.TOP  ))
@@ -381,6 +414,7 @@ public class ListenPracticeBActivity extends AppCompatActivity {
                         mtg1 = TourGuide.init(ListenPracticeBActivity.this).with(TourGuide.Technique.CLICK);
                         mtg1.setPointer(new Pointer())
                                 .setToolTip( new ToolTip()
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setDescription("Listen and write here")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))

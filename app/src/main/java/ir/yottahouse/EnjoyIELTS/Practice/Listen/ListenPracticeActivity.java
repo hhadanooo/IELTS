@@ -91,19 +91,22 @@ public class ListenPracticeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listen_practice);
 
-
+        String intent1 = "";
         if(getIntent().getExtras().getString("Easy") != null)
         {
            secPlay = 5;
            timePart = 5;
+            intent1 = "easy";
         }else if(getIntent().getExtras().getString("Normal") != null)
         {
             secPlay = 7;
             timePart = 7;
+            intent1 = "normal";
         }else if(getIntent().getExtras().getString("Hard") != null)
         {
             secPlay = 10;
             timePart = 10;
+            intent1 = "hard";
         }
 
         CheckIntent();
@@ -119,16 +122,12 @@ public class ListenPracticeActivity extends AppCompatActivity {
         initActionBar();
         init();
 
-
-        String intent = "text 1";
-        String intent1 = "easy";
-        int pageNum = Integer.parseInt(intent.substring(intent.length()-1));
-
-        //Log.i("pagenum" , "("+pageNum+")");
-
+        //Toast.makeText(this, ""+intent1, Toast.LENGTH_SHORT).show();
 
         mPlayer = new MediaPlayer();
         try {
+
+
 
             FileInputStream fileInputStream = new FileInputStream(getFilesDir().
                     getAbsolutePath()+"/ielts/listening/practice/" +
@@ -404,7 +403,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
         File file = new File(getFilesDir().
                 getAbsolutePath()+"/ielts/listening/practice/" +
-                "short items/"+intent1+"/"+getIntent().getExtras().getString("NameFile")+"/answer.txt");
+                "transcription/"+intent1+"/"+getIntent().getExtras().getString("NameFile")+"/answer.txt");
 
         final StringBuilder text = new StringBuilder();
         try {
@@ -574,7 +573,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
 
         lay_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.8);
-        lay_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.275);
+        lay_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.23);
 
 
         lay_box_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.23);
@@ -603,7 +602,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
 
         iv_ic_org_playerPL.getLayoutParams().width = (int) (dm.widthPixels*.21);
         iv_ic_org_playerPL.getLayoutParams().height = (int) (dm.widthPixels*.21);
-        Glide.with(this).load(R.drawable.icon).into(iv_ic_org_playerPL);
+        Glide.with(this).load(R.drawable.logo).into(iv_ic_org_playerPL);
 
         et_PracticeL.getLayoutParams().width = (int) (dm.widthPixels*.75);
         et_PracticeL.getLayoutParams().height = (int) (dm.widthPixels*.4);
@@ -631,6 +630,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
             mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
             mtg.setPointer(new Pointer())
                     .setToolTip( new ToolTip()
+                            .setTextColor(Color.parseColor("#212122"))
                             .setDescription("Repeat up to three times")
                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
                             .setShadow(true).setGravity(Gravity.TOP  ))
@@ -652,6 +652,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
                         mtg1 = TourGuide.init(ListenPracticeActivity.this).with(TourGuide.Technique.CLICK);
                         mtg1.setPointer(new Pointer())
                                 .setToolTip( new ToolTip()
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setDescription("Go to next section")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP |Gravity.LEFT ))
@@ -669,6 +670,7 @@ public class ListenPracticeActivity extends AppCompatActivity {
                         mtg2 = TourGuide.init(ListenPracticeActivity.this).with(TourGuide.Technique.CLICK);
                         mtg2.setPointer(new Pointer())
                                 .setToolTip(new ToolTip()
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setDescription("Listen and write here")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))

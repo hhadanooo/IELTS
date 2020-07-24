@@ -170,7 +170,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
+                        android:layout_centerVertical="true"
                         android:id="@+id/iv_ic_org_playerTL"
                         android:layout_marginStart="18dp"
 

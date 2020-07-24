@@ -6,6 +6,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -72,6 +73,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
     int num_quiz = 10;
     int ans_quiz = 0;
+    public static int sol = 0;
 
 
     @Override
@@ -121,7 +123,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
 
 
-
+        sol= 10-solveQuiz;
 
     }
 
@@ -146,9 +148,14 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
 
     }
 
-    public static void next_page_viewPager() {
+    public static void next_page_viewPager(Context context) {
+
+        if (sol-1 == ViewPager_Challenge.getCurrentItem()){
+            Toast.makeText(context, "This is last slide!", Toast.LENGTH_SHORT).show();
+        }
         ViewPager_Challenge.setCurrentItem(ViewPager_Challenge.getCurrentItem()+1);
     }
+
 
     @SuppressLint({"CommitPrefEdits", "ClickableViewAccessibility"})
     public void makeViewForSlider(){
@@ -173,7 +180,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String line;
                 while ((line = br.readLine()) != null) {
-                    text.append(line);
+                    text.append(line+"\n");
                     //text.append('\n');
                 }
                 br.close() ;
@@ -222,6 +229,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
                 mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
                 mtg.setPointer(new Pointer())
                         .setToolTip( new ToolTip()
+                                .setTextColor(Color.parseColor("#212122"))
                                 .setDescription("Choose correct answers")
                                 .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                 .setShadow(true).setGravity(Gravity.TOP  ))
@@ -243,6 +251,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
                             mtg1 = TourGuide.init(ChallengeActivity.this).with(TourGuide.Technique.CLICK);
                             mtg1.setPointer(new Pointer())
                                     .setToolTip( new ToolTip()
+                                            .setTextColor(Color.parseColor("#212122"))
                                             .setDescription("Check your answer")
                                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                             .setShadow(true).setGravity(Gravity.TOP |Gravity.LEFT ))
@@ -260,6 +269,7 @@ public class ChallengeActivity extends AppCompatActivity implements ViewPager.On
                             mtg2 = TourGuide.init(ChallengeActivity.this).with(TourGuide.Technique.CLICK);
                             mtg2.setPointer(new Pointer())
                                     .setToolTip(new ToolTip()
+                                            .setTextColor(Color.parseColor("#212122"))
                                             .setDescription("Next question")
                                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                             .setShadow(true).setGravity(Gravity.TOP | Gravity.LEFT))

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -39,36 +40,43 @@ public class DialogChlngShow {
 
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.layout_dialog_chlng);
-        Objects.requireNonNull(dialog.getWindow()).setLayout((int) (dm.widthPixels*.8)
+        Objects.requireNonNull(dialog.getWindow()).setLayout((int) (dm.widthPixels*.9)
                 , ViewGroup.LayoutParams.WRAP_CONTENT );
         tv_title_dialogChlng = dialog.findViewById(R.id.tv_title_dialogChlng);
         tv_msg_dialogChlng = dialog.findViewById(R.id.tv_msg_dialogChlng);
         iv_start_dialogChlng = dialog.findViewById(R.id.iv_start_dialogChlng);
         tv_numQuiz_dialogChlng = dialog.findViewById(R.id.tv_numQuiz_dialogChlng);
-        Glide.with(context).load(R.drawable.btn_start).into(iv_start_dialogChlng);
+        Glide.with(context).load(R.drawable.buttondiachlng).into(iv_start_dialogChlng);
 
-        tv_title_dialogChlng.setTextSize((int) (dm.widthPixels*0.025));
-        tv_title_dialogChlng.setText("Complete The Steps and Test Yourself ");
+        Typeface font = Typeface.createFromAsset(context.getAssets(), "fg.ttf");
 
-        tv_msg_dialogChlng.setTextSize((int) (dm.widthPixels*0.012));
+        tv_title_dialogChlng.setTypeface(font);
+        tv_msg_dialogChlng.setTypeface(font);
+        tv_numQuiz_dialogChlng.setTypeface(font);
 
-        tv_numQuiz_dialogChlng.setTextSize((int) (dm.widthPixels*0.012));
+        tv_title_dialogChlng.setTextSize((int) (dm.widthPixels*0.012));
+        tv_title_dialogChlng.setText("Complete the steps and test yourself ");
+
+        tv_msg_dialogChlng.setTextSize((int) (dm.widthPixels*0.018));
+
+        tv_numQuiz_dialogChlng.setTextSize((int) (dm.widthPixels*0.018));
         publicSpf = context.getSharedPreferences("numberQuiz" , MODE_PRIVATE);
         solveQuiz = publicSpf.getInt("numQuizSolve" , 0);
         int numQuizSolve = 10-solveQuiz;
         if (numQuizSolve == 0){
             tv_numQuiz_dialogChlng.setText("("+numQuizSolve+"/10)");
-            tv_msg_dialogChlng.setText("Not Question For Answer Today!");
+            tv_msg_dialogChlng.setText("Not question for answer today!");
+            Glide.with(context).load(R.drawable.buttondiachlngfalse).into(iv_start_dialogChlng);
             iv_start_dialogChlng.setEnabled(false);
         }else{
             tv_numQuiz_dialogChlng.setText("("+numQuizSolve+"/10)");
-            tv_msg_dialogChlng.setText("Are You Ready ?");
+            tv_msg_dialogChlng.setText("Are you ready ?");
         }
 
 
 
-        iv_start_dialogChlng.getLayoutParams().width = (int) (dm.widthPixels*0.27);
-        iv_start_dialogChlng.getLayoutParams().height = (int) (dm.widthPixels*0.1);
+        iv_start_dialogChlng.getLayoutParams().width = (int) (dm.widthPixels*0.45);
+        iv_start_dialogChlng.getLayoutParams().height = (int) (dm.widthPixels*0.16);
 
 
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

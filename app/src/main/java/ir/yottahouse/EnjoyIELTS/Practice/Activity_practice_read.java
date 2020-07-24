@@ -402,6 +402,7 @@ public class Activity_practice_read extends AppCompatActivity {
             mtg.setPointer(new Pointer())
                     .setToolTip( new ToolTip()
                             .setDescription("Try to find the answers in the text")
+                            .setTextColor(Color.parseColor("#212122"))
                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
                             .setShadow(true).setGravity(Gravity.TOP ))
                     .setOverlay(new Overlay()) ;
@@ -422,6 +423,7 @@ public class Activity_practice_read extends AppCompatActivity {
                         mtg1 = TourGuide.init(Activity_practice_read.this).with(TourGuide.Technique.CLICK);
                         mtg1.setPointer(new Pointer())
                                 .setToolTip( new ToolTip()
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setDescription("Number of answers")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))

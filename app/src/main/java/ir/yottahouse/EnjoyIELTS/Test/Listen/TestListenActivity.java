@@ -123,11 +123,6 @@ public class TestListenActivity extends AppCompatActivity {
 
 
 
-
-
-        //Log.i("pagenum" , "("+pageNum+")");
-
-
         mPlayer = new MediaPlayer();
         try {
 
@@ -146,52 +141,64 @@ public class TestListenActivity extends AppCompatActivity {
         iv_play_playerTL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                iv_play_playerTL.setEnabled(false);
-                mPlayer.start();
-                seekBar_playerTL.setMax(duration);
-                TestListenActivity.this.runOnUiThread(new Runnable() {
+               // iv_play_playerTL.setEnabled(false);
+                if (!mPlayer.isPlaying()){
+                    seekBar_playerTL.setEnabled(true);
+                    iv_ic_forward_playerTL.setEnabled(true);
+                    iv_ic_backward_playerTL.setEnabled(true);
 
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void run() {
-                        if(mPlayer != null){
-                            int mCurrentPosition = mPlayer.getCurrentPosition() / 1000;
-                            seekBar_playerTL.setProgress(mCurrentPosition);
-                            if (duration > mCurrentPosition){
-                                if(mCurrentPosition < 60){
-                                    if (mCurrentPosition < 10){
-                                        tv_time_playerTL.setText("00:0"+mCurrentPosition);
+                    Glide.with(iv_play_playerTL).load(R.drawable.iconpause).into(iv_play_playerTL);
+                    mPlayer.start();
+                    seekBar_playerTL.setMax(duration);
+                    TestListenActivity.this.runOnUiThread(new Runnable() {
+
+                        @SuppressLint("SetTextI18n")
+                        @Override
+                        public void run() {
+                            if(mPlayer != null){
+                                int mCurrentPosition = mPlayer.getCurrentPosition() / 1000;
+                                seekBar_playerTL.setProgress(mCurrentPosition);
+                                if (duration > mCurrentPosition){
+                                    if(mCurrentPosition < 60){
+                                        if (mCurrentPosition < 10){
+                                            tv_time_playerTL.setText("00:0"+mCurrentPosition);
+                                        }else {
+                                            tv_time_playerTL.setText("00:"+mCurrentPosition);
+                                        }
                                     }else {
-                                        tv_time_playerTL.setText("00:"+mCurrentPosition);
+                                        sec = (mCurrentPosition%60);
+                                        min = (mCurrentPosition-sec)/60;
+                                        if (min < 10 ){
+                                            if (sec < 10){
+                                                tv_time_playerTL.setText("0"+min+":0"+sec);
+                                            }else {
+                                                tv_time_playerTL.setText("0"+min+":"+sec);
+                                            }
+                                        }else {
+                                            if (sec < 10){
+                                                tv_time_playerTL.setText(min+":0"+sec);
+                                            }else {
+                                                tv_time_playerTL.setText(min+":"+sec);
+                                            }
+                                        }
                                     }
+                                    mHandler.removeCallbacksAndMessages(null);
                                 }else {
-                                    sec = (mCurrentPosition%60);
-                                    min = (mCurrentPosition-sec)/60;
-                                    if (min < 10 ){
-                                        if (sec < 10){
-                                            tv_time_playerTL.setText("0"+min+":0"+sec);
-                                        }else {
-                                            tv_time_playerTL.setText("0"+min+":"+sec);
-                                        }
-                                    }else {
-                                        if (sec < 10){
-                                            tv_time_playerTL.setText(min+":0"+sec);
-                                        }else {
-                                            tv_time_playerTL.setText(min+":"+sec);
-                                        }
-                                    }
-                                }
-                                mHandler.removeCallbacksAndMessages(null);
-                            }else {
 
-                                iv_ic_forward_playerTL.setEnabled(false);
-                                iv_ic_backward_playerTL.setEnabled(false);
+                                    iv_ic_forward_playerTL.setEnabled(false);
+                                    iv_ic_backward_playerTL.setEnabled(false);
+                                }
+                                //Log.i("timerT" , "on");
                             }
-                            //Log.i("timerT" , "on");
+                            mHandler.postDelayed(this, 1000);
                         }
-                        mHandler.postDelayed(this, 1000);
-                    }
-                });
+                    });
+                }else {
+                    mPlayer.pause();
+                    Glide.with(iv_play_playerTL).load(R.drawable.play_icon).into(iv_play_playerTL);
+                }
+
+
             }
         });
 
@@ -200,7 +207,9 @@ public class TestListenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(mPlayer != null){
-                    forwardSong(10000);
+                    if ((mPlayer.getDuration()/1000)-11 >= (mPlayer.getCurrentPosition()/1000)){
+                        forwardSong(10000);
+                    }
 
                 }
             }
@@ -209,7 +218,10 @@ public class TestListenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(mPlayer != null){
-                    rewindSong(10000);
+                    if ((mPlayer.getDuration()/1000)-11 >= (mPlayer.getCurrentPosition()/1000)){
+                        rewindSong(10000);
+                    }
+
 
                 }
             }
@@ -287,7 +299,9 @@ public class TestListenActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        mPlayer.stop();
+        mPlayer.pause();
+        Glide.with(iv_play_playerTL).load(R.drawable.play_icon).into(iv_play_playerTL);
+
     }
 
     @SuppressLint({"ClickableViewAccessibility", "SetJavaScriptEnabled"})
@@ -310,6 +324,9 @@ public class TestListenActivity extends AppCompatActivity {
         tv_time_playerTL = findViewById(R.id.tv_time_playerTL);
         iv_audioscripts_playerTL = findViewById(R.id.iv_audioscripts_playerTL);
         view_center_see_audio = findViewById(R.id.view_center_see_audio);
+        seekBar_playerTL.setEnabled(false);
+        iv_ic_forward_playerTL.setEnabled(false);
+        iv_ic_backward_playerTL.setEnabled(false);
 
 
         if (!showHelp){
@@ -318,6 +335,7 @@ public class TestListenActivity extends AppCompatActivity {
             mtg = TourGuide.init(this).with(TourGuide.Technique.CLICK);
             mtg.setPointer(new Pointer())
                     .setToolTip( new ToolTip()
+                            .setTextColor(Color.parseColor("#212122"))
                             .setDescription("Play and listen")
                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
                             .setShadow(true).setGravity(Gravity.TOP  ))
@@ -339,6 +357,7 @@ public class TestListenActivity extends AppCompatActivity {
                         mtg1 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
                         mtg1.setPointer(new Pointer())
                                 .setToolTip( new ToolTip()
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setDescription("A few seconds back")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))
@@ -356,6 +375,7 @@ public class TestListenActivity extends AppCompatActivity {
                         mtg2 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
                         mtg2.setPointer(new Pointer())
                                 .setToolTip(new ToolTip()
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setDescription("A few seconds forward")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP|Gravity.LEFT ))
@@ -372,6 +392,7 @@ public class TestListenActivity extends AppCompatActivity {
                         mtg3 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
                         mtg3.setPointer(new Pointer())
                                 .setToolTip(new ToolTip()
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setDescription("Question box (Scroll to see more content)")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))
@@ -388,6 +409,7 @@ public class TestListenActivity extends AppCompatActivity {
                         mtg4 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
                         mtg4.setPointer(new Pointer())
                                 .setToolTip(new ToolTip()
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setDescription("Audioscripts (written versions) of the recordings")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP|Gravity.LEFT ))
@@ -404,6 +426,7 @@ public class TestListenActivity extends AppCompatActivity {
                         mtg5 = TourGuide.init(TestListenActivity.this).with(TourGuide.Technique.CLICK);
                         mtg5.setPointer(new Pointer())
                                 .setToolTip(new ToolTip()
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setDescription("You can write answers here")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))
@@ -445,7 +468,7 @@ public class TestListenActivity extends AppCompatActivity {
 
 
         lay_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.8);
-        lay_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.275);
+        lay_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.23);
 
 
 
@@ -462,7 +485,7 @@ public class TestListenActivity extends AppCompatActivity {
 
         iv_ic_org_playerTL.getLayoutParams().width = (int) (dm.widthPixels*.21);
         iv_ic_org_playerTL.getLayoutParams().height = (int) (dm.widthPixels*.21);
-        Glide.with(this).load(R.drawable.icon).into(iv_ic_org_playerTL);
+        Glide.with(this).load(R.drawable.logo).into(iv_ic_org_playerTL);
 
         iv_time_TestL.getLayoutParams().width = (int) (dm.widthPixels*.1);
         iv_time_TestL.getLayoutParams().height = (int) (dm.widthPixels*.1);
@@ -508,21 +531,35 @@ public class TestListenActivity extends AppCompatActivity {
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
 
-                originalProgress = seekBar.getProgress();
+                //originalProgress = seekBar.getProgress();
             }
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int arg1, boolean fromUser) {
-                if(fromUser){
-                    seekBar.setProgress( originalProgress);
+                if ((mPlayer.getDuration()/1000)-3 <= seekBar.getProgress()){
+                    seekBar.setEnabled(false);
+                    Glide.with(iv_play_playerTL).load(R.drawable.play_icon).into(iv_play_playerTL);
+                    iv_play_playerTL.setEnabled(false);
+                    iv_ic_forward_playerTL.setEnabled(false);
+                    iv_ic_backward_playerTL.setEnabled(false);
+                    tv_time_playerTL.setText("00:00");
+
                 }
+              /*  if(fromUser){
+                        seekBar.setProgress( originalProgress);
+                }*/
+              if (fromUser){
+                  Toast.makeText(TestListenActivity.this, ""+seekBar.getProgress(), Toast.LENGTH_SHORT).show();
+                  mPlayer.seekTo(seekBar.getProgress()*1000);
+              }
+
             }
         });
 
         tv_time_TestL.setTextSize((int) (dm.widthPixels*.015));
 
         et_TestL_Result.getLayoutParams().width = (int) (dm.widthPixels*.75);
-        et_TestL_Result.getLayoutParams().height = (int) (dm.widthPixels*.4);
+        et_TestL_Result.getLayoutParams().height = (int) (dm.widthPixels*.22);
         et_TestL_Result.setOnTouchListener(new View.OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
             @Override

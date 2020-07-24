@@ -65,8 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAlignment="textStart"
+                    android:textColor="#292727"
                     android:id="@+id/tv_question_chlng"
-                    android:text="@string/text"
                     />
 
             </ScrollView>
@@ -208,14 +208,14 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentEnd="true"
                     android:id="@+id/iv_next_chlng"
                     />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
+                    android:layout_centerHorizontal="true"
                     android:id="@+id/iv_Tick_check_chlng"
                     android:background="@drawable/tick"/>
             </RelativeLayout>

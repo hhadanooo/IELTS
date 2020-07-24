@@ -124,7 +124,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         progressDialog_unzip = new ProgressDialog(this);
         getSupportActionBar().hide();
         publicSpf = getSharedPreferences("numberQuiz",MODE_PRIVATE);
@@ -254,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else{
             connected = false;
            Toast.makeText(this, "no Internet Access!", Toast.LENGTH_SHORT).show();
-           finish();
+           //finish();
             if(IELTSZip){
 
                 newDay();
@@ -449,8 +448,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void setTodayQuiz(){
+        File pushe = new File(getFilesDir().
+                getAbsolutePath()+"/ielts/challenge/allquiz");
         ArrayList<Integer> number = new ArrayList<>();
-        for (int i = 1; i <= 20; ++i) number.add(i);
+        for (int i = 1; i <= pushe.listFiles().length; ++i) number.add(i);
         Collections.shuffle(number);
         Log.i("randnum" , ""+number.subList(0 , 10));
 
@@ -952,6 +953,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                        @Override
                        public void run() {
                            progressDialog_unzip.dismiss();
+                           newDay();
                        }
                    },10000);
 
@@ -959,7 +961,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     //
 
                     //deleteRecursive(ZipFile);
-                    newDay();
+
 
                 }else {
 

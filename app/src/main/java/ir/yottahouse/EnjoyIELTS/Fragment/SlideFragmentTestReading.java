@@ -161,6 +161,7 @@ public class SlideFragmentTestReading extends Fragment {
                         mtg.setPointer(new Pointer())
                                 .setToolTip( new ToolTip()
                                         .setDescription("Question box (Scroll to see more content)")
+                                        .setTextColor(Color.parseColor("#212122"))
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))
                                 .setOverlay(new Overlay()) ;
