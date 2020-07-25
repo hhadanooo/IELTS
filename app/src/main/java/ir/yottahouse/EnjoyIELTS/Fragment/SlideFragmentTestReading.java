@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Chronometer;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ import java.util.Objects;
 import ir.yottahouse.EnjoyIELTS.CustomView.CustomViewItem;
 import ir.yottahouse.EnjoyIELTS.R;
 import ir.yottahouse.EnjoyIELTS.Test.ActivityTestRead;
+import ir.yottahouse.EnjoyIELTS.Test.ActivityTestWrite;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
 import tourguide.tourguide.ToolTip;
@@ -41,9 +44,10 @@ public class SlideFragmentTestReading extends Fragment {
     String intent;
 
     RelativeLayout rel_text_and_question;
-    TextView tv_timer;
+    Chronometer tv_timer;
 
     ImageView img_timer,img_see_answer;
+    EditText et_note;
     int num;
 
     long time;
@@ -61,7 +65,8 @@ public class SlideFragmentTestReading extends Fragment {
 
     Handler handler_timer;
     runnable_timer runnable_timer;
-
+    boolean check_chronometer = false;
+    boolean check = false;
 
 
     public static SlideFragmentTestReading newSlide(int Width,int Height,String intent,int num,int num_tab,String TextAnswer1,String TextAnswer2,String TextAnswer3,String filename1,String filename2,String filename3){
@@ -110,6 +115,8 @@ public class SlideFragmentTestReading extends Fragment {
 
 
 
+
+
     }
 
     @Override
@@ -149,7 +156,7 @@ public class SlideFragmentTestReading extends Fragment {
                     if(!ActivityTestRead.CheckStartHandler1)
                     {
                         ActivityTestRead.CheckStartHandler1 = true;
-                        handler_timer.postDelayed(runnable_timer,1);
+                        //handler_timer.postDelayed(runnable_timer,1);
                     }
                     //tab 1 academic
                     File file_html = new File(getContext().getFilesDir().getAbsolutePath() + "/ielts/reading/test/academic/" + Filename1+ "/passage1.html");
@@ -238,10 +245,15 @@ public class SlideFragmentTestReading extends Fragment {
         img_timer = rootview.findViewById(R.id.layout_fragment_img_timer);
 
         tv_timer = rootview.findViewById(R.id.layout_fragment_tv_timer);
+        et_note = rootview.findViewById(R.id.layout_fragment_edit_text_note);
 
+        et_note.getLayoutParams().width = (int) (Width*.80);
+        et_note.getLayoutParams().height = (int)(Height*0.15);
 
         rel_text_and_question.getLayoutParams().width = (int) (Width*.90);
-        rel_text_and_question.getLayoutParams().height = (int)(Height*0.61);
+        webView.getLayoutParams().width = (int) (Width*.90);
+        rel_text_and_question.getLayoutParams().height = (int)(Height*0.46);
+        webView.getLayoutParams().height = (int)(Height*0.46);
 
 
 
@@ -252,6 +264,29 @@ public class SlideFragmentTestReading extends Fragment {
         img_see_answer.getLayoutParams().width = (int) (Width*0.295);
         img_see_answer.getLayoutParams().height = (int) (Height*0.045);
 
+        time = 3600000;
+
+        tv_timer.start();
+
+
+        tv_timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                if(chronometer.getText().toString().equals("60:00") || check_chronometer)
+                {
+                    if(!check_chronometer) check_chronometer = true;
+                    if(check)
+                    {
+                        Glide.with(getContext()).load(getContext().getDrawable(R.drawable.timer_icon)).into(img_timer);
+                        check = false;
+                    }else {
+                        Glide.with(getContext()).load(getContext().getDrawable(R.drawable.timer_iconw)).into(img_timer);
+                        check = true;
+                    }
+                }
+            }
+        });
+
         Glide.with(this).load(R.drawable.timer_icon).into(img_timer);
 
 
@@ -259,8 +294,7 @@ public class SlideFragmentTestReading extends Fragment {
 
     }
     public void SetPropertiesRelBody() {
-        rel_text_and_question.getLayoutParams().width = (int) (Width*.90);
-        rel_text_and_question.getLayoutParams().height = (int)(Height*0.61);
+
         img_timer.getLayoutParams().width = (int) (Width*0.1);
         img_timer.getLayoutParams().height = (int) (Width*0.1);
 
@@ -278,6 +312,7 @@ public class SlideFragmentTestReading extends Fragment {
                 if(num_tab == 1)
                 {
 
+                    /*
                     Dialog dia = new Dialog(getContext());
                     dia.setContentView(R.layout.layout_dialog_audioscripts);
                     TextView tv_audioScripts = dia.findViewById(R.id.tv_audioScripts);
@@ -288,8 +323,17 @@ public class SlideFragmentTestReading extends Fragment {
                     tv_audioScripts.setText(TextAnswer1);
                     dia.show();
 
+                     */
+                    if(!ActivityTestRead.CheckAnswerTab1)
+                    {
+                        ActivityTestRead.CheckAnswerTab1 = true;
+                        et_note.append(TextAnswer1);
+                    }
+
+
                 }else if(num_tab == 2)
                 {
+                    /*
                     Dialog dia = new Dialog(getContext());
                     dia.setContentView(R.layout.layout_dialog_audioscripts);
                     TextView tv_audioScripts = dia.findViewById(R.id.tv_audioScripts);
@@ -299,8 +343,16 @@ public class SlideFragmentTestReading extends Fragment {
                     tv_audioScripts.setTextSize((int) (Width*.015));
                     tv_audioScripts.setText(TextAnswer2);
                     dia.show();
+
+                     */
+                    if(!ActivityTestRead.CheckAnswerTab2)
+                    {
+                        ActivityTestRead.CheckAnswerTab2 = true;
+                        et_note.append(TextAnswer2);
+                    }
                 }else if(num_tab == 3)
                 {
+                    /*
                     Dialog dia = new Dialog(getContext());
                     dia.setContentView(R.layout.layout_dialog_audioscripts);
                     TextView tv_audioScripts = dia.findViewById(R.id.tv_audioScripts);
@@ -310,6 +362,13 @@ public class SlideFragmentTestReading extends Fragment {
                     tv_audioScripts.setTextSize((int) (Width*.015));
                     tv_audioScripts.setText(TextAnswer3);
                     dia.show();
+
+                     */
+                    if(!ActivityTestRead.CheckAnswerTab3)
+                    {
+                        ActivityTestRead.CheckAnswerTab3 = true;
+                        et_note.append(TextAnswer3);
+                    }
                 }
             }
         });
@@ -350,11 +409,6 @@ public class SlideFragmentTestReading extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
 
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser)
-        {
-            ActivityTestRead.CheckStartTimer = true;
-        }else {
-            ActivityTestRead.CheckStartTimer = false;
-        }
+
     }
 }

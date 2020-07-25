@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,8 +32,8 @@ import java.util.List;
 import java.util.Random;
 
 import ir.yottahouse.EnjoyIELTS.CustomView.CustomViewItem;
-import ir.yottahouse.EnjoyIELTS.MainActivity;
 import ir.yottahouse.EnjoyIELTS.R;
+
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
 import tourguide.tourguide.ToolTip;
@@ -49,7 +50,7 @@ public class Activity_practice_read extends AppCompatActivity {
     ImageView img_see_answer;
 
     ImageView img_timer;
-    TextView tv_timer;
+    Chronometer tv_timer;
     long time;
 
     List<String> list_word_in_text,list_num_word_in_text;
@@ -64,6 +65,9 @@ public class Activity_practice_read extends AppCompatActivity {
     boolean showHelp1 = false;
     boolean isShow = false;
     boolean isShow1 = false;
+
+    boolean check_chronometer = false;
+    boolean check = false;
 
 
     @Override
@@ -87,7 +91,26 @@ public class Activity_practice_read extends AppCompatActivity {
         list_num_word_in_text = new ArrayList<>();
 
         time = 3600000;
-        Timer(tv_timer);
+        //Timer(tv_timer);
+        tv_timer.start();
+
+        tv_timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                if(chronometer.getText().toString().equals("60:00") || check_chronometer)
+                {
+                    if(!check_chronometer) check_chronometer = true;
+                    if(check)
+                    {
+                        Glide.with(Activity_practice_read.this).load(Activity_practice_read.this.getDrawable(R.drawable.timer_icon)).into(img_timer);
+                        check = false;
+                    }else {
+                        Glide.with(Activity_practice_read.this).load(Activity_practice_read.this.getDrawable(R.drawable.timer_iconw)).into(img_timer);
+                        check = true;
+                    }
+                }
+            }
+        });
 
     }
 
@@ -138,7 +161,7 @@ public class Activity_practice_read extends AppCompatActivity {
             Random random = new Random();
             int num_rand = random.nextInt(files.length);
 
-            File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy/easy"+(num_rand+1)+"/TextTitleMainPage.txt");
+            File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy/"+files[num_rand].getName()+"/TextTitleMainPage.txt");
 
             try {
 
@@ -156,7 +179,7 @@ public class Activity_practice_read extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            File file_all_word = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy/easy"+(num_rand+1)+"/TextAllWord.txt");
+            File file_all_word = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy/"+files[num_rand].getName()+"/TextAllWord.txt");
 
             try {
 
@@ -174,7 +197,7 @@ public class Activity_practice_read extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            File file_text_answer = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy/easy"+(num_rand+1)+"/TextAnswer.txt");
+            File file_text_answer = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/easy/"+files[num_rand].getName()+"/TextAnswer.txt");
 
             try {
 
@@ -224,8 +247,8 @@ public class Activity_practice_read extends AppCompatActivity {
             File[]files = f.listFiles();
             Random random = new Random();
             int num_rand = random.nextInt(files.length);
-            Toast.makeText(this,files.length+"",Toast.LENGTH_LONG).show();
-            File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal/normal"+(num_rand+1)+"/TextTitleMainPage.txt");
+            //Toast.makeText(this,files.length+"",Toast.LENGTH_LONG).show();
+            File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal/"+files[num_rand].getName()+"/TextTitleMainPage.txt");
 
             try {
 
@@ -243,7 +266,7 @@ public class Activity_practice_read extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            File file_all_word = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal/normal"+(num_rand+1)+"/TextAllWord.txt");
+            File file_all_word = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal/"+files[num_rand].getName()+"/TextAllWord.txt");
 
             try {
 
@@ -261,7 +284,7 @@ public class Activity_practice_read extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            File file_text_answer = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal/normal"+(num_rand+1)+"/TextAnswer.txt");
+            File file_text_answer = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/normal/"+files[num_rand].getName()+"/TextAnswer.txt");
 
             try {
 
@@ -299,8 +322,8 @@ public class Activity_practice_read extends AppCompatActivity {
             File[]files = f.listFiles();
             Random random = new Random();
             int num_rand = random.nextInt(files.length);
-            Toast.makeText(this,files.length+"",Toast.LENGTH_LONG).show();
-            File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/hard"+(num_rand+1)+"/TextTitleMainPage.txt");
+            //Toast.makeText(this,files.length+"",Toast.LENGTH_LONG).show();
+            File file_title_main_page = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/"+files[num_rand].getName()+"/TextTitleMainPage.txt");
 
 
             try {
@@ -319,7 +342,7 @@ public class Activity_practice_read extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            File file_all_word = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/hard"+(num_rand+1)+"/TextAllWord.txt");
+            File file_all_word = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/"+files[num_rand].getName()+"/TextAllWord.txt");
 
             try {
 
@@ -338,7 +361,7 @@ public class Activity_practice_read extends AppCompatActivity {
             }
 
 
-            File file_text_answer = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/hard"+(num_rand+1)+"/TextAnswer.txt");
+            File file_text_answer = new File(getFilesDir().getAbsolutePath() + "/ielts/reading/practice/hard/"+files[num_rand].getName()+"/TextAnswer.txt");
 
             try {
 
@@ -480,6 +503,7 @@ public class Activity_practice_read extends AppCompatActivity {
         tv_text.setTextSize((int) (dm.widthPixels * 0.016));
 
         tv_text.setTextColor(Color.BLACK);
+        
 
 
         img_see_answer.getLayoutParams().width = (int) (dm.widthPixels * 0.29);
@@ -498,6 +522,7 @@ public class Activity_practice_read extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                tv_timer.stop();
 
                 Toast.makeText(Activity_practice_read.this,"Check Done.Now you can see the answers!",Toast.LENGTH_LONG).show();
 
@@ -571,13 +596,15 @@ public class Activity_practice_read extends AppCompatActivity {
 
         CustomViewItem.progressDialog.dismiss();
 
+
         if(getIntent().getExtras().getString("Easy") == null) tv_count.setVisibility(View.INVISIBLE);
         tv_text.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                Log.i("fdfdfdsf", "onTouch: "+motionEvent.getAction());
                 int count_word_easy = list_answer.size();
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN && !CheckClickAnswer) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP && !CheckClickAnswer) {
 
                     int mOffset = tv_text.getOffsetForPosition(motionEvent.getX(), motionEvent.getY());
 
@@ -659,7 +686,7 @@ public class Activity_practice_read extends AppCompatActivity {
                     }
 
                 }
-                return false;
+                return true;
             }
         });
 
@@ -741,6 +768,7 @@ public class Activity_practice_read extends AppCompatActivity {
     }
 
 
+    /*
     public void Timer(final TextView tv_timer)
     {
 
@@ -763,5 +791,7 @@ public class Activity_practice_read extends AppCompatActivity {
             }
         }.start();
     }
+
+     */
 
 }

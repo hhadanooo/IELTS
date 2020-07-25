@@ -114,13 +114,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-
+                    android:justificationMode="inter_word"
                     android:padding="12dp"
                     android:layout_width="wrap_content"
                     android:textAlignment="textStart"
                     android:layout_height="wrap_content"
-                    android:id="@+id/activity_practice_read_tv_text"
-                    tools:ignore="UnusedAttribute" />
+                    android:id="@+id/activity_practice_read_tv_text"/>
             </ScrollView>
 
 

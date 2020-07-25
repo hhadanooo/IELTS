@@ -6,16 +6,35 @@
     android:layout_height="match_parent">
 
 
+
+
+    <EditText
+        android:hint="Note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#dee4de"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        android:gravity="top"
+        android:id="@+id/layout_fragment_edit_text_note"
+
+        android:layout_centerHorizontal="true"
+        />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/layout_fragment_rel_text_question">
+        android:id="@+id/layout_fragment_rel_text_question"
+        android:layout_below="@id/layout_fragment_edit_text_note">
         <WebView
+            android:padding="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:ignore="WebViewLayout"
-            android:id="@+id/layout_fragment_webview"/>
+            android:id="@+id/layout_fragment_webview"
+           />
     </RelativeLayout>
+
 
 
 
@@ -33,7 +52,7 @@
             android:id="@+id/layout_fragment_img_timer"
 
             android:layout_alignParentLeft="true"/>
-        <TextView
+        <Chronometer
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

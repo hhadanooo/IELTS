@@ -11,11 +11,13 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -47,7 +49,7 @@ public class ActivityTestWrite extends AppCompatActivity {
     ImageView img_see_example,img_shareanswer,img_submit;
     CustomEditText et_main_page;
     ImageView img_timer;
-    TextView tv_timer;
+    Chronometer tv_timer;
     long time;
 
     String TextSeeSample,TextTitleMainPage;
@@ -64,7 +66,9 @@ public class ActivityTestWrite extends AppCompatActivity {
     boolean showHelp = false;
     boolean isShow = false;
     Handler handler_timer;
-    Runnable_Timer runnable_timer;
+    //Runnable_Timer runnable_timer;
+    boolean check_chronometer = false;
+    boolean check = false;
 
 
     @Override
@@ -73,7 +77,7 @@ public class ActivityTestWrite extends AppCompatActivity {
         setContentView(R.layout.activity_test_write);
 
         handler_timer = new Handler();
-        runnable_timer = new Runnable_Timer();
+        //runnable_timer = new Runnable_Timer();
         showHelppp = getSharedPreferences("show" ,MODE_PRIVATE);
         showHelp = showHelppp.getBoolean("webView_title" , false);
 
@@ -82,9 +86,28 @@ public class ActivityTestWrite extends AppCompatActivity {
         init();
 
         SetPropertiesRelBody();
-        time = 3600000;
-        Timer(tv_timer);
+        time = 2400000;
 
+        tv_timer.start();
+
+
+        tv_timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                if(chronometer.getText().toString().equals("40:00") || check_chronometer)
+                {
+                    if(!check_chronometer) check_chronometer = true;
+                    if(check)
+                    {
+                        Glide.with(ActivityTestWrite.this).load(ActivityTestWrite.this.getDrawable(R.drawable.timer_icon)).into(img_timer);
+                        check = false;
+                    }else {
+                        Glide.with(ActivityTestWrite.this).load(ActivityTestWrite.this.getDrawable(R.drawable.timer_iconw)).into(img_timer);
+                        check = true;
+                    }
+                }
+            }
+        });
 
 
     }
@@ -120,7 +143,7 @@ public class ActivityTestWrite extends AppCompatActivity {
         iv_arrowBack_SimpleText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handler_timer.removeCallbacks(runnable_timer);
+                //handler_timer.removeCallbacks(runnable_timer);
                 finish();
                 onBackPressed();
             }
@@ -309,7 +332,7 @@ public class ActivityTestWrite extends AppCompatActivity {
         //rel_main_page.getLayoutParams().height = (int)(dm.heightPixels*0.78);
 
         rel_title_main_page.getLayoutParams().width = (int) (dm.widthPixels*.75);
-        rel_title_main_page.getLayoutParams().height = (int)(dm.widthPixels*0.25);
+        rel_title_main_page.getLayoutParams().height = (int)(dm.widthPixels*0.45);
 
 
         webView_title.loadUrl("file:///" + file_html);
@@ -435,6 +458,7 @@ public class ActivityTestWrite extends AppCompatActivity {
 
     }
 
+    /*
     public void Timer(final TextView tv_timer)
     {
         new CountDownTimer(time,1000) {
@@ -456,6 +480,7 @@ public class ActivityTestWrite extends AppCompatActivity {
                     Toast.makeText(ActivityTestWrite.this,"Time is over",Toast.LENGTH_LONG).show();
                 }
             }
+
 
             @Override
             public void onFinish() {
@@ -483,10 +508,12 @@ public class ActivityTestWrite extends AppCompatActivity {
         }
     }
 
+     */
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        handler_timer.removeCallbacks(runnable_timer);
+        //handler_timer.removeCallbacks(runnable_timer);
         finish();
     }
 }

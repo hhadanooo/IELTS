@@ -2,10 +2,12 @@ package ir.yottahouse.EnjoyIELTS.Practice;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -19,6 +21,7 @@ import java.io.File;
 
 import ir.yottahouse.EnjoyIELTS.CustomView.CustomViewItem;
 import ir.yottahouse.EnjoyIELTS.DialagENH.DialogENH;
+import ir.yottahouse.EnjoyIELTS.Practice.Listen.ListenPracticeBActivity;
 import ir.yottahouse.EnjoyIELTS.R;
 
 public class Activity_Practice extends AppCompatActivity {
@@ -134,34 +137,44 @@ public class Activity_Practice extends AppCompatActivity {
         {
             if(getIntent().getExtras().getString("Easy") != null)
             {
-                if(getIntent().getExtras().getString("Type1") != null)
+                if(getIntent().getExtras().getString("Type2") != null)
                 {
 
+                    /*
                     File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/short items/easy");
 
                     File[] files = file.listFiles();
 
+                    //Log.i("fsdfsdfsdfsf", ""+files.length);
                     for(int i = 0;i<files.length;i++)
                     {
-                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Easy",false,files[i].getName());
-                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Easy",false,files[i].getName());
+                        SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
                         custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
 
+                     */
 
-                }else if(getIntent().getExtras().getString("Type2") != null)
+                    Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
+                    intent.putExtra("Type2","Type2");
+                    intent.putExtra("Easy","Easy");
+                    //intent.putExtra("NameFile",file_name);
+                    startActivity(intent);
+
+
+                }else if(getIntent().getExtras().getString("Type1") != null)
                 {
 
 
                     File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/transcription/easy");
 
                     File[] files = file.listFiles();
-
+                    Log.i("fsdfsdfsdfsf", ""+files.length);
                     for(int i = 0;i<files.length;i++)
                     {
-                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Easy",false,files[i].getName());
-                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Easy",false,files[i].getName());
+                        SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
                         custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
@@ -170,23 +183,31 @@ public class Activity_Practice extends AppCompatActivity {
                 }
             }else  if(getIntent().getExtras().getString("Normal") != null)
             {
-                if(getIntent().getExtras().getString("Type1") != null)
+                if(getIntent().getExtras().getString("Type2") != null)
                 {
 
+                    /*
                     File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/short items/normal");
 
                     File[] files = file.listFiles();
 
                     for(int i = 0;i<files.length;i++)
                     {
-                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Normal",false,files[i].getName());
-                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Normal",false,files[i].getName());
+                        SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
                         custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
 
+                     */
+                    Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
+                    intent.putExtra("Type2","Type2");
+                    intent.putExtra("Normal","normal");
+                    //intent.putExtra("NameFile",file_name);
+                    startActivity(intent);
 
-                }else if(getIntent().getExtras().getString("Type2") != null)
+
+                }else if(getIntent().getExtras().getString("Type1") != null)
                 {
 
                     File file = new File(getFilesDir() + "/ielts/listening/practice/transcription/normal");
@@ -195,8 +216,8 @@ public class Activity_Practice extends AppCompatActivity {
 
                     for(int i = 0;i<files.length;i++)
                     {
-                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Normal",false,files[i].getName());
-                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Normal",false,files[i].getName());
+                        SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
                         custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
@@ -205,23 +226,32 @@ public class Activity_Practice extends AppCompatActivity {
                 }
             }else if(getIntent().getExtras().getString("Hard") != null)
             {
-                if(getIntent().getExtras().getString("Type1") != null)
+                if(getIntent().getExtras().getString("Type2") != null)
                 {
 
+                    /*
                     File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/short items/hard");
 
                     File[] files = file.listFiles();
 
                     for(int i = 0;i<files.length;i++)
                     {
-                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Hard",false,files[i].getName());
-                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Hard",false,files[i].getName());
+                        SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
                         custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }
 
+                     */
 
-                }else if(getIntent().getExtras().getString("Type2") != null)
+                    Intent intent = new Intent(Activity_Practice.this, ListenPracticeBActivity.class);
+                    intent.putExtra("Type2","Type2");
+                    intent.putExtra("Hard","Hard");
+                    //intent.putExtra("NameFile",file_name);
+                    startActivity(intent);
+
+
+                }else if(getIntent().getExtras().getString("Type1") != null)
                 {
                     File file = new File(getFilesDir().getAbsolutePath() + "/ielts/listening/practice/transcription/hard");
 
@@ -229,8 +259,8 @@ public class Activity_Practice extends AppCompatActivity {
 
                     for(int i = 0;i<files.length;i++)
                     {
-                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typeb","Hard",false,files[i].getName());
-                        SetSettingCustomItem("","practice "+(i+1),custom1,getResources().getDrawable(R.drawable.test_menue));
+                        CustomViewItem custom1 = new CustomViewItem(this,"Listening","Practice","",i+1,"Typea","Hard",false,files[i].getName());
+                        SetSettingCustomItem("",files[i].getName(),custom1,getResources().getDrawable(R.drawable.test_menue));
                         custom1.startAnimation(AnimationUtils.loadAnimation(this,R.anim.anim_list_item));
                         lin.addView(custom1);
                     }

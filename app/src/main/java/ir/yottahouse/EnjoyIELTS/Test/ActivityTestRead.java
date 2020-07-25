@@ -61,6 +61,12 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
+    public static boolean CheckAnswerTab1 = false;
+    public static boolean CheckAnswerTab2 = false;
+    public static boolean CheckAnswerTab3 = false;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +82,10 @@ public class ActivityTestRead extends AppCompatActivity {
         CheckStartHandler1 = false;
         CheckStartHandler2 = false;
         CheckStartHandler3 = false;
+
+        CheckAnswerTab1 = false;
+        CheckAnswerTab2 = false;
+        CheckAnswerTab3 = false;
 
 
 
@@ -94,7 +104,7 @@ public class ActivityTestRead extends AppCompatActivity {
 
 
 
-        Timer();
+        //Timer();
         //handler_timer.postDelayed(runnable_timer,1);
 
 
