@@ -253,7 +253,7 @@ public class SlideFragmentTestReading extends Fragment {
         rel_text_and_question.getLayoutParams().width = (int) (Width*.90);
         webView.getLayoutParams().width = (int) (Width*.90);
         rel_text_and_question.getLayoutParams().height = (int)(Height*0.46);
-        webView.getLayoutParams().height = (int)(Height*0.46);
+        webView.getLayoutParams().height = (int)(Height*0.45);
 
 
 

@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -53,7 +54,8 @@ public class TestListenActivity extends AppCompatActivity {
             , iv_arrowBack_TestL , iv_ic_backward_playerTL , iv_ic_forward_playerTL ,iv_audioscripts_playerTL;
     View view_space_playerTL , view_center_see_audio;
     EditText  et_TestL_Result;
-    TextView tv_time_TestL , tv_TitleLogo_TestL ,tv_PathLogo_TestL , tv_time_playerTL;
+    TextView tv_TitleLogo_TestL ,tv_PathLogo_TestL , tv_time_playerTL;
+    Chronometer tv_time_TestL;
     SeekBar seekBar_playerTL;
     MediaPlayer mPlayer;
     Handler mHandler = new Handler();
@@ -89,6 +91,9 @@ public class TestListenActivity extends AppCompatActivity {
     Handler handler_timer;
     Runnable_Timer runnable_timer;
 
+    boolean check_chronometer = false;
+    boolean check = false;
+
 
     @SuppressLint({"ClickableViewAccessibility", "SetJavaScriptEnabled"})
     @Override
@@ -119,7 +124,26 @@ public class TestListenActivity extends AppCompatActivity {
         initActionBar();
         CheckIntent();
 
-        Timer(tv_time_TestL);
+        //Timer(tv_time_TestL);
+        tv_time_TestL.start();
+
+        tv_time_TestL.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                if(chronometer.getText().toString().equals("30:00") || check_chronometer)
+                {
+                    if(!check_chronometer) check_chronometer = true;
+                    if(check)
+                    {
+                        Glide.with(TestListenActivity.this).load(TestListenActivity.this.getDrawable(R.drawable.timer_icon)).into(iv_time_TestL);
+                        check = false;
+                    }else {
+                        Glide.with(TestListenActivity.this).load(TestListenActivity.this.getDrawable(R.drawable.timer_iconw)).into(iv_time_TestL);
+                        check = true;
+                    }
+                }
+            }
+        });
 
 
 
@@ -629,7 +653,7 @@ public class TestListenActivity extends AppCompatActivity {
         iv_arrowBack_TestL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handler_timer.removeCallbacks(runnable_timer);
+                //handler_timer.removeCallbacks(runnable_timer);
                 finish();
                 onBackPressed();
             }
@@ -696,7 +720,7 @@ public class TestListenActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        handler_timer.removeCallbacks(runnable_timer);
+        //handler_timer.removeCallbacks(runnable_timer);
         finish();
     }
 
