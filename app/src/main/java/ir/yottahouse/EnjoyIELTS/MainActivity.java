@@ -10,9 +10,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     int dPassed = 0;
     int mPassed = 0;
     int yPassed = 0;
+    int updatecode = 0;
     private ProgressDialog pDialog;
     ProgressDialog progressDialog_unzip;
     public static final int progress_bar_type = 0;
@@ -106,10 +110,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     int update_code= 0;
 
     // File url to download
-    private static String file_url = "https://bit.ly/3e13a0r";
-    //private static String file_url = "https://irsv.upmusics.com/Tracks/Songs/Masih%20ft%20Arash%20AP%20%E2%80%93%20Goli128(UpMusic).mp3";
+    private static String file_url = "";
     private static String check_update_url = "http://hrwanheda.ir/update/index.php";
-    private static String update_url = "http://hrwanheda.ir/update/index.php";
+    private static String check_File_url = "http://hrwanheda.ir/update/index1.php";
+    private static String check_update1_url = "http://hrwanheda.ir/update/index2.php";
+
+    //private static String file_url = "https://irsv.upmusics.com/Tracks/Songs/Masih%20ft%20Arash%20AP%20%E2%80%93%20Goli128(UpMusic).mp3";
+    //private static String update_url = "http://hrwanheda.ir/update/index.php";
     String nameFile = "ielts.zip";
     RequestQueue requestQueue;
     boolean connected = false;
@@ -139,10 +146,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mPassed = newDayPerf.getInt("mPassed" , 0);
         yPassed = newDayPerf.getInt("yPassed" , 0);
 
+        if (!IELTSZip) {
+            new AlertDialog.Builder(this )
+                    .setMessage("To use this application you need to download data!!\nTo be downloaded ?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(final DialogInterface dialog, int which) {
+                            final ProgressDialog dialog1 = ProgressDialog.show(MainActivity.this, "",
+                                    "Please wait...", true);
+                            dialog1.show();
+                            StringRequest s = new StringRequest(Request.Method.GET, check_File_url, new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    dialog1.dismiss();
+                                    file_url = response;
+                                    downData();
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(MainActivity.this,"Please log in again!",Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            });
+                            requestQueue.add(s);
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .setCancelable(false)
+                    .show();
+        }else {
+            downData();
+        }
 
 
 
-        downData();
+
+
 
 
 
@@ -234,8 +279,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     @Override
                     public void onResponse(String response) {
                         if (Integer.parseInt(response) > update_code){
-                            newDayPerf.edit().putInt("update_code" , Integer.parseInt(response)).apply();
-                           Toast.makeText(MainActivity.this, "The app needs updating. please wait!", Toast.LENGTH_SHORT).show();
+                           updatecode = Integer.parseInt(response);
+                          // Toast.makeText(MainActivity.this, "The app needs updating. please wait!", Toast.LENGTH_SHORT).show();
                             update_data();
 
                         }
@@ -245,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(MainActivity.this,"The update link is broken. Please log in again!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this,"The update link is broken your internet is probably in trouble. Please log in again!",Toast.LENGTH_LONG).show();
                     }
                 });
                 requestQueue.add(s);
@@ -277,9 +322,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         //Toast.makeText(this,"",Toast.LENGTH_LONG).show();
 
-        file_url = "http://hrwanheda.ir/ielts-update.zip";
-        nameFile = "ielts-update.zip";
-        new DownloadFileFromURL().execute(file_url);
+        new AlertDialog.Builder(this )
+                .setMessage("Update available!!\nTo be updated ?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, int which) {
+
+                        final ProgressDialog dialog1 = ProgressDialog.show(MainActivity.this, "",
+                                "Please wait...", true);
+                        dialog1.show();
+                        StringRequest s = new StringRequest(Request.Method.GET, check_update1_url, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                dialog1.dismiss();
+                                file_url = response;
+                                nameFile = "ielts-update.zip";
+                                new DownloadFileFromURL().execute(file_url);
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(MainActivity.this,"Please log in again!",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                        requestQueue.add(s);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setCancelable(false)
+                .show();
+
+
+
 
     }
 
@@ -983,15 +1062,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     deleteRecursive(ZipFile);
                     File folder_update = new File(getFilesDir().getAbsolutePath() +"/ielts-update");
                     deleteRecursive(folder_update);
+                    newDayPerf.edit().putInt("update_code" , updatecode).apply();
                 }
 
 
             }else {
-                Toast.makeText(MainActivity.this, "no Internet Access!", Toast.LENGTH_SHORT).show();
-                ((ActivityManager) Objects.requireNonNull(getSystemService(ACTIVITY_SERVICE)))
-                        .clearApplicationUserData();
-                deleteCache(MainActivity.this);
-                finish();
+                if(!IELTSZip) {
+                    Toast.makeText(MainActivity.this, "no Internet Access!", Toast.LENGTH_SHORT).show();
+                    ((ActivityManager) Objects.requireNonNull(getSystemService(ACTIVITY_SERVICE)))
+                            .clearApplicationUserData();
+                    deleteCache(MainActivity.this);
+                    finish();
+                }
             }
 
 

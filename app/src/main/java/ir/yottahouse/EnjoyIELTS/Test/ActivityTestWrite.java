@@ -21,6 +21,7 @@ import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,13 +63,18 @@ public class ActivityTestWrite extends AppCompatActivity {
 
 
     TourGuide mtg;
+    TourGuide mtg1;
     SharedPreferences showHelppp;
     boolean showHelp = false;
+    boolean showHelp1 = false;
     boolean isShow = false;
+    boolean isShow1 = false;
     Handler handler_timer;
     //Runnable_Timer runnable_timer;
     boolean check_chronometer = false;
     boolean check = false;
+
+    ScrollView sv;
 
 
     @Override
@@ -79,7 +85,8 @@ public class ActivityTestWrite extends AppCompatActivity {
         handler_timer = new Handler();
         //runnable_timer = new Runnable_Timer();
         showHelppp = getSharedPreferences("show" ,MODE_PRIVATE);
-        showHelp = showHelppp.getBoolean("webView_title" , false);
+        //showHelp = showHelppp.getBoolean("webView_title" , false);
+        //showHelp1 = showHelppp.getBoolean("img_submit" , false);
 
         Objects.requireNonNull(getSupportActionBar()).hide();
         initActionBar();
@@ -175,6 +182,7 @@ public class ActivityTestWrite extends AppCompatActivity {
         et_main_page = findViewById(R.id.activity_test_write_edit_text_main_page);
 
         img_timer = findViewById(R.id.activity_test_write_img_timer);
+        sv = findViewById(R.id.sv);
 
         tv_timer = findViewById(R.id.activity_test_write_tv_timer);
         sharedPreferences_et_Text = getSharedPreferences("et_text_value",MODE_PRIVATE);
@@ -189,31 +197,40 @@ public class ActivityTestWrite extends AppCompatActivity {
             mtg.setPointer(new Pointer())
                     .setToolTip( new ToolTip()
                             .setTextColor(Color.parseColor("#212122"))
-                            .setDescription("You can write your answer here")
+                            .setDescription("You can write your answers here")
                             .setBackgroundColor(Color.parseColor("#bcd9f9"))
-                            .setShadow(true).setGravity(Gravity.BOTTOM ))
+                            .setShadow(true).setGravity(Gravity.TOP ))
                     .setOverlay(new Overlay()) ;
             mtg.playOn(et_main_page) ;
             showHelppp.edit().putBoolean("webView_title" , true).apply();
             showHelp = true;
+
         }
-        et_main_page.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isShow){
-                    mtg.cleanUp();
-                }
-            }
-        });
 
 
         layMgt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isShow){
-                    layMgt.setVisibility(View.GONE);
+                    sv.scrollTo(0, sv.getBottom());
                     mtg.cleanUp();
+                    isShow1 = true;
+                    mtg1 = TourGuide.init(ActivityTestWrite.this).with(TourGuide.Technique.CLICK);
+                    mtg1.setPointer(new Pointer())
+                            .setToolTip( new ToolTip()
+                                    .setTextColor(Color.parseColor("#212122"))
+                                    .setDescription("Save temporarily")
+                                    .setBackgroundColor(Color.parseColor("#bcd9f9"))
+                                    .setShadow(true).setGravity(Gravity.TOP|Gravity.LEFT))
+                            .setOverlay(new Overlay()) ;
+                    mtg1.playOn(img_submit) ;
+                    showHelppp.edit().putBoolean("img_submit" , true).apply();
+                    showHelp1 = true;
                     isShow = false;
+                }else if(isShow1){
+                    mtg1.cleanUp();
+                    isShow1 = false;
+                    layMgt.setVisibility(View.GONE);
                 }
             }
         });

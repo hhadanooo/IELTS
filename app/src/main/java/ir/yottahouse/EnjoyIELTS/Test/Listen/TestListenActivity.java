@@ -427,7 +427,7 @@ public class TestListenActivity extends AppCompatActivity {
                         mtg5.setPointer(new Pointer())
                                 .setToolTip(new ToolTip()
                                         .setTextColor(Color.parseColor("#212122"))
-                                        .setDescription("You can write answers here")
+                                        .setDescription("You can write your answers here")
                                         .setBackgroundColor(Color.parseColor("#bcd9f9"))
                                         .setShadow(true).setGravity(Gravity.TOP ))
                                 .setOverlay(new Overlay());
